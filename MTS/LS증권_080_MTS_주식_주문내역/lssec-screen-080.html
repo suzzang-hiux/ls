@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>주식 주문내역</title>
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+        @import url("https://cdn.jsdelivr.net/gh/leetaewook/gmarket-sans-dynamic-subset/GmarketSans.css");
+        /* 기본 margin, padding 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            letter-spacing: -0.72px;
+        }
+        ul, ol {
+            list-style: none;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+        .img-wrap {
+            width: 100%;
+            position: relative;
+        }
+
+        /* font style */
+        a {
+            color: #3f75ff;
+            text-underline-offset: 3px;
+        }
+        strong {
+            color: #000;
+        }
+        .color-black {
+            color: #000 !important;
+        }
+        .color-primary {
+            color: #3f75ff !important;
+        }
+        .color-warning {
+            color: #e83c3e !important;
+        }
+        .fw-bold {
+            font-weight: 800;
+        }
+        .fw-semiBold {
+            font-weight: 700;
+        }
+        .fw-meddium {
+            font-family: 400;
+        }
+        .fw-light {
+            font-weight: 100;
+        }
+        .text-align-center {
+            text-align: center !important;
+        }
+        .text-align-left {
+            text-align: left !important;
+        }
+        .text-align-right {
+            text-align: right !important;
+        }
+        .fz-12 {
+            font-size: 12px !important;
+        }
+        .fz-16 {
+            font-size: 16px !important;
+        }
+        .fz-18 {
+            font-size: 18px !important;
+        }
+        .fz-24 {
+            font-size: 24px !important;
+        }
+        .fz-28 {
+            font-size: 28px !important;
+        }
+        .fz-40 {
+            font-size: 40px !important;
+        }
+
+        /* margin */
+        .mt-0 {
+            margin-top: 0 !important;
+        }
+        .mt-8 {
+            margin-top: 8px !important;
+        }
+        .mt-16 {
+            margin-top: 16px !important;
+        }
+        .mt-20 {
+            margin-top: 20px !important;
+        }
+        .mt-24 {
+            margin-top: 24px !important;
+        }
+        .mt-32 {
+            margin-top: 32px !important;
+        }
+        .mt-40 {
+            margin-top: 40px !important;
+        }
+        .mt-60 {
+            margin-top: 60px !important;
+        }
+        .mb-0 {
+            margin-bottom: 0 !important;
+        }
+        .mb-8 {
+            margin-bottom: 8px !important;
+        }
+        .mb-16 {
+            margin-bottom: 16px !important;
+        }
+        .mb-24 {
+            margin-bottom: 24px !important;
+        }
+        .mb-32 {
+            margin-bottom: 32px !important;
+        }
+        .mb-40 {
+            margin-bottom: 40px !important;
+        }
+        .ml-24 {
+            margin-left: 24px !important;
+        }
+        .ml-32 {
+            margin-left: 32px !important;
+        }
+        
+        /* padding */
+        .pt-0 {
+            padding-top: 0 !important;
+        }
+        .pt-8 {
+            padding-top: 8px !important;
+        }
+        .pt-16 {
+            padding-top: 16px !important;
+        }
+        .pt-24 {
+            padding-top: 24px !important;
+        }
+        .pt-32 {
+            padding-top: 32px !important;
+        }
+        .pt-40 {
+            padding-top: 40px !important;
+        }
+        .pb-0 {
+            padding-bottom: 0 !important;
+        }
+        .pb-8 {
+            padding-bottom: 8px !important;
+        }
+        .pb-16 {
+            padding-bottom: 16px !important;
+        }
+        .pb-24 {
+            padding-bottom: 24px !important;
+        }
+        .pb-32 {
+            padding-bottom: 32px !important;
+        }
+        .pb-40 {
+            padding-bottom: 40px !important;
+        }
+
+        /* layout */
+        .LS-blog-custom.mts {
+            font-size: 0;
+            margin: 0;
+            padding: 0;
+            font-family: "Pretendard" !important;
+        }
+        .LS-blog-custom.mts .inner {
+            width: 100%;
+            max-width: 880px;
+            margin: auto;
+            box-sizing: border-box;
+            line-height: 1.5;
+            font-size: 18px !important;
+        }
+        .LS-blog-custom.mts .header {
+            width: 100%;
+            position: relative;
+            background-color: #325FD6;
+            padding: 20px;
+        }
+        .LS-blog-custom.mts .header .logo-wrap {
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .LS-blog-custom.mts .header .logo-wrap .header-tip {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: -0.26px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .LS-blog-custom.mts .header .logo-wrap .img-box {
+            width: 50px;
+            height: 24px;
+        }
+        .LS-blog-custom.mts .header .text-wrap {
+            margin-block: 16px 20px;
+            text-align: center;
+        }
+        .LS-blog-custom.mts .header .text-wrap img {
+            width: 72px;
+            height: 32px;
+            margin: 0 auto 12px;
+        }
+        .LS-blog-custom.mts .header .text-wrap p {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .LS-blog-custom.mts .header .text-wrap h2 {
+            margin-top: 8px;
+            font-family: "Gmarket Sans";
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.35;
+            letter-spacing: -0.56px;
+            color: #fff;
+        }
+        .LS-blog-custom.mts .header .text-wrap h2 strong {
+            color: #FFE8AE;
+        }
+        .LS-blog-custom.mts .header .point-wrap {
+            width: 100%;
+            position: relative;
+            padding: 24px 20px;
+            border-radius: 16px;
+            background-color: #254AAD;
+            text-align: center;
+        }
+        .LS-blog-custom.mts .header .point-wrap h3 {
+            font-family: "Gmarket Sans";
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #fff;
+        }
+        .LS-blog-custom.mts .header .point-wrap p {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: -0.32px;
+            color: #fff;
+            margin-top: 6px;
+        }
+        .LS-blog-custom.mts .inner p {
+            padding: 0;
+            margin: 0;
+            line-height: 1.5;
+            font-size: 17px;
+            color: #2B2B2B;
+        }
+        .LS-blog-custom.mts .content-wrap {
+            padding: 60px 20px;
+        }
+        .LS-blog-custom.mts .content-part {
+            width: 100%;
+            position: relative;
+        }
+        .LS-blog-custom.mts .content-part + .content-part {
+            margin-top: 60px;
+            padding-top: 60px;
+        }
+        .LS-blog-custom.mts .content-part + .content-part::before {
+            content: "";
+            width: calc(100% + 40px);
+            height: 12px;
+            position: absolute;
+            top: 0;
+            left: -20px;
+            background-color: #F4F4F4;
+        }
+        .LS-blog-custom.mts .content-part + .content-part::after {
+            content: "";
+            width: calc(100% + 40px);
+            height: 11px;
+            position: absolute;
+            top: 0;
+            left: -20px;
+            border-block: 1px solid #EEE;
+        }
+        .LS-blog-custom.mts .content-part .sub-tit {
+            font-family: "Gmarket Sans";
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.33;
+            letter-spacing: -0.48px;
+            color: #000;
+            text-align: center;
+        }
+        .LS-blog-custom.mts .site-map {
+            width: 100%;
+            position: relative;
+            border-radius: 8px;
+            background-color: #EEF3FF;
+            padding: 15px 12px;
+            margin-top: 16px;
+        }
+        .LS-blog-custom.mts .site-map ul {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px 16px;
+            padding-left: 28px;
+            position: relative;
+        }
+        .LS-blog-custom.mts .site-map ul::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 22px;
+            height: 22px;
+            background: url(icon_menu.png) center / contain no-repeat;
+        }
+        .LS-blog-custom.mts .site-map ul li {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: -0.32px;
+            text-align: center;
+            position: relative;
+            color: #2b2b2b;
+        }
+        .LS-blog-custom.mts .site-map ul li::after {
+            content: "";
+            width: 8px;
+            height: 22px;
+            background-image: url("data:image/svg+xml,%3Csvg width='8' height='22' viewBox='0 0 8 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 7L6 11L2 15' stroke='%23959595' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -12px;
+        }
+        .LS-blog-custom.mts .site-map ul li:last-child::after {
+            display: none;
+        }
+        .LS-blog-custom.mts .site-map ul li:last-child {
+            font-weight: 700;
+            color: #3f75ff;
+        }
+        .LS-blog-custom.mts .site-map ul li.more-menu {
+            padding-left: 22px;
+            position: relative;
+        }
+        .LS-blog-custom.mts .site-map ul li.more-menu::before {
+            content: "";
+            width: 22px;
+            height: 22px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.1 16H11M11.1 11H11M11.1 6H11' stroke='%233F75FF' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E%0A");
+        }
+        .LS-blog-custom.mts .img-title {
+            width: fit-content;
+            height: fit-content;
+            position: relative;
+            margin: 40px auto;
+            padding: 11px 24px 8px 24px;
+            background-color: #3F75FF;
+            border-radius: 30px;
+        }
+        .LS-blog-custom.mts .img-title h5 {
+            font-family: "Gmarket Sans";
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: #fff;
+            text-align: center;
+        }
+        .LS-blog-custom.mts .highlight {
+            font-weight: 700;
+            background-color: #fff2da;
+        }
+        .LS-blog-custom.mts .blog-text,
+        .LS-blog-custom.mts .blog-item {
+            width: 100%;
+            position: relative;
+        }
+        .LS-blog-custom.mts .blog-item + .blog-item {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px dashed #B1B8BE;
+        }
+        .LS-blog-custom.mts .tip-container {
+            width: 100%;
+            position: relative;
+            border-radius: 12px;
+            background-color: #FFF2DA;
+            padding: 20px 20px 18px 20px;
+            margin-top: 32px;
+        }
+        .LS-blog-custom.mts .tip-container h5 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateY(-50%);
+            width: 66px;
+            height: 26px;
+            background-image: url("data:image/svg+xml,%3Csvg width='66' height='26' viewBox='0 0 66 26' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 26H50.6439C52.1583 26 53.6168 25.4273 54.7266 24.3968L63.8434 15.9312C65.5476 14.3486 65.5476 11.6514 63.8433 10.0688L54.7266 1.60324C53.6168 0.572718 52.1583 0 50.6439 0H12C5.37258 0 0 5.37258 0 12V26Z' fill='%23FFD357'/%3E%3C/svg%3E%0A");
+            text-align: center;
+            font-family: "Gmarket Sans";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px 4px 0 0;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #0a1e5a;
+        }
+        .LS-blog-custom.mts .tip-container p {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: -0.32px;
+        }
+        .LS-blog-custom.mts .tip-container.warning {
+            background-color: #FEE7EC;
+            margin-top: 20px;
+        }
+        .LS-blog-custom.mts .tip-container.warning h5 {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: translateY(0);
+            width: fit-content;
+            height: fit-content;
+            background-image: none;
+            text-align: left;
+            display: block;
+            padding: 0 0 6px 24px;
+            font-size: 15px;
+            color: #D4002C;
+        }
+        .LS-blog-custom.mts .tip-container.warning h5::before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background: url(icon_warning.png) 50% 50% / contain no-repeat;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .LS-blog-custom.mts .link-btn {
+            width: 100%;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background-color: #0A1E5A;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: -0.34px;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+        }
+        .LS-blog-custom.mts .link-btn span {
+            pointer-events: none;
+            position: relative;
+            padding-right: 24px;
+        }
+        .LS-blog-custom.mts .link-btn span::after {
+            content: "";
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 7L14 12L9 17' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+        }
+        .LS-blog-custom.mts .last-ment {
+            width: 100%;
+            height: fit-content;
+            padding: 32px 20px;
+            background-color: #EEF3FF;
+        }
+        .LS-blog-custom.mts .last-ment p {
+            font-size: 17px;
+            line-height: 1.5;
+            letter-spacing: -0.34px;
+            color: #2B2B2B;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="LS-blog-custom mts">
+        <div class="inner">
+            <div class="img-wrap header">
+                <div class="logo-wrap">
+                    <p class="header-tip">투혼 MTS 도움말</p>
+                    <div class="img-box">
+                        <img src="mobile_logo.png" alt="ls-mobile-logo" />
+                    </div>
+                </div>
+                <div class="text-wrap">
+                    <img src="brand_logo.png" alt="brand-logo" />
+                    <p>주식 주문내역</p>
+                    <h2>
+                        흩어진 기록을 모아, <br />
+                        <strong>한눈에 깔끔하게!</strong>
+                    </h2>
+                </div>
+                <div class="point-wrap">
+                    <h3>
+                        📑 매수·매도 내역을 한눈에 모아, <br />
+                        📊 내 주문 흐름을 <br />
+                        쉽게 확인할 수 있어요.
+                    </h3>
+                    <p>
+                        ✨ 체결 결과까지 깔끔하게 정리되요!
+                    </p>
+                </div>
+            </div>
+            <div class="content-wrap">
+                <div class="content-part">
+                    <h4 class="sub-tit mb-16">주식 주문내역</h4>
+                    <p class="text-align-center">
+                        📝 주문 내역을 전체·매수·매도로 확인하고, <br />
+                        🔄 순서도 정·역순으로 자유롭게 바꿀 수 있어요! <br />
+                        ✅ 필요하면 한 번에 ‘일괄취소’도 가능해요!
+                    </p>
+                    <div class="site-map">
+                        <ul>
+                            <li>트레이딩</li>
+                            <li>국내주식</li>
+                            <li>주식 주문내역</li>
+                        </ul>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-title">
+                            <h5>화면소개</h5>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_080_01.png" alt="" />
+                            </div>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_080_02.png" alt="" />
+                            </div>
+                            <p class="mt-20">
+                                <strong class="highlight">‘주식 주문내역’</strong>는 매수·매도 내역을 한눈에 확인하고 정렬 방식도 내 마음대로 바꿀 수 있어요! <br />
+                                여러 주문을 한 번에 ‘일괄취소’할 수도 있어  더 빠르고 편리하게 관리할 수 있어요.
+                            </p>
+                            <div class="tip-container">
+                                <h5>TIP!</h5>
+                                <p>일괄취소 시, 필요한 주문까지 함께 취소되지 않도록 주의하세요!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <h4 class="sub-tit mb-16">거래내역</h4>
+                    <p class="text-align-center">
+                        📑 모든 거래 흐름을 한눈에! <br />
+                        💰 매수·매도 금액부터 입출금까지 <br />
+                        쉽고 정확하게 확인할 수 있어요.
+                    </p>
+                    <div class="site-map">
+                        <ul>
+                            <li>트레이딩</li>
+                            <li>국내주식</li>
+                            <li>거래내역</li>
+                        </ul>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-title">
+                            <h5>화면소개</h5>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_080_03.png" alt="" />
+                            </div>
+                            <div class="img-wrap mt-20">
+                                <img src="img_080_04.png" alt="" />
+                            </div>
+                            <p class="mt-20">
+                                <strong class="highlight">‘거래내역’</strong>은 거래 전체를 한 번에 확인할 수도 있고, 입출금, 배당 등 거래 유형이나 거래 기간, 특정 종목을 지정해서 나에게 필요한 거래 내역만 확인할 수도 있어요.
+                            </p>
+                            <div class="tip-container">
+                                <h5>TIP!</h5>
+                                <p>표 형식의 거래내역에는 많은 항목이 있어요. 좌우로 쓸어넘기는 스크롤 동작으로 숨겨진 거래정보까지 꼼꼼히 확인해보세요!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="img-wrap">
+                <img src="footer_slogan.png" alt="" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

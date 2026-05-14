@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>실시간 인기조회</title>
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+        @import url("https://cdn.jsdelivr.net/gh/leetaewook/gmarket-sans-dynamic-subset/GmarketSans.css");
+        /* 기본 margin, padding 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            letter-spacing: -0.72px;
+        }
+        ul, ol {
+            list-style: none;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+        .img-wrap {
+            width: 100%;
+            position: relative;
+        }
+
+        /* font style */
+        a {
+            color: #3f75ff;
+            text-underline-offset: 3px;
+        }
+        strong {
+            color: #000;
+        }
+        .color-black {
+            color: #000 !important;
+        }
+        .color-primary {
+            color: #3f75ff !important;
+        }
+        .color-warning {
+            color: #e83c3e !important;
+        }
+        .fw-bold {
+            font-weight: 800;
+        }
+        .fw-semiBold {
+            font-weight: 700;
+        }
+        .fw-meddium {
+            font-family: 400;
+        }
+        .fw-light {
+            font-weight: 100;
+        }
+        .text-align-center {
+            text-align: center !important;
+        }
+        .text-align-left {
+            text-align: left !important;
+        }
+        .text-align-right {
+            text-align: right !important;
+        }
+        .fz-12 {
+            font-size: 12px !important;
+        }
+        .fz-16 {
+            font-size: 16px !important;
+        }
+        .fz-18 {
+            font-size: 18px !important;
+        }
+        .fz-24 {
+            font-size: 24px !important;
+        }
+        .fz-28 {
+            font-size: 28px !important;
+        }
+        .fz-40 {
+            font-size: 40px !important;
+        }
+
+        /* margin */
+        .mt-0 {
+            margin-top: 0 !important;
+        }
+        .mt-8 {
+            margin-top: 8px !important;
+        }
+        .mt-16 {
+            margin-top: 16px !important;
+        }
+        .mt-20 {
+            margin-top: 20px !important;
+        }
+        .mt-24 {
+            margin-top: 24px !important;
+        }
+        .mt-32 {
+            margin-top: 32px !important;
+        }
+        .mt-40 {
+            margin-top: 40px !important;
+        }
+        .mt-60 {
+            margin-top: 60px !important;
+        }
+        .mb-0 {
+            margin-bottom: 0 !important;
+        }
+        .mb-8 {
+            margin-bottom: 8px !important;
+        }
+        .mb-16 {
+            margin-bottom: 16px !important;
+        }
+        .mb-24 {
+            margin-bottom: 24px !important;
+        }
+        .mb-32 {
+            margin-bottom: 32px !important;
+        }
+        .mb-40 {
+            margin-bottom: 40px !important;
+        }
+        .ml-24 {
+            margin-left: 24px !important;
+        }
+        .ml-32 {
+            margin-left: 32px !important;
+        }
+        
+        /* padding */
+        .pt-0 {
+            padding-top: 0 !important;
+        }
+        .pt-8 {
+            padding-top: 8px !important;
+        }
+        .pt-16 {
+            padding-top: 16px !important;
+        }
+        .pt-24 {
+            padding-top: 24px !important;
+        }
+        .pt-32 {
+            padding-top: 32px !important;
+        }
+        .pt-40 {
+            padding-top: 40px !important;
+        }
+        .pb-0 {
+            padding-bottom: 0 !important;
+        }
+        .pb-8 {
+            padding-bottom: 8px !important;
+        }
+        .pb-16 {
+            padding-bottom: 16px !important;
+        }
+        .pb-24 {
+            padding-bottom: 24px !important;
+        }
+        .pb-32 {
+            padding-bottom: 32px !important;
+        }
+        .pb-40 {
+            padding-bottom: 40px !important;
+        }
+
+        /* layout */
+        .LS-blog-custom.mts {
+            font-size: 0;
+            margin: 0;
+            padding: 0;
+            font-family: "Pretendard" !important;
+        }
+        .LS-blog-custom.mts .inner {
+            width: 100%;
+            max-width: 880px;
+            margin: auto;
+            box-sizing: border-box;
+            line-height: 1.5;
+            font-size: 18px !important;
+        }
+        .LS-blog-custom.mts .header {
+            width: 100%;
+            position: relative;
+            background-color: #325FD6;
+            padding: 20px;
+        }
+        .LS-blog-custom.mts .header .logo-wrap {
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .LS-blog-custom.mts .header .logo-wrap .header-tip {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: -0.26px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .LS-blog-custom.mts .header .logo-wrap .img-box {
+            width: 50px;
+            height: 24px;
+        }
+        .LS-blog-custom.mts .header .text-wrap {
+            margin-block: 16px 20px;
+            text-align: center;
+        }
+        .LS-blog-custom.mts .header .text-wrap img {
+            width: 72px;
+            height: 32px;
+            margin: 0 auto 12px;
+        }
+        .LS-blog-custom.mts .header .text-wrap p {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .LS-blog-custom.mts .header .text-wrap h2 {
+            margin-top: 8px;
+            font-family: "Gmarket Sans";
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.35;
+            letter-spacing: -0.56px;
+            color: #fff;
+        }
+        .LS-blog-custom.mts .header .text-wrap h2 strong {
+            color: #FFE8AE;
+        }
+        .LS-blog-custom.mts .header .point-wrap {
+            width: 100%;
+            position: relative;
+            padding: 24px 20px;
+            border-radius: 16px;
+            background-color: #254AAD;
+            text-align: center;
+        }
+        .LS-blog-custom.mts .header .point-wrap h3 {
+            font-family: "Gmarket Sans";
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #fff;
+        }
+        .LS-blog-custom.mts .header .point-wrap p {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: -0.32px;
+            color: #fff;
+            margin-top: 6px;
+        }
+        .LS-blog-custom.mts .inner p {
+            padding: 0;
+            margin: 0;
+            line-height: 1.5;
+            font-size: 17px;
+            color: #2B2B2B;
+        }
+        .LS-blog-custom.mts .content-wrap {
+            padding: 60px 20px;
+        }
+        .LS-blog-custom.mts .content-part {
+            width: 100%;
+            position: relative;
+        }
+        .LS-blog-custom.mts .content-part + .content-part {
+            margin-top: 60px;
+            padding-top: 60px;
+        }
+        .LS-blog-custom.mts .content-part + .content-part::before {
+            content: "";
+            width: calc(100% + 40px);
+            height: 12px;
+            position: absolute;
+            top: 0;
+            left: -20px;
+            background-color: #F4F4F4;
+        }
+        .LS-blog-custom.mts .content-part + .content-part::after {
+            content: "";
+            width: calc(100% + 40px);
+            height: 11px;
+            position: absolute;
+            top: 0;
+            left: -20px;
+            border-block: 1px solid #EEE;
+        }
+        .LS-blog-custom.mts .content-part .sub-tit {
+            font-family: "Gmarket Sans";
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.33;
+            letter-spacing: -0.48px;
+            color: #000;
+            text-align: center;
+        }
+        .LS-blog-custom.mts .site-map {
+            width: 100%;
+            position: relative;
+            border-radius: 8px;
+            background-color: #EEF3FF;
+            padding: 15px 12px;
+            margin-top: 16px;
+        }
+        .LS-blog-custom.mts .site-map ul {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px 16px;
+            padding-left: 28px;
+            position: relative;
+        }
+        .LS-blog-custom.mts .site-map ul::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 22px;
+            height: 22px;
+            background: url(icon_menu.png) center / contain no-repeat;
+        }
+        .LS-blog-custom.mts .site-map ul li {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: -0.32px;
+            text-align: center;
+            position: relative;
+            color: #2b2b2b;
+        }
+        .LS-blog-custom.mts .site-map ul li::after {
+            content: "";
+            width: 8px;
+            height: 22px;
+            background-image: url("data:image/svg+xml,%3Csvg width='8' height='22' viewBox='0 0 8 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 7L6 11L2 15' stroke='%23959595' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -12px;
+        }
+        .LS-blog-custom.mts .site-map ul li:last-child::after {
+            display: none;
+        }
+        .LS-blog-custom.mts .site-map ul li:last-child {
+            font-weight: 700;
+            color: #3f75ff;
+        }
+        .LS-blog-custom.mts .site-map ul li.more-menu {
+            padding-left: 22px;
+            position: relative;
+        }
+        .LS-blog-custom.mts .site-map ul li.more-menu::before {
+            content: "";
+            width: 22px;
+            height: 22px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.1 16H11M11.1 11H11M11.1 6H11' stroke='%233F75FF' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E%0A");
+        }
+        .LS-blog-custom.mts .img-title {
+            width: fit-content;
+            height: fit-content;
+            position: relative;
+            margin: 40px auto;
+            padding: 11px 24px 8px 24px;
+            background-color: #3F75FF;
+            border-radius: 30px;
+        }
+        .LS-blog-custom.mts .img-title h5 {
+            font-family: "Gmarket Sans";
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: #fff;
+            text-align: center;
+        }
+        .LS-blog-custom.mts .highlight {
+            font-weight: 700;
+            background-color: #fff2da;
+        }
+        .LS-blog-custom.mts .blog-text,
+        .LS-blog-custom.mts .blog-item {
+            width: 100%;
+            position: relative;
+        }
+        .LS-blog-custom.mts .blog-item + .blog-item {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px dashed #B1B8BE;
+        }
+        .LS-blog-custom.mts .tip-container {
+            width: 100%;
+            position: relative;
+            border-radius: 12px;
+            background-color: #FFF2DA;
+            padding: 20px 20px 18px 20px;
+            margin-top: 32px;
+        }
+        .LS-blog-custom.mts .tip-container h5 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateY(-50%);
+            width: 66px;
+            height: 26px;
+            background-image: url("data:image/svg+xml,%3Csvg width='66' height='26' viewBox='0 0 66 26' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 26H50.6439C52.1583 26 53.6168 25.4273 54.7266 24.3968L63.8434 15.9312C65.5476 14.3486 65.5476 11.6514 63.8433 10.0688L54.7266 1.60324C53.6168 0.572718 52.1583 0 50.6439 0H12C5.37258 0 0 5.37258 0 12V26Z' fill='%23FFD357'/%3E%3C/svg%3E%0A");
+            text-align: center;
+            font-family: "Gmarket Sans";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px 4px 0 0;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #0a1e5a;
+        }
+        .LS-blog-custom.mts .tip-container p {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: -0.32px;
+        }
+        .LS-blog-custom.mts .tip-container.warning {
+            background-color: #FEE7EC;
+            margin-top: 20px;
+        }
+        .LS-blog-custom.mts .tip-container.warning h5 {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: translateY(0);
+            width: fit-content;
+            height: fit-content;
+            background-image: none;
+            text-align: left;
+            display: block;
+            padding: 0 0 6px 24px;
+            font-size: 15px;
+            color: #D4002C;
+        }
+        .LS-blog-custom.mts .tip-container.warning h5::before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background: url(icon_warning.png) 50% 50% / contain no-repeat;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .LS-blog-custom.mts .link-btn {
+            width: 100%;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background-color: #0A1E5A;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: -0.34px;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+        }
+        .LS-blog-custom.mts .link-btn span {
+            pointer-events: none;
+            position: relative;
+            padding-right: 24px;
+        }
+        .LS-blog-custom.mts .link-btn span::after {
+            content: "";
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 7L14 12L9 17' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+        }
+        .LS-blog-custom.mts .last-ment {
+            width: 100%;
+            height: fit-content;
+            padding: 32px 20px;
+            background-color: #EEF3FF;
+        }
+        .LS-blog-custom.mts .last-ment p {
+            font-size: 17px;
+            line-height: 1.5;
+            letter-spacing: -0.34px;
+            color: #2B2B2B;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="LS-blog-custom mts">
+        <div class="inner">
+            <div class="img-wrap header">
+                <div class="logo-wrap">
+                    <p class="header-tip">투혼 MTS 도움말</p>
+                    <div class="img-box">
+                        <img src="mobile_logo.png" alt="ls-mobile-logo" />
+                    </div>
+                </div>
+                <div class="text-wrap">
+                    <img src="brand_logo.png" alt="brand-logo" />
+                    <p>실시간 인기조회</p>
+                    <h2>
+                        지금 모두가 <br />
+                        주목하는 종목, <br />
+                        <strong>한눈에 포착하세요!</strong>
+                    </h2>
+                </div>
+                <div class="point-wrap">
+                    <h3>
+                        💭 "무슨 종목을 봐야 할지 모르겠어요" <br />
+                        라는 고민 많으시죠?
+                    </h3>
+                    <p>
+                        📊 시세와 투자정보 메뉴에선 지금 가장 <br />
+                        🔥 주목받는 종목을 한눈에 보여주니까, <br />
+                        ⏰ 시장 흐름을 놓치지 않도록 도와줘요!
+                    </p>
+                </div>
+            </div>
+            <div class="content-wrap">
+                <div class="content-part">
+                    <h4 class="sub-tit mb-16">실시간 인기조회</h4>
+                    <p class="text-align-center">
+                        💡 어떤 종목이 지금 인기 있는지 궁금할 때! <br />
+                        📈 실시간 인기조회로 투자자들이 가장 많이 찾는 <br />
+                        종목을 한눈에 확인할 수 있어요.
+                    </p>
+                    <div class="site-map">
+                        <ul>
+                            <li>트레이딩</li>
+                            <li>국내주식</li>
+                            <li>시세/투자정보</li>
+                            <li>실시간 인기조회</li>
+                        </ul>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-title">
+                            <h5>화면소개</h5>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_082_01.png" alt="" />
+                            </div>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_082_02.png" alt="" />
+                            </div>
+                            <p class="mt-20">
+                                <strong class="highlight">‘실시간 인기조회’</strong>는 투자자들이 가장 많이 조회한 종목을 보여주는 메뉴예요. <br />
+                                코스피·코스닥 시장을 구분해 인기 종목을 한눈에 확인할 수 있으며, 현재 시장에서 주목받는 기업과 상승세 종목을 빠르게 파악할 수 있어요. <br />
+                                시장 흐름을 놓치지 않고 투자 타이밍을 잡는 데 유용한 화면이에요.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <h4 class="sub-tit mb-16">종목상위</h4>
+                    <p class="text-align-center">
+                        🔥 오늘 뜨는 종목, 지금 바로 확인하세요! <br />
+                        상승률부터 거래량까지, 오늘 시장에서 <br />
+                        가장 활발한 종목들을 한눈에 볼 수 있어요. <br />
+                        요즘 투자자들이 주목하는 <br />
+                        종목 흐름을 빠르게 캐치해 보세요.
+                    </p>
+                    <div class="site-map">
+                        <ul>
+                            <li>트레이딩</li>
+                            <li>국내주식</li>
+                            <li>시세/투자정보</li>
+                            <li>종목상위</li>
+                        </ul>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-title">
+                            <h5>화면소개</h5>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_082_03.png" alt="" />
+                            </div>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_082_04.png" alt="" />
+                            </div>
+                            <p class="mt-20">
+                                <strong class="highlight">‘종목 상위’</strong>는 시장의 흐름을 빠르게 읽고 싶을 때 활용하기 좋은 화면이에요. <br />
+                                단기간 급등주를 찾거나, 거래량이 몰리는 종목을 분석할 때 특히 유용하며 투자 타이밍을 잡거나 관심종목을 선정할 때 참고하기 좋아요.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <h4 class="sub-tit mb-16">외인/기관 상위</h4>
+                    <p class="text-align-center">
+                        🌍 외국인·기관이 집중 매수하는 종목, <br />
+                        지금 확인하세요! 누가 어떤 종목을 사고파는지 <br />
+                        흐름을 실시간으로 파악할 수 있어요. <br />
+                        큰손들의 움직임을 따라 <br />
+                        시장 방향을 예측해 보세요.
+                    </p>
+                    <div class="site-map">
+                        <ul>
+                            <li>트레이딩</li>
+                            <li>국내주식</li>
+                            <li>시세/투자정보</li>
+                            <li>외인/기관 상위</li>
+                        </ul>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-title">
+                            <h5>화면소개</h5>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_082_05.png" alt="" />
+                            </div>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_082_06.png" alt="" />
+                            </div>
+                            <p class="mt-20">
+                                <strong class="highlight">‘외인/기관 상위’</strong>는 외국인과 기관의 순매수·순매도 현황을 보여주는 기능이에요. <br />
+                                시장에 큰 영향을 미치는 주요 투자자의 거래 동향을 확인할 수 있어 수급 흐름을 참고하거나 매매 전략을 세울 때 유용해요.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <h4 class="sub-tit mb-16">VI발동현황</h4>
+                    <p class="text-align-center">
+                        ⚡ 급등·급락 종목 실시간 포착! <br />
+                        VI(변동성 완화장치)가 발동된 종목을 <br />
+                        실시간으로 확인할 수 있어요. <br />
+                        급격한 가격 변동 종목을 빠르게 파악해 <br /> 
+                        시장 리스크를 줄이세요.
+                    </p>
+                    <div class="site-map">
+                        <ul>
+                            <li>트레이딩</li>
+                            <li>국내주식</li>
+                            <li>시세/투자정보</li>
+                            <li>VI발동현황</li>
+                        </ul>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-title">
+                            <h5>화면소개</h5>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_082_07.png" alt="" />
+                            </div>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_082_08.png" alt="" />
+                            </div>
+                            <p class="mt-20">
+                                <strong class="highlight">‘VI 발동 현황’</strong>은 가격이 급등하거나 급락할 때 일시적으로 거래를 멈추는 변동성 완화장치(VI)가 발동된 종목을 보여주는 기능이에요. <br />
+                                시장 급변 시 투자 위험을 미리 감지하거나 단기 매매 기회를 포착할 때 활용하기 좋아요.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <h4 class="sub-tit mb-16">시장조치</h4>
+                    <p class="text-align-center">
+                        ⚠️ 관리·불성실 종목, 미리 확인하세요! <br />
+                        투자 전 위험 종목을 빠르게 파악해 <br />
+                        불필요한 손실을 예방할 수 있어요. <br />
+                        시장 조치 현황을 실시간으로 확인하며 <br />
+                        안정적인 투자를 도와줘요!
+                    </p>
+                    <div class="site-map">
+                        <ul>
+                            <li>트레이딩</li>
+                            <li>국내주식</li>
+                            <li>시세/투자정보</li>
+                            <li>시장조치</li>
+                        </ul>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-title">
+                            <h5>화면소개</h5>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_082_09.png" alt="" />
+                            </div>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_082_10.png" alt="" />
+                            </div>
+                        </div>
+                        <p class="mt-20">
+                            <strong class="highlight">‘시장조치’</strong> 메뉴는 관리종목, 불성실공시 기업, 상장폐지 예정 종목 등 거래 주의가 필요한 종목 정보를 제공하는 기능이에요. 투자 전 리스크를 미리 확인하고, 안전한 매매 결정을 내릴 때 유용해요.
+                        </p>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <h4 class="sub-tit mb-16">신규상장</h4>
+                    <p class="text-align-center">
+                        📈 새롭게 상장된 종목 한눈에! <br />
+                        최근 상장된 기업과 ETF를 한눈에 확인할 수 <br />
+                        있어요. 시장에 새로 진입한 종목의 흐름을 <br />
+                        빠르게 파악해 투자 기회를 잡아보세요.
+                    </p>
+                    <div class="site-map">
+                        <ul>
+                            <li>트레이딩</li>
+                            <li>국내주식</li>
+                            <li>시세/투자정보</li>
+                            <li>신규상장</li>
+                        </ul>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-title">
+                            <h5>화면소개</h5>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_082_11.png" alt="" />
+                            </div>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_082_12.png" alt="" />
+                            </div>
+                        </div>
+                        <p class="mt-20">
+                            <strong class="highlight">‘신규상장’</strong> 메뉴는 최근 증시에 새로 상장된 종목들의 가격과 거래 현황을 보여주는 기능이에요. <br />
+                            기업공개(IPO) 이후 주가 흐름을 살피거나, 시장의 신규 트렌드를 확인할 때 유용해요. 특히 신규 투자 기회를 찾는 투자자에게 꼭 필요한 정보 화면이에요.
+                        </p>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <h4 class="sub-tit mb-16">공매도/대주/CFD</h4>
+                    <p class="text-align-center">
+                        📊 공매도·대주·CFD 현황을 한눈에! <br />
+                        공매도 잔량과 대주 가능 종목을 실시간으로 <br />
+                        확인해 투자 전략을 세워보세요. 수급 흐름을 <br />
+                        빠르게 파악하면 시장 심리를 읽는 데 도움이 돼요.
+                    </p>
+                    <div class="site-map">
+                        <ul>
+                            <li>트레이딩</li>
+                            <li>국내주식</li>
+                            <li>시세/투자정보</li>
+                            <li>공매도/대주/CFD</li>
+                        </ul>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-title">
+                            <h5>화면소개</h5>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_082_13.png" alt="" />
+                            </div>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_082_14.png" alt="" />
+                            </div>
+                        </div>
+                        <p class="mt-20">
+                            <strong class="highlight">‘공매도/대주/CFD’</strong> 메뉴는 공매도 잔량, 대주 가능 수량, CFD(차액결제거래) 종목 정보를 제공해요. <br />
+                            공매도 증가나 대주 물량 부족은 투자 심리 변화의 신호로 활용할 수 있어요. 특히 단기 수급 동향이나 종목 과열 여부를 확인할 때 유용한 화면이에요.
+                        </p>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <h4 class="sub-tit mb-16">섹터종합</h4>
+                    <p class="text-align-center">
+                        📊 섹터별 시장 흐름을 한눈에! <br />
+                        지금 뜨는 산업군이 어디인지, 어떤 섹터가 <br />
+                        강세인지 바로 확인해보세요. <br />
+                        섹터별 등락률과 주요 종목을 함께 보여줘 <br />
+                        시장 트렌드를 쉽게 파악할 수 있어요.
+                    </p>
+                    <div class="site-map">
+                        <ul>
+                            <li>트레이딩</li>
+                            <li>국내주식</li>
+                            <li>시세/투자정보</li>
+                            <li>섹터종합</li>
+                        </ul>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-title">
+                            <h5>화면소개</h5>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_082_15.png" alt="" />
+                            </div>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_082_16.png" alt="" />
+                            </div>
+                            <p class="mt-20">
+                                <strong class="highlight">‘섹터종합’</strong>은 산업·테마별 주가 흐름을 비교해 시장의 전반적인 방향성을 읽을 수 있는 기능이에요. <br />
+                                2차전지, 반도체, 자동차 등 주요 섹터별 강세 흐름을 한눈에 볼 수 있어 단기 투자 타이밍이나 관심 종목 발굴에 유용하게 활용돼요.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="img-wrap">
+                <img src="footer_slogan.png" alt="" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

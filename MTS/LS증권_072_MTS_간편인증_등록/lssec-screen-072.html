@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>간편인증 등록</title>
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+        @import url("https://cdn.jsdelivr.net/gh/leetaewook/gmarket-sans-dynamic-subset/GmarketSans.css");
+        /* 기본 margin, padding 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            letter-spacing: -0.72px;
+        }
+        ul, ol {
+            list-style: none;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+        .img-wrap {
+            width: 100%;
+            position: relative;
+        }
+
+        /* font style */
+        a {
+            color: #3f75ff;
+            text-underline-offset: 3px;
+        }
+        strong {
+            color: #000;
+        }
+        .color-black {
+            color: #000 !important;
+        }
+        .color-primary {
+            color: #3f75ff !important;
+        }
+        .color-warning {
+            color: #e83c3e !important;
+        }
+        .fw-bold {
+            font-weight: 800;
+        }
+        .fw-semiBold {
+            font-weight: 700;
+        }
+        .fw-meddium {
+            font-family: 400;
+        }
+        .fw-light {
+            font-weight: 100;
+        }
+        .text-align-center {
+            text-align: center !important;
+        }
+        .text-align-left {
+            text-align: left !important;
+        }
+        .text-align-right {
+            text-align: right !important;
+        }
+        .fz-12 {
+            font-size: 12px !important;
+        }
+        .fz-16 {
+            font-size: 16px !important;
+        }
+        .fz-18 {
+            font-size: 18px !important;
+        }
+        .fz-24 {
+            font-size: 24px !important;
+        }
+        .fz-28 {
+            font-size: 28px !important;
+        }
+        .fz-40 {
+            font-size: 40px !important;
+        }
+
+        /* margin */
+        .mt-0 {
+            margin-top: 0 !important;
+        }
+        .mt-8 {
+            margin-top: 8px !important;
+        }
+        .mt-16 {
+            margin-top: 16px !important;
+        }
+        .mt-20 {
+            margin-top: 20px !important;
+        }
+        .mt-24 {
+            margin-top: 24px !important;
+        }
+        .mt-32 {
+            margin-top: 32px !important;
+        }
+        .mt-40 {
+            margin-top: 40px !important;
+        }
+        .mt-60 {
+            margin-top: 60px !important;
+        }
+        .mb-0 {
+            margin-bottom: 0 !important;
+        }
+        .mb-8 {
+            margin-bottom: 8px !important;
+        }
+        .mb-16 {
+            margin-bottom: 16px !important;
+        }
+        .mb-24 {
+            margin-bottom: 24px !important;
+        }
+        .mb-32 {
+            margin-bottom: 32px !important;
+        }
+        .mb-40 {
+            margin-bottom: 40px !important;
+        }
+        .ml-24 {
+            margin-left: 24px !important;
+        }
+        .ml-32 {
+            margin-left: 32px !important;
+        }
+        
+        /* padding */
+        .pt-0 {
+            padding-top: 0 !important;
+        }
+        .pt-8 {
+            padding-top: 8px !important;
+        }
+        .pt-16 {
+            padding-top: 16px !important;
+        }
+        .pt-24 {
+            padding-top: 24px !important;
+        }
+        .pt-32 {
+            padding-top: 32px !important;
+        }
+        .pt-40 {
+            padding-top: 40px !important;
+        }
+        .pb-0 {
+            padding-bottom: 0 !important;
+        }
+        .pb-8 {
+            padding-bottom: 8px !important;
+        }
+        .pb-16 {
+            padding-bottom: 16px !important;
+        }
+        .pb-24 {
+            padding-bottom: 24px !important;
+        }
+        .pb-32 {
+            padding-bottom: 32px !important;
+        }
+        .pb-40 {
+            padding-bottom: 40px !important;
+        }
+
+        /* layout */
+        .LS-blog-custom.mts {
+            font-size: 0;
+            margin: 0;
+            padding: 0;
+            font-family: "Pretendard" !important;
+        }
+        .LS-blog-custom.mts .inner {
+            width: 100%;
+            max-width: 880px;
+            margin: auto;
+            box-sizing: border-box;
+            line-height: 1.5;
+            font-size: 18px !important;
+        }
+        .LS-blog-custom.mts .header {
+            width: 100%;
+            position: relative;
+            background-color: #325FD6;
+            padding: 20px;
+        }
+        .LS-blog-custom.mts .header .logo-wrap {
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .LS-blog-custom.mts .header .logo-wrap .header-tip {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: -0.26px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .LS-blog-custom.mts .header .logo-wrap .img-box {
+            width: 50px;
+            height: 24px;
+        }
+        .LS-blog-custom.mts .header .text-wrap {
+            margin-block: 16px 20px;
+            text-align: center;
+        }
+        .LS-blog-custom.mts .header .text-wrap img {
+            width: 72px;
+            height: 32px;
+            margin: 0 auto 12px;
+        }
+        .LS-blog-custom.mts .header .text-wrap p {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .LS-blog-custom.mts .header .text-wrap h2 {
+            margin-top: 8px;
+            font-family: "Gmarket Sans";
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.35;
+            letter-spacing: -0.56px;
+            color: #fff;
+        }
+        .LS-blog-custom.mts .header .text-wrap h2 strong {
+            color: #FFE8AE;
+        }
+        .LS-blog-custom.mts .header .point-wrap {
+            width: 100%;
+            position: relative;
+            padding: 24px 20px;
+            border-radius: 16px;
+            background-color: #254AAD;
+            text-align: center;
+        }
+        .LS-blog-custom.mts .header .point-wrap h3 {
+            font-family: "Gmarket Sans";
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #fff;
+        }
+        .LS-blog-custom.mts .header .point-wrap p {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: -0.32px;
+            color: #fff;
+            margin-top: 6px;
+        }
+        .LS-blog-custom.mts .inner p {
+            padding: 0;
+            margin: 0;
+            line-height: 1.5;
+            font-size: 17px;
+            color: #2B2B2B;
+        }
+        .LS-blog-custom.mts .content-wrap {
+            padding: 60px 20px;
+        }
+        .LS-blog-custom.mts .content-part {
+            width: 100%;
+            position: relative;
+        }
+        .LS-blog-custom.mts .content-part + .content-part {
+            margin-top: 60px;
+            padding-top: 60px;
+        }
+        .LS-blog-custom.mts .content-part + .content-part::before {
+            content: "";
+            width: calc(100% + 40px);
+            height: 12px;
+            position: absolute;
+            top: 0;
+            left: -20px;
+            background-color: #F4F4F4;
+        }
+        .LS-blog-custom.mts .content-part + .content-part::after {
+            content: "";
+            width: calc(100% + 40px);
+            height: 11px;
+            position: absolute;
+            top: 0;
+            left: -20px;
+            border-block: 1px solid #EEE;
+        }
+        .LS-blog-custom.mts .content-part .sub-tit {
+            font-family: "Gmarket Sans";
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.33;
+            letter-spacing: -0.48px;
+            color: #000;
+            text-align: center;
+        }
+        .LS-blog-custom.mts .site-map {
+            width: 100%;
+            position: relative;
+            border-radius: 8px;
+            background-color: #EEF3FF;
+            padding: 15px 12px;
+            margin-top: 16px;
+        }
+        .LS-blog-custom.mts .site-map ul {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px 16px;
+            padding-left: 28px;
+            position: relative;
+        }
+        .LS-blog-custom.mts .site-map ul::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 22px;
+            height: 22px;
+            background: url(icon_menu.png) center / contain no-repeat;
+        }
+        .LS-blog-custom.mts .site-map ul li {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: -0.32px;
+            text-align: center;
+            position: relative;
+            color: #2b2b2b;
+        }
+        .LS-blog-custom.mts .site-map ul li::after {
+            content: "";
+            width: 8px;
+            height: 22px;
+            background-image: url("data:image/svg+xml,%3Csvg width='8' height='22' viewBox='0 0 8 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 7L6 11L2 15' stroke='%23959595' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -12px;
+        }
+        .LS-blog-custom.mts .site-map ul li:last-child::after {
+            display: none;
+        }
+        .LS-blog-custom.mts .site-map ul li:last-child {
+            font-weight: 700;
+            color: #3f75ff;
+        }
+        .LS-blog-custom.mts .site-map ul li.more-menu {
+            padding-left: 22px;
+            position: relative;
+        }
+        .LS-blog-custom.mts .site-map ul li.more-menu::before {
+            content: "";
+            width: 22px;
+            height: 22px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.1 16H11M11.1 11H11M11.1 6H11' stroke='%233F75FF' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E%0A");
+        }
+        .LS-blog-custom.mts .img-title {
+            width: fit-content;
+            height: fit-content;
+            position: relative;
+            margin: 40px auto;
+            padding: 11px 24px 8px 24px;
+            background-color: #3F75FF;
+            border-radius: 30px;
+        }
+        .LS-blog-custom.mts .img-title h5 {
+            font-family: "Gmarket Sans";
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: #fff;
+            text-align: center;
+        }
+        .LS-blog-custom.mts .highlight {
+            font-weight: 700;
+            background-color: #fff2da;
+        }
+        .LS-blog-custom.mts .blog-text,
+        .LS-blog-custom.mts .blog-item {
+            width: 100%;
+            position: relative;
+        }
+        .LS-blog-custom.mts .blog-item + .blog-item {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px dashed #B1B8BE;
+        }
+        .LS-blog-custom.mts .tip-container {
+            width: 100%;
+            position: relative;
+            border-radius: 12px;
+            background-color: #FFF2DA;
+            padding: 20px 20px 18px 20px;
+            margin-top: 32px;
+        }
+        .LS-blog-custom.mts .tip-container h5 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateY(-50%);
+            width: 66px;
+            height: 26px;
+            background-image: url("data:image/svg+xml,%3Csvg width='66' height='26' viewBox='0 0 66 26' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 26H50.6439C52.1583 26 53.6168 25.4273 54.7266 24.3968L63.8434 15.9312C65.5476 14.3486 65.5476 11.6514 63.8433 10.0688L54.7266 1.60324C53.6168 0.572718 52.1583 0 50.6439 0H12C5.37258 0 0 5.37258 0 12V26Z' fill='%23FFD357'/%3E%3C/svg%3E%0A");
+            text-align: center;
+            font-family: "Gmarket Sans";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px 4px 0 0;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #0a1e5a;
+        }
+        .LS-blog-custom.mts .tip-container p {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: -0.32px;
+        }
+        .LS-blog-custom.mts .tip-container.warning {
+            background-color: #FEE7EC;
+            margin-top: 20px;
+        }
+        .LS-blog-custom.mts .tip-container.warning h5 {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: translateY(0);
+            width: fit-content;
+            height: fit-content;
+            background-image: none;
+            text-align: left;
+            display: block;
+            padding: 0 0 6px 24px;
+            font-size: 15px;
+            color: #D4002C;
+        }
+        .LS-blog-custom.mts .tip-container.warning h5::before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background: url(icon_warning.png) 50% 50% / contain no-repeat;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .LS-blog-custom.mts .link-btn {
+            width: 100%;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background-color: #0A1E5A;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: -0.34px;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+        }
+        .LS-blog-custom.mts .link-btn span {
+            pointer-events: none;
+            position: relative;
+            padding-right: 24px;
+        }
+        .LS-blog-custom.mts .link-btn span::after {
+            content: "";
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 7L14 12L9 17' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+        }
+        .LS-blog-custom.mts .last-ment {
+            width: 100%;
+            height: fit-content;
+            padding: 32px 20px;
+            background-color: #EEF3FF;
+        }
+        .LS-blog-custom.mts .last-ment p {
+            font-size: 17px;
+            line-height: 1.5;
+            letter-spacing: -0.34px;
+            color: #2B2B2B;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="LS-blog-custom mts">
+        <div class="inner">
+            <div class="img-wrap header">
+                <div class="logo-wrap">
+                    <p class="header-tip">투혼 MTS 도움말</p>
+                    <div class="img-box">
+                        <img src="mobile_logo.png" alt="ls-mobile-logo" />
+                    </div>
+                </div>
+                <div class="text-wrap">
+                    <img src="brand_logo.png" alt="brand-logo" />
+                    <p>간편인증 등록</p>
+                    <h2>
+                        복잡한 로그인 절차 없이,<br />
+                        <strong>간편인증 하나면 끝</strong>
+                    </h2>
+                </div>
+                <div class="point-wrap">
+                    <h3>하나의 인증으로 어디서나!</h3>
+                    <p>
+                        모바일·PC·웹 모두 한번의 인증으로 <br />
+                        간편하게 사용할 수 있어요!
+                    </p>
+                </div>
+            </div>
+            <div class="content-wrap">
+                <div class="content-part">
+                    <h4 class="sub-tit mb-16">간편인증 등록</h4>
+                    <p class="text-align-center">
+                        간편인증은 ID/비밀번호, 공동인증서를 <br />
+                        사용하지 않고, 지문, Face ID, PIN번호 등으로 <br />
+                        로그인 및 각종 업무처리를 <br />
+                        편리하게 할 수 있는 서비스예요!
+                    </p>
+                    <div class="site-map">
+                        <ul>
+                            <li>전체메뉴</li>
+                            <li>인증센터</li>
+                            <li>간편인증 등록</li>
+                        </ul>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-title">
+                            <h5>등록방법 - 비로그인 / ID 로그인</h5>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap mt-40">
+                                <img src="img_072_01.png" alt="" />
+                            </div>
+                            <p class="mt-20">
+                                <strong class="highlight">≡ 전체메뉴 - 인증센터</strong>에서 <strong class="highlight">간편인증 등록</strong>을 선택해 주세요. 
+                            </p>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_072_02.png" alt="" />
+                            </div>
+                            <p class="mt-20">
+                                간편인증 등록을 위해 LS증권의 계좌번호와 비밀번호를 입력한 후 간편인증 이용약관에 동의해주세요.
+                            </p>
+                            <div class="tip-container warning">
+                                <h5>주의하세요!</h5>
+                                <p>
+                                    다음의 경우에는 계좌를 조회할 수 없어요. <br />
+                                    1) 모바일 서비스를 신청하지 않은 경우 <br />
+                                    2) 계좌가 통폐합된 경우
+                                </p>
+                            </div>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_072_03.png" alt="" />
+                            </div>
+                            <p class="mt-20">
+                                본인 인증을 위한 <strong class="highlight">금융계좌정보, 휴대폰번호</strong> 등을 입력한 후 <strong class="highlight">통신사 이용 약관에 동의</strong>해주세요.
+                            </p>
+                            <div class="tip-container">
+                                <h5>TIP!</h5>
+                                <p>
+                                    은행 계좌번호는 LS증권 계좌 개설 시 1원 인증을 계좌만 입력할 수 있어요. 그 외 본인 명의의 다른 은행 계좌는 인증이 불가능하니 유의하세요. 만약 1원 인증을 완료한 계좌가 기억나지 않는다면, 고객센터로 문의해 확인할 수 있어요.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_072_04.png" alt="" />
+                            </div>
+                            <p class="mt-20">
+                                간편인증 등록을 위한 <strong class="highlight">휴대폰 본인인증</strong>을 진행한 후, <strong class="highlight">단말기의 이름</strong>을 생성해 주세요.
+                            </p>
+                            <div class="tip-container">
+                                <h5>TIP!</h5>
+                                <p>단말기를 쉽게 구분할 수 있는 이름을 만들어 주세요!</p>
+                            </div>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_072_05.png" alt="" />
+                            </div>
+                            <p class="mt-20">
+                                마지막으로 간편인증의 <strong class="highlight">간편비밀번호를 생성</strong>하면 간편인증 등록이 완료돼요.
+                            </p>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_072_06.png" />
+                            </div>
+                            <p class="mt-20">등록이 완료된 후 <strong class="highlight">간편비밀번호</strong>는 물론, <strong class="highlight">패턴, 생체인증</strong>으로도 간편하게 이용할 수 있어요.</p>
+                            <div class="tip-container">
+                                <h5>TIP!</h5>
+                                <p>기기의 종류와 OS 버전에 따라 지원 여부가 달라질 수 있으니 꼭 확인하세요!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-title">
+                            <h5>등록방법 - 클라우드, 공동인증서 로그인</h5>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_072_07.png" alt="" />
+                            </div>
+                            <p class="mt-20"><strong class="highlight">≡ 전체메뉴 - 인증센터</strong>에서 <strong class="highlight">간편인증 등록</strong>을 선택해 주세요. </p>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_072_08.png" alt="" />
+                            </div>
+                            <p class="mt-20">간편인증 등록을 위해 <strong class="highlight">간편인증 약관동의</strong>와 <strong class="highlight">통신사 약관에 동의</strong>해 주세요.</p>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap mt-16">
+                                <img src="img_072_09.png" alt="" />
+                            </div>
+                            <p class="blog-text mt-20">
+                                약관에 동의한 후 <strong class="highlight">휴대폰 본인인증</strong>을 진행하고, <strong class="highlight">단말기의 이름</strong>을 생성해 주세요.
+                            </p>
+                            <div class="tip-container">
+                                <h5>TIP!</h5>
+                                <p>단말기를 쉽게 구분할 수 있는 이름을 만들어 주세요!</p>
+                            </div>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_072_10.png" alt="" />
+                            </div>
+                            <p class="mt-20">
+                                마지막으로 간편인증의 <strong class="highlight">간편비밀번호를 생성</strong>하면 간편인증 등록이 완료돼요.
+                            </p>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_072_11.png" alt="" />
+                            </div>
+                            <p class="mt-20">
+                                등록이 완료된 후 <strong class="highlight">간편비밀번호</strong>는 물론, <strong class="highlight">패턴, 생체인증</strong>으로도 간편하게 이용할 수 있어요.
+                            </p>
+                            <div class="tip-container">
+                                <h5>TIP!</h5>
+                                <p>기기의 종류와 OS 버전에 따라 지원 여부가 달라질 수 있으니 꼭 확인하세요!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <h4 class="sub-tit mb-16">PC 간편인증</h4>
+                    <p class="text-align-center">
+                        투혼 앱에서 간편인증을 등록해두면, <br />
+                        HTS · WTS · 홈페이지 모두 <br />
+                        별도의 인증서나 비밀번호 없이 <br />
+                        인증 하나로 빠르게 로그인할 수 있어요.
+                    </p>
+                    <div class="site-map">
+                        <ul>
+                            <li>전체메뉴</li>
+                            <li>인증센터</li>
+                            <li>PC 간편인증</li>
+                        </ul>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-title">
+                            <h5>화면소개</h5>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_072_12.png" alt="" />
+                            </div>
+                            <p class="mt-20">
+                                <strong class="highlight">‘PC 간편인증’</strong>은 모바일 기기에서 인증만으로 HTS나 홈페이지에 빠르고 안전하게 로그인할 수 있는 기능이에요. <br />
+                                공동인증서를 따로 저장하거나 복사할 필요가 없어, 보안 위험을 줄이고 여러 환경에서 간편하게 접속할 수 있어요.
+                            </p>
+                            <div class="tip-container">
+                                <h5>TIP!</h5>   
+                                <p>PC간편인증은 최대 10건까지 등록이 가능해요.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <h4 class="sub-tit mb-16">QR 간편인증</h4>
+                    <p class="text-align-center">
+                        WTS 화면의 QR코드를 앱으로 스캔하기만 하면, <br />
+                        비밀번호 없이 즉시 로그인할 수 있어요. <br />
+                        QR간편인증은 WTS 전용 로그인 기능으로, <br />
+                        앱을 이용해 편리한 접속을 경험해 보세요. 💡
+                    </p>
+                    <div class="site-map">
+                        <ul>
+                            <li>전체메뉴</li>
+                            <li>인증센터</li>
+                            <li>QR 간편인증</li>
+                        </ul>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-title">
+                            <h5>화면소개</h5>
+                        </div>
+                        <div class="blog-item">
+                            <div class="img-wrap">
+                                <img src="img_072_13.png" alt="" />
+                            </div>
+                            <p class="mt-20">
+                                <strong class="highlight">‘QR 간편인증’</strong>은 WTS에 로그인할 때 QR코드를 앱으로 스캔해 비밀번호 입력 없이 빠르게 접속할 수 있는 인증 방법이에요. <br />
+                                공동인증서나 아이디 입력 절차 없이 간편하게 본인 인증이 가능하며, 공용 PC나 외부 환경에서도 안전하고 편리하게 로그인할 수 있어요.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="img-wrap">
+                <img src="footer_slogan.png" alt="" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

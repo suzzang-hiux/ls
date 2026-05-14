@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>[1201] 관심종목</title>
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+        @import url("https://cdn.jsdelivr.net/gh/leetaewook/gmarket-sans-dynamic-subset/GmarketSans.css");
+        
+        /* 기본 margin, padding 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            letter-spacing: -0.72px;
+        }
+        a {
+            color: #3f75ff;
+            text-underline-offset: 3px;
+        }
+        .color-primary {
+            color: #3f75ff !important;
+        }
+        .color-warning {
+            color: #e83c3e !important;
+        }
+        img {
+            display: block;
+        }
+
+        .LS-blog-custom {
+            font-size: 0;
+            margin: 0;
+            padding: 0;
+            color: #111 !important;
+            font-family: "Pretendard" !important;
+        }
+        .LS-blog-custom .inner {
+            width: 880px;
+            margin: auto;
+            box-sizing: border-box;
+            line-height: 180%;
+            font-size: 18px !important;
+        }
+        .LS-blog-custom .inner .content-wrap {
+            padding: 40px 60px 60px;
+        }
+        .LS-blog-custom .inner .content-wrap .content-part {
+            margin-top: 60px;
+        }
+        .LS-blog-custom .inner .blog-title,
+        .LS-blog-custom .inner .blog-sub-tit {
+            line-height: 140%;
+            word-break: keep-all;
+            color: #2b2b2b;
+        }
+        .LS-blog-custom .inner .blog-sub-tit.type-2 {
+            font-family: "Gmarket Sans";
+        }
+        .LS-blog-custom .inner p {
+            padding: 0;
+            margin: 0;
+            line-height: 1.45;
+            color: #555555;
+        }
+
+        /* font-style */
+        .fw-bold {
+            font-weight: 800;
+        }
+        .fw-semiBold {
+            font-weight: 700;
+        }
+        .fw-meddium {
+            font-family: 400;
+        }
+        .fw-light {
+            font-weight: 100;
+        }
+        .text-align-center {
+            text-align: center !important;
+        }
+        .text-align-left {
+            text-align: left !important;
+        }
+        .text-align-right {
+            text-align: right !important;
+        }
+        .fz-12 {
+            font-size: 12px !important;
+        }
+        .fz-16 {
+            font-size: 16px !important;
+        }
+        .fz-18 {
+            font-size: 18px !important;
+        }
+        .fz-24 {
+            font-size: 24px !important;
+        }
+        .fz-28 {
+            font-size: 28px !important;
+        }
+        .fz-40 {
+            font-size: 40px !important;
+        }
+
+        /* margin-top */
+        .mt-0 {
+            margin-top: 0 !important;
+        }
+        .mt-5 {
+            margin-top: 5px !important;
+        }
+        .mt-6 {
+            margin-top: 6px !important;
+        }
+        .mt-7 {
+            margin-top: 7px !important;
+        }
+        .mt-8 {
+            margin-top: 8px !important;
+        }
+        .mt-9 {
+            margin-top: 9px !important;
+        }
+        .mt-10 {
+            margin-top: 10px !important;
+        }
+        .mt-11 {
+            margin-top: 11px !important;
+        }
+        .mt-12 {
+            margin-top: 12px !important;
+        }
+        .mt-13 {
+            margin-top: 13px !important;
+        }
+        .mt-14 {
+            margin-top: 14px !important;
+        }
+        .mt-15 {
+            margin-top: 15px !important;
+        }
+        .mt-16 {
+            margin-top: 16px !important;
+        }
+        .mt-17 {
+            margin-top: 17px !important;
+        }
+        .mt-18 {
+            margin-top: 18px !important;
+        }
+        .mt-19 {
+            margin-top: 19px !important;
+        }
+        .mt-20 {
+            margin-top: 20px !important;
+        }
+        .mt-21 {
+            margin-top: 21px !important;
+        }
+        .mt-22 {
+            margin-top: 22px !important;
+        }
+        .mt-23 {
+            margin-top: 23px !important;
+        }
+        .mt-24 {
+            margin-top: 24px !important;
+        }
+        .mt-25 {
+            margin-top: 25px !important;
+        }
+        .mt-26 {
+            margin-top: 26px !important;
+        }
+        .mt-27 {
+            margin-top: 27px !important;
+        }
+        .mt-28 {
+            margin-top: 28px !important;
+        }
+        .mt-29 {
+            margin-top: 29px !important;
+        }
+        .mt-30 {
+            margin-top: 30px !important;
+        }
+        .mt-31 {
+            margin-top: 31px !important;
+        }
+        .mt-32 {
+            margin-top: 32px !important;
+        }
+        .mt-33 {
+            margin-top: 33px !important;
+        }
+        .mt-34 {
+            margin-top: 34px !important;
+        }
+        .mt-35 {
+            margin-top: 35px !important;
+        }
+        .mt-36 {
+            margin-top: 36px !important;
+        }
+        .mt-37 {
+            margin-top: 37px !important;
+        }
+        .mt-38 {
+            margin-top: 38px !important;
+        }
+        .mt-39 {
+            margin-top: 39px !important;
+        }
+        .mt-40 {
+            margin-top: 40px !important;
+        }
+        .mt-60 {
+            margin-top: 60px !important;
+        }
+        .mt-120 {
+            margin-top: 120px !important;
+        }
+
+        /* margin-bottom */
+        .mb-5 {
+            margin-bottom: 5px !important;
+        }
+        .mb-6 {
+            margin-bottom: 6px !important;
+        }
+        .mb-7 {
+            margin-bottom: 7px !important;
+        }
+        .mb-8 {
+            margin-bottom: 8px !important;
+        }
+        .mb-9 {
+            margin-bottom: 9px !important;
+        }
+        .mb-10 {
+            margin-bottom: 10px !important;
+        }
+        .mb-11 {
+            margin-bottom: 11px !important;
+        }
+        .mb-12 {
+            margin-bottom: 12px !important;
+        }
+        .mb-13 {
+            margin-bottom: 13px !important;
+        }
+        .mb-14 {
+            margin-bottom: 14px !important;
+        }
+        .mb-15 {
+            margin-bottom: 15px !important;
+        }
+        .mb-16 {
+            margin-bottom: 16px !important;
+        }
+        .mb-17 {
+            margin-bottom: 17px !important;
+        }
+        .mb-18 {
+            margin-bottom: 18px !important;
+        }
+        .mb-19 {
+            margin-bottom: 19px !important;
+        }
+        .mb-20 {
+            margin-bottom: 20px !important;
+        }
+        .mb-21 {
+            margin-bottom: 21px !important;
+        }
+        .mb-22 {
+            margin-bottom: 22px !important;
+        }
+        .mb-23 {
+            margin-bottom: 23px !important;
+        }
+        .mb-24 {
+            margin-bottom: 24px !important;
+        }
+        .mb-25 {
+            margin-bottom: 25px !important;
+        }
+        .mb-26 {
+            margin-bottom: 26px !important;
+        }
+        .mb-27 {
+            margin-bottom: 27px !important;
+        }
+        .mb-28 {
+            margin-bottom: 28px !important;
+        }
+        .mb-29 {
+            margin-bottom: 29px !important;
+        }
+        .mb-30 {
+            margin-bottom: 30px !important;
+        }
+        .mb-31 {
+            margin-bottom: 31px !important;
+        }
+        .mb-32 {
+            margin-bottom: 32px !important;
+        }
+        .mb-33 {
+            margin-bottom: 33px !important;
+        }
+        .mb-34 {
+            margin-bottom: 34px !important;
+        }
+        .mb-35 {
+            margin-bottom: 35px !important;
+        }
+        .mb-36 {
+            margin-bottom: 36px !important;
+        }
+        .mb-37 {
+            margin-bottom: 37px !important;
+        }
+        .mb-38 {
+            margin-bottom: 38px !important;
+        }
+        .mb-39 {
+            margin-bottom: 39px !important;
+        }
+        .mb-40 {
+            margin-bottom: 40px !important;
+        }
+
+        /* padding-top */
+        .pt-5 {
+            padding-top: 5px !important;
+        }
+        .pt-6 {
+            padding-top: 6px !important;
+        }
+        .pt-7 {
+            padding-top: 7px !important;
+        }
+        .pt-8 {
+            padding-top: 8px !important;
+        }
+        .pt-9 {
+            padding-top: 9px !important;
+        }
+        .pt-10 {
+            padding-top: 10px !important;
+        }
+        .pt-11 {
+            padding-top: 11px !important;
+        }
+        .pt-12 {
+            padding-top: 12px !important;
+        }
+        .pt-13 {
+            padding-top: 13px !important;
+        }
+        .pt-14 {
+            padding-top: 14px !important;
+        }
+        .pt-15 {
+            padding-top: 15px !important;
+        }
+        .pt-16 {
+            padding-top: 16px !important;
+        }
+        .pt-17 {
+            padding-top: 17px !important;
+        }
+        .pt-18 {
+            padding-top: 18px !important;
+        }
+        .pt-19 {
+            padding-top: 19px !important;
+        }
+        .pt-20 {
+            padding-top: 20px !important;
+        }
+        .pt-21 {
+            padding-top: 21px !important;
+        }
+        .pt-22 {
+            padding-top: 22px !important;
+        }
+        .pt-23 {
+            padding-top: 23px !important;
+        }
+        .pt-24 {
+            padding-top: 24px !important;
+        }
+        .pt-25 {
+            padding-top: 25px !important;
+        }
+        .pt-26 {
+            padding-top: 26px !important;
+        }
+        .pt-27 {
+            padding-top: 27px !important;
+        }
+        .pt-28 {
+            padding-top: 28px !important;
+        }
+        .pt-29 {
+            padding-top: 29px !important;
+        }
+        .pt-30 {
+            padding-top: 30px !important;
+        }
+        .pt-31 {
+            padding-top: 31px !important;
+        }
+        .pt-32 {
+            padding-top: 32px !important;
+        }
+        .pt-33 {
+            padding-top: 33px !important;
+        }
+        .pt-34 {
+            padding-top: 34px !important;
+        }
+        .pt-35 {
+            padding-top: 35px !important;
+        }
+        .pt-36 {
+            padding-top: 36px !important;
+        }
+        .pt-37 {
+            padding-top: 37px !important;
+        }
+        .pt-38 {
+            padding-top: 38px !important;
+        }
+        .pt-39 {
+            padding-top: 39px !important;
+        }
+        .pt-40 {
+            padding-top: 40px !important;
+        }
+
+        /* padding-bottom */
+        .pb-5 {
+            padding-bottom: 5px !important;
+        }
+        .pb-6 {
+            padding-bottom: 6px !important;
+        }
+        .pb-7 {
+            padding-bottom: 7px !important;
+        }
+        .pb-8 {
+            padding-bottom: 8px !important;
+        }
+        .pb-9 {
+            padding-bottom: 9px !important;
+        }
+        .pb-10 {
+            padding-bottom: 10px !important;
+        }
+        .pb-11 {
+            padding-bottom: 11px !important;
+        }
+        .pb-12 {
+            padding-bottom: 12px !important;
+        }
+        .pb-13 {
+            padding-bottom: 13px !important;
+        }
+        .pb-14 {
+            padding-bottom: 14px !important;
+        }
+        .pb-15 {
+            padding-bottom: 15px !important;
+        }
+        .pb-16 {
+            padding-bottom: 16px !important;
+        }
+        .pb-17 {
+            padding-bottom: 17px !important;
+        }
+        .pb-18 {
+            padding-bottom: 18px !important;
+        }
+        .pb-19 {
+            padding-bottom: 19px !important;
+        }
+        .pb-20 {
+            padding-bottom: 20px !important;
+        }
+        .pb-21 {
+            padding-bottom: 21px !important;
+        }
+        .pb-22 {
+            padding-bottom: 22px !important;
+        }
+        .pb-23 {
+            padding-bottom: 23px !important;
+        }
+        .pb-24 {
+            padding-bottom: 24px !important;
+        }
+        .pb-25 {
+            padding-bottom: 25px !important;
+        }
+        .pb-26 {
+            padding-bottom: 26px !important;
+        }
+        .pb-27 {
+            padding-bottom: 27px !important;
+        }
+        .pb-28 {
+            padding-bottom: 28px !important;
+        }
+        .pb-29 {
+            padding-bottom: 29px !important;
+        }
+        .pb-30 {
+            padding-bottom: 30px !important;
+        }
+        .pb-31 {
+            padding-bottom: 31px !important;
+        }
+        .pb-32 {
+            padding-bottom: 32px !important;
+        }
+        .pb-33 {
+            padding-bottom: 33px !important;
+        }
+        .pb-34 {
+            padding-bottom: 34px !important;
+        }
+        .pb-35 {
+            padding-bottom: 35px !important;
+        }
+        .pb-36 {
+            padding-bottom: 36px !important;
+        }
+        .pb-37 {
+            padding-bottom: 37px !important;
+        }
+        .pb-38 {
+            padding-bottom: 38px !important;
+        }
+        .pb-39 {
+            padding-bottom: 39px !important;
+        }
+        .pb-40 {
+            padding-bottom: 40px !important;
+        }
+        .ml-32 {
+            margin-left: 32px !important;
+        }
+        .ml-24 {
+            margin-left: 24px !important;
+        }
+
+        .img-wrap {
+            margin: 0 auto;
+        }
+        .img-wrap.banner {
+            background-color: #4c5afa;
+        }
+        .img-wrap.banner img {
+            width: auto !important;
+            max-height: 160px;
+            margin: 0 auto;
+        }
+        .img-wrap img {
+            width: 100% !important;
+        }
+        .img-wrap.header {
+            position: relative;
+        }
+        .img-wrap.header img {
+            height: 303px;
+        }
+        .header .text-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            color: #fff;
+        }
+        .header .text-wrap img {
+            width: 80px !important;
+            height: 36px;
+            margin: 0 auto;
+        }
+        .header .text-wrap p {
+            margin-top: 16px;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #fff;
+        }
+        .header .text-wrap h2 {
+            margin-top: 12px;
+            font-family: "Gmarket Sans";
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 57px;
+        }
+        .header .text-wrap h2 strong {
+            color: #ffe8ae;
+        }
+        .img-wrap.sub {
+            padding: 26px 30px;
+            background: url("sub_tit(noTitle).png") center / cover no-repeat;
+            border-radius: 20px;
+            font-family: "Gmarket Sans";
+            color: #fff;
+        }
+        .img-wrap.sub p {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 28px;
+            color: #fff;
+        }
+        .img-wrap.sub h3 {
+            margin-top: 6px;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .img-wrap.sub h3 strong {
+            margin-right: 6px;
+            color: #ffc92c;
+            background-color: transparent;
+        }
+        .blog-sec-tit {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+        }
+        .blog-sec-tit::before {
+            content: "";
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: url("./icon_check.png") center / contain no-repeat;
+        }
+        .tip-container {
+            padding: 32px;
+            background-color: #fff2da;
+            border-radius: 20px;
+        }
+        .tip-container.warning {
+            background-color: #fee7ec;
+        }
+        .tip-container.warning h5 {
+            color: #d4002c;
+        }
+        .tip-container.warning h5::before {
+            background: url("./icon_warning.png") center / contain no-repeat;
+        }
+        .tip-container.case-1 h5 {
+            align-items: flex-start;
+        }
+        .tip-container h5 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: "Gmarket Sans";
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+            margin-bottom: 12px;
+        }
+        .tip-container h5::before {
+            content: "";
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: url("./icon_tip.png") center / contain no-repeat;
+        }
+        .tip-container ul li {
+            position: relative;
+            /* display: flex; */
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .tip-container ul li.no-dot {
+            margin-left: -9px;
+        }
+        .tip-container ul li.no-dot::before {
+            display: none;
+        }
+        .tip-container ul li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .tip-container ul li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .tip-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .tip-container ul li + li {
+            margin-top: 8px;
+        }
+        .tip-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .tip-container ul li .guide-content {
+            display: flex;
+        }
+        .tip-container .highlight {
+            background-color: #ffa60026;
+        }
+        .tip-container.type-2 {
+            background-color: #eef3ff;
+        }
+        .tip-container.type-2 h5::before {
+            background: url("./icon_pinset.png") center / contain no-repeat;
+        }
+        .tip-container.type-2 .tip-sub-tit {
+            margin-bottom: 8px;
+            font-weight: 700;
+            line-height: 26px;
+            color: #000;
+        }
+        .tip-container.type-2 ul {
+            margin-top: 8px;
+        }
+        .tip-container .tip-border {
+            margin: 32px 0;
+            width: 100%;
+            height: 1px;
+            background-color: #ebdbaf;
+        }
+        .tip-container .hts-table td {
+            background-color: #fff;
+        }
+        .blog-description {
+            padding: 16px 0;
+            padding-left: 32px;
+            border-left: 3px solid #a9a9a9;
+            color: #898989;
+            font-style: italic;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        .blog-description strong {
+            color: #111;
+            font-weight: 600;
+        }
+        .blog-text {
+            color: #555555;
+        }
+        .blog-text strong {
+            color: #000000;
+        }
+        .highlight {
+            display: inline-block;
+            font-weight: 700;
+            background-color: #fff2da;
+            color: #000;
+        }
+        .highlight.type-blue {
+            background-color: #daeaff;
+        }
+        .line-contents {
+            border: 1px solid #f0f0f0;
+            border-top: 4px #111 solid;
+            padding: 60px;
+            font-size: 18px;
+        }
+        .line-contents .title {
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 140%;
+        }
+        .line-contents .title strong {
+            color: #2467e8;
+        }
+        .line-contents .sub-tit {
+            font-size: 24px;
+            font-weight: 400;
+        }
+        .badge-wrap {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .badge-wrap .badge {
+            display: inline-block;
+            font-size: 20px;
+            line-height: 140%;
+            padding: 16px;
+            border-radius: 12px;
+            background-color: #f2f2f2;
+        }
+        .hts-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+        .table-tit {
+            margin-top: 16px;
+            margin-bottom: 4px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+        }
+        .hts-table:not(:has(thead)) th,
+        .hts-table:not(:has(thead)) td {
+            border-top: 1px solid #eeeeee;
+        }
+        .hts-table.has-bg td {
+            background-color: #fff;
+        }
+        .hts-table th,
+        .hts-table td {
+            border: 0;
+            color: #555;
+            word-break: keep-all;
+        }
+        .hts-table th {
+            padding: 13px 12px;
+            background: #f4f4f4;
+            font-weight: 500;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .hts-table td {
+            padding: 9px 12px;
+            border-bottom: 1px solid #eeeeee;
+            text-align: left;
+            line-height: 1.4;
+            letter-spacing: -1px;
+        }
+        .hts-table td:has(.has-num) {
+            padding: 9px 0;
+            text-align: center;
+        }
+        .hts-table td .has-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 9px;
+            background: #3f75ff;
+            border-radius: 1000px;
+            font-family: "Gmarket Sans";
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 24px;
+            color: #fff;
+        }
+        .guide-list-container h6 {
+            margin-bottom: 8px;
+            font-size: 18px;
+            line-height: 26px;
+        }
+        .guide-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .guide-list > li {
+            display: flex;
+            align-items: flex-start;
+            margin: 16px 0 24px;
+        }
+        .guide-list > li:last-child {
+            margin-bottom: 0;
+        }
+        .guide-list .guide-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: #3f75ff;
+            color: #fff;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 24px;
+            border-radius: 50%;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .guide-list .guide-num.has-num {
+            width: auto;
+            padding: 0 9px;
+            border-radius: 1000px;
+        }
+        .guide-list .guide-content {
+            flex: 1;
+        }
+        .guide-list p.tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .guide-list .guide-content:not(:has(.guide-title)) {
+            display: flex;
+        }
+        .guide-list .guide-title {
+            display: block;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 24px;
+            color: #222;
+        }
+        .guide-list.type-2 > li {
+            flex-wrap: wrap;
+            margin: 0;
+        }
+        .guide-list.type-2 > li + li {
+            margin-top: 8px;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) {
+            margin-top: 0;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) .guide-content {
+            margin-left: 30px;
+        }
+        .guide-list.type-2 > li .guide-title {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+        }
+        .guide-desc {
+            list-style: none;
+            margin: 0;
+            padding-left: 9px;
+            color: #555555;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+        .guide-desc li {
+            position: relative;
+            margin-top: 8px;
+            letter-spacing: -1px;
+        }
+        .guide-desc li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .guide-desc li .highlight {
+            display: inline-block;
+            background-color: #fff2da;
+            font-weight: 700;
+            line-height: 25px;
+            color: #000;
+        }
+        .guide-desc li::before {
+            content: "";
+            position: absolute;
+            top: 9px;
+            left: -9px;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #555555;
+            display: inline-block;
+        }
+        .guide-desc li.no-dot {
+            margin-left: -9px;
+        }
+        .guide-desc li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .guide-desc li.no-dot::before {
+            display: none;
+        }
+        .example-container {
+            position: relative;
+            margin-bottom: 24px;
+            padding: 32px;
+            padding-left: 96px;
+            border: 2px dashed #eee;
+            border-radius: 20px;
+        }
+        .example-container.case-1:before {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .example-container::before {
+            content: "";
+            position: absolute;
+            left: 32px;
+            top: 32px;
+            width: 48px;
+            height: 48px;
+            background: url(./icon_example.png) center / contain no-repeat;
+        }
+        .example-container .ex-head {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 22px;
+            color: #3f75ff !important;
+        }
+        .example-container .ex-head span {
+            position: relative;
+            transform: translateY(1px);
+            /* padding: 3px 9px; */
+            font-family: "Gmarket Sans";
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 18px;
+            color: #fff;
+            margin-right: 0;
+        }
+        .example-container .ex-head span::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 2px;
+            background: #3f75ff;
+            border-radius: 1000px;
+        }
+        .example-container .ex-title {
+            margin-top: 2px;
+            line-height: 26px;
+            color: #000;
+        }
+        .example-container .ex-title .guide-content p {
+            color: #000;
+        }
+        .example-container ul {
+            margin-top: 8px;
+        }
+        .example-container ul li {
+            position: relative;
+            display: flex;
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .example-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .example-container ul li.no-dot {
+            padding-left: 0;
+        }
+        .example-container ul li.no-dot::before {
+            display: none;
+        }
+        .example-container ul li + li {
+            margin-top: 8px;
+        }
+        .example-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .example-container .ex-border {
+            margin: 32px 0 32px -64px;
+            border-top: 2px dashed #eee;
+        }
+        .guide-desc li .inner-desc {
+            margin-left: 52px;
+            list-style: none;
+        }
+        .guide-desc li .inner-desc li::before {
+            display: none;
+        }
+
+        .text-col {
+            display: flex;
+        }
+        .text-col .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px !important;
+        }
+    </style>
+  </head>
+
+  <body>
+    <div class="LS-blog-custom">
+      <div class="inner">
+        <div class="img-wrap header">
+          <img src="header(noTitle).png" alt="" />
+          <div class="text-wrap">
+            <img src="brand_logo.png" alt="brand-logo" />
+            <p>[1201] 관심종목</p>
+            <h2><strong>오늘의 기회, 관심종목에서 찾다</strong><br />보고, 담고, 기회를 잡으세요</h2>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <div class="blog-sub-tit type-2 fw-semiBold fz-24">투자 전략에 따른 관심 종목의 그룹관리</div>
+          <div class="blog-text">
+            <p class="mt-16 fz-18">
+              주식시장은 매일 변화하며, 테마 종목도 그 흐름에 따라 빠르게 교체됩니다. <br />
+              이러한 흐름을 놓치지 않기 위해서는 관심종목 화면이 필수적입니다. <br />
+              <br />
+              <strong class="highlight">[1201] 관심종목</strong> 화면은 관심종목을 등록하고 실시간 시세와 관련 정보를 조회하는 기능입니다. <br />
+              주식, 선물, 지수 등 다양한 자산을 그룹별로 관리하며 빠르게 확인할 수 있습니다. <br />
+            </p>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>투자 상품별 그룹 관리 및 다양한 정보 항목 편집 기능!</p>
+              <h3>이 화면이 필요한 이유!</h3>
+            </div>
+            <table class="hts-table">
+              <colgroup>
+                <col style="width: 240px" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>기능요소</th>
+                  <th>이런 점이 좋아요</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>투자 상품별 그룹핑</td>
+                  <td>주식, 선물옵션, ELW, 업종별 지수 등을 별도 구분하여 그룹핑 관리</td>
+                </tr>
+                <tr>
+                  <td>다양한 정보 편집 관리</td>
+                  <td>시가, 고가, 저가, 매입단가, 평가금액, 수익률 등 다양한 필드 편집 기능</td>
+                </tr>
+                <tr>
+                  <td>주요 종목 관리</td>
+                  <td>북마크 표시, 투자 아이디어 메모로 더 효율적인 종목 관리</td>
+                </tr>
+                <tr>
+                  <td>실시간 데이터 변화 인식</td>
+                  <td>등록된 종목의 데이터 변화시 색상 또는 알람을 통해 변동 상황 제공</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>내가 고른 관심 종목을 담을 바구니</p>
+              <h3><strong class="highlight">01</strong>관심 그룹 만들기</h3>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_1201_01.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title"> 새 관심 그룹 추가</span>
+                    <ul class="guide-desc">
+                      <li>
+                        관심 그룹을 생성하기 위해서는 새로운 그룹명을 입력(1-1번)하거나 유형화 되어 있는 관심 그룹 리스트(1-2번)를 선택하여 관심 그룹으로 등록할 수 있습니다.
+                      </li>
+                      <li>1개 그룹 당 최대 100개의 관심종목을 등록할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+              <div class="tip-container mt-8">
+                <h5>관심그룹을 한 화면에서 여러 개 보고 싶을 때는?</h5>
+                <ul>
+                  <li>분할 버튼(2번) 선택 후 나타나는 설정창에서 원하는 만큼의 개수와 배치 방법을 선택하면 됩니다.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>마음에 든 종목을 '찜'하는 네 가지 방법</p>
+              <h3><strong class="highlight">02</strong>관심 종목 등록하기</h3>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">‘설정’ 화면에서 관심종목 등록하는 방법</h4>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_1201_02.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">관심종목 등록을 위한 ‘설정‘ 버튼 클릭</span>
+                    <ul class="guide-desc">
+                      <li>클릭 시 ‘관심종목설정’ 팝업 화면이 나타납니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <span class="guide-title">관심종목설정</span>
+                    <ul class="guide-desc">
+                      <li>
+                        관심그룹을 선택(2-1번)한 후, 좌측(2-2번) 영역의 종목 리스트 중 등록할 관심종목을 선택하고 ‘추가’ 버튼을 클릭하면 우측(2-3번) 영역에 해당 종목이 추가됩니다.
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">유형화된 '종목군'을 관심종목으로 등록하는 방법</h4>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_1201_03.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">유형별 관심종목군 선택</span>
+                    <ul class="guide-desc">
+                      <li>상승률 상위, 테마별, 외인 / 기관 거래 상위 등 다양한 유형의 관심종목군을 선택하여 추가할 수 있습니다.</li>
+                      <li>관심 종목군 유형을 선택한 경우, 해당 유형의 명칭이 관심그룹명으로 자동 반영됩니다.</li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">목록에서 관심종목을 바로 등록하는 방법</h4>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_1201_04.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">관심그룹 화면에서 마우스 우클릭</span>
+                    <ul class="guide-desc">
+                      <li>
+                        마우스 우클릭 시 팝업(1-1번)에서 종목 추가, 삽입, 삭제, 변경, 빈줄 추가 기능을 사용할 수 있습니다. <br />
+                        단, 종목 삽입, 삭제, 변경, 빈줄 추가 기능은 관심종목 리스트 위에서만 활성화됩니다.
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <span class="guide-title">종목 검색창</span>
+                    <ul class="guide-desc">
+                      <li>원하는 종목을 검색하여 바로 관심종목으로 등록할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">종목 검색창에서 관심종목을 등록하는 방법</h4>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_1201_05.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">종목 검색 영역 조회</span>
+                    <ul class="guide-desc">
+                      <li>버튼 클릭 시 표시되는 검색 영역(1-1번)에서 종목을 검색하여 관심종목으로 등록할 수 있습니다.</li>
+                      <li>'영문종목코드 검색시'에 체크하면 종목코드 첫 자리가 영문으로 시작하는 종목이 검색결과에 표시됩니다.</li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="tip-container mt-8">
+              <h5>추가 버튼과 삽입 버튼의 기능 차이</h5>
+              <ul>
+                <li>추가 버튼 : 관심 종목군 최하단에 등록됩니다.</li>
+                <li>
+                  <p class="tip-desc-tit">삽입 버튼 : </p>
+                  <p>
+                    관심 종목군 사이에 삽입되며, 특정 종목 클릭 후 삽입 버튼 실행시 해당 종목의 상단에 등록됩니다.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="img-wrap banner">
+        <img src="img_banner_01.png" alt="" />
+      </div>
+      <div class="inner">
+        <div class="content-wrap">
+          <div class="content-part mt-20">
+            <div class="img-wrap sub mb-32">
+              <p>관심종목 200% 활용하기</p>
+              <h3><strong class="highlight">03</strong>필드 유형 및 거래소 선택 및 기타기능</h3>
+            </div>
+            <div class="img-wrap">
+              <img src="img_1201_06.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">필드 유형 선택</span>
+                    <ul class="guide-desc">
+                      <li>
+                        선택한 필드에 따라 현재가, 시가, 증거금률, 일봉차트 등 각기 다르게 설정된 필드(항목) 구성을 조회할 수 있습니다.
+                      </li>
+                      <li>
+                        원하는 필드(항목)을 직접 설정하려면, 설정 버튼(4번) 클릭 후 '관심종목설정' 창의 '필드편집' 탭에서 필드를 편집하고 저장하면 됩니다.
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <span class="guide-title">거래소 유형 선택</span>
+                    <ul class="guide-desc">
+                      <li>
+                        통합(KRX + NXT 통합 시세) / KRX(KRX 시세) / NXT(NXT 시세) 3가지 유형으로 구분되어 시세 제공 거래소를 선택할 수 있습니다.
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">3</span>
+                  <div class="guide-content">
+                    <span class="guide-title">예상가</span>
+                    <ul class="guide-desc">
+                      <li>버튼 클릭 시 필드 영역내에 예상체결가 및 예상대비 항목이 컬럼에 추가됩니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">4</span>
+                  <div class="guide-content">
+                    <span class="guide-title">설정</span>
+                    <ul class="guide-desc">
+                      <li>관심 종목 화면의 필드 항목을 다양한 방법으로 편집할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">5</span>
+                  <div class="guide-content">
+                    <span class="guide-title">PC 저장</span>
+                    <ul class="guide-desc">
+                      <li>
+                        사용자가 구성한 관심종목 필드 조합을 현재 사용중인 PC에 저장하는 기능이며 재접속 시에도 동일한 화면 상태로 불러올 수 있습니다.<br />
+                        다만, 이 저장 기능은 해당 PC에만 적용되며, 다른 PC 또는 기기에서는 동일 구성을 불러올 수 없습니다.
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">6</span>
+                  <div class="guide-content">
+                    <span class="guide-title">복수차트</span>
+                    <ul class="guide-desc">
+                      <li>관심 종목에 등록된 복수 종목의 차트를 동시에 비교할 수 있는 기능입니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">7</span>
+                  <div class="guide-content">
+                    <span class="guide-title">해외관심 가져오기</span>
+                    <ul class="guide-desc">
+                      <li>해외주식을 국내주식과 동일한 그룹에 관심종목으로 등록합니다.</li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>관심종목을 자유자재로 다루기 위해 꼭 알아야 할</p>
+              <h3><strong class="highlight">04</strong>설정 기능</h3>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">관심그룹관리</h4>
+              <p class="mt-8">
+                관심 그룹 화면은 다양한 형태로 사용자의 취향에 맞도록 변경이 가능합니다.<br />
+                관심 그룹관리 / 필드 편집 / 기타설정 / 알람설정 총 4가지로 구분되어 있는데 차근차근 하나씩 살펴보겠습니다.
+              </p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_1201_07.png" alt="" />
+            </div>
+            <div class="guide-list-container mt-24">
+              <ol class="guide-list type-2">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">종목 리스트 : </p>
+                    <p>
+                      관심 그룹에 추가할 종목을 검색하는 영역입니다.<br />
+                      종목 리스트 검색 또는 종목명 / 종목코드 / 가나다순 등 다양한 방법으로 종목검색이 가능합니다.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <p>종목 추가 / 삭제 버튼 : 전체 종목 일괄 추가 / 삭제 및 종목별 추가 / 삭제 가능합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">3</span>
+                  <div class="guide-content">
+                    <p>필드그룹 연동 : 관심 그룹 변경시에 이전의 필드 정보가 그대로 적용되는 기능입니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">4</span>
+                  <div class="guide-content">
+                    <p>추가 / 수정 / 삭제 : 관심 그룹을 추가 또는 삭제 할 수 있으며, 관심 그룹명을 수정할 수도 있습니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">5</span>
+                  <div class="guide-content">
+                    <p>복사 : 등록된 관심 그룹 선택 후 '복사' 버튼 클릭 시 선택한 관심그룹과 동일한 그룹이 생성됩니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">6</span>
+                  <div class="guide-content">
+                    <p>위치 이동 : 관심 그룹의 위치를 앞뒤로 이동 할 수 있습니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">7</span>
+                  <div class="guide-content">
+                    <p>
+                      등록된 관심 종목의 리스트가 나타나는 화면이며 클릭 시 엑셀에 저장한 종목도 불러올 수 있습니다. (11번)<br />
+                      또한 잔고불러오기 버튼(7-2번) 클릭 시에는 보유종목의 수량, 매입단가, 평가금액 수익률 등 다양한 정보를 함께 불러올 수 있습니다.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">8</span>
+                  <div class="guide-content">
+                    <p>관심 그룹내 종목 검색/삭제 : 종목검색 시 해당 종목이 등록된 관심그룹명을 표시해줍니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">9</span>
+                  <div class="guide-content">
+                    <p>
+                      <strong class="highlight">[2002] 해외주식 관심종목</strong>에 등록된 관심그룹을 <strong class="highlight">[1201] 관심종목</strong> 으로 가져오는 기능입니다.<br />
+                      종목리스트에서 ‘해외주식관심종목‘ 선택 시 그룹이동 버튼이 활성화됩니다.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">10</span>
+                  <div class="guide-content">
+                    <p>
+                      서버에 저장하기(전체) : 다른 기기에서도 동일한 데이터를 조회할 수 있도록 서버에 편집 내용을 저장합니다.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="tip-container mt-24">
+              <h5>서버 저장하기 vs PC 저장하기</h5>
+              <ul>
+                <li>서버 저장하기(10번) : 아이디 기준으로 저장하므로 다른 PC에서도 저장한 데이터를 그대로 불러올 수 있는 매우 유용한 기능입니다. ‘PC 저장하기’는 특정 PC에만 저장하며 해당 PC에서만 데이터를 불러올 수 있다는 점에서 차이가 있습니다.</li>
+                <li>PC 저장하기 : 특정 PC에만 저장하며 해당 PC에서만 데이터를 불러올 수 있습니다.</li>
+              </ul>
+            </div>
+            <div class="img-wrap mt-32">
+              <img src="img_1201_08.png" alt="" />
+            </div>
+            <div class="guide-list-container mt-24">
+              <ol class="guide-list type-2">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">유형별 필드 구성 항목 : </p>
+                    <p>관심종목의 다양한 정보를 선택할 수 있는 필드 구성 항목이 유형별로 분류되어 있습니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">※ 유형별 분류 : </p>
+                    <p>
+                      전체 / 시세 / ELW / 시간외단일가 / 재무 / 기술적 분석 / 외국인 / 투자자별 매매동향 / 매입단가 / 기타
+                    </p>
+                  </div>
+                </li>
+
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <p>현재 적용되어있는 필드명 리스트입니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">3</span>
+                  <div class="guide-content">
+                    <p>필드명 추가 / 삭제 / 수정 가능합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">4</span>
+                  <div class="guide-content">
+                    <p>선택한 필드항목을 한 개씩 등록 / 삭제 합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">5</span>
+                  <div class="guide-content">
+                    <p>필드항목 전체를 등록 / 삭제 합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">6</span>
+                  <div class="guide-content">
+                    <p>등록된 필드항목의 순서를 변경합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">7</span>
+                  <div class="guide-content">
+                    <p>초기화 : 클릭 시 ‘선택된 필드그룹 초기화’ or ‘전체 필드그룹 초기화’ 선택 가능합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">8</span>
+                  <div class="guide-content">
+                    <p>기본테마색 사용 : 체크 시 코스피 종목명은 파란색, 코스닥 종목명은 빨간색으로 표시됩니다.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <p class="mt-32">이번에는 관심그룹에 등록된 필드의 영역을 다양한 방법으로 변경해보겠습니다.</p>
+            <div class="example-container mt-16 mb-16">
+              <p class="ex-head">예를 들어 볼까요?</p>
+              <h4 class="ex-title">필드의 3행과 2행까지의 항목을 고정하려는 경우</h4>
+              <ul>
+                <li>
+                  아래의 화면에서 1번에서 고정행을 3으로 선택하고, 고정열을 2로 선택하면 1-1번과 같이 3행 고정 2열 고정이 됩니다. 좌우 스크롤바 또는 상하 스크롤바를 이동시키면 고정된 영역은 움직이지 않고 다른 영역만 움직이는 것을 확인할 수 있습니다.
+                </li>
+              </ul>
+            </div>
+            <div class="img-wrap">
+              <img src="img_1201_09.png" alt="" />
+            </div>
+            <div class="guide-list-container mt-24">
+              <ol class="guide-list type-2">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <p>고정행/고정열 : 필드 영역의 행과 열을 고정시킬 수 있습니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <p>행높이 : 필드 영역의 행간 높이를 변경할 수 있습니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">3</span>
+                  <div class="guide-content">
+                    <p>종목/메모굵게 : 체크 시 텍스트는 굵은 글씨로 반영됩니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">4</span>
+                  <div class="guide-content">
+                    <p>대비필드 모양 : 현재가의 증감표시 유형을 변경합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">5</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">예상가격 필드 : </p>
+                    <p>
+                      예상체결가, 예상대비, 예상등락률, 예상매수잔량 등 예상 가격과 관련된 항목을 필드에 추가할 수 있습니다. 위치 선택란의 숫자는 필드항목의 몇번째에 보여줄 것인지 선택하는 기능입니다.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">6</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">보유종목 실시간 연동 : </p>
+                    <p>
+                      필드 영역에 있는 보유 종목에 대하여 매입수량, 매입단가, 평가금액, 수익률 등 항목이 실시간으로 반영됩니다.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">기타설정</h4>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_1201_10.png" alt="" />
+            </div>
+            <div class="guide-list-container mt-16">
+              <ol class="guide-list type-2">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">데이터 변환 : </p>
+                    <p>실시간 데이터 수신 시, 해당 종목의 데이터 변화 색상을 행단위 또는 셀단위로 구분하여 적용할 수 있습니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">더블클릭시 연결화면 : </p>
+                    <p>
+                      관심종목 화면에서 투자상품 유형별로 클릭 시 이동하는 화면을 지정할 수 있습니다.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">3</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">확인 메세지 보기 : </p>
+                    <p>
+                      종목삭제 / 추가 / 변경내용 저장 / 변경내용 저장 시 확인 메세지 팝업 생성 여부를 선택합니다.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">4</span>
+                  <div class="guide-content">
+                    <p>배경색 지정 : 필드 영역의 배경색상을 변경할 수 있습니다.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="img-wrap mt-32">
+              <img src="img_1201_11.png" alt="" />
+            </div>
+            <div class="guide-list-container mt-16">
+              <ol class="guide-list type-2">
+                <li>
+                  <span class="guide-num">5</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">관심그룹 이동버튼 보기 : </p>
+                    <p>
+                      체크 시 (5-1번) 영역에 등록한 관심 그룹명을 구분하는 버튼이 표시됩니다.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">6</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">종목명/현재가 클릭시만 종목연동 : </p>
+                    <p>
+                      종목명과 현재가의 컬럼을 클릭할 경우에만 화면간 연동 기능이 적용됩니다.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">7</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">평가손익/평가금액 보기 : </p>
+                    <p>
+                      보유종목을 관심종목으로 등록한 경우, (7-1번) 영역에 해당 종목의 평가손익 및 평가금액이 표시됩니다.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">8</span>
+                  <div class="guide-content">
+                    <p>관심그룹 탭 간격 유지 : 관심그룹 탭 간격(5-1번)을 유지할 것인지 선택합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">9</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">빈줄 정렬 : </p>
+                    <p>행간에 빈줄 삽입 후 메모 글을 입력하는 경우(9-1번) 해당 메모 글의 위치를 좌측 / 중간 / 우측으로 변경할 수 있습니다.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">알람설정</h4>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_1201_12.png" alt="" />
+            </div>
+            <div class="guide-list-container mt-16">
+              <ol class="guide-list type-2">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">종목 시그널 및 시세 알람 표시 : </p>
+                    <p>
+                      각 항목별 체크 시, 설정된 조건에 부합하는 알람과 신호가 컬럼(2번) 영역에 표시됩니다.
+                    </p>
+                  </div>
+                </li>
+
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">알람 및 신호 표시 영역 : </p>
+                    <p>
+                      설정된 조건에 부합하는 경우, 해당 컬럼에 표시가 되며 클릭시 <strong class="highlight">[1809] 종목 시그널</strong>, <strong class="highlight">[3102] 종목뉴스</strong>, <strong class="highlight">[0121] 주식시세</strong> 설정 화면으로 연동됩니다.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <p class="mt-60 mb-60">
+            지금까지 <strong class="highlight">[1201] 관심종목</strong> 화면에 대해서 살펴보았습니다.<br />
+            관심종목을 유형별로 분류하고, 화면 구성을 사용자의 편의에 맞게 조정하면 다수의 종목을 보다 효율적으로 모니터링할 수 있을 것입니다. 감사합니다!
+          </p>
+        </div>
+
+        <div class="img-wrap">
+          <img src="footer_slogan.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

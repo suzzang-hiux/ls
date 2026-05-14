@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>[WTS] 종목정보</title>
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+        @import url("https://cdn.jsdelivr.net/gh/leetaewook/gmarket-sans-dynamic-subset/GmarketSans.css");
+        
+        /* 기본 margin, padding 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            letter-spacing: -0.72px;
+        }
+        a {
+            color: #3f75ff;
+            text-underline-offset: 3px;
+        }
+        .color-primary {
+            color: #3f75ff !important;
+        }
+        .color-warning {
+            color: #e83c3e !important;
+        }
+        img {
+            display: block;
+        }
+
+        .LS-blog-custom {
+            font-size: 0;
+            margin: 0;
+            padding: 0;
+            color: #111 !important;
+            font-family: "Pretendard" !important;
+        }
+        .LS-blog-custom .inner {
+            width: 880px;
+            margin: auto;
+            box-sizing: border-box;
+            line-height: 180%;
+            font-size: 18px !important;
+        }
+        .LS-blog-custom .inner .content-wrap {
+            padding: 40px 60px 60px;
+        }
+        .LS-blog-custom .inner .content-wrap .content-part {
+            margin-top: 60px;
+        }
+        .LS-blog-custom .inner .blog-title,
+        .LS-blog-custom .inner .blog-sub-tit {
+            line-height: 140%;
+            word-break: keep-all;
+            color: #2b2b2b;
+        }
+        .LS-blog-custom .inner .blog-sub-tit.type-2 {
+            font-family: "Gmarket Sans";
+        }
+        .LS-blog-custom .inner p {
+            padding: 0;
+            margin: 0;
+            line-height: 1.45;
+            color: #555555;
+        }
+
+        /* font-style */
+        .fw-bold {
+            font-weight: 800;
+        }
+        .fw-semiBold {
+            font-weight: 700;
+        }
+        .fw-meddium {
+            font-family: 400;
+        }
+        .fw-light {
+            font-weight: 100;
+        }
+        .text-align-center {
+            text-align: center !important;
+        }
+        .text-align-left {
+            text-align: left !important;
+        }
+        .text-align-right {
+            text-align: right !important;
+        }
+        .fz-12 {
+            font-size: 12px !important;
+        }
+        .fz-16 {
+            font-size: 16px !important;
+        }
+        .fz-18 {
+            font-size: 18px !important;
+        }
+        .fz-24 {
+            font-size: 24px !important;
+        }
+        .fz-28 {
+            font-size: 28px !important;
+        }
+        .fz-40 {
+            font-size: 40px !important;
+        }
+
+        /* margin-top */
+        .mt-0 {
+            margin-top: 0 !important;
+        }
+        .mt-5 {
+            margin-top: 5px !important;
+        }
+        .mt-6 {
+            margin-top: 6px !important;
+        }
+        .mt-7 {
+            margin-top: 7px !important;
+        }
+        .mt-8 {
+            margin-top: 8px !important;
+        }
+        .mt-9 {
+            margin-top: 9px !important;
+        }
+        .mt-10 {
+            margin-top: 10px !important;
+        }
+        .mt-11 {
+            margin-top: 11px !important;
+        }
+        .mt-12 {
+            margin-top: 12px !important;
+        }
+        .mt-13 {
+            margin-top: 13px !important;
+        }
+        .mt-14 {
+            margin-top: 14px !important;
+        }
+        .mt-15 {
+            margin-top: 15px !important;
+        }
+        .mt-16 {
+            margin-top: 16px !important;
+        }
+        .mt-17 {
+            margin-top: 17px !important;
+        }
+        .mt-18 {
+            margin-top: 18px !important;
+        }
+        .mt-19 {
+            margin-top: 19px !important;
+        }
+        .mt-20 {
+            margin-top: 20px !important;
+        }
+        .mt-21 {
+            margin-top: 21px !important;
+        }
+        .mt-22 {
+            margin-top: 22px !important;
+        }
+        .mt-23 {
+            margin-top: 23px !important;
+        }
+        .mt-24 {
+            margin-top: 24px !important;
+        }
+        .mt-25 {
+            margin-top: 25px !important;
+        }
+        .mt-26 {
+            margin-top: 26px !important;
+        }
+        .mt-27 {
+            margin-top: 27px !important;
+        }
+        .mt-28 {
+            margin-top: 28px !important;
+        }
+        .mt-29 {
+            margin-top: 29px !important;
+        }
+        .mt-30 {
+            margin-top: 30px !important;
+        }
+        .mt-31 {
+            margin-top: 31px !important;
+        }
+        .mt-32 {
+            margin-top: 32px !important;
+        }
+        .mt-33 {
+            margin-top: 33px !important;
+        }
+        .mt-34 {
+            margin-top: 34px !important;
+        }
+        .mt-35 {
+            margin-top: 35px !important;
+        }
+        .mt-36 {
+            margin-top: 36px !important;
+        }
+        .mt-37 {
+            margin-top: 37px !important;
+        }
+        .mt-38 {
+            margin-top: 38px !important;
+        }
+        .mt-39 {
+            margin-top: 39px !important;
+        }
+        .mt-40 {
+            margin-top: 40px !important;
+        }
+        .mt-60 {
+            margin-top: 60px !important;
+        }
+        .mt-120 {
+            margin-top: 120px !important;
+        }
+
+        /* margin-bottom */
+        .mb-0 {
+          margin-bottom: 0 !important;
+        }
+        .mb-5 {
+            margin-bottom: 5px !important;
+        }
+        .mb-6 {
+            margin-bottom: 6px !important;
+        }
+        .mb-7 {
+            margin-bottom: 7px !important;
+        }
+        .mb-8 {
+            margin-bottom: 8px !important;
+        }
+        .mb-9 {
+            margin-bottom: 9px !important;
+        }
+        .mb-10 {
+            margin-bottom: 10px !important;
+        }
+        .mb-11 {
+            margin-bottom: 11px !important;
+        }
+        .mb-12 {
+            margin-bottom: 12px !important;
+        }
+        .mb-13 {
+            margin-bottom: 13px !important;
+        }
+        .mb-14 {
+            margin-bottom: 14px !important;
+        }
+        .mb-15 {
+            margin-bottom: 15px !important;
+        }
+        .mb-16 {
+            margin-bottom: 16px !important;
+        }
+        .mb-17 {
+            margin-bottom: 17px !important;
+        }
+        .mb-18 {
+            margin-bottom: 18px !important;
+        }
+        .mb-19 {
+            margin-bottom: 19px !important;
+        }
+        .mb-20 {
+            margin-bottom: 20px !important;
+        }
+        .mb-21 {
+            margin-bottom: 21px !important;
+        }
+        .mb-22 {
+            margin-bottom: 22px !important;
+        }
+        .mb-23 {
+            margin-bottom: 23px !important;
+        }
+        .mb-24 {
+            margin-bottom: 24px !important;
+        }
+        .mb-25 {
+            margin-bottom: 25px !important;
+        }
+        .mb-26 {
+            margin-bottom: 26px !important;
+        }
+        .mb-27 {
+            margin-bottom: 27px !important;
+        }
+        .mb-28 {
+            margin-bottom: 28px !important;
+        }
+        .mb-29 {
+            margin-bottom: 29px !important;
+        }
+        .mb-30 {
+            margin-bottom: 30px !important;
+        }
+        .mb-31 {
+            margin-bottom: 31px !important;
+        }
+        .mb-32 {
+            margin-bottom: 32px !important;
+        }
+        .mb-33 {
+            margin-bottom: 33px !important;
+        }
+        .mb-34 {
+            margin-bottom: 34px !important;
+        }
+        .mb-35 {
+            margin-bottom: 35px !important;
+        }
+        .mb-36 {
+            margin-bottom: 36px !important;
+        }
+        .mb-37 {
+            margin-bottom: 37px !important;
+        }
+        .mb-38 {
+            margin-bottom: 38px !important;
+        }
+        .mb-39 {
+            margin-bottom: 39px !important;
+        }
+        .mb-40 {
+            margin-bottom: 40px !important;
+        }
+
+        /* padding-top */
+        .pt-5 {
+            padding-top: 5px !important;
+        }
+        .pt-6 {
+            padding-top: 6px !important;
+        }
+        .pt-7 {
+            padding-top: 7px !important;
+        }
+        .pt-8 {
+            padding-top: 8px !important;
+        }
+        .pt-9 {
+            padding-top: 9px !important;
+        }
+        .pt-10 {
+            padding-top: 10px !important;
+        }
+        .pt-11 {
+            padding-top: 11px !important;
+        }
+        .pt-12 {
+            padding-top: 12px !important;
+        }
+        .pt-13 {
+            padding-top: 13px !important;
+        }
+        .pt-14 {
+            padding-top: 14px !important;
+        }
+        .pt-15 {
+            padding-top: 15px !important;
+        }
+        .pt-16 {
+            padding-top: 16px !important;
+        }
+        .pt-17 {
+            padding-top: 17px !important;
+        }
+        .pt-18 {
+            padding-top: 18px !important;
+        }
+        .pt-19 {
+            padding-top: 19px !important;
+        }
+        .pt-20 {
+            padding-top: 20px !important;
+        }
+        .pt-21 {
+            padding-top: 21px !important;
+        }
+        .pt-22 {
+            padding-top: 22px !important;
+        }
+        .pt-23 {
+            padding-top: 23px !important;
+        }
+        .pt-24 {
+            padding-top: 24px !important;
+        }
+        .pt-25 {
+            padding-top: 25px !important;
+        }
+        .pt-26 {
+            padding-top: 26px !important;
+        }
+        .pt-27 {
+            padding-top: 27px !important;
+        }
+        .pt-28 {
+            padding-top: 28px !important;
+        }
+        .pt-29 {
+            padding-top: 29px !important;
+        }
+        .pt-30 {
+            padding-top: 30px !important;
+        }
+        .pt-31 {
+            padding-top: 31px !important;
+        }
+        .pt-32 {
+            padding-top: 32px !important;
+        }
+        .pt-33 {
+            padding-top: 33px !important;
+        }
+        .pt-34 {
+            padding-top: 34px !important;
+        }
+        .pt-35 {
+            padding-top: 35px !important;
+        }
+        .pt-36 {
+            padding-top: 36px !important;
+        }
+        .pt-37 {
+            padding-top: 37px !important;
+        }
+        .pt-38 {
+            padding-top: 38px !important;
+        }
+        .pt-39 {
+            padding-top: 39px !important;
+        }
+        .pt-40 {
+            padding-top: 40px !important;
+        }
+
+        /* padding-bottom */
+        .pb-5 {
+            padding-bottom: 5px !important;
+        }
+        .pb-6 {
+            padding-bottom: 6px !important;
+        }
+        .pb-7 {
+            padding-bottom: 7px !important;
+        }
+        .pb-8 {
+            padding-bottom: 8px !important;
+        }
+        .pb-9 {
+            padding-bottom: 9px !important;
+        }
+        .pb-10 {
+            padding-bottom: 10px !important;
+        }
+        .pb-11 {
+            padding-bottom: 11px !important;
+        }
+        .pb-12 {
+            padding-bottom: 12px !important;
+        }
+        .pb-13 {
+            padding-bottom: 13px !important;
+        }
+        .pb-14 {
+            padding-bottom: 14px !important;
+        }
+        .pb-15 {
+            padding-bottom: 15px !important;
+        }
+        .pb-16 {
+            padding-bottom: 16px !important;
+        }
+        .pb-17 {
+            padding-bottom: 17px !important;
+        }
+        .pb-18 {
+            padding-bottom: 18px !important;
+        }
+        .pb-19 {
+            padding-bottom: 19px !important;
+        }
+        .pb-20 {
+            padding-bottom: 20px !important;
+        }
+        .pb-21 {
+            padding-bottom: 21px !important;
+        }
+        .pb-22 {
+            padding-bottom: 22px !important;
+        }
+        .pb-23 {
+            padding-bottom: 23px !important;
+        }
+        .pb-24 {
+            padding-bottom: 24px !important;
+        }
+        .pb-25 {
+            padding-bottom: 25px !important;
+        }
+        .pb-26 {
+            padding-bottom: 26px !important;
+        }
+        .pb-27 {
+            padding-bottom: 27px !important;
+        }
+        .pb-28 {
+            padding-bottom: 28px !important;
+        }
+        .pb-29 {
+            padding-bottom: 29px !important;
+        }
+        .pb-30 {
+            padding-bottom: 30px !important;
+        }
+        .pb-31 {
+            padding-bottom: 31px !important;
+        }
+        .pb-32 {
+            padding-bottom: 32px !important;
+        }
+        .pb-33 {
+            padding-bottom: 33px !important;
+        }
+        .pb-34 {
+            padding-bottom: 34px !important;
+        }
+        .pb-35 {
+            padding-bottom: 35px !important;
+        }
+        .pb-36 {
+            padding-bottom: 36px !important;
+        }
+        .pb-37 {
+            padding-bottom: 37px !important;
+        }
+        .pb-38 {
+            padding-bottom: 38px !important;
+        }
+        .pb-39 {
+            padding-bottom: 39px !important;
+        }
+        .pb-40 {
+            padding-bottom: 40px !important;
+        }
+        .ml-32 {
+            margin-left: 32px !important;
+        }
+        .ml-24 {
+            margin-left: 24px !important;
+        }
+
+        .img-wrap {
+            margin: 0 auto;
+        }
+        .img-wrap.banner {
+            background-color: #4c5afa;
+        }
+        .img-wrap.banner img {
+            width: auto !important;
+            max-height: 160px;
+            margin: 0 auto;
+        }
+        .img-wrap img {
+            width: 100% !important;
+        }
+        .img-wrap.header {
+            position: relative;
+        }
+        .img-wrap.header img {
+            height: 303px;
+        }
+        .header .text-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            color: #fff;
+        }
+        .header .text-wrap img {
+            width: 80px !important;
+            height: 36px;
+            margin: 0 auto;
+        }
+        .header .text-wrap p {
+            margin-top: 16px;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #fff;
+        }
+        .header .text-wrap h2 {
+            margin-top: 12px;
+            font-family: "Gmarket Sans";
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 57px;
+        }
+        .header .text-wrap h2 strong {
+            color: #ffe8ae;
+        }
+        .img-wrap.sub {
+            padding: 26px 30px;
+            background: url("sub_tit(noTitle).png") center / cover no-repeat;
+            border-radius: 20px;
+            font-family: "Gmarket Sans";
+            color: #fff;
+        }
+        .img-wrap.sub p {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 28px;
+            color: #fff;
+        }
+        .img-wrap.sub h3 {
+            margin-top: 6px;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .img-wrap.sub h3 strong {
+            margin-right: 6px;
+            color: #ffc92c;
+            background-color: transparent;
+        }
+        .blog-sec-tit {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+        }
+        .blog-sec-tit::before {
+            content: "";
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: url("./icon_check.png") center / contain no-repeat;
+        }
+        .tip-container {
+            padding: 32px;
+            background-color: #fff2da;
+            border-radius: 20px;
+        }
+        .tip-container.warning {
+            background-color: #fee7ec;
+        }
+        .tip-container.warning h5 {
+            color: #d4002c;
+        }
+        .tip-container.warning h5::before {
+            background: url("./icon_warning.png") center / contain no-repeat;
+        }
+        .tip-container.case-1 h5 {
+            align-items: flex-start;
+        }
+        .tip-container h5 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: "Gmarket Sans";
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+            margin-bottom: 12px;
+        }
+        .tip-container h5::before {
+            content: "";
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: url("./icon_tip.png") center / contain no-repeat;
+        }
+        .tip-container ul li {
+            position: relative;
+            /* display: flex; */
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .tip-container ul li.no-dot {
+            margin-left: -9px;
+        }
+        .tip-container ul li.no-dot::before {
+            display: none;
+        }
+        .tip-container ul li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .tip-container ul li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .tip-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .tip-container ul li + li {
+            margin-top: 8px;
+        }
+        .tip-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .tip-container ul li .guide-content {
+            display: flex;
+        }
+        .tip-container .highlight {
+            background-color: #ffa60026;
+        }
+        .tip-container.type-2 {
+            background-color: #eef3ff;
+        }
+        .tip-container.type-2 h5::before {
+            background: url("./icon_pinset.png") center / contain no-repeat;
+        }
+        .tip-container.type-2 .tip-sub-tit {
+            margin-bottom: 8px;
+            font-weight: 700;
+            line-height: 26px;
+            color: #000;
+        }
+        .tip-container.type-2 ul {
+            margin-top: 8px;
+        }
+        .tip-container .tip-border {
+            margin: 32px 0;
+            width: 100%;
+            height: 1px;
+            background-color: #ebdbaf;
+        }
+        .tip-container .hts-table td {
+            background-color: #fff;
+        }
+        .blog-description {
+            padding: 16px 0;
+            padding-left: 32px;
+            border-left: 3px solid #a9a9a9;
+            color: #898989;
+            font-style: italic;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        .blog-description strong {
+            color: #111;
+            font-weight: 600;
+        }
+        .blog-text {
+            color: #555555;
+        }
+        .blog-text strong {
+            color: #000000;
+        }
+        .highlight {
+            display: inline-block;
+            font-weight: 700;
+            background-color: #fff2da;
+            color: #000;
+        }
+        .highlight.type-blue {
+            background-color: #daeaff;
+        }
+        .line-contents {
+            border: 1px solid #f0f0f0;
+            border-top: 4px #111 solid;
+            padding: 60px;
+            font-size: 18px;
+        }
+        .line-contents .title {
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 140%;
+        }
+        .line-contents .title strong {
+            color: #2467e8;
+        }
+        .line-contents .sub-tit {
+            font-size: 24px;
+            font-weight: 400;
+        }
+        .badge-wrap {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .badge-wrap .badge {
+            display: inline-block;
+            font-size: 20px;
+            line-height: 140%;
+            padding: 16px;
+            border-radius: 12px;
+            background-color: #f2f2f2;
+        }
+        .hts-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+        .table-tit {
+            margin-top: 16px;
+            margin-bottom: 4px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+        }
+        .hts-table:not(:has(thead)) th,
+        .hts-table:not(:has(thead)) td {
+            border-top: 1px solid #eeeeee;
+        }
+        .hts-table.has-bg td {
+            background-color: #fff;
+        }
+        .hts-table th,
+        .hts-table td {
+            border: 0;
+            color: #555;
+            word-break: keep-all;
+        }
+        .hts-table th {
+            padding: 13px 12px;
+            background: #f4f4f4;
+            font-weight: 500;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .hts-table td {
+            padding: 9px 12px;
+            border-bottom: 1px solid #eeeeee;
+            text-align: left;
+            line-height: 1.4;
+            letter-spacing: -1px;
+        }
+        .hts-table td:has(.has-num) {
+            padding: 9px 0;
+            text-align: center;
+        }
+        .hts-table td span {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: #3f75ff;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Gmarket Sans";
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+        }
+        .hts-table td span.has-num {
+          width: fit-content;
+          padding: 2px 9px 0 7px;
+          border-radius: 1000px;
+        }
+        .guide-list-container h6 {
+            margin-bottom: 8px;
+            font-size: 18px;
+            line-height: 26px;
+        }
+        .guide-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .guide-list > li {
+            display: flex;
+            align-items: flex-start;
+            margin: 16px 0 24px;
+        }
+        .guide-list > li:last-child {
+            margin-bottom: 0;
+        }
+        .guide-list .guide-num {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: #3f75ff;
+          margin-right: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Gmarket Sans";
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+          padding-top: 2px;
+          padding-right: 1px;
+        }
+        .guide-list .guide-num.has-num {
+            width: auto;
+            padding: 1px 9px 0 8px;
+            border-radius: 1000px;
+        }
+        .guide-list .guide-content {
+            flex: 1;
+        }
+        .guide-list p.tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .guide-list .guide-content:not(:has(.guide-title)) {
+            display: flex;
+        }
+        .guide-list .guide-title {
+            display: block;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 24px;
+            color: #222;
+        }
+        .guide-list.type-2 > li {
+            flex-wrap: wrap;
+            margin: 0;
+        }
+        .guide-list.type-2 > li + li {
+            margin-top: 8px;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) {
+            margin-top: 0;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) .guide-content {
+            margin-left: 30px;
+        }
+        .guide-list.type-2 > li .guide-title {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+        }
+        .guide-desc {
+            list-style: none;
+            margin: 0;
+            padding-left: 9px;
+            color: #555555;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+        .guide-desc li {
+            position: relative;
+            margin-top: 8px;
+            letter-spacing: -1px;
+        }
+        .guide-desc li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .guide-desc li .highlight {
+            display: inline-block;
+            background-color: #fff2da;
+            font-weight: 700;
+            line-height: 25px;
+            color: #000;
+        }
+        .guide-desc li::before {
+            content: "";
+            position: absolute;
+            top: 9px;
+            left: -9px;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #555555;
+            display: inline-block;
+        }
+        .guide-desc li.no-dot {
+            margin-left: -9px;
+        }
+        .guide-desc li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .guide-desc li.no-dot::before {
+            display: none;
+        }
+        .example-container {
+            position: relative;
+            margin-bottom: 24px;
+            padding: 32px;
+            padding-left: 96px;
+            border: 2px dashed #eee;
+            border-radius: 20px;
+        }
+        .example-container.case-1:before {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .example-container::before {
+            content: "";
+            position: absolute;
+            left: 32px;
+            top: 32px;
+            width: 48px;
+            height: 48px;
+            background: url(./icon_example.png) center / contain no-repeat;
+        }
+        .example-container .ex-head {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 22px;
+            color: #3f75ff !important;
+        }
+        .example-container .ex-head span {
+            position: relative;
+            transform: translateY(1px);
+            margin-right: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #3f75ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Gmarket Sans";
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+        }
+        .example-container .ex-head span.has-num {
+          width: auto;
+          padding: 2px 9px 0 8px;
+          border-radius: 1000px;
+        }
+        .example-container .ex-title {
+            margin-top: 2px;
+            line-height: 26px;
+            color: #000;
+        }
+        .example-container .ex-title .guide-content p {
+            color: #000;
+        }
+        .example-container ul {
+            margin-top: 8px;
+        }
+        .example-container ul li {
+            position: relative;
+            display: flex;
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .example-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .example-container ul li.no-dot {
+            padding-left: 0;
+        }
+        .example-container ul li.no-dot::before {
+            display: none;
+        }
+        .example-container ul li + li {
+            margin-top: 8px;
+        }
+        .example-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .example-container .ex-border {
+            margin: 32px 0 32px -64px;
+            border-top: 2px dashed #eee;
+        }
+        .guide-desc li .inner-desc {
+            margin-left: 52px;
+            list-style: none;
+        }
+        .guide-desc li .inner-desc li::before {
+            display: none;
+        }
+
+        .text-col {
+            display: flex;
+        }
+        .text-col .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="LS-blog-custom">
+        <div class="inner">
+            <div class="img-wrap header">
+                <img src="header(noTitle).png" alt="" />
+                <div class="text-wrap">
+                    <img src="brand_logo.png" alt="brand-logo" />
+                    <p>[WTS] 종목정보</p>
+                    <h2>
+                        종목 탐색부터 인사이트 분석까지,<br /> 
+                        <strong>투자 여정을 한 화면에!</strong>
+                    </h2>
+                </div>
+            </div>
+            <div class="content-wrap">
+                <div class="blog-sub-tit type-2 fw-semiBold fz-24">
+                    시장 흐름부터 잠재 종목 발굴, 매매까지 이어지는 원스톱 투자 경험!
+                </div>
+                <div class="blog-text">
+                    <p class="mt-16 fz-18">
+                        투자를 시작하기 위해 어떤 종목을 찾아봐야 하는지 잘 모르겠다면, 홈에서 제공하는 다양한 주제에서 오늘의 시장 방향을 확인하고 투자 단서를 찾아보세요.
+                    </p>
+                    <p class="mt-16 fz-18">
+                        코스피나 코스닥과 같은 거시적인 종합지수에서부터 탐색을 시작하거나, 화제가 되는 섹터에서 연관된 종목을 발굴하거나, 상승률 / 하락률 / 거래량 / 거래대금 등 특정 지표 상위인 종목에서 영감을 얻을 수도 있습니다. <br />
+                        발견한 종목은 클릭 한 번에 관심종목으로 등록하거나, 매매 화면에서 주문까지 끊김 없는 흐름으로 이어갈 수 있습니다.
+                    </p>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>발견부터 매매까지 한 번에</p>
+                        <h3>이 기능이 종목 탐색에 도움이 되는 이유!</h3>
+                    </div>
+                    <table class="hts-table">
+                        <colgroup>
+                            <col style="width: 240px" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>특징</th>
+                                <th>이런 점이 좋아요</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>국내 종합지수 탐색</td>
+                                <td>국내 지수에 편입된 종목을 등락순으로 조회</td>
+                            </tr>
+                            <tr>
+                                <td>테마섹터 탐색</td>
+                                <td>특정 주제나 산업군 등으로 분류된 종목 확인</td>
+                            </tr>
+                            <tr>
+                                <td>실시간 상위 종목</td>
+                                <td>등락률, 거래량 등 다양한 지표 기준별 상위 종목 확인</td>
+                            </tr>
+                            <tr>
+                                <td>뉴스 정보 확인</td>
+                                <td>최신 뉴스를 확인하고 연관 종목을 매매로 연결</td>
+                            </tr>
+                            <tr>
+                                <td>종목 검색</td>
+                                <td>검색어를 입력하여 국내주식 및 해외주식 직접 검색</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>지수부터 트렌드까지, 시장 흐름을 한눈에</p>
+                        <h3>
+                            <strong>01</strong>
+                            국내 지수종합
+                        </h3>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-wrap">
+                            <img src="img_065_01.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">국내 종합지수 조회</span>
+                                        <ul class="guide-desc">
+                                            <li>국내 종합지수는 코스피, 코스닥, 코스피200가 제공되며, 이 중 하나를 선택하면 해당 지수에 대한 추가 지표와 상세한 차트 추이를 확인할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">상승/하락 종목 확인</span>
+                                        <ul class="guide-desc">
+                                            <li>
+                                                선택 지수 산출에 편입된 종목 중 당일 가격 등락률에 따라 상승 또는 하락중인 종목 수가 표시되며, 숫자 선택 시 상승률 / 하락률 상위 종목을 조회할 수 있습니다.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">세부 분류 선택</span>
+                                        <ul class="guide-desc">
+                                            <li>
+                                                상승률 / 하락률 외 실시간 인기, 거래량 상위, 거래대금 상위 등 다른 지표 기준에 해당하는 상위 종목을 조회할 수 있습니다.
+                                            </li>
+                                            <li>
+                                                시장 범위를 전체, 코스피, 코스닥 중 선택할 수 있고, 제공 시세를 통합(KRX+NXT), KRX, NXT 중 선택할 수 있습니다.
+                                            </li>
+                                            <li>(3-1번) 종목 선택 시 매매 화면에서 해당 종목을 즉시 거래할 수 있습니다.</li>
+                                            <li>(3-2번) 각 종목 우측의 별 아이콘을 선택하여 관심종목으로 등록할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="tip-container type-2 mt-24">
+                            <h5>참고해주세요!</h5>
+                            <ul>
+                                <li>실시간 인기 시세는 KRX 기준 시세만 제공됩니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>오늘의 기회, 순간 포착!</p>
+                        <h3>
+                            <strong>02</strong>
+                            오늘 뜨고 있는 섹터
+                        </h3>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-wrap">
+                            <img src="img_065_02.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">국내 종합지수 조회</span>
+                                        <ul class="guide-desc">
+                                            <li>
+                                                당일 인기 섹터를 전체 등락률에 비례한 크기의 버블 차트로 직관적으로 확인할 수 있으며, 각 섹터 선택 시 당일 간단한 현황과 해당 섹터 내 가격 상승률이 높은 주요 종목을 확인할 수 있습니다.
+                                            </li>
+                                            <li>
+                                                국내 종합지수는 코스피, 코스닥, 코스피200가 제공되며, 이 중 하나를 선택하면 해당 지수에 대한 추가 지표와 상세한 차트 추이를 확인할 수 있습니다.
+                                            </li>
+                                            <li>
+                                                (1-1번) 섹터명 혹은 우측 화살표 아이콘 선택 시 테마섹터 화면에서 해당 섹터에 대한 상세 내용을 확인할 수 있습니다.
+                                            </li>
+                                            <li>(1-2번) 종목 선택 시 매매 화면에서 해당 종목을 즉시 거래할 수 있습니다.</li>
+                                            <li>(1-3번) 각 종목 우측의 별 아이콘을 선택하여 관심종목으로 등록할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">테마섹터</span>
+                                        <ul class="guide-desc">
+                                            <li>섹터명을 직접 검색하거나 섹터 목록을 등락률이 높은 순으로 조회할 수 있습니다.</li>
+                                            <li>
+                                                (2-1번) 선택한 섹터에 해당하는 종목 시세를 확인하고, 종목을 선택하여 매매 화면에서 즉시 거래할 수 있습니다.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="img-wrap mt-32">
+                            <img src="img_065_03.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">섹터 상세설명</span>
+                                        <ul class="guide-desc">
+                                            <li>'상세설명' 선택 시 해당 섹터에 대한 설명과 해당하는 종목에 대한 설명을 조회할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="img-wrap mt-32">
+                            <img src="img_065_04.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">4</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">종목 보기 / 차트 보기</span>
+                                        <ul class="guide-desc">
+                                            <li>섹터에 해당하는 종목 정보와 해당 섹터의 지수에 대한 차트 추이를 전환하며 조회할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>주제별 종목 순위를 한눈에</p>
+                        <h3>
+                            <strong>03</strong>
+                            실시간 상위 종목
+                        </h3>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-wrap">
+                            <img src="img_065_05.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">지표별 상위 종목</span>
+                                        <ul class="guide-desc">
+                                            <li>실시간 인기, 등락률, 거래량 등 다양한 지표 기준별 상위 종목을 한 눈에 확인할 수 있습니다.</li>
+                                            <li>(1-1번) 우측 화살표 아이콘 선택 시 테마섹터 화면에서 해당 섹터에 대한 상세 내용을 확인할 수 있습니다.</li>
+                                            <li>(1-2번) 종목 선택 시 매매 화면에서 해당 종목을 즉시 거래할 수 있습니다.</li>
+                                            <li>(1-3번) 각 종목 우측의 별 아이콘을 선택하여 관심종목으로 등록할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="tip-container type-2 mt-24">
+                            <h5>참고해주세요!</h5>
+                            <ul>
+                                <li>실시간 인기, 시가총액상위, 이달의 신규상장종목 시세는 KRX 기준 시세만 제공됩니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>최신 투자 정보를 빠르게</p>
+                        <h3>
+                            <strong>04</strong>
+                            뉴스 검색
+                        </h3>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-wrap">
+                            <img src="img_065_06.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">뉴스 내 키워드 종목 매매</span>
+                                        <ul class="guide-desc">
+                                            <li>
+                                                뉴스 목록 또는 본문에 종목명이 표시되는 경우, 종목명을 선택하면 매매 화면으로 이동하여 해당 종목을 즉시 거래할 수 있습니다.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>원하는 종목을 쉽고 정확하게</p>
+                        <h3>
+                            <strong>05</strong>
+                            종목 검색
+                        </h3>
+                    </div>
+                    <div class="blog-text">
+                        <div class="img-wrap">
+                            <img src="img_065_07.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">검색어 입력</span>
+                                        <ul class="guide-desc">
+                                            <li>종목 검색창에 종목명 또는 종목코드를 입력하여 국내주식 또는 해외주식을 검색할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">종목 선택</span>
+                                        <ul class="guide-desc">
+                                            <li>검색 결과에서 종목명을 선택하면 매매 화면으로 이동하여 해당 종목을 즉시 거래할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="tip-container type-2 mt-24">
+                            <h5>참고해주세요!</h5>
+                            <ul>
+                                <li>해외주식 종목명은 한글 종목명 기준으로 검색됩니다.</li>
+                            </ul>
+                        </div>
+                        <div class="tip-container mt-24">
+                            <h5>종목 옆 정보, 무슨 뜻일까?</h5>
+                            <div class="img-wrap mt-8">
+                                <img src="img_065_08.png" alt="" />
+                            </div>
+                            <ul>
+                                <li>
+                                    <div class="guide-content">
+                                        <p class="tip-desc-tit"><b>종목코드 : </b></p>
+                                        <p>
+                                            주식 거래 시 종목을 쉽게 찾기 위해 부여된 고유한 코드로, 티커(Ticker)라고도 합니다.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="guide-content">
+                                        <p class="tip-desc-tit"><b>주식시장 : </b></p>
+                                        <p>
+                                            해당 주식이 상장된 거래소로, 국내는 KOSPI, KOSDAQ, 해외는 NYSE, HKEX, JPX 등이 있습니다.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="guide-content">
+                                        <p class="tip-desc-tit"><b>업종 : </b></P>
+                                        <p>
+                                            해당 주식이 분류된 산업군으로 금융, 유통업, 건설 등 다양한 업종이 있습니다.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="guide-content">
+                                        <p class="tip-desc-tit"><b>증거금률 : </b></p>
+                                        <p>
+                                            현금미수거래를 할 때 필요한 최소 담보비율로, 예를 들어 증거금률 30%인 종목은 현금 30%만 준비하면 100%에 해당하는 금액의 주식을 매수할 수 있습니다. <br />
+                                            이 때 현금 미수로 발생한 70%에 해당하는 미수 금액은 반드시 결제일까지 현금으로 변제해야 합니다.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="guide-content">
+                                        <p class="tip-desc-tit"><b>신용보증금률 : </b></p>
+                                        <p>
+                                            신용거래를 할 때 담보로 요구하는 보증금 비율로, 예를 들어 신용보증금률 45%인 종목은 금액의 45%는 현금으로 납부하고, 55%는 증권사에서 신용융자의 형태로 빌리는 방법으로 매수할 수 있습니다. 신용융자는 대출기간이 부여되며 이용 기간에 따라 이자가 부과됩니다. 
+                                            또 담보비율(잔고평가금액÷대출금액×100)을 140%로 유지해야 하며, 이를 유지하지 못하면 반대매매가 진행됩니다.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <p class="mt-60">
+                            WTS에서 종목을 검색하는 다양한 방법과 검색한 종목을 바로 매매하거나 관심종목으로 등록하는 방법을 알아보았습니다. <br />
+                            오늘의 이슈를 빠르게 확인하고, 눈길이 가는 종목을 찾아 투자 전략에 맞는 포트폴리오를 성공적으로 구성할 수 있기를 바랍니다. 감사합니다!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="img-wrap">
+                <img src="footer_slogan.png" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

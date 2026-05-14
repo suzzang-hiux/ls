@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>[WTS] 매매</title>
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+        @import url("https://cdn.jsdelivr.net/gh/leetaewook/gmarket-sans-dynamic-subset/GmarketSans.css");
+        
+        /* 기본 margin, padding 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            letter-spacing: -0.72px;
+        }
+        a {
+            color: #3f75ff;
+            text-underline-offset: 3px;
+        }
+        .color-primary {
+            color: #3f75ff !important;
+        }
+        .color-warning {
+            color: #e83c3e !important;
+        }
+        img {
+            display: block;
+        }
+
+        .LS-blog-custom {
+            font-size: 0;
+            margin: 0;
+            padding: 0;
+            color: #111 !important;
+            font-family: "Pretendard" !important;
+        }
+        .LS-blog-custom .inner {
+            width: 880px;
+            margin: auto;
+            box-sizing: border-box;
+            line-height: 180%;
+            font-size: 18px !important;
+        }
+        .LS-blog-custom .inner .content-wrap {
+            padding: 40px 60px 60px;
+        }
+        .LS-blog-custom .inner .content-wrap .content-part {
+            margin-top: 60px;
+        }
+        .LS-blog-custom .inner .blog-title,
+        .LS-blog-custom .inner .blog-sub-tit {
+            line-height: 140%;
+            word-break: keep-all;
+            color: #2b2b2b;
+        }
+        .LS-blog-custom .inner .blog-sub-tit.type-2 {
+            font-family: "Gmarket Sans";
+        }
+        .LS-blog-custom .inner p {
+            padding: 0;
+            margin: 0;
+            line-height: 1.45;
+            color: #555555;
+        }
+
+        /* font-style */
+        .fw-bold {
+            font-weight: 800;
+        }
+        .fw-semiBold {
+            font-weight: 700;
+        }
+        .fw-meddium {
+            font-family: 400;
+        }
+        .fw-light {
+            font-weight: 100;
+        }
+        .text-align-center {
+            text-align: center !important;
+        }
+        .text-align-left {
+            text-align: left !important;
+        }
+        .text-align-right {
+            text-align: right !important;
+        }
+        .fz-12 {
+            font-size: 12px !important;
+        }
+        .fz-16 {
+            font-size: 16px !important;
+        }
+        .fz-18 {
+            font-size: 18px !important;
+        }
+        .fz-24 {
+            font-size: 24px !important;
+        }
+        .fz-28 {
+            font-size: 28px !important;
+        }
+        .fz-40 {
+            font-size: 40px !important;
+        }
+
+        /* margin-top */
+        .mt-0 {
+            margin-top: 0 !important;
+        }
+        .mt-5 {
+            margin-top: 5px !important;
+        }
+        .mt-6 {
+            margin-top: 6px !important;
+        }
+        .mt-7 {
+            margin-top: 7px !important;
+        }
+        .mt-8 {
+            margin-top: 8px !important;
+        }
+        .mt-9 {
+            margin-top: 9px !important;
+        }
+        .mt-10 {
+            margin-top: 10px !important;
+        }
+        .mt-11 {
+            margin-top: 11px !important;
+        }
+        .mt-12 {
+            margin-top: 12px !important;
+        }
+        .mt-13 {
+            margin-top: 13px !important;
+        }
+        .mt-14 {
+            margin-top: 14px !important;
+        }
+        .mt-15 {
+            margin-top: 15px !important;
+        }
+        .mt-16 {
+            margin-top: 16px !important;
+        }
+        .mt-17 {
+            margin-top: 17px !important;
+        }
+        .mt-18 {
+            margin-top: 18px !important;
+        }
+        .mt-19 {
+            margin-top: 19px !important;
+        }
+        .mt-20 {
+            margin-top: 20px !important;
+        }
+        .mt-21 {
+            margin-top: 21px !important;
+        }
+        .mt-22 {
+            margin-top: 22px !important;
+        }
+        .mt-23 {
+            margin-top: 23px !important;
+        }
+        .mt-24 {
+            margin-top: 24px !important;
+        }
+        .mt-25 {
+            margin-top: 25px !important;
+        }
+        .mt-26 {
+            margin-top: 26px !important;
+        }
+        .mt-27 {
+            margin-top: 27px !important;
+        }
+        .mt-28 {
+            margin-top: 28px !important;
+        }
+        .mt-29 {
+            margin-top: 29px !important;
+        }
+        .mt-30 {
+            margin-top: 30px !important;
+        }
+        .mt-31 {
+            margin-top: 31px !important;
+        }
+        .mt-32 {
+            margin-top: 32px !important;
+        }
+        .mt-33 {
+            margin-top: 33px !important;
+        }
+        .mt-34 {
+            margin-top: 34px !important;
+        }
+        .mt-35 {
+            margin-top: 35px !important;
+        }
+        .mt-36 {
+            margin-top: 36px !important;
+        }
+        .mt-37 {
+            margin-top: 37px !important;
+        }
+        .mt-38 {
+            margin-top: 38px !important;
+        }
+        .mt-39 {
+            margin-top: 39px !important;
+        }
+        .mt-40 {
+            margin-top: 40px !important;
+        }
+        .mt-60 {
+            margin-top: 60px !important;
+        }
+        .mt-120 {
+            margin-top: 120px !important;
+        }
+
+        /* margin-bottom */
+        .mb-0 {
+          margin-bottom: 0 !important;
+        }
+        .mb-5 {
+            margin-bottom: 5px !important;
+        }
+        .mb-6 {
+            margin-bottom: 6px !important;
+        }
+        .mb-7 {
+            margin-bottom: 7px !important;
+        }
+        .mb-8 {
+            margin-bottom: 8px !important;
+        }
+        .mb-9 {
+            margin-bottom: 9px !important;
+        }
+        .mb-10 {
+            margin-bottom: 10px !important;
+        }
+        .mb-11 {
+            margin-bottom: 11px !important;
+        }
+        .mb-12 {
+            margin-bottom: 12px !important;
+        }
+        .mb-13 {
+            margin-bottom: 13px !important;
+        }
+        .mb-14 {
+            margin-bottom: 14px !important;
+        }
+        .mb-15 {
+            margin-bottom: 15px !important;
+        }
+        .mb-16 {
+            margin-bottom: 16px !important;
+        }
+        .mb-17 {
+            margin-bottom: 17px !important;
+        }
+        .mb-18 {
+            margin-bottom: 18px !important;
+        }
+        .mb-19 {
+            margin-bottom: 19px !important;
+        }
+        .mb-20 {
+            margin-bottom: 20px !important;
+        }
+        .mb-21 {
+            margin-bottom: 21px !important;
+        }
+        .mb-22 {
+            margin-bottom: 22px !important;
+        }
+        .mb-23 {
+            margin-bottom: 23px !important;
+        }
+        .mb-24 {
+            margin-bottom: 24px !important;
+        }
+        .mb-25 {
+            margin-bottom: 25px !important;
+        }
+        .mb-26 {
+            margin-bottom: 26px !important;
+        }
+        .mb-27 {
+            margin-bottom: 27px !important;
+        }
+        .mb-28 {
+            margin-bottom: 28px !important;
+        }
+        .mb-29 {
+            margin-bottom: 29px !important;
+        }
+        .mb-30 {
+            margin-bottom: 30px !important;
+        }
+        .mb-31 {
+            margin-bottom: 31px !important;
+        }
+        .mb-32 {
+            margin-bottom: 32px !important;
+        }
+        .mb-33 {
+            margin-bottom: 33px !important;
+        }
+        .mb-34 {
+            margin-bottom: 34px !important;
+        }
+        .mb-35 {
+            margin-bottom: 35px !important;
+        }
+        .mb-36 {
+            margin-bottom: 36px !important;
+        }
+        .mb-37 {
+            margin-bottom: 37px !important;
+        }
+        .mb-38 {
+            margin-bottom: 38px !important;
+        }
+        .mb-39 {
+            margin-bottom: 39px !important;
+        }
+        .mb-40 {
+            margin-bottom: 40px !important;
+        }
+
+        /* padding-top */
+        .pt-5 {
+            padding-top: 5px !important;
+        }
+        .pt-6 {
+            padding-top: 6px !important;
+        }
+        .pt-7 {
+            padding-top: 7px !important;
+        }
+        .pt-8 {
+            padding-top: 8px !important;
+        }
+        .pt-9 {
+            padding-top: 9px !important;
+        }
+        .pt-10 {
+            padding-top: 10px !important;
+        }
+        .pt-11 {
+            padding-top: 11px !important;
+        }
+        .pt-12 {
+            padding-top: 12px !important;
+        }
+        .pt-13 {
+            padding-top: 13px !important;
+        }
+        .pt-14 {
+            padding-top: 14px !important;
+        }
+        .pt-15 {
+            padding-top: 15px !important;
+        }
+        .pt-16 {
+            padding-top: 16px !important;
+        }
+        .pt-17 {
+            padding-top: 17px !important;
+        }
+        .pt-18 {
+            padding-top: 18px !important;
+        }
+        .pt-19 {
+            padding-top: 19px !important;
+        }
+        .pt-20 {
+            padding-top: 20px !important;
+        }
+        .pt-21 {
+            padding-top: 21px !important;
+        }
+        .pt-22 {
+            padding-top: 22px !important;
+        }
+        .pt-23 {
+            padding-top: 23px !important;
+        }
+        .pt-24 {
+            padding-top: 24px !important;
+        }
+        .pt-25 {
+            padding-top: 25px !important;
+        }
+        .pt-26 {
+            padding-top: 26px !important;
+        }
+        .pt-27 {
+            padding-top: 27px !important;
+        }
+        .pt-28 {
+            padding-top: 28px !important;
+        }
+        .pt-29 {
+            padding-top: 29px !important;
+        }
+        .pt-30 {
+            padding-top: 30px !important;
+        }
+        .pt-31 {
+            padding-top: 31px !important;
+        }
+        .pt-32 {
+            padding-top: 32px !important;
+        }
+        .pt-33 {
+            padding-top: 33px !important;
+        }
+        .pt-34 {
+            padding-top: 34px !important;
+        }
+        .pt-35 {
+            padding-top: 35px !important;
+        }
+        .pt-36 {
+            padding-top: 36px !important;
+        }
+        .pt-37 {
+            padding-top: 37px !important;
+        }
+        .pt-38 {
+            padding-top: 38px !important;
+        }
+        .pt-39 {
+            padding-top: 39px !important;
+        }
+        .pt-40 {
+            padding-top: 40px !important;
+        }
+
+        /* padding-bottom */
+        .pb-5 {
+            padding-bottom: 5px !important;
+        }
+        .pb-6 {
+            padding-bottom: 6px !important;
+        }
+        .pb-7 {
+            padding-bottom: 7px !important;
+        }
+        .pb-8 {
+            padding-bottom: 8px !important;
+        }
+        .pb-9 {
+            padding-bottom: 9px !important;
+        }
+        .pb-10 {
+            padding-bottom: 10px !important;
+        }
+        .pb-11 {
+            padding-bottom: 11px !important;
+        }
+        .pb-12 {
+            padding-bottom: 12px !important;
+        }
+        .pb-13 {
+            padding-bottom: 13px !important;
+        }
+        .pb-14 {
+            padding-bottom: 14px !important;
+        }
+        .pb-15 {
+            padding-bottom: 15px !important;
+        }
+        .pb-16 {
+            padding-bottom: 16px !important;
+        }
+        .pb-17 {
+            padding-bottom: 17px !important;
+        }
+        .pb-18 {
+            padding-bottom: 18px !important;
+        }
+        .pb-19 {
+            padding-bottom: 19px !important;
+        }
+        .pb-20 {
+            padding-bottom: 20px !important;
+        }
+        .pb-21 {
+            padding-bottom: 21px !important;
+        }
+        .pb-22 {
+            padding-bottom: 22px !important;
+        }
+        .pb-23 {
+            padding-bottom: 23px !important;
+        }
+        .pb-24 {
+            padding-bottom: 24px !important;
+        }
+        .pb-25 {
+            padding-bottom: 25px !important;
+        }
+        .pb-26 {
+            padding-bottom: 26px !important;
+        }
+        .pb-27 {
+            padding-bottom: 27px !important;
+        }
+        .pb-28 {
+            padding-bottom: 28px !important;
+        }
+        .pb-29 {
+            padding-bottom: 29px !important;
+        }
+        .pb-30 {
+            padding-bottom: 30px !important;
+        }
+        .pb-31 {
+            padding-bottom: 31px !important;
+        }
+        .pb-32 {
+            padding-bottom: 32px !important;
+        }
+        .pb-33 {
+            padding-bottom: 33px !important;
+        }
+        .pb-34 {
+            padding-bottom: 34px !important;
+        }
+        .pb-35 {
+            padding-bottom: 35px !important;
+        }
+        .pb-36 {
+            padding-bottom: 36px !important;
+        }
+        .pb-37 {
+            padding-bottom: 37px !important;
+        }
+        .pb-38 {
+            padding-bottom: 38px !important;
+        }
+        .pb-39 {
+            padding-bottom: 39px !important;
+        }
+        .pb-40 {
+            padding-bottom: 40px !important;
+        }
+        .ml-32 {
+            margin-left: 32px !important;
+        }
+        .ml-24 {
+            margin-left: 24px !important;
+        }
+
+        .img-wrap {
+            margin: 0 auto;
+        }
+        .img-wrap.banner {
+            background-color: #4c5afa;
+        }
+        .img-wrap.banner img {
+            width: auto !important;
+            max-height: 160px;
+            margin: 0 auto;
+        }
+        .img-wrap img {
+            width: 100% !important;
+        }
+        .img-wrap.header {
+            position: relative;
+        }
+        .img-wrap.header img {
+            height: 303px;
+        }
+        .header .text-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            color: #fff;
+        }
+        .header .text-wrap img {
+            width: 80px !important;
+            height: 36px;
+            margin: 0 auto;
+        }
+        .header .text-wrap p {
+            margin-top: 16px;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #fff;
+        }
+        .header .text-wrap h2 {
+            margin-top: 12px;
+            font-family: "Gmarket Sans";
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 57px;
+        }
+        .header .text-wrap h2 strong {
+            color: #ffe8ae;
+        }
+        .img-wrap.sub {
+            padding: 26px 30px;
+            background: url("sub_tit(noTitle).png") center / cover no-repeat;
+            border-radius: 20px;
+            font-family: "Gmarket Sans";
+            color: #fff;
+        }
+        .img-wrap.sub p {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 28px;
+            color: #fff;
+        }
+        .img-wrap.sub h3 {
+            margin-top: 6px;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .img-wrap.sub h3 strong {
+            margin-right: 6px;
+            color: #ffc92c;
+            background-color: transparent;
+        }
+        .blog-sec-tit {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+        }
+        .blog-sec-tit::before {
+            content: "";
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: url("./icon_check.png") center / contain no-repeat;
+        }
+        .tip-container {
+            padding: 32px;
+            background-color: #fff2da;
+            border-radius: 20px;
+        }
+        .tip-container.warning {
+            background-color: #fee7ec;
+        }
+        .tip-container.warning h5 {
+            color: #d4002c;
+        }
+        .tip-container.warning h5::before {
+            background: url("./icon_warning.png") center / contain no-repeat;
+        }
+        .tip-container.case-1 h5 {
+            align-items: flex-start;
+        }
+        .tip-container h5 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: "Gmarket Sans";
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+            margin-bottom: 12px;
+        }
+        .tip-container h5::before {
+            content: "";
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: url("./icon_tip.png") center / contain no-repeat;
+        }
+        .tip-container ul li {
+            position: relative;
+            /* display: flex; */
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .tip-container ul li.no-dot {
+            margin-left: -9px;
+        }
+        .tip-container ul li.no-dot::before {
+            display: none;
+        }
+        .tip-container ul li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .tip-container ul li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .tip-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .tip-container ul li + li {
+            margin-top: 8px;
+        }
+        .tip-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .tip-container ul li .guide-content {
+            display: flex;
+        }
+        .tip-container .highlight {
+            background-color: #ffa60026;
+        }
+        .tip-container.type-2 {
+            background-color: #eef3ff;
+        }
+        .tip-container.type-2 h5::before {
+            background: url("./icon_pinset.png") center / contain no-repeat;
+        }
+        .tip-container.type-2 .tip-sub-tit {
+            margin-bottom: 8px;
+            font-weight: 700;
+            line-height: 26px;
+            color: #000;
+        }
+        .tip-container.type-2 ul {
+            margin-top: 8px;
+        }
+        .tip-container .tip-border {
+            margin: 32px 0;
+            width: 100%;
+            height: 1px;
+            background-color: #ebdbaf;
+        }
+        .tip-container .hts-table td {
+            background-color: #fff;
+        }
+        .blog-description {
+            padding: 16px 0;
+            padding-left: 32px;
+            border-left: 3px solid #a9a9a9;
+            color: #898989;
+            font-style: italic;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        .blog-description strong {
+            color: #111;
+            font-weight: 600;
+        }
+        .blog-text {
+            color: #555555;
+        }
+        .blog-text strong {
+            color: #000000;
+        }
+        .highlight {
+            display: inline-block;
+            font-weight: 700;
+            background-color: #fff2da;
+            color: #000;
+        }
+        .highlight.type-blue {
+            background-color: #daeaff;
+        }
+        .line-contents {
+            border: 1px solid #f0f0f0;
+            border-top: 4px #111 solid;
+            padding: 60px;
+            font-size: 18px;
+        }
+        .line-contents .title {
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 140%;
+        }
+        .line-contents .title strong {
+            color: #2467e8;
+        }
+        .line-contents .sub-tit {
+            font-size: 24px;
+            font-weight: 400;
+        }
+        .badge-wrap {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .badge-wrap .badge {
+            display: inline-block;
+            font-size: 20px;
+            line-height: 140%;
+            padding: 16px;
+            border-radius: 12px;
+            background-color: #f2f2f2;
+        }
+        .hts-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+        .table-tit {
+            margin-top: 16px;
+            margin-bottom: 4px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+        }
+        .hts-table:not(:has(thead)) th,
+        .hts-table:not(:has(thead)) td {
+            border-top: 1px solid #eeeeee;
+        }
+        .hts-table.has-bg td {
+            background-color: #fff;
+        }
+        .hts-table th,
+        .hts-table td {
+            border: 0;
+            color: #555;
+            word-break: keep-all;
+        }
+        .hts-table th {
+            padding: 13px 12px;
+            background: #f4f4f4;
+            font-weight: 500;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .hts-table td {
+            padding: 9px 12px;
+            border-bottom: 1px solid #eeeeee;
+            text-align: left;
+            line-height: 1.4;
+            letter-spacing: -1px;
+        }
+        .hts-table td:has(.has-num) {
+            padding: 9px 0;
+            text-align: center;
+        }
+        .hts-table td span {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: #3f75ff;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Gmarket Sans";
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+        }
+        .hts-table td span.has-num {
+          width: fit-content;
+          padding: 2px 9px 0 7px;
+          border-radius: 1000px;
+        }
+        .guide-list-container h6 {
+            margin-bottom: 8px;
+            font-size: 18px;
+            line-height: 26px;
+        }
+        .guide-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .guide-list > li {
+            display: flex;
+            align-items: flex-start;
+            margin: 16px 0 24px;
+        }
+        .guide-list > li:last-child {
+            margin-bottom: 0;
+        }
+        .guide-list .guide-num {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: #3f75ff;
+          margin-right: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Gmarket Sans";
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+          padding-top: 2px;
+          padding-right: 1px;
+        }
+        .guide-list .guide-num.has-num {
+            width: auto;
+            padding: 1px 9px 0 8px;
+            border-radius: 1000px;
+        }
+        .guide-list .guide-content {
+            flex: 1;
+        }
+        .guide-list p.tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .guide-list .guide-content:not(:has(.guide-title)) {
+            display: flex;
+        }
+        .guide-list .guide-title {
+            display: block;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 24px;
+            color: #222;
+        }
+        .guide-list.type-2 > li {
+            flex-wrap: wrap;
+            margin: 0;
+        }
+        .guide-list.type-2 > li + li {
+            margin-top: 8px;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) {
+            margin-top: 0;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) .guide-content {
+            margin-left: 30px;
+        }
+        .guide-list.type-2 > li .guide-title {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+        }
+        .guide-desc {
+            list-style: none;
+            margin: 0;
+            padding-left: 9px;
+            color: #555555;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+        .guide-desc li {
+            position: relative;
+            margin-top: 8px;
+            letter-spacing: -1px;
+        }
+        .guide-desc li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .guide-desc li .highlight {
+            display: inline-block;
+            background-color: #fff2da;
+            font-weight: 700;
+            line-height: 25px;
+            color: #000;
+        }
+        .guide-desc li::before {
+            content: "";
+            position: absolute;
+            top: 9px;
+            left: -9px;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #555555;
+            display: inline-block;
+        }
+        .guide-desc li.no-dot {
+            margin-left: -9px;
+        }
+        .guide-desc li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .guide-desc li.no-dot::before {
+            display: none;
+        }
+        .example-container {
+            position: relative;
+            margin-bottom: 24px;
+            padding: 32px;
+            padding-left: 96px;
+            border: 2px dashed #eee;
+            border-radius: 20px;
+        }
+        .example-container.case-1:before {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .example-container::before {
+            content: "";
+            position: absolute;
+            left: 32px;
+            top: 32px;
+            width: 48px;
+            height: 48px;
+            background: url(./icon_example.png) center / contain no-repeat;
+        }
+        .example-container .ex-head {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 22px;
+            color: #3f75ff !important;
+        }
+        .example-container .ex-head span {
+            position: relative;
+            transform: translateY(1px);
+            margin-right: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #3f75ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Gmarket Sans";
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+        }
+        .example-container .ex-head span.has-num {
+          width: auto;
+          padding: 2px 9px 0 8px;
+          border-radius: 1000px;
+        }
+        .example-container .ex-title {
+            margin-top: 2px;
+            line-height: 26px;
+            color: #000;
+        }
+        .example-container .ex-title .guide-content p {
+            color: #000;
+        }
+        .example-container ul {
+            margin-top: 8px;
+        }
+        .example-container ul li {
+            position: relative;
+            display: flex;
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .example-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .example-container ul li.no-dot {
+            padding-left: 0;
+        }
+        .example-container ul li.no-dot::before {
+            display: none;
+        }
+        .example-container ul li + li {
+            margin-top: 8px;
+        }
+        .example-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .example-container .ex-border {
+            margin: 32px 0 32px -64px;
+            border-top: 2px dashed #eee;
+        }
+        .guide-desc li .inner-desc {
+            margin-left: 52px;
+            list-style: none;
+        }
+        .guide-desc li .inner-desc li::before {
+            display: none;
+        }
+
+        .text-col {
+            display: flex;
+        }
+        .text-col .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="LS-blog-custom">
+        <div class="inner">
+            <div class="img-wrap header">
+                <img src="header(noTitle).png" alt="" />
+                <div class="text-wrap">
+                    <img src="brand_logo.png" alt="brand-logo" />
+                    <p>[WTS] 매매</p>
+                    <h2>
+                        국내 · 해외 주문을 하나로,<br /> 
+                        <strong>매매의 모든 순간을 빠르게</strong>
+                    </h2>
+                </div>
+            </div>
+            <div class="content-wrap">
+                <div class="blog-sub-tit type-2 fw-semiBold fz-24">
+                    가볍지만 강력한, WTS 주식 매매 시스템
+                </div>
+                <div class="blog-text">
+                    <p class="mt-16 fz-18">
+                        투혼 WTS는 일반적인 웹 거래를 지원하는 것을 넘어, 사용자에게 더 폭넓은 선택지를 제공하고자 합니다.
+                    </p>
+                    <p class="mt-16 fz-18">
+                        WTS에서는 세 가지 주문 방법 중 본인에게 맞는 것을 골라 이용할 수 있습니다. <br />
+                        1) 국내주식과 해외주식을 한 화면에서 통합 거래할 수 있는 일반 주문 <br />
+                        2) 원하는 날짜에 미리 매매를 설정해두는 예약 주문 <br />
+                        3) 클릭만으로 주문을 빠르고 효율적으로 실행하는 호가 주문
+                    </p>
+                    <p class="mt-16 fz-18">LS증권의 투혼 WTS에서 편의성에 집중해 설계된 쾌적한 주문 환경을 누려보세요.</p>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>언제 어디서나, 간편한 거래를 위한</p>
+                        <h3>이 화면이 매매에 부족함이 없는 이유!</h3>
+                    </div>
+                    <table class="hts-table">
+                        <colgroup>
+                            <col style="width: 240px" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>기능</th>
+                                <th>이런 점이 좋아요</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>일반 주문</td>
+                                <td>한 화면에서 국내주식과 해외주식 통합 매매 지원</td>
+                            </tr>
+                            <tr>
+                                <td>예약 주문</td>
+                                <td>일자 또는 기간을 지정하여 사전에 매수 · 매도 주문 예약 접수</td>
+                            </tr>
+                            <tr>
+                                <td>호가 주문</td>
+                                <td>호가창 클릭만으로 신속하게 매수 · 매도 및 정정 · 취소 주문 가능</td>
+                            </tr>
+                            <tr>
+                                <td>주문 설정</td>
+                                <td>주문확인창, 수량 / 금액 입력 초기화 등 주문 편의를 고려한 세부 설정 제공</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>판단은 신속하게, 실행은 정확하게</p>
+                        <h3>
+                            <strong>01</strong>
+                            일반 주문
+                        </h3>
+                    </div>
+                    <div class="blog-text">
+                        <p class="mb-32">
+                            통합 주문화면에서 국내주식과 해외주식을 모두 거래할 수 있으며, 주문 편의를 위한 추가 설정 기능을 이용할 수 있습니다.
+                        </p>
+                        <h4 class="blog-sec-tit">매매종목 선택</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_068_00.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">종목 검색</span>
+                                        <ul class="guide-desc">
+                                            <li>우상단 종목 검색 창에서 국내주식, 해외주식을 한 번에 검색하고 선택할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">관심종목, 국내 순위, 해외 순위 등</span>
+                                        <ul class="guide-desc">
+                                            <li>
+                                                관심종목을 비롯한 국내 / 해외 순위, 인기, 상승률 상위, 하락률 상위 등 당일 화제가 되는 종목을 선택할 수 있습니다.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">국내 잔고, 해외 잔고</span>
+                                        <ul class="guide-desc">
+                                            <li>보유한 잔고에서 거래하려는 주식 종목을 선택할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">4</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">국내 체결/미체결, 해외 체결/미체결</span>
+                                        <ul class="guide-desc">
+                                            <li>미체결 주문을 선택하여 정정 주문 외 매수, 매도, 취소 주문으로 연결할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <p class="mt-24">
+                            👉 선택한 종목은 화면 상단에 정보가 조회됩니다. 이제 고른 종목으로 주문을 시작해 볼까요?
+                        </p>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">매수/매도 주문</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_068_01.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">주문 탭</span>
+                                        <ul class="guide-desc">
+                                            <li>매수/매도/정정/취소 탭이 배치되어 있으며, 탭을 선택하여 접수하려는 주문을 전환합니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">결제방법, 거래소, 주문 유형 선택</span>
+                                        <ul class="guide-desc">
+                                            <li>결제 방법을 현금/신용 중 선택하고, 주문하려는 거래소를 스마트 / KRX / NXT 중 선택합니다.</li>
+                                            <li>스마트는 당사가 정한 최선집행기준(SOR)에 따라 KRX와 NXT 중 한 곳으로 주문을 제출합니다.</li>
+                                            <li>스마트주문시스템(SOR)에 대한 자세한 설명은 <a href="https://www.ls-sec.co.kr/guide/agreement/GUAMAreement2.jsp?group_code=AGREE_09&left_menu_no=843&front_menu_no=583&parent_menu_no=1367" target="_blank">홈페이지</a>에서 확인할 수 있습니다.</li>
+                                            <li>지정가, 중간가, 시장가 등 주문유형을 선택합니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">주문가격 입력</span>
+                                        <ul class="guide-desc">
+                                            <li>가격을 직접 입력하거나, 양측 +/- 버튼으로 가격을 호가 단위로 조정할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">4</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">주문 수량 입력</span>
+                                        <ul class="guide-desc">
+                                            <li>수량을 직접 입력하거나, 양측 +/- 버튼으로 수량을 조정할 수 있습니다.</li>
+                                            <li>
+                                                자주 사용하는 수량 단위(4-1번)을 설정하면 클릭 한 번에 입력할 수 있습니다. <br />
+                                                (예 : 10과 100을 순서대로 클릭 시 110주 입력)
+                                            </li>
+                                            <li>'C' 선택 시 주문수량이 공란으로 초기화됩니다.</li>
+                                            <li>연필 아이콘 선택 시 자주 사용하는 수량 단위를 변경할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">5</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">매수/매도 주문 접수</span>
+                                        <ul class="guide-desc">
+                                            <li>주문확인창(5-1번)에서 최종 주문 내역을 확인하면 매수/매도 주문이 접수됩니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">6</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">설정</span>
+                                        <ul class="guide-desc">
+                                            <li>주문 관련 세부 사항을 설정할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="tip-container mt-24">
+                            <h5>주식 주문 유형 정리</h5>
+                            <table class="hts-table">
+                                <colgroup>
+                                    <col style="width: 140px;">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th class="text-align-left">지정가</th>
+                                        <td>지정한 가격으로 주문</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-align-left">중간가</th>
+                                        <td>최우선 매수호가와 최우선 매도호가의 중간 가격</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-align-left">시장가</th>
+                                        <td>주문단가를 지정하지 않고 시장에서 형성되는 가격으로 자동 지정</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-align-left">스톱지정가</th>
+                                        <td>직전체결가(현재가)가 지정한 조건단가에 도달할 때 지정한 주문단가로 주문</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-align-left">종가</th>
+                                        <td>KRX의 당일 정규장 종가를 기준으로 15:30~16:00 사이 단일가 매매</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-align-left">장전 시간외</th>
+                                        <td>정규장 시작 전 시간외 거래 (08:30~08:40)</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-align-left">장후 시간외</th>
+                                        <td>정규장 종료 후 시간외 거래 (15:40~16:00)</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-align-left">시간외단일가</th>
+                                        <td>KRX의 당일 정규장 종가를 기준으로 15:30~16:00 사이 단일가 매매</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tip-container type-2 mt-24">
+                            <h5>참고해주세요!</h5>
+                            <p>
+                                상단종목조회 화면에서 거래소를 변경하면 시세 정보만 해당 거래소 기준으로 표시됩니다. <br />
+                                주문화면에서 선택한 거래소는 이에 따라 자동으로 바뀌지 않으며, 시세와는 별도로 작동합니다.
+                            </p>
+                            <div class="img-wrap mt-8">
+                                <img src="img_068_01_2.png" alt="" />
+                            </div>
+                        </div>
+                        <div class="tip-container type-2 mt-24">
+                            <h5>참고해주세요!</h5>
+                            <p>종목 옆에 시장경보가 표시되어 있다면 매매 전 특이사항을 꼭 확인해 주세요.</p>
+                            <p class="mt-8">
+                                ‘투자주의 ‘투자경고’, ‘투자위험’, ‘단기과열’ ‘VI(변동성 완화장치)’ 등과 같이 특이사항이 발생한 종목은 신용거래가 제한되거나 단일가 매매 방식으로만 매매할 수 있는 등, 거래에 제약이 발생할 수 있어요.
+                            </p>
+                            <div class="img-wrap mt-8">
+                                <img src="img_068_01_3.png" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">정정 주문</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_068_02.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">정정 주문 선택</span>
+                                        <ul class="guide-desc">
+                                            <li>
+                                                ‘종목 미체결', ‘전체 미체결’ 버튼(1-1번)으로 미체결 주문 목록(1-2번)에서 정정하려는 주문을 선택할 수 있습니다.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">정정가격 입력</span>
+                                        <ul class="guide-desc">
+                                            <li>가격을 직접 입력하거나, 양측 +/- 버튼으로 가격을 호가 단위로 조정할 수 있습니다.</li>
+                                            <li>(2-1번) '시장가' 선택 시 가격 입력 없이 주문 시점의 시장가로 정정 주문이 접수됩니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">정정수량 입력</span>
+                                        <ul class="guide-desc">
+                                            <li>일부만 정정하려는 경우 수량을 직접 입력할 수 있습니다.</li>
+                                            <li>(3-1번) '전량' 체크 시 선택한 주문수량 전체에 대한 정정 주문을 접수합니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">4</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">정정 주문 접수</span>
+                                        <ul class="guide-desc">
+                                            <li>주문확인창(4-1번)에서 최종 주문 내역을 확인하면 정정 주문이 접수됩니다.</li>
+                                            <li>
+                                                (4-2번) 스마트 정정 주문 : 당사가 정한 최선집행기준(SOR)에 따라 KRX와 NXT 중 한 곳으로 주문을 제출합니다.
+                                            </li>
+                                            <li>(4-3번) 정정(KRX) 주문 : KRX로 주문을 제출합니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">취소 주문</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_068_03.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">취소 주문 선택</span>
+                                        <ul class="guide-desc">
+                                            <li>
+                                                '종목 미체결', ‘전체 미체결’ 버튼(1-1번)으로 미체결 주문 목록(1-2번)에서 취소하려는 주문을 선택할 수 있습니다.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">취소수량 입력</span>
+                                        <ul class="guide-desc">
+                                            <li>일부만 취소하려는 경우 수량을 직접 입력할 수 있습니다.</li>
+                                            <li>(2-1번) '전량' 체크 시 선택한 주문수량 전체에 대한 주문을 취소합니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">주문 취소</span>
+                                        <ul class="guide-desc">
+                                            <li>주문확인창(3-1번)에서 최종 주문 내역을 확인하면 주문이 취소됩니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>내일의 거래, 오늘 준비하세요</p>
+                        <h3>
+                            <strong>02</strong>
+                            예약주문
+                        </h3>
+                    </div>
+                    <div class="blog-text">
+                        <p class="mb-32">
+                            일반주문 화면의 우상단 '예약' 선택 시, 원하는 요건으로 일정 시점 또는 기간에 매수/매도 주문이 자동으로 접수되는 예약주문을 설정할 수 있습니다.
+                        </p>
+                        <h4 class="blog-sec-tit">매수/매도 주문예약</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_068_04.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">예약주문 유형 선택</span>
+                                        <ul class="guide-desc">
+                                            <li>매수 / 매도 : 매수주문 또는 매도주문을 예약할 수 있습니다.</li>
+                                            <li>취소 : 아직 접수되지 않은 예약주문을 취소합니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">주문 요건 입력</span>
+                                        <ul class="guide-desc">
+                                            <li>현금/신용, 거래소, 주문유형, 가격, 수량 등 주문 요건을 입력합니다.</li>
+                                            <li>
+                                                (2-1번) '기간' 체크 시, 일정기간 예약주문에 필요한 주문구분(잔량주문, 지정수량반복)을 선택하고 예약주문이 실행되는 기간을 설정할 수 있습니다.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">매수/매도 주문 접수</span>
+                                        <ul class="guide-desc">
+                                            <li>선택 시 주문확인창(3-1번)을 거쳐 매수/매도 주문 접수가 완료됩니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="img-wrap mt-16">
+                            <img src="img_068_05.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">4</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">예약조회/취소</span>
+                                        <ul class="guide-desc">
+                                            <li>예약이 완료되면 예정된 주문내역을 확인할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">5</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">처리결과</span>
+                                        <ul class="guide-desc">
+                                            <li>예약한 주문이 실제로 접수되면 처리결과에서 주문내역과 체결 경과를 확인할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">예약주문 취소</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_068_06.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">예약내역 조회 및 선택</span>
+                                        <ul class="guide-desc">
+                                            <li>예약조회/취소 탭에서 취소하려는 예약주문을 선택합니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">예약내용 확인</span>
+                                        <ul class="guide-desc">
+                                            <li>취소하려는 예약주문을 확인합니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">예약주문 취소</span>
+                                        <ul class="guide-desc">
+                                            <li>선택 시 주문확인창에서 최종 주문 내역을 확인하면 예약주문 취소가 완료됩니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="tip-container mt-24">
+                            <h5>잔량주문 vs 지정수량 반복주문</h5>
+                            <ul>
+                                <li>
+                                    잔량주문은 당일 체결되지 않은 주문 수량이 모두 체결될 때까지 다음 영업일로 자동 이월하여 주문합니다. <br />
+                                    예를 들어 예약수량이 100주일 경우, 첫날 10주가 체결되면 다음 영업일에 미체결 수량인 90주가 자동 주문됩니다. 
+                                    이어서 90주 중 20주가 체결되면 그 다음 영업일에 70주가 자동 주문되며, 이러한 방법으로 예약 기간이 종료될 때까지 매일 잔여 수량이 반복 주문됩니다.
+                                </li>
+                                <li>
+                                    지정수량 반복주문은 일정 기간 동안 같은 수량을 매일 반복해서 주문합니다. <br />
+                                    예를 들어 예약수량이 100주일 경우, 예약 기간 동안 매 영업일에 100주씩 주문이 접수됩니다.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tip-container type-2 mt-24">
+                            <h5>참고해주세요!</h5>
+                            <ul>
+                                <li>예약주문 가능 시간 : 15:45 ~ 다음 영업일 08:00</li>
+                                <li>기간예약주문이 가능한 최종 주문일 : 최대 30일간 (캘린더 기준, 공휴일 포함)</li>
+                                <li>신용매수 예약주문인 경우, 신용구분에서 '신용'(유통융자), '대주상환' 중 선택할 수 있습니다.</li>
+                                <li>
+                                    주문 시점에 조건이 충족되지 않을 경우, 주문이 접수되지 않을 수 있습니다. <br />
+                                    실제 주문 처리 결과는 '예약주문 처리결과' 탭에서 확인해 주세요.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>클릭 하나로 빠르고 편리하게</p>
+                        <h3>
+                            <strong>03</strong>
+                            호가주문
+                        </h3>
+                    </div>
+                    <div class="blog-text">
+                        <p class="mb-32">주문수량 등을 미리 설정해두고, 호가창에서 클릭만으로 신속하게 매수/매도/정정/취소 주문을 접수할 수 있습니다.</p>
+                        <h4 class="blog-sec-tit">매수/매도 주문</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_068_07.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">주문수량/주문금액 사전 설정</span>
+                                        <ul class="guide-desc">
+                                            <li>
+                                                <div class="guide-content">
+                                                    <p class="tip-desc-tit">주문수량 : </p>
+                                                    <p>
+                                                        매 주문마다 접수되는 매도 주문수량 / 매수 주문수량을 입력할 수 있습니다. <br />
+                                                        예를 들어 매도 1주, 매수 3주로 설정해두면 매도 주문 시 1주, 매수 주문 시 3주로 접수됩니다.
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="guide-content">
+                                                    <p class="tip-desc-tit">주문금액 : </p>
+                                                    <p>
+                                                        '금액주문'(1-1번) 체크 시, 매 주문마다 접수되는 총 주문금액을 입력할 수 있습니다. <br />
+                                                        주문 시 총 주문금액과 현재가를 기준으로 주문 수량이 자동 계산됩니다.
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">매수/매도 클릭 주문</span>
+                                        <ul class="guide-desc">
+                                            <li>원하는 호가 측면의 '매수' 또는 '매도' 버튼(2-1번)을 선택하면 주문이 접수됩니다.</li>
+                                            <li>주문이 접수되면 주문 버튼에 해당 호가의 누적 미체결 수량과 주문건수가 (2-2번)과 같이 표시됩니다.</li>
+                                            <li>미체결 수량 선택 시 다른 호가로 정정하거나, 추가주문 또는 주문을 취소할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">시장가 매수/매도 주문</span>
+                                        <ul class="guide-desc">
+                                            <li>사전 입력한 주문수량을 기준으로 시장가에 즉시 주문을 접수합니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">4</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">일괄취소</span>
+                                        <ul class="guide-desc">
+                                            <li>모든 매수 주문 또는 모든 매도 주문을 한 번에 취소할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">5</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">설정</span>
+                                        <ul class="guide-desc">
+                                            <li>주문 관련 세부 사항을 설정할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="tip-container mt-24">
+                            <h5>더 빠르게 주문하는 방법</h5>
+                            <ul>
+                                <li>주문 설정에서 '주문확인창 띄우기' 체크를 해제하면 호가주문에서 매수, 매도, 시장가 매수/매도, 일괄취소 버튼 클릭 시 주문확인창 없이 주문이 즉시 실행됩니다.</li>
+                            </ul>
+                        </div>
+                        <div class="tip-container warning mt-24">
+                            <h5>주의하세요!</h5>
+                            <ul>
+                                <li>
+                                    '주문확인창 띄우기' 체크를 해제하면 확인 절차를 생략하기 때문에, <br />
+                                    되돌릴 수 없는 주문 실수가 발생할 수 있습니다. 이 점에 유의하여 신중히 설정해 주세요.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">정정 주문</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_068_08.png" alt="" />
+                        </div>
+                        <div class="example-container mt-16">
+                            <p class="ex-head">예를 들어 볼까요?</p>
+                            <h4 class="ex-title">매수주문가를 5,410원 에서 5,420원 으로 정정하는 경우</h4>
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">기존 미체결 주문 선택</span>
+                                        <ul class="guide-desc">
+                                            <li>
+                                                매수 주문 호가 영역(5,410원) 우측 매수 버튼 영역에 주문수량 '3'과 주문건수 '(1)'이 표시된 미체결 주문 버튼을 선택합니다.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">정정 호가 선택</span>
+                                        <ul class="guide-desc">
+                                            <li>
+                                                미체결 주문 버튼 선택 시 매수 버튼이 정정 버튼으로 변경되며, 이 중 정정하려는 호가(5,420원) 측면의 ‘정정‘ 버튼을 클릭합니다.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">정정 완료</span>
+                                        <ul class="guide-desc">
+                                            <li>
+                                                확인팝업창을 거쳐 정정 전 호가 영역(5,410원)의 주문 수량 표시는 사라지고, 정정 후 호가 영역(5,420원)에 주문 수량 '3'과 주문건수 '(1)'이 표시됩니다.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">추가 주문</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_068_09.png" alt="" />
+                        </div>
+                        <div class="example-container mt-16">
+                            <p class="ex-head">예를 들어 볼까요?</p>
+                            <h4 class="ex-title">호가 5,420원에 미체결 주문수량 3주가 있고, 동일 호가에 3주를 추가로 매수하는 경우</h4>
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">주문수량 사전 설정</span>
+                                        <ul class="guide-desc">
+                                            <li>
+                                                매주문마다 접수되는 매도 주문수량 / 매수 주문수량을 입력할 수 있습니다. <br />
+                                                예를 들어 매도 1주, 매수 3주로 설정해두면 매도 주문 시 1주, 매수 주문 시 3주로 접수됩니다.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">추가주문 호가 선택</span>
+                                        <ul class="guide-desc">
+                                            <li>미체결 주문이 존재하는 호가 영역 측면에는 매수/매도 주문 버튼에 '주문수량(주문건수)'가 표시됩니다.</li>
+                                            <li>동일 호가에서 추가로 주문하려는 경우, 호가 우측 미체결 주문 버튼을 선택합니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">추가주문</span>
+                                        <ul class="guide-desc">
+                                            <li>미체결 주문 버튼(2번) 클릭 시 표시되는 주문 팝업에서 '추가주문'을 선택합니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">4</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">추가주문 완료</span>
+                                        <ul class="guide-desc">
+                                            <li>
+                                                확인팝업창(4-1번)을 거쳐 호가 영역(5,420원) 우측 주문 버튼에 합계 주문 수량 '6'과 주문건수 '(2)'가 표시됩니다.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">취소 주문</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_068_10.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">기존 미체결 주문 선택</span>
+                                        <ul class="guide-desc">
+                                            <li>매수 주문 호가 영역(5,420원)  측면에 취소하려는 미체결 주문이 표시된 버튼을 선택합니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">취소주문</span>
+                                        <ul class="guide-desc">
+                                            <li>'취소주문' 버튼을 선택합니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">취소 완료</span>
+                                        <ul class="guide-desc">
+                                            <li>확인팝업창(3-1번)을 거쳐 취소 전 호가 영역(5,420원) 측면의 주문수량/주문건수 표시는 사라집니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="tip-container mt-24">
+                            <h5>여러 건의 주문을 한 번에 취소하려면?</h5>
+                            <ul>
+                                <li>빠르게 대응해야 하는 시장 상황에서 일괄적으로 주문을 취소하는 기능이 유용합니다.</li>
+                                <li>화면 하단 ‘일괄취소’ 버튼으로 모든 매수 주문 또는 모든 매도 주문을 한 번에 취소할 수 있습니다.</li>
+                            </ul>
+                        </div>
+                        <div class="tip-container type-2 mt-24">
+                            <h5>참고해주세요!</h5>
+                            <ul>
+                                <li>
+                                    동일 호가에 복수의 미체결 주문이 존재하는 경우, 주문건별로 개별 취소할 수 없고 일괄 취소만 할 수 있습니다.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>알아두면 주문이 더 편리해지는,</p>
+                        <h3>
+                            <strong>04</strong>
+                            기타 설정
+                        </h3>
+                    </div>
+                    <div class="blog-text">
+                        <h4 class="blog-sec-tit">주문 설정</h4>
+                        <p class="mt-8">주문화면 우상단 설정 아이콘에서 주문 시 편의를 위한 각종 설정을 할 수 있습니다.</p>
+                        <div class="img-wrap mt-16">
+                            <img src="img_068_11.png" alt="" />
+                        </div>
+                        <div class="mt-16">
+                            <strong>기본설정</strong>
+                            <div class="guide-list-container">
+                                <ol class="guide-list">
+                                    <li>
+                                        <span class="guide-num">1</span>
+                                        <div class="guide-content">
+                                            <span class="guide-title">주문확인창 띄우기</span>
+                                            <ul class="guide-desc">
+                                                <li>체크 시 착오주문 방지를 위해 주문 실행 전 확인창을 표시합니다.</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="mt-24">
+                            <strong>매수 설정/매도 설정</strong>
+                            <div class="guide-list-container">
+                                <ol class="guide-list">
+                                    <li>
+                                        <span class="guide-num">2</span>
+                                        <div class="guide-content">
+                                            <span class="guide-title">종목, 탭 변경시 (최대) 매수/매도 가능수량 표시</span>
+                                            <ul class="guide-desc">
+                                                <li>체크 시 종목이나 주문 탭을 변경할 때마다 주문가능수량이 주문수량에 자동으로 입력됩니다.</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="guide-num">3</span>
+                                        <div class="guide-content">
+                                            <span class="guide-title">주문 완료 후 매수/매도 가격 유지</span>
+                                            <ul class="guide-desc">
+                                                <li>체크 시 주문을 접수한 뒤에도 입력한 주문가격을 삭제하지 않고 유지합니다.</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="guide-num">4</span>
+                                        <div class="guide-content">
+                                            <span class="guide-title">주문 완료 후 매수/매도 수량 유지</span>
+                                            <ul class="guide-desc">
+                                                <li>체크 시 주문을 접수한 뒤에도 입력한 주문수량을 삭제하지 않고 유지합니다.</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">분할 영역 전체확대</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_068_12.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">영역 전체확대 / 화면축소</span>
+                                        <ul class="guide-desc">
+                                            <li>영역 우상단의 전체확대 / 화면축소 아이콘으로 특정 영역을 확대하거나 축소할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <p class="mt-60">
+                            지금까지 WTS의 주요 매매 화면과 기능을 살펴보았습니다. <br />
+                            직관적인 UI와 높은 접근성을 갖춘 투혼 WTS에서 누구나 쉽고 빠르게 주식을 거래할 수 있었으면 좋겠습니다. <br />
+                            감사합니다!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="img-wrap">
+                <img src="footer_slogan.png" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

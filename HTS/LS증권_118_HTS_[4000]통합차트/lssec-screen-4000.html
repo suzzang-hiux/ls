@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>[4000] 통합차트</title>
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+        @import url("https://cdn.jsdelivr.net/gh/leetaewook/gmarket-sans-dynamic-subset/GmarketSans.css");
+        
+        /* 기본 margin, padding 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            letter-spacing: -0.72px;
+        }
+        a {
+            color: #3f75ff;
+            text-underline-offset: 3px;
+        }
+        .color-primary {
+            color: #3f75ff !important;
+        }
+        .color-warning {
+            color: #e83c3e !important;
+        }
+        .color-black {
+            color: #000 !important;
+        }
+        img {
+            display: block;
+        }
+
+        .LS-blog-custom {
+            font-size: 0;
+            margin: 0;
+            padding: 0;
+            color: #111 !important;
+            font-family: "Pretendard" !important;
+        }
+        .LS-blog-custom .inner {
+            width: 880px;
+            margin: auto;
+            box-sizing: border-box;
+            line-height: 180%;
+            font-size: 18px !important;
+        }
+        .LS-blog-custom .inner .content-wrap {
+            padding: 40px 60px 60px;
+        }
+        .LS-blog-custom .inner .content-wrap .content-part {
+            margin-top: 60px;
+        }
+        .LS-blog-custom .inner .blog-title,
+        .LS-blog-custom .inner .blog-sub-tit {
+            line-height: 140%;
+            word-break: keep-all;
+            color: #2b2b2b;
+        }
+        .LS-blog-custom .inner .blog-sub-tit.type-2 {
+            font-family: "Gmarket Sans";
+        }
+        .LS-blog-custom .inner p {
+            padding: 0;
+            margin: 0;
+            line-height: 1.45;
+            color: #555555;
+        }
+
+        /* font-style */
+        .fw-bold {
+            font-weight: 800;
+        }
+        .fw-semiBold {
+            font-weight: 700;
+        }
+        .fw-meddium {
+            font-family: 400;
+        }
+        .fw-light {
+            font-weight: 100;
+        }
+        .text-align-center {
+            text-align: center !important;
+        }
+        .text-align-left {
+            text-align: left !important;
+        }
+        .text-align-right {
+            text-align: right !important;
+        }
+        .fz-12 {
+            font-size: 12px !important;
+        }
+        .fz-16 {
+            font-size: 16px !important;
+        }
+        .fz-18 {
+            font-size: 18px !important;
+        }
+        .fz-24 {
+            font-size: 24px !important;
+        }
+        .fz-28 {
+            font-size: 28px !important;
+        }
+        .fz-40 {
+            font-size: 40px !important;
+        }
+
+        /* margin-top */
+        .mt-0 {
+            margin-top: 0 !important;
+        }
+        .mt-5 {
+            margin-top: 5px !important;
+        }
+        .mt-6 {
+            margin-top: 6px !important;
+        }
+        .mt-7 {
+            margin-top: 7px !important;
+        }
+        .mt-8 {
+            margin-top: 8px !important;
+        }
+        .mt-9 {
+            margin-top: 9px !important;
+        }
+        .mt-10 {
+            margin-top: 10px !important;
+        }
+        .mt-11 {
+            margin-top: 11px !important;
+        }
+        .mt-12 {
+            margin-top: 12px !important;
+        }
+        .mt-13 {
+            margin-top: 13px !important;
+        }
+        .mt-14 {
+            margin-top: 14px !important;
+        }
+        .mt-15 {
+            margin-top: 15px !important;
+        }
+        .mt-16 {
+            margin-top: 16px !important;
+        }
+        .mt-17 {
+            margin-top: 17px !important;
+        }
+        .mt-18 {
+            margin-top: 18px !important;
+        }
+        .mt-19 {
+            margin-top: 19px !important;
+        }
+        .mt-20 {
+            margin-top: 20px !important;
+        }
+        .mt-21 {
+            margin-top: 21px !important;
+        }
+        .mt-22 {
+            margin-top: 22px !important;
+        }
+        .mt-23 {
+            margin-top: 23px !important;
+        }
+        .mt-24 {
+            margin-top: 24px !important;
+        }
+        .mt-25 {
+            margin-top: 25px !important;
+        }
+        .mt-26 {
+            margin-top: 26px !important;
+        }
+        .mt-27 {
+            margin-top: 27px !important;
+        }
+        .mt-28 {
+            margin-top: 28px !important;
+        }
+        .mt-29 {
+            margin-top: 29px !important;
+        }
+        .mt-30 {
+            margin-top: 30px !important;
+        }
+        .mt-31 {
+            margin-top: 31px !important;
+        }
+        .mt-32 {
+            margin-top: 32px !important;
+        }
+        .mt-33 {
+            margin-top: 33px !important;
+        }
+        .mt-34 {
+            margin-top: 34px !important;
+        }
+        .mt-35 {
+            margin-top: 35px !important;
+        }
+        .mt-36 {
+            margin-top: 36px !important;
+        }
+        .mt-37 {
+            margin-top: 37px !important;
+        }
+        .mt-38 {
+            margin-top: 38px !important;
+        }
+        .mt-39 {
+            margin-top: 39px !important;
+        }
+        .mt-40 {
+            margin-top: 40px !important;
+        }
+        .mt-60 {
+            margin-top: 60px !important;
+        }
+        .mt-120 {
+            margin-top: 120px !important;
+        }
+
+        /* margin-bottom */
+        .mb-0 {
+          margin-bottom: 0 !important;
+        }
+        .mb-5 {
+            margin-bottom: 5px !important;
+        }
+        .mb-6 {
+            margin-bottom: 6px !important;
+        }
+        .mb-7 {
+            margin-bottom: 7px !important;
+        }
+        .mb-8 {
+            margin-bottom: 8px !important;
+        }
+        .mb-9 {
+            margin-bottom: 9px !important;
+        }
+        .mb-10 {
+            margin-bottom: 10px !important;
+        }
+        .mb-11 {
+            margin-bottom: 11px !important;
+        }
+        .mb-12 {
+            margin-bottom: 12px !important;
+        }
+        .mb-13 {
+            margin-bottom: 13px !important;
+        }
+        .mb-14 {
+            margin-bottom: 14px !important;
+        }
+        .mb-15 {
+            margin-bottom: 15px !important;
+        }
+        .mb-16 {
+            margin-bottom: 16px !important;
+        }
+        .mb-17 {
+            margin-bottom: 17px !important;
+        }
+        .mb-18 {
+            margin-bottom: 18px !important;
+        }
+        .mb-19 {
+            margin-bottom: 19px !important;
+        }
+        .mb-20 {
+            margin-bottom: 20px !important;
+        }
+        .mb-21 {
+            margin-bottom: 21px !important;
+        }
+        .mb-22 {
+            margin-bottom: 22px !important;
+        }
+        .mb-23 {
+            margin-bottom: 23px !important;
+        }
+        .mb-24 {
+            margin-bottom: 24px !important;
+        }
+        .mb-25 {
+            margin-bottom: 25px !important;
+        }
+        .mb-26 {
+            margin-bottom: 26px !important;
+        }
+        .mb-27 {
+            margin-bottom: 27px !important;
+        }
+        .mb-28 {
+            margin-bottom: 28px !important;
+        }
+        .mb-29 {
+            margin-bottom: 29px !important;
+        }
+        .mb-30 {
+            margin-bottom: 30px !important;
+        }
+        .mb-31 {
+            margin-bottom: 31px !important;
+        }
+        .mb-32 {
+            margin-bottom: 32px !important;
+        }
+        .mb-33 {
+            margin-bottom: 33px !important;
+        }
+        .mb-34 {
+            margin-bottom: 34px !important;
+        }
+        .mb-35 {
+            margin-bottom: 35px !important;
+        }
+        .mb-36 {
+            margin-bottom: 36px !important;
+        }
+        .mb-37 {
+            margin-bottom: 37px !important;
+        }
+        .mb-38 {
+            margin-bottom: 38px !important;
+        }
+        .mb-39 {
+            margin-bottom: 39px !important;
+        }
+        .mb-40 {
+            margin-bottom: 40px !important;
+        }
+
+        /* padding-top */
+        .pt-5 {
+            padding-top: 5px !important;
+        }
+        .pt-6 {
+            padding-top: 6px !important;
+        }
+        .pt-7 {
+            padding-top: 7px !important;
+        }
+        .pt-8 {
+            padding-top: 8px !important;
+        }
+        .pt-9 {
+            padding-top: 9px !important;
+        }
+        .pt-10 {
+            padding-top: 10px !important;
+        }
+        .pt-11 {
+            padding-top: 11px !important;
+        }
+        .pt-12 {
+            padding-top: 12px !important;
+        }
+        .pt-13 {
+            padding-top: 13px !important;
+        }
+        .pt-14 {
+            padding-top: 14px !important;
+        }
+        .pt-15 {
+            padding-top: 15px !important;
+        }
+        .pt-16 {
+            padding-top: 16px !important;
+        }
+        .pt-17 {
+            padding-top: 17px !important;
+        }
+        .pt-18 {
+            padding-top: 18px !important;
+        }
+        .pt-19 {
+            padding-top: 19px !important;
+        }
+        .pt-20 {
+            padding-top: 20px !important;
+        }
+        .pt-21 {
+            padding-top: 21px !important;
+        }
+        .pt-22 {
+            padding-top: 22px !important;
+        }
+        .pt-23 {
+            padding-top: 23px !important;
+        }
+        .pt-24 {
+            padding-top: 24px !important;
+        }
+        .pt-25 {
+            padding-top: 25px !important;
+        }
+        .pt-26 {
+            padding-top: 26px !important;
+        }
+        .pt-27 {
+            padding-top: 27px !important;
+        }
+        .pt-28 {
+            padding-top: 28px !important;
+        }
+        .pt-29 {
+            padding-top: 29px !important;
+        }
+        .pt-30 {
+            padding-top: 30px !important;
+        }
+        .pt-31 {
+            padding-top: 31px !important;
+        }
+        .pt-32 {
+            padding-top: 32px !important;
+        }
+        .pt-33 {
+            padding-top: 33px !important;
+        }
+        .pt-34 {
+            padding-top: 34px !important;
+        }
+        .pt-35 {
+            padding-top: 35px !important;
+        }
+        .pt-36 {
+            padding-top: 36px !important;
+        }
+        .pt-37 {
+            padding-top: 37px !important;
+        }
+        .pt-38 {
+            padding-top: 38px !important;
+        }
+        .pt-39 {
+            padding-top: 39px !important;
+        }
+        .pt-40 {
+            padding-top: 40px !important;
+        }
+
+        /* padding-bottom */
+        .pb-5 {
+            padding-bottom: 5px !important;
+        }
+        .pb-6 {
+            padding-bottom: 6px !important;
+        }
+        .pb-7 {
+            padding-bottom: 7px !important;
+        }
+        .pb-8 {
+            padding-bottom: 8px !important;
+        }
+        .pb-9 {
+            padding-bottom: 9px !important;
+        }
+        .pb-10 {
+            padding-bottom: 10px !important;
+        }
+        .pb-11 {
+            padding-bottom: 11px !important;
+        }
+        .pb-12 {
+            padding-bottom: 12px !important;
+        }
+        .pb-13 {
+            padding-bottom: 13px !important;
+        }
+        .pb-14 {
+            padding-bottom: 14px !important;
+        }
+        .pb-15 {
+            padding-bottom: 15px !important;
+        }
+        .pb-16 {
+            padding-bottom: 16px !important;
+        }
+        .pb-17 {
+            padding-bottom: 17px !important;
+        }
+        .pb-18 {
+            padding-bottom: 18px !important;
+        }
+        .pb-19 {
+            padding-bottom: 19px !important;
+        }
+        .pb-20 {
+            padding-bottom: 20px !important;
+        }
+        .pb-21 {
+            padding-bottom: 21px !important;
+        }
+        .pb-22 {
+            padding-bottom: 22px !important;
+        }
+        .pb-23 {
+            padding-bottom: 23px !important;
+        }
+        .pb-24 {
+            padding-bottom: 24px !important;
+        }
+        .pb-25 {
+            padding-bottom: 25px !important;
+        }
+        .pb-26 {
+            padding-bottom: 26px !important;
+        }
+        .pb-27 {
+            padding-bottom: 27px !important;
+        }
+        .pb-28 {
+            padding-bottom: 28px !important;
+        }
+        .pb-29 {
+            padding-bottom: 29px !important;
+        }
+        .pb-30 {
+            padding-bottom: 30px !important;
+        }
+        .pb-31 {
+            padding-bottom: 31px !important;
+        }
+        .pb-32 {
+            padding-bottom: 32px !important;
+        }
+        .pb-33 {
+            padding-bottom: 33px !important;
+        }
+        .pb-34 {
+            padding-bottom: 34px !important;
+        }
+        .pb-35 {
+            padding-bottom: 35px !important;
+        }
+        .pb-36 {
+            padding-bottom: 36px !important;
+        }
+        .pb-37 {
+            padding-bottom: 37px !important;
+        }
+        .pb-38 {
+            padding-bottom: 38px !important;
+        }
+        .pb-39 {
+            padding-bottom: 39px !important;
+        }
+        .pb-40 {
+            padding-bottom: 40px !important;
+        }
+        .ml-32 {
+            margin-left: 32px !important;
+        }
+        .ml-24 {
+            margin-left: 24px !important;
+        }
+
+        .img-wrap {
+            margin: 0 auto;
+        }
+        .img-wrap.banner {
+            background-color: #4c5afa;
+        }
+        .img-wrap.banner img {
+            width: auto !important;
+            max-height: 160px;
+            margin: 0 auto;
+        }
+        .img-wrap img {
+            width: 100% !important;
+        }
+        .img-wrap.header {
+            position: relative;
+        }
+        .img-wrap.header img {
+            height: 303px;
+        }
+        .header .text-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            color: #fff;
+        }
+        .header .text-wrap img {
+            width: 80px !important;
+            height: 36px;
+            margin: 0 auto;
+        }
+        .header .text-wrap p {
+            margin-top: 16px;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #fff;
+        }
+        .header .text-wrap h2 {
+            margin-top: 12px;
+            font-family: "Gmarket Sans";
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 57px;
+        }
+        .header .text-wrap h2 strong {
+            color: #ffe8ae;
+        }
+        .img-wrap.sub {
+            padding: 26px 30px;
+            background: url("sub_tit(noTitle).png") center / cover no-repeat;
+            border-radius: 20px;
+            font-family: "Gmarket Sans";
+            color: #fff;
+        }
+        .img-wrap.sub p {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 28px;
+            color: #fff;
+        }
+        .img-wrap.sub h3 {
+            margin-top: 6px;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .img-wrap.sub h3 strong {
+            margin-right: 6px;
+            color: #ffc92c;
+            background-color: transparent;
+        }
+        .blog-sec-tit {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+        }
+        .blog-sec-tit::before {
+            content: "";
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: url("./icon_check.png") center / contain no-repeat;
+        }
+        .tip-container {
+            padding: 32px;
+            background-color: #fff2da;
+            border-radius: 20px;
+        }
+        .tip-container.warning {
+            background-color: #fee7ec;
+        }
+        .tip-container.warning h5 {
+            color: #d4002c;
+        }
+        .tip-container.warning h5::before {
+            background: url("./icon_warning.png") center / contain no-repeat;
+        }
+        .tip-container.case-1 h5 {
+            align-items: flex-start;
+        }
+        .tip-container h5 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: "Gmarket Sans";
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+            margin-bottom: 12px;
+        }
+        .tip-container h5::before {
+            content: "";
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: url("./icon_tip.png") center / contain no-repeat;
+        }
+        .tip-container ul li {
+            position: relative;
+            /* display: flex; */
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .tip-container ul li.no-dot {
+            margin-left: -9px;
+        }
+        .tip-container ul li.no-dot::before {
+            display: none;
+        }
+        .tip-container ul li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .tip-container ul li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .tip-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .tip-container ul li + li {
+            margin-top: 8px;
+        }
+        .tip-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .tip-container ul li .guide-content {
+            display: flex;
+        }
+        .tip-container .highlight {
+            background-color: #ffa60026;
+        }
+        .tip-container.type-2 {
+            background-color: #eef3ff;
+        }
+        .tip-container.type-2 h5::before {
+            background: url("./icon_pinset.png") center / contain no-repeat;
+        }
+        .tip-container.type-2 .tip-sub-tit {
+            margin-bottom: 8px;
+            font-weight: 700;
+            line-height: 26px;
+            color: #000;
+        }
+        .tip-container.type-2 ul {
+            margin-top: 8px;
+        }
+        .tip-container .tip-border {
+            margin: 32px 0;
+            width: 100%;
+            height: 1px;
+            background-color: #ebdbaf;
+        }
+        .tip-container .hts-table td {
+            background-color: #fff;
+        }
+        .blog-description {
+            padding: 16px 0;
+            padding-left: 32px;
+            border-left: 3px solid #a9a9a9;
+            color: #898989;
+            font-style: italic;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        .blog-description strong {
+            color: #111;
+            font-weight: 600;
+        }
+        .blog-text {
+            color: #555555;
+        }
+        .blog-text strong {
+            color: #000000;
+        }
+        .highlight {
+            display: inline-block;
+            font-weight: 700;
+            background-color: #fff2da;
+            color: #000;
+        }
+        .highlight.type-blue {
+            background-color: #daeaff;
+        }
+        .line-contents {
+            border: 1px solid #f0f0f0;
+            border-top: 4px #111 solid;
+            padding: 60px;
+            font-size: 18px;
+        }
+        .line-contents .title {
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 140%;
+        }
+        .line-contents .title strong {
+            color: #2467e8;
+        }
+        .line-contents .sub-tit {
+            font-size: 24px;
+            font-weight: 400;
+        }
+        .badge-wrap {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .badge-wrap .badge {
+            display: inline-block;
+            font-size: 20px;
+            line-height: 140%;
+            padding: 16px;
+            border-radius: 12px;
+            background-color: #f2f2f2;
+        }
+        .hts-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+        .table-tit {
+            margin-top: 16px;
+            margin-bottom: 4px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+        }
+        .hts-table:not(:has(thead)) th,
+        .hts-table:not(:has(thead)) td {
+            border-top: 1px solid #eeeeee;
+        }
+        .hts-table.has-bg td {
+            background-color: #fff;
+        }
+        .hts-table th,
+        .hts-table td {
+            border: 0;
+            color: #555;
+            word-break: keep-all;
+        }
+        .hts-table th {
+            padding: 13px 12px;
+            background: #f4f4f4;
+            font-weight: 500;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .hts-table td {
+            padding: 9px 12px;
+            border-bottom: 1px solid #eeeeee;
+            text-align: left;
+            line-height: 1.4;
+            letter-spacing: -1px;
+        }
+        .hts-table td:has(.has-num) {
+            padding: 9px 0;
+            text-align: center;
+        }
+        .hts-table td span {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: #3f75ff;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Gmarket Sans";
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+        }
+        .hts-table td span.has-num {
+          width: fit-content;
+          padding: 2px 9px 0 7px;
+          border-radius: 1000px;
+        }
+        .guide-list-container h6 {
+            margin-bottom: 8px;
+            font-size: 18px;
+            line-height: 26px;
+        }
+        .guide-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .guide-list > li {
+            display: flex;
+            align-items: flex-start;
+            margin: 16px 0 24px;
+        }
+        .guide-list > li:last-child {
+            margin-bottom: 0;
+        }
+        .guide-list .guide-num {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: #3f75ff;
+          margin-right: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Gmarket Sans";
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+          padding-top: 2px;
+          padding-right: 1px;
+        }
+        .guide-list .guide-num.has-num {
+            width: auto;
+            padding: 1px 9px 0 8px;
+            border-radius: 1000px;
+        }
+        .guide-list .guide-content {
+            flex: 1;
+        }
+        .guide-list p.tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .guide-list .guide-content:not(:has(.guide-title)) {
+            display: flex;
+        }
+        .guide-list .guide-title {
+            display: block;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 24px;
+            color: #222;
+        }
+        .guide-list.type-2 > li {
+            flex-wrap: wrap;
+            margin: 0;
+        }
+        .guide-list.type-2 > li + li {
+            margin-top: 8px;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) {
+            margin-top: 0;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) .guide-content {
+            margin-left: 30px;
+        }
+        .guide-list.type-2 > li .guide-title {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+        }
+        .guide-desc {
+            list-style: none;
+            margin: 0;
+            padding-left: 9px;
+            color: #555555;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+        .guide-desc li {
+            position: relative;
+            margin-top: 8px;
+            letter-spacing: -1px;
+        }
+        .guide-desc li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .guide-desc li .highlight {
+            display: inline-block;
+            background-color: #fff2da;
+            font-weight: 700;
+            line-height: 25px;
+            color: #000;
+        }
+        .guide-desc li::before {
+            content: "";
+            position: absolute;
+            top: 9px;
+            left: -9px;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #555555;
+            display: inline-block;
+        }
+        .guide-desc li.no-dot {
+            margin-left: -9px;
+        }
+        .guide-desc li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .guide-desc li.no-dot::before {
+            display: none;
+        }
+        .example-container {
+            position: relative;
+            margin-bottom: 24px;
+            padding: 32px;
+            padding-left: 96px;
+            border: 2px dashed #eee;
+            border-radius: 20px;
+        }
+        .example-container.case-1:before {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .example-container::before {
+            content: "";
+            position: absolute;
+            left: 32px;
+            top: 32px;
+            width: 48px;
+            height: 48px;
+            background: url(./icon_example.png) center / contain no-repeat;
+        }
+        .example-container .ex-head {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 22px;
+            color: #3f75ff !important;
+        }
+        .example-container .ex-head span {
+            position: relative;
+            transform: translateY(1px);
+            margin-right: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #3f75ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Gmarket Sans";
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+        }
+        .example-container .ex-head span.has-num {
+          width: auto;
+          padding: 2px 9px 0 8px;
+          border-radius: 1000px;
+        }
+        .example-container .ex-title {
+            margin-top: 2px;
+            line-height: 26px;
+            color: #000;
+        }
+        .example-container .ex-title .guide-content p {
+            color: #000;
+        }
+        .example-container ul {
+            margin-top: 8px;
+        }
+        .example-container ul li {
+            position: relative;
+            display: flex;
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .example-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .example-container ul li.no-dot {
+            padding-left: 0;
+        }
+        .example-container ul li.no-dot::before {
+            display: none;
+        }
+        .example-container ul li + li {
+            margin-top: 8px;
+        }
+        .example-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .example-container .ex-border {
+            margin: 32px 0 32px -64px;
+            border-top: 2px dashed #eee;
+        }
+        .guide-desc li .inner-desc {
+            margin-left: 52px;
+            list-style: none;
+        }
+        .guide-desc li .inner-desc li::before {
+            display: none;
+        }
+
+        .text-col {
+            display: flex;
+        }
+        .text-col .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="LS-blog-custom">
+        <div class="inner">
+            <div class="img-wrap header">
+                <img src="header(noTitle).png" alt="" />
+                <div class="text-wrap">
+                    <img src="brand_logo.png" alt="brand-logo" />
+                    <p>[4000] 통합차트</p>
+                    <h2>
+                        복잡한 시장 움직임과 숨겨진 흐름,<br /> 
+                        <strong>한눈에 읽는 인사이트</strong>
+                    </h2>
+                </div>
+            </div>
+            <div class="content-wrap">
+                <div class="blog-sub-tit type-2 fw-semiBold fz-24">
+                    급변하는 시장 속에서 변화를 신속하게 파악하고 대응합니다
+                </div>
+                <div class="blog-text">
+                    <p class="mt-16 fz-18">
+                        <strong class="highlight">[4000] 통합차트</strong> 화면은 시장의 변화를 한눈에 파악할 수 있도록 설계된 종합 분석 도구입니다. <br />
+                        가격, 거래량, 기술적 패턴 등 주식 투자의 핵심 정보들이 한 화면에서 유기적으로 연결해 제공되기 때문에 복잡한 시장 상황 속에서 숨겨진 흐름과 변화를 보다 직관적으로 이해할 수 있습니다.
+                    </p>
+                    <p class="mt-16 fz-18">
+                        또한 환경설정, 툴바 등 다양한 편의 기능을 통해 투자자가 원하는 분석 기준과 구성으로 화면을 최적화할 수 있으며, 직관적인 조작과 빠른 정보 연결을 통해 시장 변화에 즉각 대응할 수 있는 환경을 제공합니다.
+                    </p>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>시장의 흐름을 한눈에 정리해주는,</p>
+                        <h3>이 화면에서 분석이 완성되는 이유!</h3>
+                    </div>
+                    <table class="hts-table">
+                        <colgroup>
+                            <col style="width: 240px" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>특징</th>
+                                <th>이런 점이 좋아요 </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>다양한 차트 선택</td>
+                                <td>분석 목적에 맞는 차트로 시장 상황을 정밀하게 파악</td>
+                            </tr>
+                            <tr>
+                                <td>종목 간 비교분석 기능</td>
+                                <td>업종, 지수, 타 종목을 한 화면에서 효율적으로 비교</td>
+                            </tr>
+                            <tr>
+                                <td>주요 구간 시각화</td>
+                                <td>지지선, 저항, 거래량이 집중되는 지표를 시각 자료로 직관적으로 확인</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>시장 전반을 한 시선에 담아내는,</p>
+                        <h3>
+                            <strong>01</strong>
+                            기본 화면 구성
+                        </h3>
+                    </div> 
+                    <div class="blog-text">
+                        <p>LS증권 <strong class="highlight">[4000] 통합차트</strong>는 주식, 업종, 선물·옵션 등 다양한 상품을 대상으로 여러 유형의 차트와 지표를 시각화하고, 추세선 등 분석 도구를 활용해 직접 도형을 그리며 해석할 수 있는 화면입니다.</p>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_01.png" alt="" />
+                        </div>
+                        <table class="hts-table mt-16">
+                            <colgroup>
+                                <col style="width: 48px">
+                                <col style="width: 190px">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>영역</th>
+                                    <th>주요기능</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span>A</span></td>
+                                    <td>화면 구성 / 차트 설정</td>
+                                    <td>좌측 메뉴, 시세 표시 여부와 종목 선택 시 차트 조회 내용을 설정할 수 있습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td><span>B</span></td>
+                                    <td>종목 선택 / 표시범위 설정</td>
+                                    <td>종목을 검색 및 선택하고, 조회 주기와 범위 등을 설정할 수 있습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td><span>C</span></td>
+                                    <td>동기화 / 시세</td>
+                                    <td>종목 선택 시 각 창의 동기화 범위를 설정하고, 선택 종목의 시세 정보를 표시합니다.</td>
+                                </tr>
+                                <tr>
+                                    <td><span>D</span></td>
+                                    <td>기타 설정</td>
+                                    <td>환경설정, 지표, 하단바 등 차트 기능 및 표시 방법의 상세 항목을 설정할 수 있습니다.</td>
+                                </tr>
+                                <tr>
+                                    <td><span>E</span></td>
+                                    <td>툴바</td>
+                                    <td>차트에 분석을 위한 도형을 그리거나 수치를 표시하고 관리할 수 있습니다.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>우선은 종목 카테고리 선정부터,</p>
+                        <h3>
+                            <strong>02</strong>
+                            화면 구성 / 차트 설정 (A영역) 
+                        </h3>
+                    </div> 
+                    <div class="blog-text">
+                        <div class="img-wrap">
+                            <img src="img_4000_02.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">메뉴 표시 전환</span>
+                                        <ul class="guide-desc">
+                                            <li>화면 좌측 메뉴(1-1번)의 표시 여부를 전환할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">시세 표시 전환</span>
+                                        <ul class="guide-desc">
+                                            <li>화면 상단의 동기화 항목, 종목 시세, 화면 분할(2-1번)의 표시 여부를 전환할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">종목 종류 선택</span>
+                                        <ul class="guide-desc">
+                                            <li>주식, 업종, 선물, 옵션, ELW, 주식선물, 상품 선택 시 해당 종목을 조회할 수 있는 검색 화면이 설정됩니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">4</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">종목검색창에서 종목 선택 시 동작</span>
+                                        <ul class="guide-desc">
+                                            <li>추가 : 선택한 종목의 차트가 새로운 영역으로 추가됩니다.</li>
+                                            <li>변경 : 현재 조회중인 차트 영역을 선택한 종목으로 교체합니다.</li>
+                                            <li>비교 : 하나의 차트 영역에서 선택한 여러 종목을 겹친 선 차트로 함께 확인할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>편의에 따라 조회 주기를 조절하는,</p>
+                        <h3>
+                            <strong>03</strong>
+                            종목 선택 / 표시범위 설정 (B영역)
+                        </h3>
+                    </div> 
+                    <div class="blog-text">
+                        <h4 class="blog-sec-tit">종목 조회</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_03.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">종목 검색</span>
+                                        <ul class="guide-desc">
+                                            <li>화면 좌측 메뉴(1-1번)의 표시 여부를 전환할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">관심종목 관리</span>
+                                        <ul class="guide-desc">
+                                            <li>주식 및 ELW의 경우, 조회중인 종목을 관심종목으로 등록할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">거래소 선택</span>
+                                        <ul class="guide-desc">
+                                            <li>주식의 경우, 통합시세(KRX+NXT) / KRX / NXT 중 시세 조회 기준이 되는 거래소를 선택할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">4</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">기업분석</span>
+                                        <ul class="guide-desc">
+                                            <li>주식의 경우, <strong class="highlight">[3301] 상장기업분석</strong> 화면에서 FN가이드가 제공하는 상세한 종목분석 정보를 확인할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">5</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">선물 / 옵션 및 콜옵션 / 풋옵션 전환</span>
+                                        <ul class="guide-desc">
+                                            <li>F 또는 O 클릭 시동일 만기일의 선물(F)과 옵션(O) 종목을 전환할 수 있습니다.</li>
+                                            <li>옵션의 경우, C 또는 P 클릭 시동일 종목의 콜옵션(C)과 풋옵션(P) 종목을 전환할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">6</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">연결선물 보기</span>
+                                        <ul class="guide-desc">
+                                            <li>
+                                                선물 또는 상품선물의 경우, 현재 월물 기준으로만 차트를 조회하면 해당 월물의 과거 시점 거래량은 매우 적어차트의 흐름이 단절되어 보일 수 있습니다. <br />
+                                                이 때 ‘연결’ 선택 시, 직전 월물과 현재 월물의 거래량이 순차적으로 연결 표시되어, 선물 시장의 전체적인 계약수 및 규모의 연속적 추세를 보다 자연스럽게 파악할 수 있습니다.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">표시범위 설정</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_04.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">차트표시 주기 선택</span>
+                                        <ul class="guide-desc">
+                                            <li>차트를 표시하는 간격의 기준을 선택할 수 있습니다.</li>
+                                            <li>일 : 일봉 / 주 : 주봉 / 월 : 월봉 / 년 : 연봉, 30s : 30초봉 / 틱: 설정한 틱 기준</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">틱 주기 선택 및 설정</span>
+                                        <ul class="guide-desc">
+                                            <li>차트를 표시하는 틱 간격을 주기 버튼(2-1번)을 클릭하여선택할 수 있습니다.</li>
+                                            <li>틱 주기를 (2-2번)에 직접 입력하여 설정할 수 있습니다.</li>
+                                            <li>1~120까지 표기된 틱 주기 버튼(2-1번)은 차트 분/틱 주기설정(2-3번)을 클릭하여 팝업에서 변경할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">차트 표시구간 설정</span>
+                                        <ul class="guide-desc">
+                                            <li>
+                                                '화면에 표시된 차트 범위 / 조회한 데이터 범위'를 입력하여 화면에 표시되는 차트 구간과 지표 계산에 필요한 데이터 범위를 설정할 수 있습니다. <br />
+                                                (예를 들어 120 / 600의 경우, 600개의 데이터 중 120개가 차트에 표시되고 있음을 의미합니다.)
+                                            </li>
+                                            <li>연속조회(3-1번) 클릭 시, 과거의 차트 구간을 연속으로 조회할 수 있습니다.</li>
+                                            <li>분, 30s,틱 선택 시에만 표시되는 '당일'(3-2번) 체크 시, 당일에 해당하는 데이터만 차트에 표시됩니다.</li>
+                                            <li>일, 주, 월 선택 시에만 표시되는 날짜 설정 시, 과거 날짜부터 설정한 날짜까지의 데이터가 차트에 표시됩니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">4</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">차트 설정 관리</span>
+                                        <ul class="guide-desc">
+                                            <li>현재 차트에 적용된 설정을 등록하거나 불러오고, 관리할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="tip-container mt-24">
+                            <h5>차트에서 보이는 틱(Tick) 단위란?</h5>
+                            <ul>
+                                <li>
+                                    틱(Tick)은 호가의 최소 변동 폭 단위이며, 1틱당1호가의 체결건수를 의미합니다. <br />
+                                    설정하는 틱 수만큼 체결건수가 발생할 때마다 캔들이 하나씩 생성됩니다. <br />
+                                    예를 들어 주기를 '5틱'으로 설정하면 체결건수 5회마다 캔들이 하나씩 생성되며, '30틱'으로 설정하면 체결건수 30회마다 캔들이 하나씩 생성됩니다.
+                                </li>
+                                <li>틱은 시간 흐름이나 거래량이 아니라 체결건수 기준으로 캔들이 생성되는 점 기억해 주세요.</li>
+                            </ul>
+                        </div>
+                        <div class="tip-container type-2 mt-24">
+                            <h5>참고해주세요!</h5>
+                            <ul>
+                                <li>
+                                    차트 표시구간에서 전체 데이터 수를 적게 입력하면 일부 지표가 계산 요건을 충족하지 못해 표시되지 않을 수 있습니다. <br />
+                                    예) 전체 데이터를 50 미만으로 입력 시, 60일 / 120일 가격이동평균 지표가 화면에 표시되지 않습니다.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>분할영역을 나누거나 합쳐 관리하는,</p>
+                        <h3>
+                            <strong>04</strong>
+                            동기화 / 시세 (C영역)
+                        </h3>
+                    </div> 
+                    <div class="blog-text">
+                        <h4 class="blog-sec-tit">동기화 설정 기능</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_05.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">동기화 범위 설정</span>
+                                        <ul class="guide-desc">
+                                            <li>조회중인 차트 영역의 종목, 주기, 구성, 추세선 정보를체크된 다른 차트에 동일하게 반영합니다.</li>
+                                            <li>화면 상단 '전체' 선택 시 모든 차트가 체크되며, '개별' 선택 시 모든 차트의 체크가 해제되며 원하는 차트만 체크할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">종목 동기화</span>
+                                        <ul class="guide-desc">
+                                            <li>검색창에서 종목을 선택하면, 체크된 차트의 종목을 해당 종목으로 일괄 변경합니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">주기 동기화</span>
+                                        <ul class="guide-desc">
+                                            <li>조회중인 차트에 적용된 주기(일·주·월·분봉 등)을 체크된 차트에 동일한 주기 기준으로 변경합니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">4</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">구성 동기화</span>
+                                        <ul class="guide-desc">
+                                            <li>조회중인 차트의 유형(캔들·라인 등)과 지표 설정을 체크된 차트에 동일하게 반영합니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">5</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">추세선 동기화</span>
+                                        <ul class="guide-desc">
+                                            <li>동일 종목일 때만 적용되며, 선택된 차트에 적용된 추세선을 체크된 차트에도 동일하게 적용해 표시합니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">시세</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_06.png" alt="" />
+                        </div>
+                        <h5 class="color-black mt-16 fz-18">차트표시 주기 선택</h5>
+                        <div class="guide-list-container mt-8">
+                            <ol class="guide-list type-2">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <p><b>현재가 : </b>해당 시점의 실시간 주가를 표시합니다.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <p><b>대비 : </b>전일 종가와 비교했을 때 상승 또는 하락한 가격 차이입니다.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <p><b>등락률 : </b>전일 종가 대비 현재가의 변동폭을 백분율(%)로 표시합니다.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">4</span>
+                                    <div class="guide-content">
+                                        <p><b>거래량 : </b>당일 누적된 주식 체결 수량입니다.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">5</span>
+                                    <div class="guide-content">
+                                        <p><b>전일 동시간 거래량 대비율 : </b>전일 같은 시간까지 누적된 거래량과 비교한 비율(%)로, 높을수록 거래가 활발하다는 것을 의미합니다.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">6</span>
+                                    <div class="guide-content">
+                                        <p><b>회전율 : </b>상장 주식 수 대비 당일 거래량의 비율(%)입니다.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">7</span>
+                                    <div class="guide-content">
+                                        <p><b>시가 / 고가 / 저가 : </b>당일 장 시작 가격, 거래일 중 가장 높은 가격, 가장 낮은 가격을 표시합니다.</p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <h5 class="color-black mt-24 fz-18">선물 · 옵션 시세</h5>
+                        <div class="guide-list-container mt-8">
+                            <ol class="guide-list type-2">
+                                <li>
+                                    <span class="guide-num">8</span>
+                                    <div class="guide-content">
+                                        <p><b>미결제약정 : </b>아직 청산되지 않고 남아 있는 계약 수량을 표시합니다.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">9</span>
+                                    <div class="guide-content">
+                                        <p><b>미결제약정 증감 : </b>전일 대비 미결제약정의 증가하거나 감소한 수량을 표시합니다.</p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">분할화면 설정</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_07.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">멀티 프레임 선택</span>
+                                        <ul class="guide-desc">
+                                            <li>1개부터 최대 12개까지 차트를 동시에 배치할 수 있으며, (1-1번)과 같이 다양한 형태의 분할 레이아웃 중 원하는 구성을 선택할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">프레임 개별 추가</span>
+                                        <ul class="guide-desc">
+                                            <li>필요할 때 차트 영역을 하나씩 추가해 사용자에게 맞는 화면 구성을 만들 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>화면 세부사항을 다루는,</p>
+                        <h3>
+                            <strong>05</strong>
+                            기타 설정 (D영역)
+                        </h3>
+                    </div> 
+                    <div class="blog-text">
+                        <p>'설정' 버튼을 클릭하여 환경설정, 지표설정, 하단바설정 등의 메뉴에서 나에게 맞는 차트 환경을 조성할 수 있습니다.</p>
+                        <h4 class="blog-sec-tit mt-16">차트배경설정 - 공통</h4>
+                        <p class="mt-8">차트에 표시되는 봉, 배경색, 글씨 등의 형태를 설정할 수 있습니다.</p>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_08.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">차트배경설정 - X축/Y축</h4>
+                        <p class="mt-8">차트에 표시되는 X축과 Y축의 형태를 설정할 수 있습니다.</p>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_09.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">화면표시설정 - 가격</h4>
+                        <p class="mt-8">차트에 표시되는 가격의 내용과 형태를 설정할 수 있습니다.</p>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_10.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">화면표시설정 - 차트영역</h4>
+                        <p class="mt-8">차트 영역 간 표시 형태와 가격, 시간 설정할 수 있습니다.</p>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_11.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">마우스/기타설정</h4>
+                        <p class="mt-8">차트에서 사용하는 마우스조작 방법, 하단 툴바, 차트데이터 저장/불러오기 등을 설정할 수 있습니다.</p>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_12.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">차트유형</h4>
+                        <p class="mt-8">캔들차트, 종가선차트, 미국식바차트 등 차트의 유형별 표시 형태를 설정할 수 있습니다.</p>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_13.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">지표설정</h4>
+                        <p class="mt-8">차트에 표시되는 각 지표의 수치, 색상등 형태를 설정할 수 있습니다.</p>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_14.png" alt="" /> 
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">하단바 설정</h4>
+                        <p class="mt-8">화면 하단에 표시되는 아이콘 형태의 기능을 추가 · 삭제하거나, 좌우 스크롤 바 조작 시 이동 범위를 조절할 수 있습니다.</p>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_15.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">기준선 설정</h4> 
+                        <p class="mt-8">차트에 표시되는 기준선의 색상과 형태를 설정할 수 있습니다.</p>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_16.png" alt="" /> 
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">매매내역 표시 설정</h4>
+                        <p class="mt-8">
+                            지정한 계좌의 매매내역 및 평균매매단가를 차트에 표시할 수 있습니다. <br />
+                            매매내역 표기 시 매수 시점은 B, 매도 시점은 S 등으로 표기됩니다.
+                        </p>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_17.png" alt="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>차트 분석도 자유자재로,</p>
+                        <h3>
+                            <strong>06</strong>
+                            툴바(E영역)
+                        </h3>
+                    </div> 
+                    <div class="blog-text">
+                        <p>차트 분석에 필요한 도구를 사용하거나 도구를 사용해 분석한 내용을 저장하고 관리할 수 있습니다.</p>
+                        <h4 class="blog-sec-tit mt-16">추세선 / 가격 · 구간 비교 도구</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_18.png" alt="" /> 
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">피보나치 분석 / 간(Gann) 분석 도구</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_19.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">도형 그리기 / 추세 심화 분석 도구</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_20.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">기타 추세분석 및 그리기 도구 </h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_21.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">가격 · 구간 비교 도구</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_22.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">기타 도구</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_4000_23.png" alt="" />
+                        </div>
+                        <p class="mt-60">
+                            지금까지 LS증권 투혼 HTS <strong class="highlight">[4000] 통합차트</strong>의 다양한 기능을 살펴보았습니다. <br />
+                            가격과 흐름, 패턴과 지표가 만나는 지점에서 전략의 방향성이 결정됩니다. <br />
+                            통합차트는 그 연결점을 선명한 형태로 보여주는 도구로, 다음 분석을 향해 차트를 활용해보세요. <br />
+                            감사합니다!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="img-wrap"> 
+                <img src="footer_slogan.png" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

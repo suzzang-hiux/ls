@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>주식잔고</title>
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+        @import url("https://cdn.jsdelivr.net/gh/leetaewook/gmarket-sans-dynamic-subset/GmarketSans.css");
+        
+        /* 기본 margin, padding 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            letter-spacing: -0.72px;
+        }
+        a {
+            color: #3f75ff;
+            text-underline-offset: 3px;
+        }
+        .color-primary {
+            color: #3f75ff !important;
+        }
+        .color-warning {
+            color: #e83c3e !important;
+        }
+        .color-black {
+          color: #000 !important;
+        }
+        img {
+            display: block;
+        }
+
+        .LS-blog-custom {
+            font-size: 0;
+            margin: 0;
+            padding: 0;
+            color: #111 !important;
+            font-family: "Pretendard" !important;
+        }
+        .LS-blog-custom .inner {
+            width: 880px;
+            margin: auto;
+            box-sizing: border-box;
+            line-height: 180%;
+            font-size: 18px !important;
+        }
+        .LS-blog-custom .inner .content-wrap {
+            padding: 40px 60px 60px;
+        }
+        .LS-blog-custom .inner .content-wrap .content-part {
+            margin-top: 60px;
+        }
+        .LS-blog-custom .inner .blog-title,
+        .LS-blog-custom .inner .blog-sub-tit {
+            line-height: 140%;
+            word-break: keep-all;
+            color: #2b2b2b;
+        }
+        .LS-blog-custom .inner .blog-sub-tit.type-2 {
+            font-family: "Gmarket Sans";
+        }
+        .LS-blog-custom .inner p {
+            padding: 0;
+            margin: 0;
+            line-height: 1.45;
+            color: #555555;
+        }
+
+        /* font-style */
+        .fw-bold {
+            font-weight: 800;
+        }
+        .fw-semiBold {
+            font-weight: 700;
+        }
+        .fw-meddium {
+            font-family: 400;
+        }
+        .fw-light {
+            font-weight: 100;
+        }
+        .text-align-center {
+            text-align: center !important;
+        }
+        .text-align-left {
+            text-align: left !important;
+        }
+        .text-align-right {
+            text-align: right !important;
+        }
+        .fz-12 {
+            font-size: 12px !important;
+        }
+        .fz-16 {
+            font-size: 16px !important;
+        }
+        .fz-18 {
+            font-size: 18px !important;
+        }
+        .fz-24 {
+            font-size: 24px !important;
+        }
+        .fz-28 {
+            font-size: 28px !important;
+        }
+        .fz-40 {
+            font-size: 40px !important;
+        }
+
+        /* margin-top */
+        .mt-0 {
+            margin-top: 0 !important;
+        }
+        .mt-5 {
+            margin-top: 5px !important;
+        }
+        .mt-6 {
+            margin-top: 6px !important;
+        }
+        .mt-7 {
+            margin-top: 7px !important;
+        }
+        .mt-8 {
+            margin-top: 8px !important;
+        }
+        .mt-9 {
+            margin-top: 9px !important;
+        }
+        .mt-10 {
+            margin-top: 10px !important;
+        }
+        .mt-11 {
+            margin-top: 11px !important;
+        }
+        .mt-12 {
+            margin-top: 12px !important;
+        }
+        .mt-13 {
+            margin-top: 13px !important;
+        }
+        .mt-14 {
+            margin-top: 14px !important;
+        }
+        .mt-15 {
+            margin-top: 15px !important;
+        }
+        .mt-16 {
+            margin-top: 16px !important;
+        }
+        .mt-17 {
+            margin-top: 17px !important;
+        }
+        .mt-18 {
+            margin-top: 18px !important;
+        }
+        .mt-19 {
+            margin-top: 19px !important;
+        }
+        .mt-20 {
+            margin-top: 20px !important;
+        }
+        .mt-21 {
+            margin-top: 21px !important;
+        }
+        .mt-22 {
+            margin-top: 22px !important;
+        }
+        .mt-23 {
+            margin-top: 23px !important;
+        }
+        .mt-24 {
+            margin-top: 24px !important;
+        }
+        .mt-25 {
+            margin-top: 25px !important;
+        }
+        .mt-26 {
+            margin-top: 26px !important;
+        }
+        .mt-27 {
+            margin-top: 27px !important;
+        }
+        .mt-28 {
+            margin-top: 28px !important;
+        }
+        .mt-29 {
+            margin-top: 29px !important;
+        }
+        .mt-30 {
+            margin-top: 30px !important;
+        }
+        .mt-31 {
+            margin-top: 31px !important;
+        }
+        .mt-32 {
+            margin-top: 32px !important;
+        }
+        .mt-33 {
+            margin-top: 33px !important;
+        }
+        .mt-34 {
+            margin-top: 34px !important;
+        }
+        .mt-35 {
+            margin-top: 35px !important;
+        }
+        .mt-36 {
+            margin-top: 36px !important;
+        }
+        .mt-37 {
+            margin-top: 37px !important;
+        }
+        .mt-38 {
+            margin-top: 38px !important;
+        }
+        .mt-39 {
+            margin-top: 39px !important;
+        }
+        .mt-40 {
+            margin-top: 40px !important;
+        }
+        .mt-60 {
+            margin-top: 60px !important;
+        }
+        .mt-120 {
+            margin-top: 120px !important;
+        }
+
+        /* margin-bottom */
+        .mb-0 {
+          margin-bottom: 0 !important;
+        }
+        .mb-5 {
+            margin-bottom: 5px !important;
+        }
+        .mb-6 {
+            margin-bottom: 6px !important;
+        }
+        .mb-7 {
+            margin-bottom: 7px !important;
+        }
+        .mb-8 {
+            margin-bottom: 8px !important;
+        }
+        .mb-9 {
+            margin-bottom: 9px !important;
+        }
+        .mb-10 {
+            margin-bottom: 10px !important;
+        }
+        .mb-11 {
+            margin-bottom: 11px !important;
+        }
+        .mb-12 {
+            margin-bottom: 12px !important;
+        }
+        .mb-13 {
+            margin-bottom: 13px !important;
+        }
+        .mb-14 {
+            margin-bottom: 14px !important;
+        }
+        .mb-15 {
+            margin-bottom: 15px !important;
+        }
+        .mb-16 {
+            margin-bottom: 16px !important;
+        }
+        .mb-17 {
+            margin-bottom: 17px !important;
+        }
+        .mb-18 {
+            margin-bottom: 18px !important;
+        }
+        .mb-19 {
+            margin-bottom: 19px !important;
+        }
+        .mb-20 {
+            margin-bottom: 20px !important;
+        }
+        .mb-21 {
+            margin-bottom: 21px !important;
+        }
+        .mb-22 {
+            margin-bottom: 22px !important;
+        }
+        .mb-23 {
+            margin-bottom: 23px !important;
+        }
+        .mb-24 {
+            margin-bottom: 24px !important;
+        }
+        .mb-25 {
+            margin-bottom: 25px !important;
+        }
+        .mb-26 {
+            margin-bottom: 26px !important;
+        }
+        .mb-27 {
+            margin-bottom: 27px !important;
+        }
+        .mb-28 {
+            margin-bottom: 28px !important;
+        }
+        .mb-29 {
+            margin-bottom: 29px !important;
+        }
+        .mb-30 {
+            margin-bottom: 30px !important;
+        }
+        .mb-31 {
+            margin-bottom: 31px !important;
+        }
+        .mb-32 {
+            margin-bottom: 32px !important;
+        }
+        .mb-33 {
+            margin-bottom: 33px !important;
+        }
+        .mb-34 {
+            margin-bottom: 34px !important;
+        }
+        .mb-35 {
+            margin-bottom: 35px !important;
+        }
+        .mb-36 {
+            margin-bottom: 36px !important;
+        }
+        .mb-37 {
+            margin-bottom: 37px !important;
+        }
+        .mb-38 {
+            margin-bottom: 38px !important;
+        }
+        .mb-39 {
+            margin-bottom: 39px !important;
+        }
+        .mb-40 {
+            margin-bottom: 40px !important;
+        }
+
+        /* padding-top */
+        .pt-5 {
+            padding-top: 5px !important;
+        }
+        .pt-6 {
+            padding-top: 6px !important;
+        }
+        .pt-7 {
+            padding-top: 7px !important;
+        }
+        .pt-8 {
+            padding-top: 8px !important;
+        }
+        .pt-9 {
+            padding-top: 9px !important;
+        }
+        .pt-10 {
+            padding-top: 10px !important;
+        }
+        .pt-11 {
+            padding-top: 11px !important;
+        }
+        .pt-12 {
+            padding-top: 12px !important;
+        }
+        .pt-13 {
+            padding-top: 13px !important;
+        }
+        .pt-14 {
+            padding-top: 14px !important;
+        }
+        .pt-15 {
+            padding-top: 15px !important;
+        }
+        .pt-16 {
+            padding-top: 16px !important;
+        }
+        .pt-17 {
+            padding-top: 17px !important;
+        }
+        .pt-18 {
+            padding-top: 18px !important;
+        }
+        .pt-19 {
+            padding-top: 19px !important;
+        }
+        .pt-20 {
+            padding-top: 20px !important;
+        }
+        .pt-21 {
+            padding-top: 21px !important;
+        }
+        .pt-22 {
+            padding-top: 22px !important;
+        }
+        .pt-23 {
+            padding-top: 23px !important;
+        }
+        .pt-24 {
+            padding-top: 24px !important;
+        }
+        .pt-25 {
+            padding-top: 25px !important;
+        }
+        .pt-26 {
+            padding-top: 26px !important;
+        }
+        .pt-27 {
+            padding-top: 27px !important;
+        }
+        .pt-28 {
+            padding-top: 28px !important;
+        }
+        .pt-29 {
+            padding-top: 29px !important;
+        }
+        .pt-30 {
+            padding-top: 30px !important;
+        }
+        .pt-31 {
+            padding-top: 31px !important;
+        }
+        .pt-32 {
+            padding-top: 32px !important;
+        }
+        .pt-33 {
+            padding-top: 33px !important;
+        }
+        .pt-34 {
+            padding-top: 34px !important;
+        }
+        .pt-35 {
+            padding-top: 35px !important;
+        }
+        .pt-36 {
+            padding-top: 36px !important;
+        }
+        .pt-37 {
+            padding-top: 37px !important;
+        }
+        .pt-38 {
+            padding-top: 38px !important;
+        }
+        .pt-39 {
+            padding-top: 39px !important;
+        }
+        .pt-40 {
+            padding-top: 40px !important;
+        }
+
+        /* padding-bottom */
+        .pb-5 {
+            padding-bottom: 5px !important;
+        }
+        .pb-6 {
+            padding-bottom: 6px !important;
+        }
+        .pb-7 {
+            padding-bottom: 7px !important;
+        }
+        .pb-8 {
+            padding-bottom: 8px !important;
+        }
+        .pb-9 {
+            padding-bottom: 9px !important;
+        }
+        .pb-10 {
+            padding-bottom: 10px !important;
+        }
+        .pb-11 {
+            padding-bottom: 11px !important;
+        }
+        .pb-12 {
+            padding-bottom: 12px !important;
+        }
+        .pb-13 {
+            padding-bottom: 13px !important;
+        }
+        .pb-14 {
+            padding-bottom: 14px !important;
+        }
+        .pb-15 {
+            padding-bottom: 15px !important;
+        }
+        .pb-16 {
+            padding-bottom: 16px !important;
+        }
+        .pb-17 {
+            padding-bottom: 17px !important;
+        }
+        .pb-18 {
+            padding-bottom: 18px !important;
+        }
+        .pb-19 {
+            padding-bottom: 19px !important;
+        }
+        .pb-20 {
+            padding-bottom: 20px !important;
+        }
+        .pb-21 {
+            padding-bottom: 21px !important;
+        }
+        .pb-22 {
+            padding-bottom: 22px !important;
+        }
+        .pb-23 {
+            padding-bottom: 23px !important;
+        }
+        .pb-24 {
+            padding-bottom: 24px !important;
+        }
+        .pb-25 {
+            padding-bottom: 25px !important;
+        }
+        .pb-26 {
+            padding-bottom: 26px !important;
+        }
+        .pb-27 {
+            padding-bottom: 27px !important;
+        }
+        .pb-28 {
+            padding-bottom: 28px !important;
+        }
+        .pb-29 {
+            padding-bottom: 29px !important;
+        }
+        .pb-30 {
+            padding-bottom: 30px !important;
+        }
+        .pb-31 {
+            padding-bottom: 31px !important;
+        }
+        .pb-32 {
+            padding-bottom: 32px !important;
+        }
+        .pb-33 {
+            padding-bottom: 33px !important;
+        }
+        .pb-34 {
+            padding-bottom: 34px !important;
+        }
+        .pb-35 {
+            padding-bottom: 35px !important;
+        }
+        .pb-36 {
+            padding-bottom: 36px !important;
+        }
+        .pb-37 {
+            padding-bottom: 37px !important;
+        }
+        .pb-38 {
+            padding-bottom: 38px !important;
+        }
+        .pb-39 {
+            padding-bottom: 39px !important;
+        }
+        .pb-40 {
+            padding-bottom: 40px !important;
+        }
+        .ml-32 {
+            margin-left: 32px !important;
+        }
+        .ml-24 {
+            margin-left: 24px !important;
+        }
+
+        .img-wrap {
+            margin: 0 auto;
+        }
+        .img-wrap.banner {
+            background-color: #4c5afa;
+        }
+        .img-wrap.banner img {
+            width: auto !important;
+            max-height: 160px;
+            margin: 0 auto;
+        }
+        .img-wrap img {
+            width: 100% !important;
+        }
+        .img-wrap.header {
+            position: relative;
+        }
+        .img-wrap.header img {
+            height: 303px;
+        }
+        .header .text-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            color: #fff;
+        }
+        .header .text-wrap img {
+            width: 80px !important;
+            height: 36px;
+            margin: 0 auto;
+        }
+        .header .text-wrap p {
+            margin-top: 16px;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #fff;
+        }
+        .header .text-wrap h2 {
+            margin-top: 12px;
+            font-family: "Gmarket Sans";
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 57px;
+        }
+        .header .text-wrap h2 strong {
+            color: #ffe8ae;
+        }
+        .img-wrap.sub {
+            padding: 26px 30px;
+            background: url("sub_tit(noTitle).png") center / cover no-repeat;
+            border-radius: 20px;
+            font-family: "Gmarket Sans";
+            color: #fff;
+        }
+        .img-wrap.sub p {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 28px;
+            color: #fff;
+        }
+        .img-wrap.sub h3 {
+            margin-top: 6px;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .img-wrap.sub h3 strong {
+            margin-right: 6px;
+            color: #ffc92c;
+            background-color: transparent;
+        }
+        .blog-sec-tit {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+        }
+        .blog-sec-tit::before {
+            content: "";
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: url("./icon_check.png") center / contain no-repeat;
+        }
+        .tip-container {
+            padding: 32px;
+            background-color: #fff2da;
+            border-radius: 20px;
+        }
+        .tip-container.warning {
+            background-color: #fee7ec;
+        }
+        .tip-container.warning h5 {
+            color: #d4002c;
+        }
+        .tip-container.warning h5::before {
+            background: url("./icon_warning.png") center / contain no-repeat;
+        }
+        .tip-container.case-1 h5 {
+            align-items: flex-start;
+        }
+        .tip-container h5 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: "Gmarket Sans";
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+            margin-bottom: 12px;
+        }
+        .tip-container h5::before {
+            content: "";
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: url("./icon_tip.png") center / contain no-repeat;
+        }
+        .tip-container ul li {
+            position: relative;
+            /* display: flex; */
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .tip-container ul li.no-dot {
+            margin-left: -9px;
+        }
+        .tip-container ul li.no-dot::before {
+            display: none;
+        }
+        .tip-container ul li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .tip-container ul li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .tip-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .tip-container ul li + li {
+            margin-top: 8px;
+        }
+        .tip-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .tip-container ul li .guide-content {
+            display: flex;
+        }
+        .tip-container .highlight {
+            background-color: #ffa60026;
+        }
+        .tip-container.type-2 {
+            background-color: #eef3ff;
+        }
+        .tip-container.type-2 h5::before {
+            background: url("./icon_pinset.png") center / contain no-repeat;
+        }
+        .tip-container.type-2 .tip-sub-tit {
+            margin-bottom: 8px;
+            font-weight: 700;
+            line-height: 26px;
+            color: #000;
+        }
+        .tip-container.type-2 ul {
+            margin-top: 8px;
+        }
+        .tip-container .tip-border {
+            margin: 32px 0;
+            width: 100%;
+            height: 1px;
+            background-color: #ebdbaf;
+        }
+        .tip-container .hts-table td {
+            background-color: #fff;
+        }
+        .blog-description {
+            padding: 16px 0;
+            padding-left: 32px;
+            border-left: 3px solid #a9a9a9;
+            color: #898989;
+            font-style: italic;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        .blog-description strong {
+            color: #111;
+            font-weight: 600;
+        }
+        .blog-text {
+            color: #555555;
+        }
+        .blog-text strong {
+            color: #000000;
+        }
+        .highlight {
+            display: inline-block;
+            font-weight: 700;
+            background-color: #fff2da;
+            color: #000;
+        }
+        .highlight.type-blue {
+            background-color: #daeaff;
+        }
+        .line-contents {
+            border: 1px solid #f0f0f0;
+            border-top: 4px #111 solid;
+            padding: 60px;
+            font-size: 18px;
+        }
+        .line-contents .title {
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 140%;
+        }
+        .line-contents .title strong {
+            color: #2467e8;
+        }
+        .line-contents .sub-tit {
+            font-size: 24px;
+            font-weight: 400;
+        }
+        .badge-wrap {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .badge-wrap .badge {
+            display: inline-block;
+            font-size: 20px;
+            line-height: 140%;
+            padding: 16px;
+            border-radius: 12px;
+            background-color: #f2f2f2;
+        }
+        .hts-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+        .table-tit {
+            margin-top: 16px;
+            margin-bottom: 4px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+        }
+        .hts-table:not(:has(thead)) th,
+        .hts-table:not(:has(thead)) td {
+            border-top: 1px solid #eeeeee;
+        }
+        .hts-table.has-bg td {
+            background-color: #fff;
+        }
+        .hts-table th,
+        .hts-table td {
+            border: 0;
+            color: #555;
+            word-break: keep-all;
+        }
+        .hts-table th {
+            padding: 13px 12px;
+            background: #f4f4f4;
+            font-weight: 500;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .hts-table td {
+            padding: 9px 12px;
+            border-bottom: 1px solid #eeeeee;
+            text-align: left;
+            line-height: 1.4;
+            letter-spacing: -1px;
+        }
+        .hts-table td:has(.has-num) {
+            padding: 9px 0;
+            text-align: center;
+        }
+        .hts-table td span {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: #3f75ff;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Gmarket Sans";
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+        }
+        .hts-table td span.has-num {
+          width: fit-content;
+          padding: 2px 9px 0 7px;
+          border-radius: 1000px;
+        }
+        .guide-list-container h6 {
+            margin-bottom: 8px;
+            font-size: 18px;
+            line-height: 26px;
+        }
+        .guide-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .guide-list > li {
+            display: flex;
+            align-items: flex-start;
+            margin: 16px 0 24px;
+        }
+        .guide-list > li:last-child {
+            margin-bottom: 0;
+        }
+        .guide-list .guide-num {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: #3f75ff;
+          margin-right: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Gmarket Sans";
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+          padding-top: 2px;
+          padding-right: 1px;
+        }
+        .guide-list .guide-num.has-num {
+            width: auto;
+            padding: 1px 9px 0 8px;
+            border-radius: 1000px;
+        }
+        .guide-list .guide-content {
+            flex: 1;
+        }
+        .guide-list p.tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .guide-list .guide-content:not(:has(.guide-title)) {
+            display: flex;
+        }
+        .guide-list .guide-title {
+            display: block;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 24px;
+            color: #222;
+        }
+        .guide-list.type-2 > li {
+            flex-wrap: wrap;
+            margin: 0;
+        }
+        .guide-list.type-2 > li + li {
+            margin-top: 8px;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) {
+            margin-top: 0;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) .guide-content {
+            margin-left: 30px;
+        }
+        .guide-list.type-2 > li .guide-title {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+        }
+        .guide-desc {
+            list-style: none;
+            margin: 0;
+            padding-left: 9px;
+            color: #555555;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+        .guide-desc li {
+            position: relative;
+            margin-top: 8px;
+            letter-spacing: -1px;
+        }
+        .guide-desc li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .guide-desc li .highlight {
+            display: inline-block;
+            background-color: #fff2da;
+            font-weight: 700;
+            line-height: 25px;
+            color: #000;
+        }
+        .guide-desc li::before {
+            content: "";
+            position: absolute;
+            top: 9px;
+            left: -9px;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #555555;
+            display: inline-block;
+        }
+        .guide-desc li.no-dot {
+            margin-left: -9px;
+        }
+        .guide-desc li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .guide-desc li.no-dot::before {
+            display: none;
+        }
+        .example-container {
+            position: relative;
+            margin-bottom: 24px;
+            padding: 32px;
+            padding-left: 96px;
+            border: 2px dashed #eee;
+            border-radius: 20px;
+        }
+        .example-container.case-1:before {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .example-container::before {
+            content: "";
+            position: absolute;
+            left: 32px;
+            top: 32px;
+            width: 48px;
+            height: 48px;
+            background: url(./icon_example.png) center / contain no-repeat;
+        }
+        .example-container .ex-head {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 22px;
+            color: #3f75ff !important;
+        }
+        .example-container .ex-head span {
+            position: relative;
+            transform: translateY(1px);
+            margin-right: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #3f75ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Gmarket Sans";
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+        }
+        .example-container .ex-head span.has-num {
+          width: auto;
+          padding: 2px 9px 0 8px;
+          border-radius: 1000px;
+        }
+        .example-container .ex-title {
+            margin-top: 2px;
+            line-height: 26px;
+            color: #000;
+        }
+        .example-container .ex-title .guide-content p {
+            color: #000;
+        }
+        .example-container ul {
+            margin-top: 8px;
+        }
+        .example-container ul li {
+            position: relative;
+            display: flex;
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .example-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .example-container ul li.no-dot {
+            padding-left: 0;
+        }
+        .example-container ul li.no-dot::before {
+            display: none;
+        }
+        .example-container ul li + li {
+            margin-top: 8px;
+        }
+        .example-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .example-container .ex-border {
+            margin: 32px 0 32px -64px;
+            border-top: 2px dashed #eee;
+        }
+        .guide-desc li .inner-desc {
+            margin-left: 52px;
+            list-style: none;
+        }
+        .guide-desc li .inner-desc li::before {
+            display: none;
+        }
+
+        .text-col {
+            display: flex;
+        }
+        .text-col .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px !important;
+        }
+    </style>
+  </head>
+
+  <body>
+    <div class="LS-blog-custom">
+      <div class="inner">
+        <div class="img-wrap header">
+          <img src="header(noTitle).png" alt="" />
+          <div class="text-wrap">
+            <img src="brand_logo.png" alt="brand-logo" />
+            <p>주식잔고</p>
+            <h2>자산 변화를 읽고,<br /><strong>계좌 흐름을 알려주는 안내판</strong></h2>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <div class="blog-sub-tit type-2 fw-semiBold fz-24">계좌의 심장을 들여다보는 창, 주식잔고 화면</div>
+          <div class="blog-text">
+            <p class="mt-16">
+              잔고 화면은 자산 현황을 한 눈에 파악하고 매매 여부를 결정하는 데 중요한 역할을 합니다. <br />
+              주식잔고에서는 보유 종목을 확인하는 것을 넘어, 잔고에 돈이 어떻게 오가는지, 자산 가치가 얼마나 되는지 등 계좌를 종합적으로 진단할 수 있는 지표가 모여 있습니다.
+            </p>
+            <p class="mt-16">
+              여러 주식잔고 화면을 둘러보면 내 계좌 상태를 쉽고 빠르게 조회하는 동시에, 정확한 타이밍에 투자 결정을 내릴 수 있도록 도움을 받을 수 있습니다. <br />
+              대표적인 화면들과 주요 특징을 알아볼까요?
+            </p>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>주식 잔고 확인부터 거래 준비까지 한 번에</p>
+              <h3>주식잔고 주요 화면</h3>
+            </div>
+            <table class="hts-table">
+              <colgroup>
+                <col style="width: 240px" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>화면</th>
+                  <th>설명</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>[6102] 주식실시간잔고</td>
+                  <td>주문 · 체결 결과 기반으로 빠르게 주식잔고 조회</td>
+                </tr>
+                <tr>
+                  <td>[6103] 주식잔고상세조회</td>
+                  <td>당일 / 전일 매매수량 및 단가까지 상세한 잔고 확인 가능</td>
+                </tr>
+                <tr>
+                  <td>[6201] 주식원장잔고</td>
+                  <td>전산상 매매내역 기반으로 보다 정확한 주식잔고 조회</td>
+                </tr>
+                <tr>
+                  <td>[6204] 결제기준주식잔고</td>
+                  <td>결제 내역 기반으로 보유중인 주식잔고 확인</td>
+                </tr>
+                <tr>
+                  <td>[7144] 대여잔고조회</td>
+                  <td>보유잔고 중 대여중인 주식 현황 조회</td>
+                </tr>
+                <tr>
+                  <td>[6105] 주식잔고조회</td>
+                  <td>기준일 시점에 보유한 주식잔고 파악</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>자주 활용되는</p>
+              <h3>잔고 관련 주요 항목</h3>
+            </div>
+            <table class="hts-table">
+              <colgroup>
+                <col style="width: 200px" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>항목</th>
+                  <th>설명</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>추정자산</td>
+                  <td>D+2 영업일 기준 예수금에 수수료와 제세금을 반영한 주식 평가금액을 합산한 자산이며, 대출금액이 있을 경우 이를 포함</td>
+                </tr>
+                <tr>
+                  <td>실현손익</td>
+                  <td>당일 매매로 확정된, 수수료와 제세금을 반영한 손익 합계</td>
+                </tr>
+                <tr>
+                  <td>매입금액</td>
+                  <td>매매내역 기준 보유잔고의 총 매입금액 (잔고수량 × 평균단가)</td>
+                </tr>
+                <tr>
+                  <td>평가금액</td>
+                  <td>보유잔고의 현재가 기준 총 평가금액</td>
+                </tr>
+                <tr>
+                  <td>평가손익</td>
+                  <td>보유잔고의 손실금액과 수익금액의 합계</td>
+                </tr>
+                <tr>
+                  <td>수익률</td>
+                  <td>총 평가손익 ÷ 총매입금액</td>
+                </tr>
+                <tr>
+                  <td>보유수량</td>
+                  <td>매매내역 기준 보유잔고</td>
+                </tr>
+                <tr>
+                  <td>매도가능수량</td>
+                  <td>결제잔고 기준 실제 매도가능 수량. 주문이 접수된 미체결 수량은 매도가능수량에서 제외</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="content-part">
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">주식실시간잔고</h4>
+              <p class="mt-8"><strong class="highlight">[6102] 주식실시간잔고</strong> 화면에서는 주문 · 체결 결과가 즉시 반영된 주식잔고를 빠르게 확인할 수 있습니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_6102_01.png" alt="" />
+            </div>
+            <div class="guide-list-container mt-24">
+              <ol class="guide-list type-2">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">종목합산 조회 : </p>
+                    <p>
+                      체크 시 현금잔고와 신용잔고를 종목별로 합산하여 표시합니다. <br />
+                      대출일이 다른 동일종목 신용잔고도 합산하여 표시합니다.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <p>시세조회 : 통합, KRX, NXT 중 선택한 거래소 시세로 조회합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">3</span>
+                  <div class="guide-content">
+                    <p>평균 / BEP 단가 조회 : 실시간 보유종목 목록(9번)에서 평균 단가, BEP 단가 중 선택한 단가로 조회합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">4</span>
+                  <div class="guide-content">
+                    <p>제비용 조회 : 체크 시 거래수수료, 제세금을 반영하여 조회합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">5</span>
+                  <div class="guide-content">
+                    <p>주문 매체 : HTS, 영업점 중 주문을 접수한 채널을 선택할 수 있습니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">6</span>
+                  <div class="guide-content">
+                    <p>상단 표시 : 잔고 손익 현황(8번) 표시 여부를 전환합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">7</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">일괄주문 / 일괄매도 : </p>
+                    <p>
+                      '일괄주문' 버튼 클릭 시 <strong class="highlight">[5401] 주식복수종목주문</strong> 화면으로 연결됩니다. <br />
+                      '일괄매도' 버튼 클릭 시 팝업에서 선택 종목의 매도주문을 접수합니다.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">8</span>
+                  <div class="guide-content">
+                    <p>잔고 손익 현황 : 조회 계좌의 자산과 손익 전반에 대한 현황을 조회합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">9</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">실시간 보유종목 목록 : </p>
+                    <p>
+                      체크 시 현금잔고와 신용잔고를 종목별로 합산하여 조회합니다. <br />
+                      대출일이 다른 동일종목 신용잔고도 합산하여 표시합니다.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">10</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">원장잔고 조회 : </p>
+                    <p>
+                      주문 체결 내역이 실시간으로 잔고에 반영되지 않는 경우, <strong class="highlight" style="display: inline;">[6201] 주식원장잔고</strong> 화면에서 원장 기준 잔고 현황을 조회할 수 있습니다.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">11</span>
+                  <div class="guide-content">
+                    <p>신용융자/대주잔고 조회 : <strong class="highlight">[7225] 신용융자/대주잔고현황</strong> 화면에서 신용잔고 현황을 조회할 수 있습니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">12</span>
+                  <div class="guide-content">
+                    <p>신용이자 가계산 조회 : <strong class="highlight">[7237] 신용이자가계산내역</strong> 화면에서 신용이자 내역을 조회할 수 있습니다.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="tip-container mt-24">
+              <h5>평균단가 vs BEP 단가</h5>
+              <ul>
+                <li>평균단가 : 분할 매수 시, 총 매입금액 ÷ 총 수량으로 계산된 평균 매입단가</li>
+                <li>BEP단가 : 수수료 · 세금 등 제비용까지 포함해 손익이 0이 되는 실질 매도 기준 가격</li>
+              </ul>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">주식잔고상세조회</h4>
+              <p class="mt-8">
+                <strong class="highlight">[6103] 주식잔고상세조회</strong> 화면에서는 매매내역 기준 잔고, 당일 / 전일 매매수량 및 단가 등을 한 눈에 확인할 수 있습니다.
+              </p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_6102_02.png" alt="" />
+            </div>
+            <div class="guide-list-container mt-24">
+              <ol class="guide-list type-2">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <p>종목합산 : 체크 시 종목 기준으로 주문 내역을 합산해서 조회합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <p>
+                      제비용포함 : 평가금액에서 제비용(수수료, 제세금) 차감 여부를 선택합니다. <br />
+                      1&#41; 체크 시 : 평가금액 - 매입금액 - 제비용 <br />
+                      2&#41; 체크 해제 시 : 평가금액 - 매입금액
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">3</span>
+                  <div class="guide-content">
+                    <p>목록에서 선택한 종목에 대해 일괄주문 또는 일괄매도를 할 수 있습니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">4</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">매도가능 : </p>
+                    <p>
+                      결제잔고에 당일 및 전일 매매내역을 반영한 실제 매도가능 수량입니다. <br />
+                      이미 주문이 접수된 미체결 수량은 매도가능 수량에서 제외됩니다.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">주식원장잔고</h4>
+              <p class="mt-8"><strong class="highlight">[6201] 주식원장잔고</strong> 화면에서는 전산상에 기록된 원장 기준 잔고를 조회할 수 있습니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_6102_03.png" alt="" />
+            </div>
+            <div class="guide-list-container mt-24">
+              <ol class="guide-list type-2">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">예수금, D+1예수금, D+2예수금 : </p>
+                    <p>
+                      현재 예수금, 익영업일(D+1) 익익영업일(D+2)시점의 추정 예수금을 표시합니다.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">추정순자산액 : </p>
+                    <p>
+                      현재 계좌의 순수 총 자산입니다. <br />
+                      수수료 · 제세금과 당일 · 전일 거래내역이 반영된 D+2 예수금에 주식 평가금액을 합산한 금액이며, 대출금액이 있을 경우 이를 포함합니다.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">결제기준주식잔고</h4>
+              <p class="mt-8">
+                <strong class="highlight">[6204] 결제기준주식잔고</strong> 화면에서는 결제 기준으로 예수금, 유가증권, 주식담보대출 잔고 등을 조회할 수 있습니다.
+              </p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_6102_04.png" alt="" />
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">대여잔고조회</h4>
+              <p class="mt-8"><strong class="highlight">[7144] 대여잔고조회</strong> 화면에서는 보유 주식의 대여 현황을 조회할 수 있습니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_6102_05.png" alt="" />
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">주식잔고 조회</h4>
+              <p class="mt-8"><strong class="highlight">[6105] 주식잔고조회</strong> 화면에서는 선택한 기준일 시점의 주식 잔고를 조회할 수 있습니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_6102_06.png" alt="" />
+            </div>
+            <div class="tip-container mt-24">
+              <h5>RP란?</h5>
+              <ul>
+                <li>
+                  RP(환매조건부 채권)은 고객이 일정기간 후에 당사에 환매할 것을 조건으로 매수하는 채권으로, 확정금리를 지급합니다.
+                </li>
+                <li>
+                  계좌에 하루만 예치해도 제시된 약정금리가 적용된 수익을 받을 수 있어 단기간 투자가 가능하고, 입출금이 자유로운 상품인 것이 장점입니다.
+                </li>
+                <li>
+                  RP는 예금자보호법에 의해 보호되지 않으며, RP 운용채권 고유의 신용리스크가 발생할 수 있습니다.<br />
+                  다만 당사에서 운용하는 채권은 국공채, 통안채, 은행채 및 우량회사채 등으로 상당한 안정성을 확보하고 있습니다. 또한 고객이 매수한 RP채권은 증권예탁원에 ‘고객분’으로 구분되어 예탁되므로 금융기관이 파산하더라도 고객의 자산은 안전하게 보관됩니다.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="mt-60">
+            여러 잔고 화면을 통해 계좌 상태를 확인하는 방법을 살펴보았습니다. <br />
+            주식잔고를 자주 확인하며 합리적인 매매 판단을 놓치지 않도록, 계좌 전체 흐름을 관리해 보세요.
+          </p>
+        </div>
+        <div class="img-wrap">
+            <img src="footer_slogan.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>[1950] ELW 현재가</title>
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+        @import url("https://cdn.jsdelivr.net/gh/leetaewook/gmarket-sans-dynamic-subset/GmarketSans.css");
+        
+        /* 기본 margin, padding 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            letter-spacing: -0.72px;
+        }
+        a {
+            color: #3f75ff;
+            text-underline-offset: 3px;
+        }
+        .color-primary {
+            color: #3f75ff !important;
+        }
+        .color-warning {
+            color: #e83c3e !important;
+        }
+        img {
+            display: block;
+        }
+
+        .LS-blog-custom {
+            font-size: 0;
+            margin: 0;
+            padding: 0;
+            color: #111 !important;
+            font-family: "Pretendard" !important;
+        }
+        .LS-blog-custom .inner {
+            width: 880px;
+            margin: auto;
+            box-sizing: border-box;
+            line-height: 180%;
+            font-size: 18px !important;
+        }
+        .LS-blog-custom .inner .content-wrap {
+            padding: 40px 60px 60px;
+        }
+        .LS-blog-custom .inner .content-wrap .content-part {
+            margin-top: 60px;
+        }
+        .LS-blog-custom .inner .blog-title,
+        .LS-blog-custom .inner .blog-sub-tit {
+            line-height: 140%;
+            word-break: keep-all;
+            color: #2b2b2b;
+        }
+        .LS-blog-custom .inner .blog-sub-tit.type-2 {
+            font-family: "Gmarket Sans";
+        }
+        .LS-blog-custom .inner p {
+            padding: 0;
+            margin: 0;
+            line-height: 1.45;
+            color: #555555;
+        }
+
+        /* font-style */
+        .fw-bold {
+            font-weight: 800;
+        }
+        .fw-semiBold {
+            font-weight: 700;
+        }
+        .fw-meddium {
+            font-family: 400;
+        }
+        .fw-light {
+            font-weight: 100;
+        }
+        .text-align-center {
+            text-align: center !important;
+        }
+        .text-align-left {
+            text-align: left !important;
+        }
+        .text-align-right {
+            text-align: right !important;
+        }
+        .fz-12 {
+            font-size: 12px !important;
+        }
+        .fz-16 {
+            font-size: 16px !important;
+        }
+        .fz-18 {
+            font-size: 18px !important;
+        }
+        .fz-24 {
+            font-size: 24px !important;
+        }
+        .fz-28 {
+            font-size: 28px !important;
+        }
+        .fz-40 {
+            font-size: 40px !important;
+        }
+
+        /* margin-top */
+        .mt-0 {
+            margin-top: 0 !important;
+        }
+        .mt-5 {
+            margin-top: 5px !important;
+        }
+        .mt-6 {
+            margin-top: 6px !important;
+        }
+        .mt-7 {
+            margin-top: 7px !important;
+        }
+        .mt-8 {
+            margin-top: 8px !important;
+        }
+        .mt-9 {
+            margin-top: 9px !important;
+        }
+        .mt-10 {
+            margin-top: 10px !important;
+        }
+        .mt-11 {
+            margin-top: 11px !important;
+        }
+        .mt-12 {
+            margin-top: 12px !important;
+        }
+        .mt-13 {
+            margin-top: 13px !important;
+        }
+        .mt-14 {
+            margin-top: 14px !important;
+        }
+        .mt-15 {
+            margin-top: 15px !important;
+        }
+        .mt-16 {
+            margin-top: 16px !important;
+        }
+        .mt-17 {
+            margin-top: 17px !important;
+        }
+        .mt-18 {
+            margin-top: 18px !important;
+        }
+        .mt-19 {
+            margin-top: 19px !important;
+        }
+        .mt-20 {
+            margin-top: 20px !important;
+        }
+        .mt-21 {
+            margin-top: 21px !important;
+        }
+        .mt-22 {
+            margin-top: 22px !important;
+        }
+        .mt-23 {
+            margin-top: 23px !important;
+        }
+        .mt-24 {
+            margin-top: 24px !important;
+        }
+        .mt-25 {
+            margin-top: 25px !important;
+        }
+        .mt-26 {
+            margin-top: 26px !important;
+        }
+        .mt-27 {
+            margin-top: 27px !important;
+        }
+        .mt-28 {
+            margin-top: 28px !important;
+        }
+        .mt-29 {
+            margin-top: 29px !important;
+        }
+        .mt-30 {
+            margin-top: 30px !important;
+        }
+        .mt-31 {
+            margin-top: 31px !important;
+        }
+        .mt-32 {
+            margin-top: 32px !important;
+        }
+        .mt-33 {
+            margin-top: 33px !important;
+        }
+        .mt-34 {
+            margin-top: 34px !important;
+        }
+        .mt-35 {
+            margin-top: 35px !important;
+        }
+        .mt-36 {
+            margin-top: 36px !important;
+        }
+        .mt-37 {
+            margin-top: 37px !important;
+        }
+        .mt-38 {
+            margin-top: 38px !important;
+        }
+        .mt-39 {
+            margin-top: 39px !important;
+        }
+        .mt-40 {
+            margin-top: 40px !important;
+        }
+        .mt-60 {
+            margin-top: 60px !important;
+        }
+        .mt-120 {
+            margin-top: 120px !important;
+        }
+
+        /* margin-bottom */
+        .mb-0 {
+          margin-bottom: 0 !important;
+        }
+        .mb-5 {
+            margin-bottom: 5px !important;
+        }
+        .mb-6 {
+            margin-bottom: 6px !important;
+        }
+        .mb-7 {
+            margin-bottom: 7px !important;
+        }
+        .mb-8 {
+            margin-bottom: 8px !important;
+        }
+        .mb-9 {
+            margin-bottom: 9px !important;
+        }
+        .mb-10 {
+            margin-bottom: 10px !important;
+        }
+        .mb-11 {
+            margin-bottom: 11px !important;
+        }
+        .mb-12 {
+            margin-bottom: 12px !important;
+        }
+        .mb-13 {
+            margin-bottom: 13px !important;
+        }
+        .mb-14 {
+            margin-bottom: 14px !important;
+        }
+        .mb-15 {
+            margin-bottom: 15px !important;
+        }
+        .mb-16 {
+            margin-bottom: 16px !important;
+        }
+        .mb-17 {
+            margin-bottom: 17px !important;
+        }
+        .mb-18 {
+            margin-bottom: 18px !important;
+        }
+        .mb-19 {
+            margin-bottom: 19px !important;
+        }
+        .mb-20 {
+            margin-bottom: 20px !important;
+        }
+        .mb-21 {
+            margin-bottom: 21px !important;
+        }
+        .mb-22 {
+            margin-bottom: 22px !important;
+        }
+        .mb-23 {
+            margin-bottom: 23px !important;
+        }
+        .mb-24 {
+            margin-bottom: 24px !important;
+        }
+        .mb-25 {
+            margin-bottom: 25px !important;
+        }
+        .mb-26 {
+            margin-bottom: 26px !important;
+        }
+        .mb-27 {
+            margin-bottom: 27px !important;
+        }
+        .mb-28 {
+            margin-bottom: 28px !important;
+        }
+        .mb-29 {
+            margin-bottom: 29px !important;
+        }
+        .mb-30 {
+            margin-bottom: 30px !important;
+        }
+        .mb-31 {
+            margin-bottom: 31px !important;
+        }
+        .mb-32 {
+            margin-bottom: 32px !important;
+        }
+        .mb-33 {
+            margin-bottom: 33px !important;
+        }
+        .mb-34 {
+            margin-bottom: 34px !important;
+        }
+        .mb-35 {
+            margin-bottom: 35px !important;
+        }
+        .mb-36 {
+            margin-bottom: 36px !important;
+        }
+        .mb-37 {
+            margin-bottom: 37px !important;
+        }
+        .mb-38 {
+            margin-bottom: 38px !important;
+        }
+        .mb-39 {
+            margin-bottom: 39px !important;
+        }
+        .mb-40 {
+            margin-bottom: 40px !important;
+        }
+
+        /* padding-top */
+        .pt-5 {
+            padding-top: 5px !important;
+        }
+        .pt-6 {
+            padding-top: 6px !important;
+        }
+        .pt-7 {
+            padding-top: 7px !important;
+        }
+        .pt-8 {
+            padding-top: 8px !important;
+        }
+        .pt-9 {
+            padding-top: 9px !important;
+        }
+        .pt-10 {
+            padding-top: 10px !important;
+        }
+        .pt-11 {
+            padding-top: 11px !important;
+        }
+        .pt-12 {
+            padding-top: 12px !important;
+        }
+        .pt-13 {
+            padding-top: 13px !important;
+        }
+        .pt-14 {
+            padding-top: 14px !important;
+        }
+        .pt-15 {
+            padding-top: 15px !important;
+        }
+        .pt-16 {
+            padding-top: 16px !important;
+        }
+        .pt-17 {
+            padding-top: 17px !important;
+        }
+        .pt-18 {
+            padding-top: 18px !important;
+        }
+        .pt-19 {
+            padding-top: 19px !important;
+        }
+        .pt-20 {
+            padding-top: 20px !important;
+        }
+        .pt-21 {
+            padding-top: 21px !important;
+        }
+        .pt-22 {
+            padding-top: 22px !important;
+        }
+        .pt-23 {
+            padding-top: 23px !important;
+        }
+        .pt-24 {
+            padding-top: 24px !important;
+        }
+        .pt-25 {
+            padding-top: 25px !important;
+        }
+        .pt-26 {
+            padding-top: 26px !important;
+        }
+        .pt-27 {
+            padding-top: 27px !important;
+        }
+        .pt-28 {
+            padding-top: 28px !important;
+        }
+        .pt-29 {
+            padding-top: 29px !important;
+        }
+        .pt-30 {
+            padding-top: 30px !important;
+        }
+        .pt-31 {
+            padding-top: 31px !important;
+        }
+        .pt-32 {
+            padding-top: 32px !important;
+        }
+        .pt-33 {
+            padding-top: 33px !important;
+        }
+        .pt-34 {
+            padding-top: 34px !important;
+        }
+        .pt-35 {
+            padding-top: 35px !important;
+        }
+        .pt-36 {
+            padding-top: 36px !important;
+        }
+        .pt-37 {
+            padding-top: 37px !important;
+        }
+        .pt-38 {
+            padding-top: 38px !important;
+        }
+        .pt-39 {
+            padding-top: 39px !important;
+        }
+        .pt-40 {
+            padding-top: 40px !important;
+        }
+
+        /* padding-bottom */
+        .pb-5 {
+            padding-bottom: 5px !important;
+        }
+        .pb-6 {
+            padding-bottom: 6px !important;
+        }
+        .pb-7 {
+            padding-bottom: 7px !important;
+        }
+        .pb-8 {
+            padding-bottom: 8px !important;
+        }
+        .pb-9 {
+            padding-bottom: 9px !important;
+        }
+        .pb-10 {
+            padding-bottom: 10px !important;
+        }
+        .pb-11 {
+            padding-bottom: 11px !important;
+        }
+        .pb-12 {
+            padding-bottom: 12px !important;
+        }
+        .pb-13 {
+            padding-bottom: 13px !important;
+        }
+        .pb-14 {
+            padding-bottom: 14px !important;
+        }
+        .pb-15 {
+            padding-bottom: 15px !important;
+        }
+        .pb-16 {
+            padding-bottom: 16px !important;
+        }
+        .pb-17 {
+            padding-bottom: 17px !important;
+        }
+        .pb-18 {
+            padding-bottom: 18px !important;
+        }
+        .pb-19 {
+            padding-bottom: 19px !important;
+        }
+        .pb-20 {
+            padding-bottom: 20px !important;
+        }
+        .pb-21 {
+            padding-bottom: 21px !important;
+        }
+        .pb-22 {
+            padding-bottom: 22px !important;
+        }
+        .pb-23 {
+            padding-bottom: 23px !important;
+        }
+        .pb-24 {
+            padding-bottom: 24px !important;
+        }
+        .pb-25 {
+            padding-bottom: 25px !important;
+        }
+        .pb-26 {
+            padding-bottom: 26px !important;
+        }
+        .pb-27 {
+            padding-bottom: 27px !important;
+        }
+        .pb-28 {
+            padding-bottom: 28px !important;
+        }
+        .pb-29 {
+            padding-bottom: 29px !important;
+        }
+        .pb-30 {
+            padding-bottom: 30px !important;
+        }
+        .pb-31 {
+            padding-bottom: 31px !important;
+        }
+        .pb-32 {
+            padding-bottom: 32px !important;
+        }
+        .pb-33 {
+            padding-bottom: 33px !important;
+        }
+        .pb-34 {
+            padding-bottom: 34px !important;
+        }
+        .pb-35 {
+            padding-bottom: 35px !important;
+        }
+        .pb-36 {
+            padding-bottom: 36px !important;
+        }
+        .pb-37 {
+            padding-bottom: 37px !important;
+        }
+        .pb-38 {
+            padding-bottom: 38px !important;
+        }
+        .pb-39 {
+            padding-bottom: 39px !important;
+        }
+        .pb-40 {
+            padding-bottom: 40px !important;
+        }
+        .ml-32 {
+            margin-left: 32px !important;
+        }
+        .ml-24 {
+            margin-left: 24px !important;
+        }
+
+        .img-wrap {
+            margin: 0 auto;
+        }
+        .img-wrap.banner {
+            background-color: #4c5afa;
+        }
+        .img-wrap.banner img {
+            width: auto !important;
+            max-height: 160px;
+            margin: 0 auto;
+        }
+        .img-wrap img {
+            width: 100% !important;
+        }
+        .img-wrap.header {
+            position: relative;
+        }
+        .img-wrap.header img {
+            height: 303px;
+        }
+        .header .text-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            color: #fff;
+        }
+        .header .text-wrap img {
+            width: 80px !important;
+            height: 36px;
+            margin: 0 auto;
+        }
+        .header .text-wrap p {
+            margin-top: 16px;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #fff;
+        }
+        .header .text-wrap h2 {
+            margin-top: 12px;
+            font-family: "Gmarket Sans";
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 57px;
+        }
+        .header .text-wrap h2 strong {
+            color: #ffe8ae;
+        }
+        .img-wrap.sub {
+            padding: 26px 30px;
+            background: url("sub_tit(noTitle).png") center / cover no-repeat;
+            border-radius: 20px;
+            font-family: "Gmarket Sans";
+            color: #fff;
+        }
+        .img-wrap.sub p {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 28px;
+            color: #fff;
+        }
+        .img-wrap.sub h3 {
+            margin-top: 6px;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .img-wrap.sub h3 strong {
+            margin-right: 6px;
+            color: #ffc92c;
+            background-color: transparent;
+        }
+        .blog-sec-tit {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+        }
+        .blog-sec-tit::before {
+            content: "";
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: url("./icon_check.png") center / contain no-repeat;
+        }
+        .tip-container {
+            padding: 32px;
+            background-color: #fff2da;
+            border-radius: 20px;
+        }
+        .tip-container.warning {
+            background-color: #fee7ec;
+        }
+        .tip-container.warning h5 {
+            color: #d4002c;
+        }
+        .tip-container.warning h5::before {
+            background: url("./icon_warning.png") center / contain no-repeat;
+        }
+        .tip-container.case-1 h5 {
+            align-items: flex-start;
+        }
+        .tip-container h5 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: "Gmarket Sans";
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+            margin-bottom: 12px;
+        }
+        .tip-container h5::before {
+            content: "";
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: url("./icon_tip.png") center / contain no-repeat;
+        }
+        .tip-container ul li {
+            position: relative;
+            /* display: flex; */
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .tip-container ul li.no-dot {
+            margin-left: -9px;
+        }
+        .tip-container ul li.no-dot::before {
+            display: none;
+        }
+        .tip-container ul li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .tip-container ul li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .tip-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .tip-container ul li + li {
+            margin-top: 8px;
+        }
+        .tip-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .tip-container ul li .guide-content {
+            display: flex;
+        }
+        .tip-container .highlight {
+            background-color: #ffa60026;
+        }
+        .tip-container.type-2 {
+            background-color: #eef3ff;
+        }
+        .tip-container.type-2 h5::before {
+            background: url("./icon_pinset.png") center / contain no-repeat;
+        }
+        .tip-container.type-2 .tip-sub-tit {
+            margin-bottom: 8px;
+            font-weight: 700;
+            line-height: 26px;
+            color: #000;
+        }
+        .tip-container.type-2 ul {
+            margin-top: 8px;
+        }
+        .tip-container .tip-border {
+            margin: 32px 0;
+            width: 100%;
+            height: 1px;
+            background-color: #ebdbaf;
+        }
+        .tip-container .hts-table td {
+            background-color: #fff;
+        }
+        .blog-description {
+            padding: 16px 0;
+            padding-left: 32px;
+            border-left: 3px solid #a9a9a9;
+            color: #898989;
+            font-style: italic;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        .blog-description strong {
+            color: #111;
+            font-weight: 600;
+        }
+        .blog-text {
+            color: #555555;
+        }
+        .blog-text strong {
+            color: #000000;
+        }
+        .highlight {
+            display: inline-block;
+            font-weight: 700;
+            background-color: #fff2da;
+            color: #000;
+        }
+        .highlight.type-blue {
+            background-color: #daeaff;
+        }
+        .line-contents {
+            border: 1px solid #f0f0f0;
+            border-top: 4px #111 solid;
+            padding: 60px;
+            font-size: 18px;
+        }
+        .line-contents .title {
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 140%;
+        }
+        .line-contents .title strong {
+            color: #2467e8;
+        }
+        .line-contents .sub-tit {
+            font-size: 24px;
+            font-weight: 400;
+        }
+        .badge-wrap {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .badge-wrap .badge {
+            display: inline-block;
+            font-size: 20px;
+            line-height: 140%;
+            padding: 16px;
+            border-radius: 12px;
+            background-color: #f2f2f2;
+        }
+        .hts-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+        .table-tit {
+            margin-top: 16px;
+            margin-bottom: 4px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+        }
+        .hts-table:not(:has(thead)) th,
+        .hts-table:not(:has(thead)) td {
+            border-top: 1px solid #eeeeee;
+        }
+        .hts-table.has-bg td {
+            background-color: #fff;
+        }
+        .hts-table th,
+        .hts-table td {
+            border: 0;
+            color: #555;
+            word-break: keep-all;
+        }
+        .hts-table th {
+            padding: 13px 12px;
+            background: #f4f4f4;
+            font-weight: 500;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .hts-table td {
+            padding: 9px 12px;
+            border-bottom: 1px solid #eeeeee;
+            text-align: left;
+            line-height: 1.4;
+            letter-spacing: -1px;
+        }
+        .hts-table td:has(.has-num) {
+            padding: 9px 0;
+            text-align: center;
+        }
+        .hts-table td span {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: #3f75ff;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Gmarket Sans";
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+        }
+        .hts-table td span.has-num {
+          width: fit-content;
+          padding: 2px 9px 0 7px;
+          border-radius: 1000px;
+        }
+        .guide-list-container h6 {
+            margin-bottom: 8px;
+            font-size: 18px;
+            line-height: 26px;
+        }
+        .guide-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .guide-list > li {
+            display: flex;
+            align-items: flex-start;
+            margin: 16px 0 24px;
+        }
+        .guide-list > li:last-child {
+            margin-bottom: 0;
+        }
+        .guide-list .guide-num {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: #3f75ff;
+          margin-right: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Gmarket Sans";
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+          padding-top: 2px;
+          padding-right: 1px;
+        }
+        .guide-list .guide-num.has-num {
+            width: auto;
+            padding: 1px 9px 0 8px;
+            border-radius: 1000px;
+        }
+        .guide-list .guide-content {
+            flex: 1;
+        }
+        .guide-list p.tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .guide-list .guide-content:not(:has(.guide-title)) {
+            display: flex;
+        }
+        .guide-list .guide-title {
+            display: block;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 24px;
+            color: #222;
+        }
+        .guide-list.type-2 > li {
+            flex-wrap: wrap;
+            margin: 0;
+        }
+        .guide-list.type-2 > li + li {
+            margin-top: 8px;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) {
+            margin-top: 0;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) .guide-content {
+            margin-left: 30px;
+        }
+        .guide-list.type-2 > li .guide-title {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+        }
+        .guide-desc {
+            list-style: none;
+            margin: 0;
+            padding-left: 9px;
+            color: #555555;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+        .guide-desc li {
+            position: relative;
+            margin-top: 8px;
+            letter-spacing: -1px;
+        }
+        .guide-desc li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .guide-desc li .highlight {
+            display: inline-block;
+            background-color: #fff2da;
+            font-weight: 700;
+            line-height: 25px;
+            color: #000;
+        }
+        .guide-desc li::before {
+            content: "";
+            position: absolute;
+            top: 9px;
+            left: -9px;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #555555;
+            display: inline-block;
+        }
+        .guide-desc li.no-dot {
+            margin-left: -9px;
+        }
+        .guide-desc li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .guide-desc li.no-dot::before {
+            display: none;
+        }
+        .example-container {
+            position: relative;
+            margin-bottom: 24px;
+            padding: 32px;
+            padding-left: 96px;
+            border: 2px dashed #eee;
+            border-radius: 20px;
+        }
+        .example-container.case-1:before {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .example-container::before {
+            content: "";
+            position: absolute;
+            left: 32px;
+            top: 32px;
+            width: 48px;
+            height: 48px;
+            background: url(./icon_example.png) center / contain no-repeat;
+        }
+        .example-container .ex-head {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 22px;
+            color: #3f75ff !important;
+        }
+        .example-container .ex-head span {
+            position: relative;
+            transform: translateY(1px);
+            margin-right: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #3f75ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Gmarket Sans";
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+        }
+        .example-container .ex-head span.has-num {
+          width: auto;
+          padding: 2px 9px 0 8px;
+          border-radius: 1000px;
+        }
+        .example-container .ex-title {
+            margin-top: 2px;
+            line-height: 26px;
+            color: #000;
+        }
+        .example-container .ex-title .guide-content p {
+            color: #000;
+        }
+        .example-container ul {
+            margin-top: 8px;
+        }
+        .example-container ul li {
+            position: relative;
+            display: flex;
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .example-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .example-container ul li.no-dot {
+            padding-left: 0;
+        }
+        .example-container ul li.no-dot::before {
+            display: none;
+        }
+        .example-container ul li + li {
+            margin-top: 8px;
+        }
+        .example-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .example-container .ex-border {
+            margin: 32px 0 32px -64px;
+            border-top: 2px dashed #eee;
+        }
+        .guide-desc li .inner-desc {
+            margin-left: 52px;
+            list-style: none;
+        }
+        .guide-desc li .inner-desc li::before {
+            display: none;
+        }
+
+        .text-col {
+            display: flex;
+        }
+        .text-col .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px !important;
+        }
+    </style>
+  </head>
+
+  <body>
+    <div class="LS-blog-custom">
+      <div class="inner">
+        <div class="img-wrap header">
+          <img src="header(noTitle).png" alt="" />
+          <div class="text-wrap">
+            <img src="brand_logo.png" alt="brand-logo" />
+            <p>[1950] ELW현재가</p>
+            <h2>
+              ELW 빠른 시세 파악,<br />
+              <strong>모든 흐름을 한 화면에</strong>
+            </h2>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <div class="blog-sub-tit type-2 fw-semiBold fz-24">ELW 시세를 한눈에, 가격과 수급의 흐름 포착</div>
+          <div class="blog-text">
+            <p class="mt-16 fz-18">
+              <strong class="highlight">[1950] ELW 현재가</strong> 화면은 개별 ELW 종목의 현재 가격, 호가, 체결 동향, 기초자산 정보 등을 한눈에 확인할 수 있습니다.
+            </p>
+            <p class="mt-16 fz-18">
+              주식과 달리 가격 변동성이 높고 거래 구조가 복잡한 ELW의 특성상, 신속한 시세 파악과 조건별 지표 점검이 특히 중요합니다. <br />
+              본 화면에서는 호가창과 차트는 물론, 기초자산 연동 정보와 거래원 현황까지 함께 제공되어 투자 판단에 필요한 핵심 데이터를 효율적으로 확인할 수 있습니다.
+            </p>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>기초자산부터 거래원까지 단번에 확인,</p>
+              <h3>이 화면이 호가를 읽는 기준점인 이유!</h3>
+            </div>
+            <table class="hts-table">
+              <thead>
+                <tr>
+                  <th>특징</th>
+                  <th>이런 점이 좋아요</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>기초자산 및 연동 지표 조회</td>
+                  <td>기초자산 가격, 이론가, 행사가, 패리티 등 ELW 주요 지표 제공</td>
+                </tr>
+                <tr>
+                  <td>거래 현황 종합 점검</td>
+                  <td>차트, 거래원까지 화면 하나로 매매 수급과 시장 흐름을 동시에 파악 가능</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>필요한 기능만 모아, 간결하게 정리한</p>
+              <h3><strong class="highlight">01</strong>기본 화면 구성</h3>
+            </div>
+            <div class="blog-text">
+              <p class="mt-16 fz-18">
+                LS증권의 <strong class="highlight">[1950] ELW 현재가</strong>는 호가, 체결, 차트, 기초자산 지표를 제공하며, ELW의 가격 구조와 수급 동향을 편리하게 모아서 확인할 수 있어 유용합니다.
+              </p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_1950_01.png" alt="" />
+            </div>
+            <p class="mt-16 mb-16 fz-18">화면은 다음과 같이 3개의 영역으로 나누어집니다.</p>
+            <table class="hts-table">
+              <thead>
+                <tr>
+                  <th>번호</th>
+                  <th>영역</th>
+                  <th>주요기능</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="has-num">A</span></td>
+                  <td>호가 / 체결 정보</td>
+                  <td>선택 종목의 매수/매도 호가 및 체결량 등의 정보를 확인할 수 있습니다.</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="has-num">B</span>
+                  </td>
+                  <td>차트 / 지표</td>
+                  <td>단기 차트, 기초자산 가격, 행사가, 내재변동성 등 ELW 주요 지표를 제공합니다.</td>
+                </tr>
+                <tr>
+                  <td><span class="has-num">C</span></td>
+                  <td>거래량 정보</td>
+                  <td>틱별 체결 현황과 증권사별 매수·매도 순위 조회로 수급 동향을 파악할 수 있습니다.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>가격의 맥을 읽는 첫 번째 창</p>
+              <h3><strong class="highlight">02</strong>호가 / 체결 정보 (A영역)</h3>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">호가 및 체결 정보 조회</h4>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_1950_02.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">ELW현재가 / 기초자산 탭</span>
+                    <ul class="guide-desc">
+                      <li>ELW현재가 호가 또는 기초자산 호가를 전환하며 조회할 수 있습니다.</li>
+                      <li>
+                        시세 전환 버튼(1-1번) 클릭 시 우측 상단, 좌측 하단 시세정보 화면을 차트, 체결량 등으로 전환할 수 있습니다. <br />
+                        이외에도 LP, 전일대비 항목 클릭 시 표시되는 지표를 변경할 수 있습니다.
+                      </li>
+                      <li>호가 더블클릭 시 주문화면에서 주문을 접수할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <span class="guide-title">기초자산 종목연동</span>
+                    <ul class="guide-desc">
+                      <li>기초자산 종목이 변경되면 현재가 등 다른 기초자산 시세 조회 화면에서도 동일하게 종목이 변경됩니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">3</span>
+                  <div class="guide-content">
+                    <span class="guide-title">상장기업분석 / 차트 / 주식주문</span>
+                    <ul class="guide-desc">
+                      <li>
+                        '기' '차' '주' 버튼 클릭 시 각각 <strong class="highlight" style="display: inline;">[3301] 상장기업분석</strong>, <strong class="highlight" style="display: inline;">[4004] ELW종합차트</strong>, <strong class="highlight" style="display: inline;">[5100] 주식주문</strong> 화면으로 이동합니다.
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">4</span>
+                  <div class="guide-content">
+                    <span class="guide-title">주식호가 표시 설정</span>
+                    <ul class="guide-desc">
+                      <li>설정 버튼 클릭 시 호가창 표시 방법을 상세하게 설정할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="img-wrap mt-32">
+              <img src="img_1950_03.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+                <ol class="guide-list">
+                    <li>
+                        <span class="guide-num">5</span>
+                        <div class="guide-content">
+                            <span class="guide-title">화면 확장 / 축소 버튼</span>
+                            <ul class="guide-desc">
+                                <li>호가 영역, 차트 / 지표 영역, 거래량 정보 영역을 다양한 형태로 확장하거나 축소할 수 있습니다.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <div class="img-wrap mt-32">
+              <img src="img_1950_04.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+                <ol class="guide-list">
+                    <li>
+                        <span class="guide-num">6</span>
+                        <div class="guide-content">
+                            <span class="guide-title">호가창 일자 / 대칭 전환</span>
+                            <ul class="guide-desc">
+                                <li>
+                                  화면 우상단 '일' 또는 '대' 버튼 클릭 시 호가창 표시 방법을 대칭(6-1번) 혹은 일자(6-2번) 간 전환할 수 있습니다.
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <div class="tip-container mt-24">
+              <h5>LP(유동성 공급자)란?</h5>
+              <ul>
+                <li>LP(Liquidity Provider, 유동성 공급자)는 투자자가 언제든지 원할 때 거래할 수 있도록 매수 · 매도 호가를 지속적으로 제시하며, 유동성을 공급하는 중재자 역할을 합니다. 이를 통해 기초자산과 ELW 가격 간의 괴리를 완화하고, ELW 시장의 안정성을 높이는 데 기여합니다.</li>
+                <li>시장 참여자들의 실제 수급이 왜곡되는 것을 방지하기 위해, ELW 거래량이나 관여율 지표에서는 LP 거래를 별도로 구분해 해석하는 것이 필요합니다. 또 투자주의종목 지정 기준을 산출할 때에도 LP거래량은 제외하고 계산합니다.</li>
+              </ul>
+            </div>
+            <div class="tip-container mt-24">
+              <h5>주식호가 표시 설정</h5>
+              <ul>
+                <li>
+                  편리한기능 - 설정 - 종합환경설정 - 주식호가 메뉴에서 호가창 내 표시 방법을 원하는 형태로 편리하게 설정할 수 있습니다.<br />
+                </li>
+              </ul>
+              <div class="img-wrap mt-8">
+                <img src="img_1950_05.png" alt="" />
+              </div>
+              <div class="guide-list-container">
+                <ol class="guide-list">
+                  <li>
+                    <span class="guide-num">1</span>
+                    <div class="guide-content">
+                      <span class="guide-title"> 주식 메모 설정</span>
+                      <ul class="guide-desc">
+                        <li>현재가 당일 시가, 고가 등 요건에 해당하는 호가 우측에 지정 색상을 표시합니다.</li>
+                        <li>요건 및 색상을 직접 추가, 변경, 삭제할 수 있습니다.</li>
+                        <li>설정한 메모는 다른 호가창의 주식 메모에도 공통으로 적용됩니다.</li>
+                        <li>
+                          활용 예시로, 정적VI예상가 메모 설정(1-1번)에서 상한가 선택 후 메모색상을 빨간색, 하한가 선택 후 메모색상을 파란색으로 설정하면 호가창에서 정적VI예상가를 더욱 쉽게 인지할 수 있습니다.
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="guide-num">2</span>
+                    <div class="guide-content">
+                      <span class="guide-title">보기설정</span>
+                      <ul class="guide-desc">
+                        <li>호가 등락률 보기 : 호가 우측 등락률 표시 여부를 선택합니다.</li>
+                        <li>호가 현재가 보기 : 현재가 주변에 테두리선 강조 여부를 선택합니다.</li>
+                        <li>
+                          <div class="guide-content">
+                            <p class="tip-desc-tit">호가 표시 : </p>
+                            <p>
+                              우선호가 또는 잔량 최상위호가에 해당하는 호가와 등락률의 강조 표시 여부를 선택합니다.
+                            </p>
+                          </div>
+                        </li>
+                        <li>호가잔량 그래프 보기 : 호가 잔량표시란에 막대그래프 표시 여부를 선택합니다.</li>
+                        <li>호가별 가로 구분선 보기 : 호가와 잔량표시란에 가로선 표시 여부를 선택합니다.</li>
+                        <li>호가 시세 메모 : (1번)에서 설정한 주식 메모 표시 여부를 선택합니다.</li>
+                        <li>
+                          <div class="guide-content">
+                            <p class="tip-desc-tit">ELW 종목 LP잔량 기본표시 : </p>
+                            <p>
+                              LP(유동성공급자, Liquidity Provider) 공급 물량의 강조 여부를 선택합니다.
+                            </p>
+                          </div>
+                        </li>
+                        <li>호가 바탕색 보기 : 호가영역 색상을 단일 및 그라데이션(Gradient) 중 선택합니다.</li>
+                        <li>
+                          <div class="guide-content">
+                            <p class="tip-desc-tit">우선호가 잔량 50%미만 표시 : </p>
+                            <p>
+                              우선호가 잔량이 50%인 경우 잔량 테두리선 강조 여부를 선택합니다.
+                            </p>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>세부 정보까지 한눈에 파악하는</p>
+              <h3><strong class="highlight">03</strong>차트 / 지표 (B영역)</h3>
+            </div>
+            <div class="blog-text mt-34">
+              <h4 class="blog-sec-tit">시세 · 관련종목 · 차트 · 상세 · 기초자산 · ELW공시</h4>
+              <p class="mt-8 fz-18">
+                선택한 ELW 종목의 시세를 비롯해 관련종목, 차트, 옵션민감도 등 주요 지표를 확인할 수 있습니다.
+              </p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_1950_06.png" alt="" />
+            </div>
+            <div class="tip-container mt-24">
+              <h5>ELW 주요 용어 설명</h5>
+              <ul>
+                <li><b>행사가격 : </b>ELW 보유자가 권리를 행사할 수 있는 기초자산의 가격</li>
+                <li><b>행사비율 : </b>ELW 1주가 기초자산 몇 주에 해당하는지를 나타내는 비율</li>
+                <li><b>패리티(Parity) : </b>ELW를 행사했을 때 실제 가치가 되는 금액. 기초자산 가격과 행사가격 차이로 산출</li>
+                <li><b>손익분기율 : </b>ELW의 매수 가격을 만회하는 시점에 도달하는데 필요한 가격 변화 정도를 백분율로 계산</li>
+                <li><b>이론가 : </b>기초자산 가격, 변동성, 잔존 만기 등을 반영해 산출된 ELW의 합리적 이론 가격</li>
+                <li><b>델타(Δ) : </b>기초자산 가격이 1 단위 움직일 때 ELW 가격이 얼마나 변하는지를 나타내는 민감도 지표</li>
+                <li>
+                  <p class="tip-desc-tit"><b>내재변동성(IV, Implied Volatility) : </b></p>
+                  <p>
+                    시장에서 기대하는 기초자산의 향후 변동성을 역산한 값으로, ELW 프리미엄의 주요 결정 요인
+                  </p>
+                </li>
+                <li><b>LP 보유 수량 : </b>유동성 공급자(LP)가 매수·매도 호가를 유지하기 위해 보유중인 ELW 수량</li>
+                <li><b>괴리율 : </b>ELW의 실제 시장가격과 이론가의 차이를 비율로 표현한 값</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>거래의 흐름을 따라가며 확인하는</p>
+              <h3><strong class="highlight">04</strong>거래량 정보 (C영역)</h3>
+            </div>
+            <div class="blog-text mt-34">
+              <h4 class="blog-sec-tit">틱/거래원 · 일별 · 매물 · 예상 · I.V</h4>
+              <p class="mt-8 fz-18">시간대별 · 일별 거래량 추이 및 예상 체결량, I.V(내재변동성) 차트 등을 조회할 수 있습니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_1950_07.png" alt="" />
+            </div>
+
+            <div class="tip-container type-2 mt-24">
+            <h5>참고해주세요!</h5>
+            <p class="tip-sub-tit">ELW 시장경보제도</p>
+            <ul>
+              <li>
+                ELW 시장에서는 거래 집중 종목에 대한 투자주의를 환기하고 일반 투자자의 피해를 예방하는 것을 목적으로, 한국거래소 시장감시위원회는 2012년 10월부터 ELW 시장경보제도를 시행하고 있습니다. <br />
+                같은 해 3월 시행된 ‘ELW시장 3차 건전화 방안’으로 유동성공급자(LP)의 호가 제출이 제한된 이후 시장호가 스프레드가 15%를 초과하는 경우에만 LP가 8~15% 범위 내에서 유동성공급호가를 제출할 수 있게 되었는데, 이후 소수 지점이나 소수 계좌에 거래가 집중되는 종목이 발생하는 경우가 생기면서 본 제도가 도입되었습니다.
+              </li>
+            </ul>
+            <p class="tip-sub-tit mt-16">ELW 투자주의종목 지정 기준</p>
+            <ul>
+              <li>
+                ELW 시장에서 급격한 주가 변화 등 이상 거래가 지속되는 것으로 보이는 종목은 일정 요건에 따라 투자주의종목으로 지정됩니다. 아래 요건을 모두 충족하는 경우 다음 1영업일간 소수지점 또는 소수계좌 거래집중 종목으로 지정됩니다.
+              </li>
+            </ul>
+            <p class="tip-sub-tit mt-16">소수지점 지정 요건</p>
+              <p>1) 당일 종가가 3일 전날의 종가보다 상승/하락한 경우</p>
+              <p>2) 최근 3일간 특정지점의 매수/매도 관여율이 70% 이상이거나 상위 5개 지점의 매수(매도) 관여율이 90% 이상</p>
+              <p>3) 최근 3일간 최대관여지점의 매수/매도 관여일수가 2일 이상</p>
+              <p>4) 최근 3일간 일평균거래량이 100,000증권 이상</p>
+            <p class="tip-sub-tit mt-16">소수계좌 지정 요건</p>
+              <p>1) 당일 종가가 3일 전날의 종가보다 상승/하락 한 경우</p>
+              <p>2) 최근 3일간 매수/매도 관여율 상위 10개 계좌의 매수/매도 관여율이 90% 이상</p>
+              <p>3) 최근 3일간 매수/매도 관여율 상위 10개 계좌 중 5개 이상의 계좌의 관여일수가 2일 이상</p>
+              <p>4) 최근 3일간 일평균거래량이 100,000증권 이상</p>
+            <ul>
+              <li class="no-dot">※ 매수 또는 매도 관여율 계산시 지점의 매매수량 및 일평균거래량에서 유동성공급자의 거래량은 제외</li>
+              <li class="no-dot">※ 매수 또는 매도 관여율 : 최근 3일간의 전체 거래량 대비 해당지점의 매수수량 또는 매도수량 비중</li>
+              <li class="no-dot">※ 5일간 · 15일간 지정횟수(당일제외) : 당일을 제외한 최근 5매매일간 · 15매매일간 소수계좌 거래집중 투자주의종목으로 지정된 횟수</li>
+            </ul>
+          </div>
+          </div>
+
+          <p class="mt-60 mb-60">
+            지금까지 LS증권 투혼 HTS <strong class="highlight">[1950] ELW 현재가</strong> 화면을 살펴보았습니다.<br />
+            변동성이 큰 ELW 시장에서도 보다 신속하고 정확한 매매 판단에 도움이 되었으면 좋겠습니다.<br />
+            감사합니다!
+          </p>
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>함께 보면 좋은 화면들, 유용한 팁까지 놓치지 마세요</p>
+              <h3>기타 ELW 주요 화면 소개</h3>
+            </div>
+
+            <table class="hts-table">
+              <colgroup>
+                <col style="width: 190px" /> 
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>항목</th>
+                  <th>설명</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>[8300] ELW파워종합</td>
+                  <td>
+                    ELW에 대한 시세, 주문, 체결, 잔고, 뉴스 등 ELW 기능을 종합한 투자분석 화면입니다.
+                  </td>
+                </tr>
+                <tr>
+                  <td>[8310] ELW주문종합</td>
+                  <td>호가, 시세, 주문, 계좌 등 ELW에 특화된 종합 주문화면입니다.</td>
+                </tr>
+                <tr>
+                  <td>[1950] ELW 현재가</td>
+                  <td>
+                    전환비율, 프리미엄, 기어링 등 ELW 관련 고유 지표와 기초자산 시세 정보를 함께 조회할 수 있습니다.
+                  </td>
+                </tr>
+                <tr>
+                  <td>[1967] ELW 복수현재가</td>
+                  <td>
+                    직접 설정한 분할 화면으로 여러 ELW 시세를 동시에 조회하고 각각 주문할 수 있습니다.
+                  </td>
+                </tr>
+                <tr>
+                  <td>[1960] ELW 등락률상위</td>
+                  <td>전일 대비 당일 상승률 또는 하락률 순으로 ELW 종목 정보를 조회할 수 있습니다.</td>
+                </tr>
+                <tr>
+                  <td>[1961] ELW 거래량상위</td>
+                  <td>당일 혹은 전일 거래량이 높은 순으로 ELW 종목 정보를 조회할 수 있습니다.</td>
+                </tr>
+                <tr>
+                  <td>[1966] ELW 거래대금상위</td>
+                  <td>당일 혹은 전일 거래대금이 높은 순으로 ELW 종목 정보를 조회할 수 있습니다.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="img-wrap">
+            <img src="footer_slogan.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

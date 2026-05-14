@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>[5556] 주식빠른호가주문2 - Part2. 화면설정</title>
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+        @import url("https://cdn.jsdelivr.net/gh/leetaewook/gmarket-sans-dynamic-subset/GmarketSans.css");
+        
+        /* 기본 margin, padding 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            letter-spacing: -0.72px;
+        }
+        a {
+            color: #3f75ff;
+            text-underline-offset: 3px;
+        }
+        .color-primary {
+            color: #3f75ff !important;
+        }
+        .color-warning {
+            color: #e83c3e !important;
+        }
+        img {
+            display: block;
+        }
+
+        .LS-blog-custom {
+            font-size: 0;
+            margin: 0;
+            padding: 0;
+            color: #111 !important;
+            font-family: "Pretendard" !important;
+        }
+        .LS-blog-custom .inner {
+            width: 880px;
+            margin: auto;
+            box-sizing: border-box;
+            line-height: 180%;
+            font-size: 18px !important;
+        }
+        .LS-blog-custom .inner .content-wrap {
+            padding: 40px 60px 60px;
+        }
+        .LS-blog-custom .inner .content-wrap .content-part {
+            margin-top: 60px;
+        }
+        .LS-blog-custom .inner .blog-title,
+        .LS-blog-custom .inner .blog-sub-tit {
+            line-height: 140%;
+            word-break: keep-all;
+            color: #2b2b2b;
+        }
+        .LS-blog-custom .inner .blog-sub-tit.type-2 {
+            font-family: "Gmarket Sans";
+        }
+        .LS-blog-custom .inner p {
+            padding: 0;
+            margin: 0;
+            line-height: 1.45;
+            color: #555555;
+        }
+
+        /* font-style */
+        .fw-bold {
+            font-weight: 800;
+        }
+        .fw-semiBold {
+            font-weight: 700;
+        }
+        .fw-meddium {
+            font-family: 400;
+        }
+        .fw-light {
+            font-weight: 100;
+        }
+        .text-align-center {
+            text-align: center !important;
+        }
+        .text-align-left {
+            text-align: left !important;
+        }
+        .text-align-right {
+            text-align: right !important;
+        }
+        .fz-12 {
+            font-size: 12px !important;
+        }
+        .fz-16 {
+            font-size: 16px !important;
+        }
+        .fz-18 {
+            font-size: 18px !important;
+        }
+        .fz-24 {
+            font-size: 24px !important;
+        }
+        .fz-28 {
+            font-size: 28px !important;
+        }
+        .fz-40 {
+            font-size: 40px !important;
+        }
+
+        /* margin-top */
+        .mt-0 {
+            margin-top: 0 !important;
+        }
+        .mt-5 {
+            margin-top: 5px !important;
+        }
+        .mt-6 {
+            margin-top: 6px !important;
+        }
+        .mt-7 {
+            margin-top: 7px !important;
+        }
+        .mt-8 {
+            margin-top: 8px !important;
+        }
+        .mt-9 {
+            margin-top: 9px !important;
+        }
+        .mt-10 {
+            margin-top: 10px !important;
+        }
+        .mt-11 {
+            margin-top: 11px !important;
+        }
+        .mt-12 {
+            margin-top: 12px !important;
+        }
+        .mt-13 {
+            margin-top: 13px !important;
+        }
+        .mt-14 {
+            margin-top: 14px !important;
+        }
+        .mt-15 {
+            margin-top: 15px !important;
+        }
+        .mt-16 {
+            margin-top: 16px !important;
+        }
+        .mt-17 {
+            margin-top: 17px !important;
+        }
+        .mt-18 {
+            margin-top: 18px !important;
+        }
+        .mt-19 {
+            margin-top: 19px !important;
+        }
+        .mt-20 {
+            margin-top: 20px !important;
+        }
+        .mt-21 {
+            margin-top: 21px !important;
+        }
+        .mt-22 {
+            margin-top: 22px !important;
+        }
+        .mt-23 {
+            margin-top: 23px !important;
+        }
+        .mt-24 {
+            margin-top: 24px !important;
+        }
+        .mt-25 {
+            margin-top: 25px !important;
+        }
+        .mt-26 {
+            margin-top: 26px !important;
+        }
+        .mt-27 {
+            margin-top: 27px !important;
+        }
+        .mt-28 {
+            margin-top: 28px !important;
+        }
+        .mt-29 {
+            margin-top: 29px !important;
+        }
+        .mt-30 {
+            margin-top: 30px !important;
+        }
+        .mt-31 {
+            margin-top: 31px !important;
+        }
+        .mt-32 {
+            margin-top: 32px !important;
+        }
+        .mt-33 {
+            margin-top: 33px !important;
+        }
+        .mt-34 {
+            margin-top: 34px !important;
+        }
+        .mt-35 {
+            margin-top: 35px !important;
+        }
+        .mt-36 {
+            margin-top: 36px !important;
+        }
+        .mt-37 {
+            margin-top: 37px !important;
+        }
+        .mt-38 {
+            margin-top: 38px !important;
+        }
+        .mt-39 {
+            margin-top: 39px !important;
+        }
+        .mt-40 {
+            margin-top: 40px !important;
+        }
+        .mt-60 {
+            margin-top: 60px !important;
+        }
+        .mt-120 {
+            margin-top: 120px !important;
+        }
+
+        /* margin-bottom */
+        .mb-0 {
+          margin-bottom: 0 !important;
+        }
+        .mb-5 {
+            margin-bottom: 5px !important;
+        }
+        .mb-6 {
+            margin-bottom: 6px !important;
+        }
+        .mb-7 {
+            margin-bottom: 7px !important;
+        }
+        .mb-8 {
+            margin-bottom: 8px !important;
+        }
+        .mb-9 {
+            margin-bottom: 9px !important;
+        }
+        .mb-10 {
+            margin-bottom: 10px !important;
+        }
+        .mb-11 {
+            margin-bottom: 11px !important;
+        }
+        .mb-12 {
+            margin-bottom: 12px !important;
+        }
+        .mb-13 {
+            margin-bottom: 13px !important;
+        }
+        .mb-14 {
+            margin-bottom: 14px !important;
+        }
+        .mb-15 {
+            margin-bottom: 15px !important;
+        }
+        .mb-16 {
+            margin-bottom: 16px !important;
+        }
+        .mb-17 {
+            margin-bottom: 17px !important;
+        }
+        .mb-18 {
+            margin-bottom: 18px !important;
+        }
+        .mb-19 {
+            margin-bottom: 19px !important;
+        }
+        .mb-20 {
+            margin-bottom: 20px !important;
+        }
+        .mb-21 {
+            margin-bottom: 21px !important;
+        }
+        .mb-22 {
+            margin-bottom: 22px !important;
+        }
+        .mb-23 {
+            margin-bottom: 23px !important;
+        }
+        .mb-24 {
+            margin-bottom: 24px !important;
+        }
+        .mb-25 {
+            margin-bottom: 25px !important;
+        }
+        .mb-26 {
+            margin-bottom: 26px !important;
+        }
+        .mb-27 {
+            margin-bottom: 27px !important;
+        }
+        .mb-28 {
+            margin-bottom: 28px !important;
+        }
+        .mb-29 {
+            margin-bottom: 29px !important;
+        }
+        .mb-30 {
+            margin-bottom: 30px !important;
+        }
+        .mb-31 {
+            margin-bottom: 31px !important;
+        }
+        .mb-32 {
+            margin-bottom: 32px !important;
+        }
+        .mb-33 {
+            margin-bottom: 33px !important;
+        }
+        .mb-34 {
+            margin-bottom: 34px !important;
+        }
+        .mb-35 {
+            margin-bottom: 35px !important;
+        }
+        .mb-36 {
+            margin-bottom: 36px !important;
+        }
+        .mb-37 {
+            margin-bottom: 37px !important;
+        }
+        .mb-38 {
+            margin-bottom: 38px !important;
+        }
+        .mb-39 {
+            margin-bottom: 39px !important;
+        }
+        .mb-40 {
+            margin-bottom: 40px !important;
+        }
+
+        /* padding-top */
+        .pt-5 {
+            padding-top: 5px !important;
+        }
+        .pt-6 {
+            padding-top: 6px !important;
+        }
+        .pt-7 {
+            padding-top: 7px !important;
+        }
+        .pt-8 {
+            padding-top: 8px !important;
+        }
+        .pt-9 {
+            padding-top: 9px !important;
+        }
+        .pt-10 {
+            padding-top: 10px !important;
+        }
+        .pt-11 {
+            padding-top: 11px !important;
+        }
+        .pt-12 {
+            padding-top: 12px !important;
+        }
+        .pt-13 {
+            padding-top: 13px !important;
+        }
+        .pt-14 {
+            padding-top: 14px !important;
+        }
+        .pt-15 {
+            padding-top: 15px !important;
+        }
+        .pt-16 {
+            padding-top: 16px !important;
+        }
+        .pt-17 {
+            padding-top: 17px !important;
+        }
+        .pt-18 {
+            padding-top: 18px !important;
+        }
+        .pt-19 {
+            padding-top: 19px !important;
+        }
+        .pt-20 {
+            padding-top: 20px !important;
+        }
+        .pt-21 {
+            padding-top: 21px !important;
+        }
+        .pt-22 {
+            padding-top: 22px !important;
+        }
+        .pt-23 {
+            padding-top: 23px !important;
+        }
+        .pt-24 {
+            padding-top: 24px !important;
+        }
+        .pt-25 {
+            padding-top: 25px !important;
+        }
+        .pt-26 {
+            padding-top: 26px !important;
+        }
+        .pt-27 {
+            padding-top: 27px !important;
+        }
+        .pt-28 {
+            padding-top: 28px !important;
+        }
+        .pt-29 {
+            padding-top: 29px !important;
+        }
+        .pt-30 {
+            padding-top: 30px !important;
+        }
+        .pt-31 {
+            padding-top: 31px !important;
+        }
+        .pt-32 {
+            padding-top: 32px !important;
+        }
+        .pt-33 {
+            padding-top: 33px !important;
+        }
+        .pt-34 {
+            padding-top: 34px !important;
+        }
+        .pt-35 {
+            padding-top: 35px !important;
+        }
+        .pt-36 {
+            padding-top: 36px !important;
+        }
+        .pt-37 {
+            padding-top: 37px !important;
+        }
+        .pt-38 {
+            padding-top: 38px !important;
+        }
+        .pt-39 {
+            padding-top: 39px !important;
+        }
+        .pt-40 {
+            padding-top: 40px !important;
+        }
+
+        /* padding-bottom */
+        .pb-5 {
+            padding-bottom: 5px !important;
+        }
+        .pb-6 {
+            padding-bottom: 6px !important;
+        }
+        .pb-7 {
+            padding-bottom: 7px !important;
+        }
+        .pb-8 {
+            padding-bottom: 8px !important;
+        }
+        .pb-9 {
+            padding-bottom: 9px !important;
+        }
+        .pb-10 {
+            padding-bottom: 10px !important;
+        }
+        .pb-11 {
+            padding-bottom: 11px !important;
+        }
+        .pb-12 {
+            padding-bottom: 12px !important;
+        }
+        .pb-13 {
+            padding-bottom: 13px !important;
+        }
+        .pb-14 {
+            padding-bottom: 14px !important;
+        }
+        .pb-15 {
+            padding-bottom: 15px !important;
+        }
+        .pb-16 {
+            padding-bottom: 16px !important;
+        }
+        .pb-17 {
+            padding-bottom: 17px !important;
+        }
+        .pb-18 {
+            padding-bottom: 18px !important;
+        }
+        .pb-19 {
+            padding-bottom: 19px !important;
+        }
+        .pb-20 {
+            padding-bottom: 20px !important;
+        }
+        .pb-21 {
+            padding-bottom: 21px !important;
+        }
+        .pb-22 {
+            padding-bottom: 22px !important;
+        }
+        .pb-23 {
+            padding-bottom: 23px !important;
+        }
+        .pb-24 {
+            padding-bottom: 24px !important;
+        }
+        .pb-25 {
+            padding-bottom: 25px !important;
+        }
+        .pb-26 {
+            padding-bottom: 26px !important;
+        }
+        .pb-27 {
+            padding-bottom: 27px !important;
+        }
+        .pb-28 {
+            padding-bottom: 28px !important;
+        }
+        .pb-29 {
+            padding-bottom: 29px !important;
+        }
+        .pb-30 {
+            padding-bottom: 30px !important;
+        }
+        .pb-31 {
+            padding-bottom: 31px !important;
+        }
+        .pb-32 {
+            padding-bottom: 32px !important;
+        }
+        .pb-33 {
+            padding-bottom: 33px !important;
+        }
+        .pb-34 {
+            padding-bottom: 34px !important;
+        }
+        .pb-35 {
+            padding-bottom: 35px !important;
+        }
+        .pb-36 {
+            padding-bottom: 36px !important;
+        }
+        .pb-37 {
+            padding-bottom: 37px !important;
+        }
+        .pb-38 {
+            padding-bottom: 38px !important;
+        }
+        .pb-39 {
+            padding-bottom: 39px !important;
+        }
+        .pb-40 {
+            padding-bottom: 40px !important;
+        }
+        .ml-32 {
+            margin-left: 32px !important;
+        }
+        .ml-24 {
+            margin-left: 24px !important;
+        }
+
+        .img-wrap {
+            margin: 0 auto;
+        }
+        .img-wrap.banner {
+            background-color: #4c5afa;
+        }
+        .img-wrap.banner img {
+            width: auto !important;
+            max-height: 160px;
+            margin: 0 auto;
+        }
+        .img-wrap img {
+            width: 100% !important;
+        }
+        .img-wrap.header {
+            position: relative;
+        }
+        .img-wrap.header img {
+            height: 303px;
+        }
+        .header .text-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            color: #fff;
+        }
+        .header .text-wrap img {
+            width: 80px !important;
+            height: 36px;
+            margin: 0 auto;
+        }
+        .header .text-wrap p {
+            margin-top: 16px;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #fff;
+        }
+        .header .text-wrap h2 {
+            margin-top: 12px;
+            font-family: "Gmarket Sans";
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 57px;
+        }
+        .header .text-wrap h2 strong {
+            color: #ffe8ae;
+        }
+        .img-wrap.sub {
+            padding: 26px 30px;
+            background: url("sub_tit(noTitle).png") center / cover no-repeat;
+            border-radius: 20px;
+            font-family: "Gmarket Sans";
+            color: #fff;
+        }
+        .img-wrap.sub p {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 28px;
+            color: #fff;
+        }
+        .img-wrap.sub h3 {
+            margin-top: 6px;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .img-wrap.sub h3 strong {
+            margin-right: 6px;
+            color: #ffc92c;
+            background-color: transparent;
+        }
+        .blog-sec-tit {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+        }
+        .blog-sec-tit::before {
+            content: "";
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: url("./icon_check.png") center / contain no-repeat;
+        }
+        .tip-container {
+            padding: 32px;
+            background-color: #fff2da;
+            border-radius: 20px;
+        }
+        .tip-container.warning {
+            background-color: #fee7ec;
+        }
+        .tip-container.warning h5 {
+            color: #d4002c;
+        }
+        .tip-container.warning h5::before {
+            background: url("./icon_warning.png") center / contain no-repeat;
+        }
+        .tip-container.case-1 h5 {
+            align-items: flex-start;
+        }
+        .tip-container h5 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: "Gmarket Sans";
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+            margin-bottom: 12px;
+        }
+        .tip-container h5::before {
+            content: "";
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: url("./icon_tip.png") center / contain no-repeat;
+        }
+        .tip-container ul li {
+            position: relative;
+            /* display: flex; */
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .tip-container ul li.no-dot {
+            margin-left: -9px;
+        }
+        .tip-container ul li.no-dot::before {
+            display: none;
+        }
+        .tip-container ul li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .tip-container ul li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .tip-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .tip-container ul li + li {
+            margin-top: 8px;
+        }
+        .tip-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .tip-container ul li .guide-content {
+            display: flex;
+        }
+        .tip-container .highlight {
+            background-color: #ffa60026;
+        }
+        .tip-container.type-2 {
+            background-color: #eef3ff;
+        }
+        .tip-container.type-2 h5::before {
+            background: url("./icon_pinset.png") center / contain no-repeat;
+        }
+        .tip-container.type-2 .tip-sub-tit {
+            margin-bottom: 8px;
+            font-weight: 700;
+            line-height: 26px;
+            color: #000;
+        }
+        .tip-container.type-2 ul {
+            margin-top: 8px;
+        }
+        .tip-container .tip-border {
+            margin: 32px 0;
+            width: 100%;
+            height: 1px;
+            background-color: #ebdbaf;
+        }
+        .tip-container .hts-table td {
+            background-color: #fff;
+        }
+        .blog-description {
+            padding: 16px 0;
+            padding-left: 32px;
+            border-left: 3px solid #a9a9a9;
+            color: #898989;
+            font-style: italic;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        .blog-description strong {
+            color: #111;
+            font-weight: 600;
+        }
+        .blog-text {
+            color: #555555;
+        }
+        .blog-text strong {
+            color: #000000;
+        }
+        .highlight {
+            display: inline-block;
+            font-weight: 700;
+            background-color: #fff2da;
+            color: #000;
+        }
+        .highlight.type-blue {
+            background-color: #daeaff;
+        }
+        .line-contents {
+            border: 1px solid #f0f0f0;
+            border-top: 4px #111 solid;
+            padding: 60px;
+            font-size: 18px;
+        }
+        .line-contents .title {
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 140%;
+        }
+        .line-contents .title strong {
+            color: #2467e8;
+        }
+        .line-contents .sub-tit {
+            font-size: 24px;
+            font-weight: 400;
+        }
+        .badge-wrap {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .badge-wrap .badge {
+            display: inline-block;
+            font-size: 20px;
+            line-height: 140%;
+            padding: 16px;
+            border-radius: 12px;
+            background-color: #f2f2f2;
+        }
+        .hts-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+        .table-tit {
+            margin-top: 16px;
+            margin-bottom: 4px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+        }
+        .hts-table:not(:has(thead)) th,
+        .hts-table:not(:has(thead)) td {
+            border-top: 1px solid #eeeeee;
+        }
+        .hts-table.has-bg td {
+            background-color: #fff;
+        }
+        .hts-table th,
+        .hts-table td {
+            border: 0;
+            color: #555;
+            word-break: keep-all;
+        }
+        .hts-table th {
+            padding: 13px 12px;
+            background: #f4f4f4;
+            font-weight: 500;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .hts-table td {
+            padding: 9px 12px;
+            border-bottom: 1px solid #eeeeee;
+            text-align: left;
+            line-height: 1.4;
+            letter-spacing: -1px;
+        }
+        .hts-table td:has(.has-num) {
+            padding: 9px 0;
+            text-align: center;
+        }
+        .hts-table td span {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: #3f75ff;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Gmarket Sans";
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+        }
+        .hts-table td span.has-num {
+          width: fit-content;
+          padding: 2px 9px 0 7px;
+          border-radius: 1000px;
+        }
+        .guide-list-container h6 {
+            margin-bottom: 8px;
+            font-size: 18px;
+            line-height: 26px;
+        }
+        .guide-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .guide-list > li {
+            display: flex;
+            align-items: flex-start;
+            margin: 16px 0 24px;
+        }
+        .guide-list > li:last-child {
+            margin-bottom: 0;
+        }
+        .guide-list .guide-num {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: #3f75ff;
+          margin-right: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Gmarket Sans";
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+          padding-top: 2px;
+          padding-right: 1px;
+        }
+        .guide-list .guide-num.has-num {
+            width: auto;
+            padding: 1px 9px 0 8px;
+            border-radius: 1000px;
+        }
+        .guide-list .guide-content {
+            flex: 1;
+        }
+        .guide-list p.tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .guide-list .guide-content:not(:has(.guide-title)) {
+            display: flex;
+        }
+        .guide-list .guide-title {
+            display: block;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 24px;
+            color: #222;
+        }
+        .guide-list.type-2 > li {
+            flex-wrap: wrap;
+            margin: 0;
+        }
+        .guide-list.type-2 > li + li {
+            margin-top: 8px;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) {
+            margin-top: 0;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) .guide-content {
+            margin-left: 30px;
+        }
+        .guide-list.type-2 > li .guide-title {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+        }
+        .guide-desc {
+            list-style: none;
+            margin: 0;
+            padding-left: 9px;
+            color: #555555;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+        .guide-desc li {
+            position: relative;
+            margin-top: 8px;
+            letter-spacing: -1px;
+        }
+        .guide-desc li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .guide-desc li .highlight {
+            display: inline-block;
+            background-color: #fff2da;
+            font-weight: 700;
+            line-height: 25px;
+            color: #000;
+        }
+        .guide-desc li::before {
+            content: "";
+            position: absolute;
+            top: 9px;
+            left: -9px;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #555555;
+            display: inline-block;
+        }
+        .guide-desc li.no-dot {
+            margin-left: -9px;
+        }
+        .guide-desc li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .guide-desc li.no-dot::before {
+            display: none;
+        }
+        .example-container {
+            position: relative;
+            margin-bottom: 24px;
+            padding: 32px;
+            padding-left: 96px;
+            border: 2px dashed #eee;
+            border-radius: 20px;
+        }
+        .example-container.case-1:before {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .example-container::before {
+            content: "";
+            position: absolute;
+            left: 32px;
+            top: 32px;
+            width: 48px;
+            height: 48px;
+            background: url(./icon_example.png) center / contain no-repeat;
+        }
+        .example-container .ex-head {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 22px;
+            color: #3f75ff !important;
+        }
+        .example-container .ex-head span {
+            position: relative;
+            transform: translateY(1px);
+            margin-right: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #3f75ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Gmarket Sans";
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+        }
+        .example-container .ex-head span.has-num {
+          width: auto;
+          padding: 2px 9px 0 8px;
+          border-radius: 1000px;
+        }
+        .example-container .ex-title {
+            margin-top: 2px;
+            line-height: 26px;
+            color: #000;
+        }
+        .example-container .ex-title .guide-content p {
+            color: #000;
+        }
+        .example-container ul {
+            margin-top: 8px;
+        }
+        .example-container ul li {
+            position: relative;
+            display: flex;
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .example-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .example-container ul li.no-dot {
+            padding-left: 0;
+        }
+        .example-container ul li.no-dot::before {
+            display: none;
+        }
+        .example-container ul li + li {
+            margin-top: 8px;
+        }
+        .example-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .example-container .ex-border {
+            margin: 32px 0 32px -64px;
+            border-top: 2px dashed #eee;
+        }
+        .guide-desc li .inner-desc {
+            margin-left: 52px;
+            list-style: none;
+        }
+        .guide-desc li .inner-desc li::before {
+            display: none;
+        }
+
+        .text-col {
+            display: flex;
+        }
+        .text-col .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px !important; 
+        }
+    </style>
+  </head>
+
+  <body>
+    <div class="LS-blog-custom">
+      <div class="inner">
+        <div class="img-wrap header">
+          <img src="header(noTitle).png" alt="" />
+          <div class="text-wrap">
+            <img src="brand_logo.png" alt="brand-logo" />
+            <p>[5556] 주식빠른호가주문2 - Part 2 「화면설정」</p>
+            <h2>빠르고 정확한 매매 전략,<br /><strong>그 시작은 차이를 만드는 설정에서</strong></h2>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <div class="blog-sub-tit type-2 fw-semiBold fz-24">신속한 주문과 정밀한 판단을 위한 첫걸음</div>
+          <div class="blog-text">
+            <p class="mt-16">지난 Part 1 「주문하기」에서는 LS증권 투혼 HTS <strong class="highlight">[5556] 주식빠른호가주문2</strong>의 주문 과정을 살펴보았습니다.</p>
+            <p class="mt-16">이번 시간에는 <strong class="highlight">[5556] 주식빠른호가주문2</strong> 화면설정 방법을 살펴봅니다.</p>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>빠르고 똑똑한 주문을 위한 전략 설계공간</p>
+              <h3>이 화면의 주요 설정은?</h3>
+            </div>
+            <table class="hts-table">
+              <colgroup>
+                <col style="width: 240px" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>기능</th>
+                  <th>특징</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>빠른 주문수량 · 금액 설정</td>
+                  <td>번거로운 주문 사항 반복 입력 감소</td>
+                </tr>
+                <tr>
+                  <td>주문 실행 방식 설정</td>
+                  <td>사용자 편의를 고려한 주문 절차 간소화</td>
+                </tr>
+                <tr>
+                  <td>차트 표시</td>
+                  <td>실시간 호가와 주가 흐름, 한 화면에서 동시에 확인</td>
+                </tr>
+                <tr>
+                  <td>호가잔량 그래프</td>
+                  <td>시장 흐름을 한 눈에 파악하여 전략적인 매매 대응</td>
+                </tr>
+                <tr>
+                  <td>정적 VI 발동 예상가 표시</td>
+                  <td>VI 발동 시점을 미리 파악하여 급격한 변동성 대비 가능</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="mt-32">
+              <strong class="highlight"> [5556]주식빠른호가주문2</strong> 화면에서 ‘설정’ 버튼을 클릭하여 팝업에서 다양한 기능을 설정할 수 있습니다. <br />
+              소개해드리는 여러 기능을 둘러보고 본인에게 맞는 설정으로 화면을 바꾸어 보세요.
+            </p>
+            <div class="img-wrap mt-16">
+              <img src="img_5556_12.png" alt="" />
+            </div>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>손이 눈보다 빠르게</p>
+              <h3><strong class="highlight">01</strong>주문 속도 높이기</h3>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">빠른 주문수량 · 금액 설정하기</h4>
+              <p class="mt-8">설정 화면에서 종목 조회 시 자동 입력할 주문수량을 미리 설정할 수 있습니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_5556_13.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">매도 시 실시간 수량 계산</span>
+                    <ul class="guide-desc">
+                      <li>
+                        선택 시, 매도 수량과 매수 수량 입력란이 분리(1-1번)되고, 매도 주문을 접수하는 즉시 실시간으로 계산된 주문가능 수량이 입력란에 자동 표시됩니다.
+                      </li>
+                      <li>'가' 버튼(1-2번) 클릭 시 주문가능 수량이 설정한 비율(1-3번)만큼 주문수량 입력란에 표시됩니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <span class="guide-title">주문가능 수량 설정</span>
+                    <ul class="guide-desc">
+                      <li>선택 시 주문수량 입력란(2-1번)에서 매도 수량과 매수 수량을 통합 관리합니다.</li>
+                      <li>현재가와 상한가 중 어떤 가격을 기준으로 주문 수량을 계산할지 선택할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">3</span>
+                  <div class="guide-content">
+                    <span class="guide-title">주문가능 수량 계산 방법 설정</span>
+                    <ul class="guide-desc">
+                      <li>
+                        <p class="tip-desc-tit">보유잔고가 없는 경우 : </p>
+                        <p>
+                          주문금액(3-3번)과 기준가(3-1번)를 바탕으로 매수가능 수량이 자동으로 계산되어 주문수량 입력란(2-1번)에 표시됩니다. 또한, 종목 선택 시 주문가능 수량(3-2번)에 설정된 비율(%)에 따라 수량을 조절할 수 있습니다.
+                        </p>
+                      </li>
+                    </ul>
+                    <p>1) ’종목선택 시 주문가능 수량’(3-2번) 체크 해제 시 100%를 기본값으로 계산합니다.</p>
+                    <p>2) ’설정금액’(3-3번) 체크 해제 시 주문가능금액을 기본값으로 계산합니다.</p>
+                    <ul class="guide-desc">
+                      <li>
+                        <p class="tip-desc-tit">보유잔고가 있는 경우 : </p>
+                        <p>
+                          계산 방법 체크 여부와 무관하게 매도가능 수량을 우선하여 주문수량 입력란(2-1번)에 표시합니다.
+                        </p>
+                      </li>
+                      <li>’잔고 청산가능수량의 % 우선 연동’(3-4번) 체크 시 청산가능수량 비율을 계산합니다.</li>
+                      <li>
+                        ‘호가 더블클릭 후 주문가능수량 계산 표시’(3-5번) 체크 시 호가를 더블클릭하면 매수 가능수량이 주문수량 입력란(2-1번)에 표시됩니다.
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">4</span>
+                  <div class="guide-content">
+                    <span class="guide-title">빠른수량 설정</span>
+                    <ul class="guide-desc">
+                      <li>클릭하면 주문 수량 입력란에 자동 입력되는 주문 수량 또는 주문 비율을 미리 3개까지 설정할 수 있습니다.</li>
+                      <li>주식수(주), 비율(%), 금액기준으로 설정 시 호가 화면에 (4-1번)과 같이 설정한 수량이 반영됩니다.</li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="tip-container mt-24">
+              <h5>매도 시 실시간 수량 계산 vs 주문가능 수량</h5>
+              <ul>
+                <li>
+                  <b>매도 시 실시간 수량 계산</b>은 매도 주문을 접수하는 즉시 실시간으로 주문가능 수량을 계산합니다. <br />
+                  별도의 잔고 확인 없이 다음 주문을 빠르게 접수할 수 있습니다.<br />
+                  보유수량이 100주인 경우 주문수량에 10주를 입력하고 매도 주문을 접수하면, 주문 직후 주문수량 입력란에 매도가능 수량인 90주가 입력됩니다.
+                </li>
+                <li>
+                  <b>지정수량 반복주문</b>은 입력한 주문수량이 유지되어 동일한 수량을 분할 주문할 때 유리합니다.<br />
+                  주문수량에 10주를 입력하고 매도 주문을 접수하면, 주문 직후에도 기존에 입력한 주문수량 10주가 주문수량 입력란에 그대로 유지됩니다.
+                </li>
+              </ul>
+            </div>
+
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">주문 실행 방식 설정</h4>
+              <p class="mt-8">마우스나 키보드로 주문을 접수하는 방식을 설정합니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_5556_14.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">주문 실행 방식 설정</span>
+                    <ul class="guide-desc">
+                      <li>
+                        호가 영역(1-1번, 1-2번)에서 주문 접수 방식을 선택할 수 있습니다. <br />
+                        더블클릭 주문(기본 설정) : 마우스를 두 번 연속으로 클릭해 주문을 제출합니다. <br />
+                        원클릭 주문 : 마우스를 한 번만 클릭해 주문을 제출합니다.
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <span class="guide-title">키보드 주문 기능</span>
+                    <ul class="guide-desc">
+                      <li>키보드 단축키를 활용한 주문이 가능합니다.</li>
+                    </ul>
+                    <table class="hts-table mt-8">
+                      <colgroup>
+                        <col style="width: 200px" />
+                      </colgroup>
+                      <thead>
+                        <tr>
+                          <th>항목</th>
+                          <th>단축키</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>매수주문</td>
+                          <td>Enter</td>
+                        </tr>
+                        <tr>
+                          <td>매도주문</td>
+                          <td>Enter</td>
+                        </tr>
+                        <tr>
+                          <td>일괄매도</td>
+                          <td>Ctrl + Enter</td>
+                        </tr>
+                        <tr>
+                          <td>정정주문</td>
+                          <td>Shift (선택) → 이동 → Shift + Enter (주문)</td>
+                        </tr>
+                        <tr>
+                          <td>취소주문</td>
+                          <td>Delete</td>
+                        </tr>
+                        <tr>
+                          <td>전량취소</td>
+                          <td>Shift + Delete</td>
+                        </tr>
+                        <tr>
+                          <td>매수/매도 전량취소</td>
+                          <td>Ctrl + Delete</td>
+                        </tr>
+                        <tr>
+                          <td>매도가능</td>
+                          <td>Ctrl + Q</td>
+                        </tr>
+                        <tr>
+                          <td>매수가능</td>
+                          <td>Ctrl + W</td>
+                        </tr>
+                        <tr>
+                          <td>가능금액</td>
+                          <td>Ctrl + A</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </li>
+              </ol>
+            </div>
+
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">수량 초기화 설정하기</h4>
+              <p class="mt-8">주문 직후 주문 수량 입력란을 초기화할지 선택할 수 있습니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_5556_15.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">주문 후 수량 지움</span>
+                    <ul class="guide-desc">
+                      <li>체크 시 주문 접수 후 주문수량 입력란(1-1번)이 ‘0’으로 초기화됩니다.</li>
+                      <li>체크 해제 시 주문 접수 후에도 주문수량 입력란(1-1번)이 초기되지 않고 직전 주문수량을 유지합니다.</li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>시장 흐름을 빠르게 읽는</p>
+              <h3><strong class="highlight">02</strong>화면 표시 설정</h3>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">호가등락률 표시</h4>
+              <p class="mt-8">호가창 측면의 등락률 칼럼과 표시 기준을 설정합니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_5556_16.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">호가등락률 칼럼 추가</span>
+                    <ul class="guide-desc">
+                      <li>호가창 우측에 등락률 칼럼(1-1번)을 추가합니다.</li>
+                      <li>
+                        기준가대비, 시가 / 고가 / 저가 대비, 평균매입가 / 손익분기매입가 대비 등 다양한 등락률 기준을 설정할 수 있습니다.
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">색상강조 표시 · 호가잔량 그래프 보기</h4>
+              <p class="mt-8">호가창에 다양한 기준으로 색상 및 도형 표시를 적용할 수 있습니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_5556_17.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">색상설정</span>
+                    <ul class="guide-desc">
+                      <li>현재가 외곽선 표시(1-1번) : 현재가 주변을 붉은색 테두리로 강조합니다.</li>
+                      <li>현재가 배경색(1-1번) : 현재가 배경을 지정색(예시 : 노란색)으로 표시합니다.</li>
+                      <li>호가 배경(1-2번) : 호가 목록 배경을 지정색(예시 : 흰색)으로 표시합니다.</li>
+                      <li>손익분기 매입가(1-3번) : 손익분기 매입가 배경을 지정색(예시 : 빨간색)으로 표시합니다.</li>
+                      <li>
+                        평균매입가, 미체결주문가 도형표시 (1-4, 1-5, 1-6번) : 평균매입가에 도형(●), 미체결주문이 있는 호가에 매수/매도 여부에 따라 빨간색, 파란색 도형(◆)을 표시합니다.
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <span class="guide-title">정적 VI 발동 예상가 표시</span>
+                    <ul class="guide-desc">
+                      <li>정적 VI 발동 예상가 배경을 지정색(예시 : 주황색)으로 표시합니다.</li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">호가잔량 그래프 · 체결량 색상 표시 · 호가 메모 보기</h4>
+              <p class="mt-8">호가잔량, 체결량, 시세 등을 시각화하여 볼 수 있습니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_5556_18.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">화면 고정</span>
+                    <ul class="guide-desc">
+                      <li>‘고정‘ 버튼으로 호가창을 고정하면 호가잔량 그래프와 체결량 표시설정을 적용할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <span class="guide-title">호가잔량 그래프 보기</span>
+                    <ul class="guide-desc">
+                      <li>체크 시 매도 호가잔량 영역(2-1번)과 매수 호가잔량 영역(2-2번)에 막대그래프가 표시됩니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">3</span>
+                  <div class="guide-content">
+                    <span class="guide-title">체결량 표시설정 적용</span>
+                    <ul class="guide-desc">
+                      <li>체크 시 일정량 이상의 체결량(3-1번) 내역이 발생하면 숫자와 배경색을 강조 표시합니다.</li>
+                      <li>‘체결량 표시설정‘ 버튼으로 체결량 표시 조건과 표시 방식을 설정할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">4</span>
+                  <div class="guide-content">
+                    <span class="guide-title">호가 메모 보기</span>
+                    <ul class="guide-desc">
+                      <li>
+                        당일 시가, 고가, 저가, 가중 평균가 등에 해당하는 가격을 호가창 우측에 색상으로 구분표시(4-1)해주며, 색상 표시 위에 마우스를 올리면 항목에 대한 설명을 툴팁으로 확인할 수 있습니다.
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+
+            <div class="tip-container warning mt-24">
+              <h5>주의하세요!</h5>
+              <ul>
+                <li>
+                  변동성이 크거나 거래량이 많은 종목 조회 시 ‘호가잔량 그래프 보기’ 또는 ‘체결량 표시설정 적용’ 기능을 사용하면 처리해야 할 데이터가 많아 변동사항을 실시간으로 반영하지 못하거나 HTS에 부하를 줄 수 있습니다.
+                </li>
+              </ul>
+            </div>
+
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">기타 사용자 설정</h4>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_5556_19.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">마우스 휠 이동범위 설정</span>
+                    <ul class="guide-desc">
+                      <li>호가창에서 마우스 휠 상하 이동 시, 한 번에 움직이는 호가 단위를 설정할 수 있습니다.</li>
+                      <li>기본값은 ‘1’ → 휠 한 번에 1호가씩 이동하며, ‘2’로 설정하면 휠 한 번에 2호가씩 이동합니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <span class="guide-title">전체보기시 체결량 / 차트 보기</span>
+                    <ul class="guide-desc">
+                      <li>화면 고정 해제 시에도 체결량, 차트를 확인할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">3</span>
+                  <div class="guide-content">
+                    <span class="guide-title">하단 미니차트 보기</span>
+                    <ul class="guide-desc">
+                      <li>화면 하단 미니차트 표시 여부를 설정할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">4</span>
+                  <div class="guide-content">
+                    <span class="guide-title">주문에러 메시지 보기</span>
+                    <ul class="guide-desc">
+                      <li>주문이 접수되지 못했을 때 오류 메시지를 팝업으로 표시합니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">5</span>
+                  <div class="guide-content">
+                    <span class="guide-title">화면 비율 늘리기</span>
+                    <ul class="guide-desc">
+                      <li>체크 시 화면 모서리를 드래그해 크기를 늘릴 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">6</span>
+                  <div class="guide-content">
+                    <span class="guide-title">가운데 정렬방식 설정</span>
+                    <ul class="guide-desc">
+                      <li>호가 중앙 위치 값을 설정합니다. 체크 시 매도1호가 기준, 체크 해제 시 매수1호가 기준으로 정렬됩니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">7</span>
+                  <div class="guide-content">
+                    <span class="guide-title"> 종목변경 시 포커스 종목코드 유지</span>
+                    <ul class="guide-desc">
+                      <li>종목 변경 시 커서가 종목코드에 위치해 즉시 다른 종목을 조회할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">8</span>
+                  <div class="guide-content">
+                    <span class="guide-title">기타가격 사용</span>
+                    <ul class="guide-desc">
+                      <li>체크 시 호가창 상 · 하단(8-1번)에 직접 설정한 호가가 표시되고, 매수/매도 호가창으로 주문할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="img-wrap">
+          <img src="footer_slogan.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

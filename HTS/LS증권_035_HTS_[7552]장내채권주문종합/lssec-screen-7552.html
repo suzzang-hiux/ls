@@ -1,0 +1,1881 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>[7552] 장내채권주문종합</title>
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+        @import url("https://cdn.jsdelivr.net/gh/leetaewook/gmarket-sans-dynamic-subset/GmarketSans.css");
+        
+        /* 기본 margin, padding 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            letter-spacing: -0.72px;
+        }
+        a {
+            color: #3f75ff;
+            text-underline-offset: 3px;
+        }
+        .color-primary {
+            color: #3f75ff !important;
+        }
+        .color-warning {
+            color: #e83c3e !important;
+        }
+        img {
+            display: block;
+        }
+
+        .LS-blog-custom {
+            font-size: 0;
+            margin: 0;
+            padding: 0;
+            color: #111 !important;
+            font-family: "Pretendard" !important;
+        }
+        .LS-blog-custom .inner {
+            width: 880px;
+            margin: auto;
+            box-sizing: border-box;
+            line-height: 180%;
+            font-size: 18px !important;
+        }
+        .LS-blog-custom .inner .content-wrap {
+            padding: 40px 60px 60px;
+        }
+        .LS-blog-custom .inner .content-wrap .content-part {
+            margin-top: 60px;
+        }
+        .LS-blog-custom .inner .blog-title,
+        .LS-blog-custom .inner .blog-sub-tit {
+            line-height: 140%;
+            word-break: keep-all;
+            color: #2b2b2b;
+        }
+        .LS-blog-custom .inner .blog-sub-tit.type-2 {
+            font-family: "Gmarket Sans";
+        }
+        .LS-blog-custom .inner p {
+            padding: 0;
+            margin: 0;
+            line-height: 1.45;
+            color: #555555;
+        }
+
+        /* font-style */
+        .fw-bold {
+            font-weight: 800;
+        }
+        .fw-semiBold {
+            font-weight: 700;
+        }
+        .fw-meddium {
+            font-family: 400;
+        }
+        .fw-light {
+            font-weight: 100;
+        }
+        .text-align-center {
+            text-align: center !important;
+        }
+        .text-align-left {
+            text-align: left !important;
+        }
+        .text-align-right {
+            text-align: right !important;
+        }
+        .fz-12 {
+            font-size: 12px !important;
+        }
+        .fz-16 {
+            font-size: 16px !important;
+        }
+        .fz-18 {
+            font-size: 18px !important;
+        }
+        .fz-24 {
+            font-size: 24px !important;
+        }
+        .fz-28 {
+            font-size: 28px !important;
+        }
+        .fz-40 {
+            font-size: 40px !important;
+        }
+
+        /* margin-top */
+        .mt-0 {
+            margin-top: 0 !important;
+        }
+        .mt-5 {
+            margin-top: 5px !important;
+        }
+        .mt-6 {
+            margin-top: 6px !important;
+        }
+        .mt-7 {
+            margin-top: 7px !important;
+        }
+        .mt-8 {
+            margin-top: 8px !important;
+        }
+        .mt-9 {
+            margin-top: 9px !important;
+        }
+        .mt-10 {
+            margin-top: 10px !important;
+        }
+        .mt-11 {
+            margin-top: 11px !important;
+        }
+        .mt-12 {
+            margin-top: 12px !important;
+        }
+        .mt-13 {
+            margin-top: 13px !important;
+        }
+        .mt-14 {
+            margin-top: 14px !important;
+        }
+        .mt-15 {
+            margin-top: 15px !important;
+        }
+        .mt-16 {
+            margin-top: 16px !important;
+        }
+        .mt-17 {
+            margin-top: 17px !important;
+        }
+        .mt-18 {
+            margin-top: 18px !important;
+        }
+        .mt-19 {
+            margin-top: 19px !important;
+        }
+        .mt-20 {
+            margin-top: 20px !important;
+        }
+        .mt-21 {
+            margin-top: 21px !important;
+        }
+        .mt-22 {
+            margin-top: 22px !important;
+        }
+        .mt-23 {
+            margin-top: 23px !important;
+        }
+        .mt-24 {
+            margin-top: 24px !important;
+        }
+        .mt-25 {
+            margin-top: 25px !important;
+        }
+        .mt-26 {
+            margin-top: 26px !important;
+        }
+        .mt-27 {
+            margin-top: 27px !important;
+        }
+        .mt-28 {
+            margin-top: 28px !important;
+        }
+        .mt-29 {
+            margin-top: 29px !important;
+        }
+        .mt-30 {
+            margin-top: 30px !important;
+        }
+        .mt-31 {
+            margin-top: 31px !important;
+        }
+        .mt-32 {
+            margin-top: 32px !important;
+        }
+        .mt-33 {
+            margin-top: 33px !important;
+        }
+        .mt-34 {
+            margin-top: 34px !important;
+        }
+        .mt-35 {
+            margin-top: 35px !important;
+        }
+        .mt-36 {
+            margin-top: 36px !important;
+        }
+        .mt-37 {
+            margin-top: 37px !important;
+        }
+        .mt-38 {
+            margin-top: 38px !important;
+        }
+        .mt-39 {
+            margin-top: 39px !important;
+        }
+        .mt-40 {
+            margin-top: 40px !important;
+        }
+        .mt-60 {
+            margin-top: 60px !important;
+        }
+        .mt-120 {
+            margin-top: 120px !important;
+        }
+
+        /* margin-bottom */
+        .mb-0 {
+          margin-bottom: 0 !important;
+        }
+        .mb-5 {
+            margin-bottom: 5px !important;
+        }
+        .mb-6 {
+            margin-bottom: 6px !important;
+        }
+        .mb-7 {
+            margin-bottom: 7px !important;
+        }
+        .mb-8 {
+            margin-bottom: 8px !important;
+        }
+        .mb-9 {
+            margin-bottom: 9px !important;
+        }
+        .mb-10 {
+            margin-bottom: 10px !important;
+        }
+        .mb-11 {
+            margin-bottom: 11px !important;
+        }
+        .mb-12 {
+            margin-bottom: 12px !important;
+        }
+        .mb-13 {
+            margin-bottom: 13px !important;
+        }
+        .mb-14 {
+            margin-bottom: 14px !important;
+        }
+        .mb-15 {
+            margin-bottom: 15px !important;
+        }
+        .mb-16 {
+            margin-bottom: 16px !important;
+        }
+        .mb-17 {
+            margin-bottom: 17px !important;
+        }
+        .mb-18 {
+            margin-bottom: 18px !important;
+        }
+        .mb-19 {
+            margin-bottom: 19px !important;
+        }
+        .mb-20 {
+            margin-bottom: 20px !important;
+        }
+        .mb-21 {
+            margin-bottom: 21px !important;
+        }
+        .mb-22 {
+            margin-bottom: 22px !important;
+        }
+        .mb-23 {
+            margin-bottom: 23px !important;
+        }
+        .mb-24 {
+            margin-bottom: 24px !important;
+        }
+        .mb-25 {
+            margin-bottom: 25px !important;
+        }
+        .mb-26 {
+            margin-bottom: 26px !important;
+        }
+        .mb-27 {
+            margin-bottom: 27px !important;
+        }
+        .mb-28 {
+            margin-bottom: 28px !important;
+        }
+        .mb-29 {
+            margin-bottom: 29px !important;
+        }
+        .mb-30 {
+            margin-bottom: 30px !important;
+        }
+        .mb-31 {
+            margin-bottom: 31px !important;
+        }
+        .mb-32 {
+            margin-bottom: 32px !important;
+        }
+        .mb-33 {
+            margin-bottom: 33px !important;
+        }
+        .mb-34 {
+            margin-bottom: 34px !important;
+        }
+        .mb-35 {
+            margin-bottom: 35px !important;
+        }
+        .mb-36 {
+            margin-bottom: 36px !important;
+        }
+        .mb-37 {
+            margin-bottom: 37px !important;
+        }
+        .mb-38 {
+            margin-bottom: 38px !important;
+        }
+        .mb-39 {
+            margin-bottom: 39px !important;
+        }
+        .mb-40 {
+            margin-bottom: 40px !important;
+        }
+
+        /* padding-top */
+        .pt-5 {
+            padding-top: 5px !important;
+        }
+        .pt-6 {
+            padding-top: 6px !important;
+        }
+        .pt-7 {
+            padding-top: 7px !important;
+        }
+        .pt-8 {
+            padding-top: 8px !important;
+        }
+        .pt-9 {
+            padding-top: 9px !important;
+        }
+        .pt-10 {
+            padding-top: 10px !important;
+        }
+        .pt-11 {
+            padding-top: 11px !important;
+        }
+        .pt-12 {
+            padding-top: 12px !important;
+        }
+        .pt-13 {
+            padding-top: 13px !important;
+        }
+        .pt-14 {
+            padding-top: 14px !important;
+        }
+        .pt-15 {
+            padding-top: 15px !important;
+        }
+        .pt-16 {
+            padding-top: 16px !important;
+        }
+        .pt-17 {
+            padding-top: 17px !important;
+        }
+        .pt-18 {
+            padding-top: 18px !important;
+        }
+        .pt-19 {
+            padding-top: 19px !important;
+        }
+        .pt-20 {
+            padding-top: 20px !important;
+        }
+        .pt-21 {
+            padding-top: 21px !important;
+        }
+        .pt-22 {
+            padding-top: 22px !important;
+        }
+        .pt-23 {
+            padding-top: 23px !important;
+        }
+        .pt-24 {
+            padding-top: 24px !important;
+        }
+        .pt-25 {
+            padding-top: 25px !important;
+        }
+        .pt-26 {
+            padding-top: 26px !important;
+        }
+        .pt-27 {
+            padding-top: 27px !important;
+        }
+        .pt-28 {
+            padding-top: 28px !important;
+        }
+        .pt-29 {
+            padding-top: 29px !important;
+        }
+        .pt-30 {
+            padding-top: 30px !important;
+        }
+        .pt-31 {
+            padding-top: 31px !important;
+        }
+        .pt-32 {
+            padding-top: 32px !important;
+        }
+        .pt-33 {
+            padding-top: 33px !important;
+        }
+        .pt-34 {
+            padding-top: 34px !important;
+        }
+        .pt-35 {
+            padding-top: 35px !important;
+        }
+        .pt-36 {
+            padding-top: 36px !important;
+        }
+        .pt-37 {
+            padding-top: 37px !important;
+        }
+        .pt-38 {
+            padding-top: 38px !important;
+        }
+        .pt-39 {
+            padding-top: 39px !important;
+        }
+        .pt-40 {
+            padding-top: 40px !important;
+        }
+
+        /* padding-bottom */
+        .pb-5 {
+            padding-bottom: 5px !important;
+        }
+        .pb-6 {
+            padding-bottom: 6px !important;
+        }
+        .pb-7 {
+            padding-bottom: 7px !important;
+        }
+        .pb-8 {
+            padding-bottom: 8px !important;
+        }
+        .pb-9 {
+            padding-bottom: 9px !important;
+        }
+        .pb-10 {
+            padding-bottom: 10px !important;
+        }
+        .pb-11 {
+            padding-bottom: 11px !important;
+        }
+        .pb-12 {
+            padding-bottom: 12px !important;
+        }
+        .pb-13 {
+            padding-bottom: 13px !important;
+        }
+        .pb-14 {
+            padding-bottom: 14px !important;
+        }
+        .pb-15 {
+            padding-bottom: 15px !important;
+        }
+        .pb-16 {
+            padding-bottom: 16px !important;
+        }
+        .pb-17 {
+            padding-bottom: 17px !important;
+        }
+        .pb-18 {
+            padding-bottom: 18px !important;
+        }
+        .pb-19 {
+            padding-bottom: 19px !important;
+        }
+        .pb-20 {
+            padding-bottom: 20px !important;
+        }
+        .pb-21 {
+            padding-bottom: 21px !important;
+        }
+        .pb-22 {
+            padding-bottom: 22px !important;
+        }
+        .pb-23 {
+            padding-bottom: 23px !important;
+        }
+        .pb-24 {
+            padding-bottom: 24px !important;
+        }
+        .pb-25 {
+            padding-bottom: 25px !important;
+        }
+        .pb-26 {
+            padding-bottom: 26px !important;
+        }
+        .pb-27 {
+            padding-bottom: 27px !important;
+        }
+        .pb-28 {
+            padding-bottom: 28px !important;
+        }
+        .pb-29 {
+            padding-bottom: 29px !important;
+        }
+        .pb-30 {
+            padding-bottom: 30px !important;
+        }
+        .pb-31 {
+            padding-bottom: 31px !important;
+        }
+        .pb-32 {
+            padding-bottom: 32px !important;
+        }
+        .pb-33 {
+            padding-bottom: 33px !important;
+        }
+        .pb-34 {
+            padding-bottom: 34px !important;
+        }
+        .pb-35 {
+            padding-bottom: 35px !important;
+        }
+        .pb-36 {
+            padding-bottom: 36px !important;
+        }
+        .pb-37 {
+            padding-bottom: 37px !important;
+        }
+        .pb-38 {
+            padding-bottom: 38px !important;
+        }
+        .pb-39 {
+            padding-bottom: 39px !important;
+        }
+        .pb-40 {
+            padding-bottom: 40px !important;
+        }
+        .ml-32 {
+            margin-left: 32px !important;
+        }
+        .ml-24 {
+            margin-left: 24px !important;
+        }
+
+        .img-wrap {
+            margin: 0 auto;
+        }
+        .img-wrap.banner {
+            background-color: #4c5afa;
+        }
+        .img-wrap.banner img {
+            width: auto !important;
+            max-height: 160px;
+            margin: 0 auto;
+        }
+        .img-wrap img {
+            width: 100% !important;
+        }
+        .img-wrap.header {
+            position: relative;
+        }
+        .img-wrap.header img {
+            height: 303px;
+        }
+        .header .text-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            color: #fff;
+        }
+        .header .text-wrap img {
+            width: 80px !important;
+            height: 36px;
+            margin: 0 auto;
+        }
+        .header .text-wrap p {
+            margin-top: 16px;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #fff;
+        }
+        .header .text-wrap h2 {
+            margin-top: 12px;
+            font-family: "Gmarket Sans";
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 57px;
+        }
+        .header .text-wrap h2 strong {
+            color: #ffe8ae;
+        }
+        .img-wrap.sub {
+            padding: 26px 30px;
+            background: url("sub_tit(noTitle).png") center / cover no-repeat;
+            border-radius: 20px;
+            font-family: "Gmarket Sans";
+            color: #fff;
+        }
+        .img-wrap.sub p {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 28px;
+            color: #fff;
+        }
+        .img-wrap.sub h3 {
+            margin-top: 6px;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .img-wrap.sub h3 strong {
+            margin-right: 6px;
+            color: #ffc92c;
+            background-color: transparent;
+        }
+        .blog-sec-tit {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+        }
+        .blog-sec-tit::before {
+            content: "";
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: url("./icon_check.png") center / contain no-repeat;
+        }
+        .tip-container {
+            padding: 32px;
+            background-color: #fff2da;
+            border-radius: 20px;
+        }
+        .tip-container.warning {
+            background-color: #fee7ec;
+        }
+        .tip-container.warning h5 {
+            color: #d4002c;
+        }
+        .tip-container.warning h5::before {
+            background: url("./icon_warning.png") center / contain no-repeat;
+        }
+        .tip-container.case-1 h5 {
+            align-items: flex-start;
+        }
+        .tip-container h5 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: "Gmarket Sans";
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+            margin-bottom: 12px;
+        }
+        .tip-container h5::before {
+            content: "";
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: url("./icon_tip.png") center / contain no-repeat;
+        }
+        .tip-container ul li {
+            position: relative;
+            /* display: flex; */
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .tip-container ul li.no-dot {
+            margin-left: -9px;
+        }
+        .tip-container ul li.no-dot::before {
+            display: none;
+        }
+        .tip-container ul li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .tip-container ul li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .tip-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .tip-container ul li + li {
+            margin-top: 8px;
+        }
+        .tip-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .tip-container ul li .guide-content {
+            display: flex;
+        }
+        .tip-container .highlight {
+            background-color: #ffa60026;
+        }
+        .tip-container.type-2 {
+            background-color: #eef3ff;
+        }
+        .tip-container.type-2 h5::before {
+            background: url("./icon_pinset.png") center / contain no-repeat;
+        }
+        .tip-container.type-2 .tip-sub-tit {
+            margin-bottom: 8px;
+            font-weight: 700;
+            line-height: 26px;
+            color: #000;
+        }
+        .tip-container.type-2 ul {
+            margin-top: 8px;
+        }
+        .tip-container .tip-border {
+            margin: 32px 0;
+            width: 100%;
+            height: 1px;
+            background-color: #ebdbaf;
+        }
+        .tip-container .hts-table td {
+            background-color: #fff;
+        }
+        .blog-description {
+            padding: 16px 0;
+            padding-left: 32px;
+            border-left: 3px solid #a9a9a9;
+            color: #898989;
+            font-style: italic;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        .blog-description strong {
+            color: #111;
+            font-weight: 600;
+        }
+        .blog-text {
+            color: #555555;
+        }
+        .blog-text strong {
+            color: #000000;
+        }
+        .highlight {
+            display: inline-block;
+            font-weight: 700;
+            background-color: #fff2da;
+            color: #000;
+        }
+        .highlight.type-blue {
+            background-color: #daeaff;
+        }
+        .line-contents {
+            border: 1px solid #f0f0f0;
+            border-top: 4px #111 solid;
+            padding: 60px;
+            font-size: 18px;
+        }
+        .line-contents .title {
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 140%;
+        }
+        .line-contents .title strong {
+            color: #2467e8;
+        }
+        .line-contents .sub-tit {
+            font-size: 24px;
+            font-weight: 400;
+        }
+        .badge-wrap {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .badge-wrap .badge {
+            display: inline-block;
+            font-size: 20px;
+            line-height: 140%;
+            padding: 16px;
+            border-radius: 12px;
+            background-color: #f2f2f2;
+        }
+        .hts-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+        .table-tit {
+            margin-top: 16px;
+            margin-bottom: 4px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+        }
+        .hts-table:not(:has(thead)) th,
+        .hts-table:not(:has(thead)) td {
+            border-top: 1px solid #eeeeee;
+        }
+        .hts-table.has-bg td {
+            background-color: #fff;
+        }
+        .hts-table th,
+        .hts-table td {
+            border: 0;
+            color: #555;
+            word-break: keep-all;
+        }
+        .hts-table th {
+            padding: 13px 12px;
+            background: #f4f4f4;
+            font-weight: 500;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .hts-table td {
+            padding: 9px 12px;
+            border-bottom: 1px solid #eeeeee;
+            text-align: left;
+            line-height: 1.4;
+            letter-spacing: -1px;
+        }
+        .hts-table td:has(.has-num) {
+            padding: 9px 0;
+            text-align: center;
+        }
+        .hts-table td span {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: #3f75ff;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Gmarket Sans";
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+        }
+        .hts-table td span.has-num {
+          width: fit-content;
+          padding: 2px 9px 0 7px;
+          border-radius: 1000px;
+        }
+        .guide-list-container h6 {
+            margin-bottom: 8px;
+            font-size: 18px;
+            line-height: 26px;
+        }
+        .guide-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .guide-list > li {
+            display: flex;
+            align-items: flex-start;
+            margin: 16px 0 24px;
+        }
+        .guide-list > li:last-child {
+            margin-bottom: 0;
+        }
+        .guide-list .guide-num {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: #3f75ff;
+          margin-right: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Gmarket Sans";
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+          padding-top: 2px;
+          padding-right: 1px;
+        }
+        .guide-list .guide-num.has-num {
+            width: auto;
+            padding: 1px 9px 0 8px;
+            border-radius: 1000px;
+        }
+        .guide-list .guide-content {
+            flex: 1;
+        }
+        .guide-list p.tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .guide-list .guide-content:not(:has(.guide-title)) {
+            display: flex;
+        }
+        .guide-list .guide-title {
+            display: block;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 24px;
+            color: #222;
+        }
+        .guide-list.type-2 > li {
+            flex-wrap: wrap;
+            margin: 0;
+        }
+        .guide-list.type-2 > li + li {
+            margin-top: 8px;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) {
+            margin-top: 0;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) .guide-content {
+            margin-left: 30px;
+        }
+        .guide-list.type-2 > li .guide-title {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+        }
+        .guide-desc {
+            list-style: none;
+            margin: 0;
+            padding-left: 9px;
+            color: #555555;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+        .guide-desc li {
+            position: relative;
+            margin-top: 8px;
+            letter-spacing: -1px;
+        }
+        .guide-desc li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .guide-desc li .highlight {
+            display: inline-block;
+            background-color: #fff2da;
+            font-weight: 700;
+            line-height: 25px;
+            color: #000;
+        }
+        .guide-desc li::before {
+            content: "";
+            position: absolute;
+            top: 9px;
+            left: -9px;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #555555;
+            display: inline-block;
+        }
+        .guide-desc li.no-dot {
+            margin-left: -9px;
+        }
+        .guide-desc li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .guide-desc li.no-dot::before {
+            display: none;
+        }
+        .example-container {
+            position: relative;
+            margin-bottom: 24px;
+            padding: 32px;
+            padding-left: 96px;
+            border: 2px dashed #eee;
+            border-radius: 20px;
+        }
+        .example-container.case-1:before {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .example-container::before {
+            content: "";
+            position: absolute;
+            left: 32px;
+            top: 32px;
+            width: 48px;
+            height: 48px;
+            background: url(./icon_example.png) center / contain no-repeat;
+        }
+        .example-container .ex-head {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 22px;
+            color: #3f75ff !important;
+        }
+        .example-container .ex-head span {
+            position: relative;
+            transform: translateY(1px);
+            margin-right: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #3f75ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Gmarket Sans";
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+        }
+        .example-container .ex-head span.has-num {
+          width: auto;
+          padding: 2px 9px 0 8px;
+          border-radius: 1000px;
+        }
+        .example-container .ex-title {
+            margin-top: 2px;
+            line-height: 26px;
+            color: #000;
+        }
+        .example-container .ex-title .guide-content p {
+            color: #000;
+        }
+        .example-container ul {
+            margin-top: 8px;
+        }
+        .example-container ul li {
+            position: relative;
+            display: flex;
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .example-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .example-container ul li.no-dot {
+            padding-left: 0;
+        }
+        .example-container ul li.no-dot::before {
+            display: none;
+        }
+        .example-container ul li + li {
+            margin-top: 8px;
+        }
+        .example-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .example-container .ex-border {
+            margin: 32px 0 32px -64px;
+            border-top: 2px dashed #eee;
+        }
+        .guide-desc li .inner-desc {
+            margin-left: 52px;
+            list-style: none;
+        }
+        .guide-desc li .inner-desc li::before {
+            display: none;
+        }
+
+        .text-col {
+            display: flex;
+        }
+        .text-col .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px !important;
+        }
+    </style>
+  </head>
+
+  <body>
+    <div class="LS-blog-custom">
+      <div class="inner">
+        <div class="img-wrap header">
+          <img src="header(noTitle).png" alt="" />
+          <div class="text-wrap">
+            <img src="brand_logo.png" alt="brand-logo" />
+            <p>[7552] 장내채권주문종합</p>
+            <h2>채권 투자, 한눈에 확인하고<br /><strong>스마트하게 운용하다</strong></h2>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <div class="blog-sub-tit type-2 fw-semiBold fz-24">한 화면에서 주문 · 조회 · 관리까지, 편안한 채권 투자 여정</div>
+          <div class="blog-text">
+            <p class="mt-16">
+              <strong class="highlight">[7552] 장내채권주문종합</strong> 화면은 장내에서 거래되는 국채·지방채·특수채 등 다양한 채권 상품을 매매하고, 발행정보와 계좌 내역까지 종합적으로 확인할 수 있는 기능을 제공합니다.
+            </p>
+            <p class="mt-16">
+              채권은 주식과 달리 만기까지 보유하거나 일정 기간마다 이자를 지급받을 수 있습니다. <br />가격 변동성도 주식에 비해 상대적으로 낮고, 중도 매매가 가능하기 때문에 투자자는 안정적인 수익을 확보하는 동시에 자금을 유연하게 운용할 수 있는 이점도 누릴 수 있습니다. <br />
+              또, 채권을 개인이 직접 투자할 경우 매매차익에 대해 과세되지 않아 절세 효과도 기대할 수 있습니다.
+            </p>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>채권 정보와 주문 내역을 한눈에</p>
+              <h3>이 화면이 채권 거래에 딱 맞는 이유!</h3>
+            </div>
+            <table class="hts-table">
+              <colgroup>
+                <col style="width: 240px" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>특징</th>
+                  <th>이런 점이 좋아요</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>간편한 통합 주문 기능</td>
+                  <td>매수, 매도, 정정, 취소 주문을 한 화면에서 처리</td>
+                </tr>
+                <tr>
+                  <td>발행 조건 조회</td>
+                  <td>발행일, 만기일, 표면이율, 상환방법 등 세부 정보 제공</td>
+                </tr>
+                <tr>
+                  <td>잔고 · 결제 관리</td>
+                  <td>계좌별 잔고, 결제예정 내역, 예수금 상태까지 즉시 확인</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>채권과 관련된 정보와 기능을 알차게 모았습니다</p>
+              <h3><strong class="highlight">01</strong>기본 화면 구성</h3>
+            </div>
+            <p>
+              LS증권의 <strong class="highlight">[7552] 장내채권주문통합</strong> 화면은 채권 시세 · 정보 조회부터 주문, 체결 내역과 계좌 확인까지 한곳에서 처리할 수 있는 종합 기능을 제공합니다.
+            </p>
+            <div class="img-wrap mt-16">
+              <img src="img_7552_01.png" alt="" />
+            </div>
+            <p class="mt-16">화면은 다음과 같이 4개의 영역으로 나누어집니다.</p>
+            <table class="hts-table mt-16">
+              <colgroup>
+                <col style="width: 48px" />
+                <col style="width: 160px" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>번호</th>
+                  <th>영역</th>
+                  <th>주요기능</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span>A</span></td>
+                  <td>종목 / 관심 정보</td>
+                  <td>현재 발행 및 매매중인 채권과 관심종목을 조회할 수 있습니다.</td>
+                </tr>
+                <tr>
+                  <td><span>B</span></td>
+                  <td>시세 / 호가 정보</td>
+                  <td>선택 종목의 기본 정보, 시세, 매수/매도 호가 정보 등을 확인할 수 있습니다.</td>
+                </tr>
+                <tr>
+                  <td><span>C</span></td>
+                  <td>계좌 / 주문 관리</td>
+                  <td>거래량 정보, 계좌 상태와 주문 현황을 조회하고 주문을 정정/취소할 수 있습니다.</td>
+                </tr>
+                <tr>
+                  <td><span>D</span></td>
+                  <td>주문 실행</td>
+                  <td>매수/매도/정정/취소 주문을 접수할 수 있습니다.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>일목요연하게 살펴보는,</p>
+              <h3><strong class="highlight">02</strong>종목 / 관심 정보 (A영역)</h3>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">발행현황</h4>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_7552_02.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">채권 종류 선택</span>
+                    <ul class="guide-desc">
+                      <li>조회하려는 채권 종류를 선택할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <table class="hts-table mt-16">
+              <colgroup>
+                <col style="width: 190px" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>분류</th>
+                  <th>주요 기능</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>CB (전환사채)</td>
+                  <td>일정 기간 후 발행 기업의 주식으로 전환할 수 있는 권리가 부여된 채권입니다.</td>
+                </tr>
+                <tr>
+                  <td>
+                    BW (신주인수권부사채)
+                  </td>
+                  <td>신주를 일정한 가격에 인수할 수 있는 권리가 부여된 채권입니다.</td>
+                </tr>
+                <tr>
+                  <td>EB (교환사채)</td>
+                  <td>
+                    사채를 발행한 기업이 보유하고 있는 다른 회사의 주식 또는 증권과 교환할 수 있는 권리가 부여된 채권입니다.
+                  </td>
+                </tr>
+                <tr>
+                  <td>소액 (소액채권)</td>
+                  <td>1인당 호가수량이 액면 5천만원 이하인 당월 또는 전월에 발행된 제1종 국민주택채권, 도시철도채권, 지역개발채권입니다.</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="img-wrap mt-32">
+              <img src="img_7552_03.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <span class="guide-title">채권 상세정보 조회</span>
+                    <ul class="guide-desc">
+                      <li>
+                        종목 선택 후 ‘상세정보’ 버튼 클릭 시 <strong class="highlight">[7568] 종목상세정보</strong> 화면에서 채권 관련 상세 정보를 확인할 수 있습니다.
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <table class="hts-table mt-16">
+              <colgroup>
+                <col style="width: 160px" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>주요 항목</th>
+                  <th>설명</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>표면이율</td>
+                  <td>
+                    채권 발행 시 정해진 연간 이자율로, 보유 기간 동안 정기적으로 지급되는 이자 계산의 기준이 됩니다.
+                  </td>
+                </tr>
+                <tr>
+                  <td>할인율</td>
+                  <td>채권을 액면가보다 낮은 가격으로 발행하거나 거래할 때 적용되는 비율입니다. <br />이 할인분만큼 투자자는 만기 시 이익을 얻을 수 있습니다.</td>
+                </tr>
+                <tr>
+                  <td>만기상환율</td>
+                  <td>
+                    채권 만기 시 원금 상환에 적용되는 비율입니다. <br />
+                    예를 들어 100% 이면 액면가 그대로 상환되며, 전환사채나 특수 조건부 채권은 다르게 설정될 수 있습니다.
+                  </td>
+                </tr>
+                <tr>
+                  <td>만기보장률</td>
+                  <td>
+                    채권 만기까지 보유할 경우 투자자에게 보장되는 원금 및 이자 지급 비율입니다. <br />
+                    원금 보전 여부를 확인할 수 있는 지표로 활용됩니다.
+                  </td>
+                </tr>
+                <tr>
+                  <td>전환가격</td>
+                  <td>
+                    전환사채처럼 주식으로 바꿀 수 있는 권리가 있는 경우, 채권을 주식으로 전환할 때 적용되는 1주당 가격입니다.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="tip-container mt-24">
+              <h5>신용등급으로 원금을 돌려받을 수 있을지 상환 리스크 파악하기</h5>
+              <ul>
+                <li>
+                  국가가 발행하는 국채나 공공기관이 발행하는 공사채는 회수 가능성이 높기 때문에 투자 기간 위주로 고려하면 되지만, 회사가 발행하는 회사채는 상환능력에 따라 원금을 회수하지 못할 수도 있어 신용평가기관이 발표하는 신뢰도 지표인 신용등급으로 회수 가능성을 확인해볼 수 있습니다.
+                </li>
+                <li>
+                  AAA &#62; AA+ &#62; AA0 &#62; AA- &#62; A+ &#62; A0 &#62; A- &#62; BBB+ ... 예와 같은 순서로 신용등급은 알파벳이 앞선 A등급 순으로 우수하며, 등급 표시가 많을수록, + &#62; 0 &#62; - 순으로 우수합니다. <br />
+                  신용등급은 높을수록 이율이 낮지만 회수 가능성이 높고, 낮을수록 이율이 높지만 회수 가능성이 낮기 때문에 상환 리스크를 잘 따져보아야 합니다.
+                </li>
+                <li>신용등급은 회사의 안정성과 회수 가능성을 절대적으로 담보하지 않으므로 투자판단에 대한 참고자료로만 활용하시기 바랍니다.</li>
+              </ul>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">매매현황</h4>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_7552_04.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">정렬 선택</span>
+                    <ul class="guide-desc">
+                      <li>당일 매매 종목의 순위 조회 기준을 거래량순서, 종목코드순서, 패리티순서 중 선택할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <span class="guide-title">가상매매</span>
+                    <ul class="guide-desc">
+                      <li>
+                        클릭 시 <strong class="highlight">[7556] 채권가상매매</strong> 화면에서 종목을 선택하고 매매수량, 수익률 등을 입력해 예상 수익과 정산금액을 계산할 수 있습니다.
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="tip-container mt-24">
+              <h5>채권을 보유할까, 주식으로 바꿀까, 패리티란?</h5>
+              <p>
+                패리티(Parity)는 전환사채(CB)나 신주인수권부사채(BW)처럼 주식으로 전환할 수 있는 권리가 붙은 채권의 이론적 가치로, 채권을 주식으로 전환하면 매도 등으로 얻을 수 있는 기회비용을 계산할 때 중요한 지표로 활용합니다.
+              </p>
+              <div class="mt-16">
+                <strong>패리티(%) 계산식 : 현재가 ÷ 전환가× 100</strong>
+                <ul class="mt-8">
+                  <li>패리티가 100% 이상이면, 주가가 전환가보다 높으므로 채권을 주식으로 전환하는 것이 유리합니다.</li>
+                  <li>패리티가 100% 미만이면, 주가가 전환가보다 낮으므로 채권을 보유하는 것이 유리합니다.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">관심종목</h4>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_7552_05.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">관심종목 등록</span>
+                    <ul class="guide-desc">
+                      <li>우측 시세 / 호가 정보 영역(B)에서 ‘관’ 버튼 클릭 시 조회중인 종목이 관심종목에 추가됩니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <span class="guide-title">관심종목 삭제</span>
+                    <ul class="guide-desc">
+                      <li>종목 우측의 ‘X’ 버튼 클릭 시 해당 종목이 관심종목에서 삭제됩니다.</li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>종목의 현황과 전망을 가늠하는,</p>
+              <h3><strong class="highlight">03</strong>시세 / 호가 정보 (B영역)</h3>
+            </div>
+            <div class="img-wrap mt-32">
+              <img src="img_7552_06.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">채권 시세 및 거래정보 조회</span>
+                    <ul class="guide-desc">
+                      <li>선택한 채권에 대한 주요 정보를 조회할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <table class="hts-table mt-16">
+              <colgroup>
+                <col style="width: 160px" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>주요 항목</th>
+                  <th>설명</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>표면이율</td>
+                  <td>
+                    채권 발행 시 정해진 연간 이자율로, 보유 기간 동안 정기적으로 지급되는 이자 계산의 기준이 됩니다.
+                  </td>
+                </tr>
+                <tr>
+                  <td>할인율</td>
+                  <td>
+                    채권을 액면가보다 낮은 가격으로 발행하거나 거래할 때 적용되는 비율입니다.<br />
+                    이 할인분만큼 투자자는 만기 시 이익을 얻을 수 있습니다.
+                  </td>
+                </tr>
+                <tr>
+                  <td>만기상환율</td>
+                  <td>
+                    채권 만기 시 원금 상환에 적용되는 비율입니다.<br />
+                    예를 들어 100% 이면 액면가 그대로 상환되며, 전환사채나 특수 조건부 채권은 다르게 설정될 수 있습니다.
+                  </td>
+                </tr>
+                <tr>
+                  <td>만기보장률</td>
+                  <td>
+                    채권 만기까지 보유할 경우 투자자에게 보장되는 원금 및 이자 지급 비율입니다. <br />
+                    원금 보전 여부를 확인할 수 있는 지표로 활용됩니다.
+                  </td>
+                </tr>
+                <tr>
+                  <td>전환가액</td>
+                  <td>
+                    전환사채처럼 주식으로 바꿀 수 있는 권리가 있는 경우, 채권을 주식으로 전환할 때 적용되는 1주당 가격입니다.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <span class="guide-title">채권 상세정보 조회</span>
+                    <ul class="guide-desc">
+                      <li>
+                        종목 선택 후 ‘상세정보’ 버튼 클릭 시 <strong class="highlight">[7568] 종목상세정보</strong> 화면에서 채권 관련 상세 정보를 확인할 수 있습니다.
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">3</span>
+                  <div class="guide-content">
+                    <span class="guide-title">공시자료 조회</span>
+                    <ul class="guide-desc">
+                      <li>종목 선택 후 ‘다’ 버튼 클릭 시 금융감독원 전자공시시스템(DART) 에서 해당 종목의 공시를 조회할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>거래의 전 과정을 빈틈없이 체계적으로,</p>
+              <h3><strong class="highlight">04</strong>계좌 / 주문 관리 (C영역)</h3>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">채권 일별 추이</h4>
+              <p class="mt-8">기준일을 설정하여 선택한 채권에 대한 시세 추이를 수치 또는 차트로 조회할 수 있습니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_7552_07.png" alt="" />
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">체결 추이 비교</h4>
+              <p class="mt-8">주식 종목과 채권의 시간별 현재가 및 거래량 추이를 수치 또는 차트로 비교할 수 있습니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_7552_08.png" alt="" />
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">채권 주문체결내역</h4>
+              <p class="mt-8">채권 주문이력을 조회하고, 당일 미체결 주문의 경우 선택하여 정정 및 취소할 수 있습니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_7552_09.png" alt="" />
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">채권 잔고조회</h4>
+              <p class="mt-8">기준일별 보유 잔고 이력을 조회할 수 있습니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_7552_10.png" alt="" />
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">전환주식 일별 추이</h4>
+              <p class="mt-8">전환 행사할 수 있는 주식의 일별 시세 및 거래량 정보를 수치 또는 차트로 조회할 수 있습니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_7552_11.png" alt="" />
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">전환주식 틱/변동량 추이</h4>
+              <p class="mt-8">전환 행사할 수 있는 주식의 당일 시간대별 추이를 수치 또는 차트로 조회할 수 있습니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_7552_12.png" alt="" />
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">예수금</h4>
+              <p class="mt-8">보유 현금, 미수금, 증거금, 추정 인출 가능 금액을 확인할 수 있습니다.</p>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_7552_13.png" alt="" />
+            </div>
+          </div>
+
+          <div class="content-part">
+            <div class="img-wrap sub mb-32">
+              <p>결정은 간편하게, 실행은 매끄럽게</p>
+              <h3><strong class="highlight">05</strong>주문 실행 (D영역)</h3>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">매수/매도 기능</h4>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_7552_14.png" alt="" />
+            </div>
+            <div class="guide-list-container">
+              <ol class="guide-list">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <span class="guide-title">시장구분</span>
+                    <ul class="guide-desc">
+                      <li>거래 시장을 일반시장, 소액시장 중 선택할 수 있습니다.</li>
+                      <li>일반시장은 기관 · 개인 투자자 모두 참여할 수 있으며, 주로 억 단위 거래가 이루어집니다.</li>
+                      <li>소액시장은 소액 투자자가 참여하며, 주로 수백만 원 수준의 소액 채권 거래가 이루어집니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <span class="guide-title">매수수량</span>
+                    <ul class="guide-desc">
+                      <li>천원 단위로 적용되는 주문수량을 입력합니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">3</span>
+                  <div class="guide-content">
+                    <span class="guide-title">매수단가</span>
+                    <ul class="guide-desc">
+                      <li>매수단가를 입력합니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">4</span>
+                  <div class="guide-content">
+                    <span class="guide-title">동시매매</span>
+                    <ul class="guide-desc">
+                      <li>소액채권의 경우 동시매매 여부를 선택할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">5</span>
+                  <div class="guide-content">
+                    <span class="guide-title">주문금액 조회</span>
+                    <ul class="guide-desc">
+                      <li>
+                        <p class="tip-desc-tit">매수수량 및 매수단가 입력으로 실제 주문하는 금액을 확인할 수 있습니다. <br />매수금액 = 매수수량(단위 천원) × 매수단가 ÷ 10</p>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">6</span>
+                  <div class="guide-content">
+                    <span class="guide-title">과세구분 선택</span>
+                    <ul class="guide-desc">
+                      <li>매도주문인 경우 과세구분을 종합과세, 분리과세 중 선택할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">7</span>
+                  <div class="guide-content">
+                    <span class="guide-title">매수/매도 선택</span>
+                    <ul class="guide-desc">
+                      <li>버튼 클릭 시 매수(단축키 F2) 또는 매도(단축키 F3) 주문을 접수할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">8</span>
+                  <div class="guide-content">
+                    <span class="guide-title">수량계산기</span>
+                    <ul class="guide-desc">
+                      <li>버튼 클릭 시 매수 가능수량을 계산할 수 있습니다. 수수료는 계산에 포함되지 않습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">9</span>
+                  <div class="guide-content">
+                    <span class="guide-title">주문 설정</span>
+                    <ul class="guide-desc">
+                      <li>버튼 클릭 시 초기 주문 설정, 기능 설정, 경고창 등 주문 환경을 설정할 수 있습니다.</li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">정정/취소 기능</h4>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_7552_15.png" alt="" />
+            </div>
+            <ul class="guide-desc">
+              <li>종목 정보를 직접 입력하거나 주문내역에서 선택 후, 주문을 정정(단축키 F4) 또는 취소(단축키 F5)할 수 있습니다.</li>
+            </ul>
+            <div class="tip-container type-2 mt-24">
+              <h5>참고해주세요!</h5>
+              <h6 class="fz-18">채권 매매시간 및 매매단위 안내</h6>
+              <ul>
+                <li>호가접수시간 : 08:30 ~ 15:30</li>
+                <li>매매시간 : 09:00 ~ 15:30</li>
+                <li>
+                  <p class="tip-desc-tit">소액채권 동시매매 : </p>
+                  <p>
+                    15:10 ~ 15:30 (동시매매 시간에는 동시매매 항목(번)에서 '동시매매' 선택 필수)
+                  </p>
+                </li>
+                <li>매매수량단위 : 액면 1,000원</li>
+              </ul>
+            </div>
+            <div class="blog-text mt-32">
+              <h4 class="blog-sec-tit">주문 설정 기능</h4>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_7552_16.png" alt="" />
+            </div>
+            <div class="guide-list-container mt-24">
+              <h6>주문 전 자동 입력 설정</h6>
+              <ol class="guide-list type-2">
+                <li>
+                  <span class="guide-num">1</span>
+                  <div class="guide-content">
+                    <p>초기가격 : 체크 시 매도/매수/정정 주문 화면에서 주문단가에 초기 설정 가격이 자동 입력됩니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">2</span>
+                  <div class="guide-content">
+                    <p>초기수량 : 체크 시 매도/매수/정정 주문 화면에서 주문수량에 초기 설정 수량이 자동 입력됩니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">3</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">종목변경 시 최근 미체결번호 입력(정정) : </p>
+                    <p>
+                      체크 시 정정/취소 주문 화면에서 직전 미체결 주문 번호를 자동 입력합니다.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="guide-list-container mt-24">
+              <h6>주문 후 설정</h6>
+              <ol class="guide-list type-2">
+                <li>
+                  <span class="guide-num">4</span>
+                  <div class="guide-content">
+                    <p>커서위치 : 주문 후 커서가 이동할 곳을 지정합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">5</span>
+                  <div class="guide-content">
+                    <p>수량지움 / 가격지움 : 체크 시 주문 시 입력한 수량 또는 가격을 주문 실행 후 유지하지 않고 삭제합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">6</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">매도/매수/정정 주문후 원주문 자동입력 : </p>
+                    <p>
+                      체크 시 정정/취소 주문 화면을 조회하면 최근 매도/매수/정정 주문 번호가 자동 입력됩니다.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="img-wrap mt-16">
+              <img src="img_7552_17.png" alt="" />
+            </div>
+            <div class="guide-list-container mt-24">
+              <h6>빠른 수량 버튼 설정</h6>
+              <ol class="guide-list type-2">
+                <li>
+                  <span class="guide-num">7</span>
+                  <div class="guide-content">
+                    <p>
+                      매도/매수 주문 화면에서 클릭 입력하는 주문수량 기준을 설정할 수 있습니다. <br />
+                      총 3개의 기준을 미리 설정할 수 있으며, 수량(주) 및 주문가능수량 대비 비율(%) 중 선택할 수 있습니다.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="guide-list-container mt-24">
+              <h6>화면 기능 설정</h6>
+              <ol class="guide-list type-2">
+                <li>
+                  <span class="guide-num">8</span>
+                  <div class="guide-content">
+                    <p>주문확인창 보기 : 체크 시 착오주문 방지를 위해 주문 실행 전 확인창을 표시합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">9</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">주문전 가치분석 보기 : </p>
+                    <p>
+                      체크 시 위험 종목을 선택한 경우 주문 화면이 노란색 배경으로 변경되고 경고 메시지를 표시합니다.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">10</span>
+                  <div class="guide-content">
+                    <p>탭이동/종목변경시 주문수량유지 : 체크 후 종목을 변경하거나 탭 전환 시 입력한 주문수량을 유지합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">11</span>
+                  <div class="guide-content">
+                    <p>탭이동시 주문유형유지 : 체크 후 매도/매수 주문 화면 전환 시 선택한 거래소와 주문유형을 유지합니다.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">12</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">매도/수 호가클릭시 주문 화면 전환 : </p>
+                    <p>
+                      체크 시 클릭한 호가가 현재가보다 높으면 매도 주문 화면, 낮으면 매수 주문 화면으로 전환됩니다.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">13</span>
+                  <div class="guide-content">
+                    <p class="tip-desc-tit">실시간 체크 안보이기 : </p>
+                    <p>
+                      체크 후 초기가격(1번)과 초기수량(2번)에 체크하면 주문 화면에 표시되는 자동 체크박스를 숨깁니다.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="guide-num">14</span>
+                  <div class="guide-content">
+                    <p>탭키이동순서 : 체크 시 탭 키를 눌러 이동할 때 커서가 ‘주’ ‘가능’ 등 주요 버튼을 포함할지 여부를 선택합니다.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="guide-list-container mt-24">
+              <h6>경고창 설정</h6>
+              <ol class="guide-list type-2">
+                <li>
+                  <span class="guide-num">15</span>
+                  <div class="guide-content">
+                    <p>매수/매도 주문 시 설정한 조건에 부합할 경우 주문 전 경고창을 표시해 주문 실수를 방지하도록 도와줍니다.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="guide-list-container mt-24">
+              <h6>소리설정</h6>
+              <ol class="guide-list type-2">
+                <li>
+                  <span class="guide-num">16</span>
+                  <div class="guide-content">
+                    <p>주문 접수가 완료되거나 주문 오류 발생 시 소리로 알려주는 알림음을 설정할 수 있습니다.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <p class="mt-60">
+            지금까지 LS증권 투혼 HTS <strong class="highlight">[7552] 장내채권주문종합</strong> 화면을 살펴보았습니다. <br />
+            장내채권은 예금보다 높은 수익률을 기대하면서도 주식보다 변동성이 낮아, 안정적 자금 운용에 적합합니다. <br />
+            때문에 여러 상품에 분산 투자하는 포트폴리오 전략을 구상할 때 수익과 리스크를 적절히 배분하기 위한 방법으로 채권을 고려해볼만 합니다.<br />
+            감사합니다!
+          </p>
+        </div>
+
+        <div class="img-wrap">
+          <img src="footer_slogan.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

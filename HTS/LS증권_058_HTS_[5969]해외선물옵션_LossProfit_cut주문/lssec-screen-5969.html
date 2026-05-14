@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>[5969] 해외선물옵션 Loss/Profitcut 주문</title>
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+        @import url("https://cdn.jsdelivr.net/gh/leetaewook/gmarket-sans-dynamic-subset/GmarketSans.css");
+        
+        /* 기본 margin, padding 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            letter-spacing: -0.72px;
+        }
+        a {
+            color: #3f75ff;
+            text-underline-offset: 3px;
+        }
+        .color-primary {
+            color: #3f75ff !important;
+        }
+        .color-warning {
+            color: #e83c3e !important;
+        }
+        img {
+            display: block;
+        }
+
+        .LS-blog-custom {
+            font-size: 0;
+            margin: 0;
+            padding: 0;
+            color: #111 !important;
+            font-family: "Pretendard" !important;
+        }
+        .LS-blog-custom .inner {
+            width: 880px;
+            margin: auto;
+            box-sizing: border-box;
+            line-height: 180%;
+            font-size: 18px !important;
+        }
+        .LS-blog-custom .inner .content-wrap {
+            padding: 40px 60px 60px;
+        }
+        .LS-blog-custom .inner .content-wrap .content-part {
+            margin-top: 60px;
+        }
+        .LS-blog-custom .inner .blog-title,
+        .LS-blog-custom .inner .blog-sub-tit {
+            line-height: 140%;
+            word-break: keep-all;
+            color: #2b2b2b;
+        }
+        .LS-blog-custom .inner .blog-sub-tit.type-2 {
+            font-family: "Gmarket Sans";
+        }
+        .LS-blog-custom .inner p {
+            padding: 0;
+            margin: 0;
+            line-height: 1.45;
+            color: #555555;
+        }
+
+        /* font-style */
+        .fw-bold {
+            font-weight: 800;
+        }
+        .fw-semiBold {
+            font-weight: 700;
+        }
+        .fw-meddium {
+            font-family: 400;
+        }
+        .fw-light {
+            font-weight: 100;
+        }
+        .text-align-center {
+            text-align: center !important;
+        }
+        .text-align-left {
+            text-align: left !important;
+        }
+        .text-align-right {
+            text-align: right !important;
+        }
+        .fz-12 {
+            font-size: 12px !important;
+        }
+        .fz-16 {
+            font-size: 16px !important;
+        }
+        .fz-18 {
+            font-size: 18px !important;
+        }
+        .fz-24 {
+            font-size: 24px !important;
+        }
+        .fz-28 {
+            font-size: 28px !important;
+        }
+        .fz-40 {
+            font-size: 40px !important;
+        }
+
+        /* margin-top */
+        .mt-0 {
+            margin-top: 0 !important;
+        }
+        .mt-5 {
+            margin-top: 5px !important;
+        }
+        .mt-6 {
+            margin-top: 6px !important;
+        }
+        .mt-7 {
+            margin-top: 7px !important;
+        }
+        .mt-8 {
+            margin-top: 8px !important;
+        }
+        .mt-9 {
+            margin-top: 9px !important;
+        }
+        .mt-10 {
+            margin-top: 10px !important;
+        }
+        .mt-11 {
+            margin-top: 11px !important;
+        }
+        .mt-12 {
+            margin-top: 12px !important;
+        }
+        .mt-13 {
+            margin-top: 13px !important;
+        }
+        .mt-14 {
+            margin-top: 14px !important;
+        }
+        .mt-15 {
+            margin-top: 15px !important;
+        }
+        .mt-16 {
+            margin-top: 16px !important;
+        }
+        .mt-17 {
+            margin-top: 17px !important;
+        }
+        .mt-18 {
+            margin-top: 18px !important;
+        }
+        .mt-19 {
+            margin-top: 19px !important;
+        }
+        .mt-20 {
+            margin-top: 20px !important;
+        }
+        .mt-21 {
+            margin-top: 21px !important;
+        }
+        .mt-22 {
+            margin-top: 22px !important;
+        }
+        .mt-23 {
+            margin-top: 23px !important;
+        }
+        .mt-24 {
+            margin-top: 24px !important;
+        }
+        .mt-25 {
+            margin-top: 25px !important;
+        }
+        .mt-26 {
+            margin-top: 26px !important;
+        }
+        .mt-27 {
+            margin-top: 27px !important;
+        }
+        .mt-28 {
+            margin-top: 28px !important;
+        }
+        .mt-29 {
+            margin-top: 29px !important;
+        }
+        .mt-30 {
+            margin-top: 30px !important;
+        }
+        .mt-31 {
+            margin-top: 31px !important;
+        }
+        .mt-32 {
+            margin-top: 32px !important;
+        }
+        .mt-33 {
+            margin-top: 33px !important;
+        }
+        .mt-34 {
+            margin-top: 34px !important;
+        }
+        .mt-35 {
+            margin-top: 35px !important;
+        }
+        .mt-36 {
+            margin-top: 36px !important;
+        }
+        .mt-37 {
+            margin-top: 37px !important;
+        }
+        .mt-38 {
+            margin-top: 38px !important;
+        }
+        .mt-39 {
+            margin-top: 39px !important;
+        }
+        .mt-40 {
+            margin-top: 40px !important;
+        }
+        .mt-60 {
+            margin-top: 60px !important;
+        }
+        .mt-120 {
+            margin-top: 120px !important;
+        }
+
+        /* margin-bottom */
+        .mb-0 {
+          margin-bottom: 0 !important;
+        }
+        .mb-5 {
+            margin-bottom: 5px !important;
+        }
+        .mb-6 {
+            margin-bottom: 6px !important;
+        }
+        .mb-7 {
+            margin-bottom: 7px !important;
+        }
+        .mb-8 {
+            margin-bottom: 8px !important;
+        }
+        .mb-9 {
+            margin-bottom: 9px !important;
+        }
+        .mb-10 {
+            margin-bottom: 10px !important;
+        }
+        .mb-11 {
+            margin-bottom: 11px !important;
+        }
+        .mb-12 {
+            margin-bottom: 12px !important;
+        }
+        .mb-13 {
+            margin-bottom: 13px !important;
+        }
+        .mb-14 {
+            margin-bottom: 14px !important;
+        }
+        .mb-15 {
+            margin-bottom: 15px !important;
+        }
+        .mb-16 {
+            margin-bottom: 16px !important;
+        }
+        .mb-17 {
+            margin-bottom: 17px !important;
+        }
+        .mb-18 {
+            margin-bottom: 18px !important;
+        }
+        .mb-19 {
+            margin-bottom: 19px !important;
+        }
+        .mb-20 {
+            margin-bottom: 20px !important;
+        }
+        .mb-21 {
+            margin-bottom: 21px !important;
+        }
+        .mb-22 {
+            margin-bottom: 22px !important;
+        }
+        .mb-23 {
+            margin-bottom: 23px !important;
+        }
+        .mb-24 {
+            margin-bottom: 24px !important;
+        }
+        .mb-25 {
+            margin-bottom: 25px !important;
+        }
+        .mb-26 {
+            margin-bottom: 26px !important;
+        }
+        .mb-27 {
+            margin-bottom: 27px !important;
+        }
+        .mb-28 {
+            margin-bottom: 28px !important;
+        }
+        .mb-29 {
+            margin-bottom: 29px !important;
+        }
+        .mb-30 {
+            margin-bottom: 30px !important;
+        }
+        .mb-31 {
+            margin-bottom: 31px !important;
+        }
+        .mb-32 {
+            margin-bottom: 32px !important;
+        }
+        .mb-33 {
+            margin-bottom: 33px !important;
+        }
+        .mb-34 {
+            margin-bottom: 34px !important;
+        }
+        .mb-35 {
+            margin-bottom: 35px !important;
+        }
+        .mb-36 {
+            margin-bottom: 36px !important;
+        }
+        .mb-37 {
+            margin-bottom: 37px !important;
+        }
+        .mb-38 {
+            margin-bottom: 38px !important;
+        }
+        .mb-39 {
+            margin-bottom: 39px !important;
+        }
+        .mb-40 {
+            margin-bottom: 40px !important;
+        }
+
+        /* padding-top */
+        .pt-5 {
+            padding-top: 5px !important;
+        }
+        .pt-6 {
+            padding-top: 6px !important;
+        }
+        .pt-7 {
+            padding-top: 7px !important;
+        }
+        .pt-8 {
+            padding-top: 8px !important;
+        }
+        .pt-9 {
+            padding-top: 9px !important;
+        }
+        .pt-10 {
+            padding-top: 10px !important;
+        }
+        .pt-11 {
+            padding-top: 11px !important;
+        }
+        .pt-12 {
+            padding-top: 12px !important;
+        }
+        .pt-13 {
+            padding-top: 13px !important;
+        }
+        .pt-14 {
+            padding-top: 14px !important;
+        }
+        .pt-15 {
+            padding-top: 15px !important;
+        }
+        .pt-16 {
+            padding-top: 16px !important;
+        }
+        .pt-17 {
+            padding-top: 17px !important;
+        }
+        .pt-18 {
+            padding-top: 18px !important;
+        }
+        .pt-19 {
+            padding-top: 19px !important;
+        }
+        .pt-20 {
+            padding-top: 20px !important;
+        }
+        .pt-21 {
+            padding-top: 21px !important;
+        }
+        .pt-22 {
+            padding-top: 22px !important;
+        }
+        .pt-23 {
+            padding-top: 23px !important;
+        }
+        .pt-24 {
+            padding-top: 24px !important;
+        }
+        .pt-25 {
+            padding-top: 25px !important;
+        }
+        .pt-26 {
+            padding-top: 26px !important;
+        }
+        .pt-27 {
+            padding-top: 27px !important;
+        }
+        .pt-28 {
+            padding-top: 28px !important;
+        }
+        .pt-29 {
+            padding-top: 29px !important;
+        }
+        .pt-30 {
+            padding-top: 30px !important;
+        }
+        .pt-31 {
+            padding-top: 31px !important;
+        }
+        .pt-32 {
+            padding-top: 32px !important;
+        }
+        .pt-33 {
+            padding-top: 33px !important;
+        }
+        .pt-34 {
+            padding-top: 34px !important;
+        }
+        .pt-35 {
+            padding-top: 35px !important;
+        }
+        .pt-36 {
+            padding-top: 36px !important;
+        }
+        .pt-37 {
+            padding-top: 37px !important;
+        }
+        .pt-38 {
+            padding-top: 38px !important;
+        }
+        .pt-39 {
+            padding-top: 39px !important;
+        }
+        .pt-40 {
+            padding-top: 40px !important;
+        }
+
+        /* padding-bottom */
+        .pb-5 {
+            padding-bottom: 5px !important;
+        }
+        .pb-6 {
+            padding-bottom: 6px !important;
+        }
+        .pb-7 {
+            padding-bottom: 7px !important;
+        }
+        .pb-8 {
+            padding-bottom: 8px !important;
+        }
+        .pb-9 {
+            padding-bottom: 9px !important;
+        }
+        .pb-10 {
+            padding-bottom: 10px !important;
+        }
+        .pb-11 {
+            padding-bottom: 11px !important;
+        }
+        .pb-12 {
+            padding-bottom: 12px !important;
+        }
+        .pb-13 {
+            padding-bottom: 13px !important;
+        }
+        .pb-14 {
+            padding-bottom: 14px !important;
+        }
+        .pb-15 {
+            padding-bottom: 15px !important;
+        }
+        .pb-16 {
+            padding-bottom: 16px !important;
+        }
+        .pb-17 {
+            padding-bottom: 17px !important;
+        }
+        .pb-18 {
+            padding-bottom: 18px !important;
+        }
+        .pb-19 {
+            padding-bottom: 19px !important;
+        }
+        .pb-20 {
+            padding-bottom: 20px !important;
+        }
+        .pb-21 {
+            padding-bottom: 21px !important;
+        }
+        .pb-22 {
+            padding-bottom: 22px !important;
+        }
+        .pb-23 {
+            padding-bottom: 23px !important;
+        }
+        .pb-24 {
+            padding-bottom: 24px !important;
+        }
+        .pb-25 {
+            padding-bottom: 25px !important;
+        }
+        .pb-26 {
+            padding-bottom: 26px !important;
+        }
+        .pb-27 {
+            padding-bottom: 27px !important;
+        }
+        .pb-28 {
+            padding-bottom: 28px !important;
+        }
+        .pb-29 {
+            padding-bottom: 29px !important;
+        }
+        .pb-30 {
+            padding-bottom: 30px !important;
+        }
+        .pb-31 {
+            padding-bottom: 31px !important;
+        }
+        .pb-32 {
+            padding-bottom: 32px !important;
+        }
+        .pb-33 {
+            padding-bottom: 33px !important;
+        }
+        .pb-34 {
+            padding-bottom: 34px !important;
+        }
+        .pb-35 {
+            padding-bottom: 35px !important;
+        }
+        .pb-36 {
+            padding-bottom: 36px !important;
+        }
+        .pb-37 {
+            padding-bottom: 37px !important;
+        }
+        .pb-38 {
+            padding-bottom: 38px !important;
+        }
+        .pb-39 {
+            padding-bottom: 39px !important;
+        }
+        .pb-40 {
+            padding-bottom: 40px !important;
+        }
+        .ml-32 {
+            margin-left: 32px !important;
+        }
+        .ml-24 {
+            margin-left: 24px !important;
+        }
+
+        .img-wrap {
+            margin: 0 auto;
+        }
+        .img-wrap.banner {
+            background-color: #4c5afa;
+        }
+        .img-wrap.banner img {
+            width: auto !important;
+            max-height: 160px;
+            margin: 0 auto;
+        }
+        .img-wrap img {
+            width: 100% !important;
+        }
+        .img-wrap.header {
+            position: relative;
+        }
+        .img-wrap.header img {
+            height: 303px;
+        }
+        .header .text-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            color: #fff;
+        }
+        .header .text-wrap img {
+            width: 80px !important;
+            height: 36px;
+            margin: 0 auto;
+        }
+        .header .text-wrap p {
+            margin-top: 16px;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #fff;
+        }
+        .header .text-wrap h2 {
+            margin-top: 12px;
+            font-family: "Gmarket Sans";
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 57px;
+        }
+        .header .text-wrap h2 strong {
+            color: #ffe8ae;
+        }
+        .img-wrap.sub {
+            padding: 26px 30px;
+            background: url("sub_tit(noTitle).png") center / cover no-repeat;
+            border-radius: 20px;
+            font-family: "Gmarket Sans";
+            color: #fff;
+        }
+        .img-wrap.sub p {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 28px;
+            color: #fff;
+        }
+        .img-wrap.sub h3 {
+            margin-top: 6px;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .img-wrap.sub h3 strong {
+            margin-right: 6px;
+            color: #ffc92c;
+            background-color: transparent;
+        }
+        .blog-sec-tit {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+        }
+        .blog-sec-tit::before {
+            content: "";
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: url("./icon_check.png") center / contain no-repeat;
+        }
+        .tip-container {
+            padding: 32px;
+            background-color: #fff2da;
+            border-radius: 20px;
+        }
+        .tip-container.warning {
+            background-color: #fee7ec;
+        }
+        .tip-container.warning h5 {
+            color: #d4002c;
+        }
+        .tip-container.warning h5::before {
+            background: url("./icon_warning.png") center / contain no-repeat;
+        }
+        .tip-container.case-1 h5 {
+            align-items: flex-start;
+        }
+        .tip-container h5 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: "Gmarket Sans";
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            color: #254aad;
+            margin-bottom: 12px;
+        }
+        .tip-container h5::before {
+            content: "";
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: url("./icon_tip.png") center / contain no-repeat;
+        }
+        .tip-container ul li {
+            position: relative;
+            /* display: flex; */
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .tip-container ul li.no-dot {
+            margin-left: -9px;
+        }
+        .tip-container ul li.no-dot::before {
+            display: none;
+        }
+        .tip-container ul li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .tip-container ul li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .tip-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .tip-container ul li + li {
+            margin-top: 8px;
+        }
+        .tip-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .tip-container ul li .guide-content {
+            display: flex;
+        }
+        .tip-container .highlight {
+            background-color: #ffa60026;
+        }
+        .tip-container.type-2 {
+            background-color: #eef3ff;
+        }
+        .tip-container.type-2 h5::before {
+            background: url("./icon_pinset.png") center / contain no-repeat;
+        }
+        .tip-container.type-2 .tip-sub-tit {
+            margin-bottom: 8px;
+            font-weight: 700;
+            line-height: 26px;
+            color: #000;
+        }
+        .tip-container.type-2 ul {
+            margin-top: 8px;
+        }
+        .tip-container .tip-border {
+            margin: 32px 0;
+            width: 100%;
+            height: 1px;
+            background-color: #ebdbaf;
+        }
+        .tip-container .hts-table td {
+            background-color: #fff;
+        }
+        .blog-description {
+            padding: 16px 0;
+            padding-left: 32px;
+            border-left: 3px solid #a9a9a9;
+            color: #898989;
+            font-style: italic;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        .blog-description strong {
+            color: #111;
+            font-weight: 600;
+        }
+        .blog-text {
+            color: #555555;
+        }
+        .blog-text strong {
+            color: #000000;
+        }
+        .highlight {
+            display: inline-block;
+            font-weight: 700;
+            background-color: #fff2da;
+            color: #000;
+        }
+        .highlight.type-blue {
+            background-color: #daeaff;
+        }
+        .line-contents {
+            border: 1px solid #f0f0f0;
+            border-top: 4px #111 solid;
+            padding: 60px;
+            font-size: 18px;
+        }
+        .line-contents .title {
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 140%;
+        }
+        .line-contents .title strong {
+            color: #2467e8;
+        }
+        .line-contents .sub-tit {
+            font-size: 24px;
+            font-weight: 400;
+        }
+        .badge-wrap {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .badge-wrap .badge {
+            display: inline-block;
+            font-size: 20px;
+            line-height: 140%;
+            padding: 16px;
+            border-radius: 12px;
+            background-color: #f2f2f2;
+        }
+        .hts-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+        .table-tit {
+            margin-top: 16px;
+            margin-bottom: 4px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+        }
+        .hts-table:not(:has(thead)) th,
+        .hts-table:not(:has(thead)) td {
+            border-top: 1px solid #eeeeee;
+        }
+        .hts-table.has-bg td {
+            background-color: #fff;
+        }
+        .hts-table th,
+        .hts-table td {
+            border: 0;
+            color: #555;
+            word-break: keep-all;
+        }
+        .hts-table th {
+            padding: 13px 12px;
+            background: #f4f4f4;
+            font-weight: 500;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .hts-table td {
+            padding: 9px 12px;
+            border-bottom: 1px solid #eeeeee;
+            text-align: left;
+            line-height: 1.4;
+            letter-spacing: -1px;
+        }
+        .hts-table td:has(.has-num) {
+            padding: 9px 0;
+            text-align: center;
+        }
+        .hts-table td span {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: #3f75ff;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Gmarket Sans";
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+        }
+        .hts-table td span.has-num {
+          width: fit-content;
+          padding: 2px 9px 0 7px;
+          border-radius: 1000px;
+        }
+        .guide-list-container h6 {
+            margin-bottom: 8px;
+            font-size: 18px;
+            line-height: 26px;
+        }
+        .guide-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .guide-list > li {
+            display: flex;
+            align-items: flex-start;
+            margin: 16px 0 24px;
+        }
+        .guide-list > li:last-child {
+            margin-bottom: 0;
+        }
+        .guide-list .guide-num {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: #3f75ff;
+          margin-right: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Gmarket Sans";
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+          padding-top: 2px;
+          padding-right: 1px;
+        }
+        .guide-list .guide-num.has-num {
+            width: auto;
+            padding: 1px 9px 0 8px;
+            border-radius: 1000px;
+        }
+        .guide-list .guide-content {
+            flex: 1;
+        }
+        .guide-list p.tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .guide-list .guide-content:not(:has(.guide-title)) {
+            display: flex;
+        }
+        .guide-list .guide-title {
+            display: block;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 24px;
+            color: #222;
+        }
+        .guide-list.type-2 > li {
+            flex-wrap: wrap;
+            margin: 0;
+        }
+        .guide-list.type-2 > li + li {
+            margin-top: 8px;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) {
+            margin-top: 0;
+        }
+        .guide-list.type-2 > li + li:not(:has(.guide-num)) .guide-content {
+            margin-left: 30px;
+        }
+        .guide-list.type-2 > li .guide-title {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+        }
+        .guide-desc {
+            list-style: none;
+            margin: 0;
+            padding-left: 9px;
+            color: #555555;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+        .guide-desc li {
+            position: relative;
+            margin-top: 8px;
+            letter-spacing: -1px;
+        }
+        .guide-desc li:has(.tip-desc-tit) {
+            display: flex;
+        }
+        .guide-desc li .highlight {
+            display: inline-block;
+            background-color: #fff2da;
+            font-weight: 700;
+            line-height: 25px;
+            color: #000;
+        }
+        .guide-desc li::before {
+            content: "";
+            position: absolute;
+            top: 9px;
+            left: -9px;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #555555;
+            display: inline-block;
+        }
+        .guide-desc li.no-dot {
+            margin-left: -9px;
+        }
+        .guide-desc li.no-dot.has-mg {
+            margin-left: 0;
+        }
+        .guide-desc li.no-dot::before {
+            display: none;
+        }
+        .example-container {
+            position: relative;
+            margin-bottom: 24px;
+            padding: 32px;
+            padding-left: 96px;
+            border: 2px dashed #eee;
+            border-radius: 20px;
+        }
+        .example-container.case-1:before {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .example-container::before {
+            content: "";
+            position: absolute;
+            left: 32px;
+            top: 32px;
+            width: 48px;
+            height: 48px;
+            background: url(./icon_example.png) center / contain no-repeat;
+        }
+        .example-container .ex-head {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 22px;
+            color: #3f75ff !important;
+        }
+        .example-container .ex-head span {
+            position: relative;
+            transform: translateY(1px);
+            margin-right: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #3f75ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Gmarket Sans";
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+        }
+        .example-container .ex-head span.has-num {
+          width: auto;
+          padding: 2px 9px 0 8px;
+          border-radius: 1000px;
+        }
+        .example-container .ex-title {
+            margin-top: 2px;
+            line-height: 26px;
+            color: #000;
+        }
+        .example-container .ex-title .guide-content p {
+            color: #000;
+        }
+        .example-container ul {
+            margin-top: 8px;
+        }
+        .example-container ul li {
+            position: relative;
+            display: flex;
+            padding-left: 9px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            color: #555;
+            list-style: none;
+        }
+        .example-container ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateY(50%);
+            width: 3px;
+            height: 3px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        .example-container ul li.no-dot {
+            padding-left: 0;
+        }
+        .example-container ul li.no-dot::before {
+            display: none;
+        }
+        .example-container ul li + li {
+            margin-top: 8px;
+        }
+        .example-container ul li .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+        .example-container .ex-border {
+            margin: 32px 0 32px -64px;
+            border-top: 2px dashed #eee;
+        }
+        .guide-desc li .inner-desc {
+            margin-left: 52px;
+            list-style: none;
+        }
+        .guide-desc li .inner-desc li::before {
+            display: none;
+        }
+
+        .text-col {
+            display: flex;
+        }
+        .text-col .tip-desc-tit {
+            flex-shrink: 0;
+            margin-right: 4px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="LS-blog-custom">
+        <div class="inner">
+            <div class="img-wrap header">
+                <img src="header(noTitle).png" alt="" />
+                <div class="text-wrap">
+                    <img src="brand_logo.png" alt="brand-logo" />
+                    <p>[5969] 해외선물옵션 Loss/Profitcut 주문</p>
+                    <h2>
+                        위험은 줄이고, 변동성 대비는 확실히!<br /> 
+                        <strong>스마트 감시로 시작하는 안심 거래</strong>
+                    </h2>
+                </div>
+            </div>
+            <div class="content-wrap">
+                <div class="blog-sub-tit type-2 fw-semiBold fz-24">
+                    손실을 막고, 이익은 지키는 자동 방어선
+                </div>
+                <div class="blog-text">
+                    <p class="mt-16 fz-18">
+                        <strong class="highlight">[5969] 해외선물옵션 Loss/Profit cut 주문</strong> 화면은 목표 수익과 허용 가능한 손실 수준을 미리 설정해, 기준에 도달하면 자동으로 청산하여 계좌를 안전하게 보호합니다. <br />
+                        예측이 빗나가는 순간에도 지체 없이 대응할 수 있도록, 사전에 규칙을 설정해 두는 강력한 리스크 관리 도구로 활용할 수 있습니다.
+                    </p>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>요건은 세심하게, 정리는 신속하게,</p>
+                        <h3>이 화면에서 청산이 편리한 이유!</h3>
+                    </div>
+                    <table class="hts-table">
+                        <colgroup>
+                            <col style="width: 240px" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>기능</th>
+                                <th>특징</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>이익/손실 기준 청산 설정</td>
+                                <td>평가예탁금 기준으로 이익실현, 손실제한감시 조건 충족 시 자동 청산 실행</td>
+                            </tr>
+                            <tr>
+                                <td>시간/반복 주문 설정</td>
+                                <td>시점과 계좌를 지정하여 청산하거나, 반복 청산 설정 지원</td>
+                            </tr>
+                            <tr>
+                                <td>조건 포착 알림</td>
+                                <td>조건 포착 시 설정된 알람과 주기로 PUSH 알림 또는 문자메시지 발송</td>
+                            </tr>
+                            <tr>
+                                <td>신규 주문 제한</td>
+                                <td>손실청산 후 추가 주문을 제한하여, 재진입 및 과잉거래 예방</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>조건 설정 · 실행은 간편하게, 내역 확인은 확실하게</p>
+                        <h3>
+                            <strong>01</strong>
+                            주문 설정
+                        </h3>
+                    </div>
+                    <div class="blog-text">
+                        <h4 class="blog-sec-tit">조건 설정 및 실행</h4>
+                        <div class="img-wrap mt-16">
+                            <img src="img_5969_01.png" alt="" />
+                        </div>
+                        <div class="guide-list-container">
+                            <ol class="guide-list">
+                                <li>
+                                    <span class="guide-num">1</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">통화선택</span>
+                                        <ul class="guide-desc">
+                                            <li>Loss/Profit cut 감시 조건의 기준이 되는 통화를 설정합니다.</li>
+                                            <li>선택한 통화 기준으로 환산된 잔고가 예탁금 및 평가예탁금(1-1번)에 표시됩니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">2</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">조건설정</span>
+                                        <ul class="guide-desc">
+                                            <li>
+                                                <div class="guide-content">
+                                                    <p class="tip-desc-tit"><b>(2-1번) 감시설정금액 조건 : </b></p>
+                                                    <p>
+                                                        금액 기준으로 청산 조건 두 가지를 설정할 수 있으며, 조건은 중복 설정할 수 있습니다.<br />
+                                                        1) Profit Cut 설정금액 : 평가예탁금이 지정 금액 이상이 되면 이익 실현을 위해 청산 주문이 접수됩니다.<br />
+                                                        2) Loss Cut 설정금액 : 평가예탁금이 지정 금액 이하가 되면 손실 제한을 위해 청산 주문이 접수됩니다.
+                                                    </p>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="guide-content">
+                                                    <p class="tip-desc-tit"><b>(2-2번) 자산가치율 조건 : </b></p>
+                                                    <p>
+                                                        현재 예탁금 대비 평가자산이 일정 이하가 되면 청산되도록 조건을 설정할 수 있습니다. 감시설정금액 조건과 자산가치율 조건은 동시에 설정할 수 없고, 둘 중 한 가지만 선택할 수 있습니다.
+                                                    </p>
+                                                </div>
+                                            </li>
+
+
+                                            <li>
+                                                <div class="guide-content">
+                                                    <p class="tip-desc-tit"><b>(2-3번) 시간/반복 설정 : </b></p>
+                                                    <p>
+                                                        지정한 일시에 청산 주문이 접수되도록 설정할 수 있습니다.<br />
+                                                        1) 보유계좌동일시간 청산 설정 : 복수의 보유 계좌를 선택하여 지정 일시에 청산 주문이 접수되도록 설정합니다.<br />
+                                                        2) 매일 동일 시간 반복 청산 : 날짜 지정 없이 매일 동일 시간에 청산 주문이 접수되도록 설정합니다.
+                                                    </p>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="guide-content">
+                                                    <p class="tip-desc-tit"><b>(2-4번) 신규주문 : </b></p>
+                                                    <p>
+                                                        주문 관련 추가 설정을 할 수 있습니다.<br />
+                                                        1) 손실청산 후 신규주문 불가 : 손실 제한으로 인한 청산주문 후 신규 주문이 제한됩니다. ‘주문제한해지’ 선택 후 인증서 비밀번호를 입력하여 주문 제한을 해지할 수 있습니다.<br />
+                                                        2) 조건 저장 확인창 보기 : 조건 저장 시 확인창이 표시됩니다.
+                                                    </p>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="guide-content">
+                                                    <p class="tip-desc-tit"><b>(2-5번) 조건 저장 : </b></p>
+                                                    <p>
+                                                        클릭 시 조건 확인 팝업창을 거쳐 조건이 저장됩니다. <br />
+                                                        조건 저장 시 바로 감시 및 청산 주문이 실행되지 않으며, (4번) 실행/모니터링에서 해당 조건의 감시 상태를 '실행'으로 설정해야 조건 감시가 시작됩니다.
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">3</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">포착알림</span>
+                                        <ul class="guide-desc">
+                                            <li>조건 포착 시 설정된 알람과 주기로 PUSH 알림 또는 문자메시지를 발송하도록 설정 및 관리할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="guide-num">4</span>
+                                    <div class="guide-content">
+                                        <span class="guide-title">조건 실행/모니터링</span>
+                                        <ul class="guide-desc">
+                                            <li>(4-1번) 실행 / 중지 버튼으로 설정한 조건 감시를 시작하거나 중단할 수 있고, 조건 목록의 조회 요건을 설정할 수 있습니다.</li>
+                                            <li>(4-2번) 설정한 조건의 내용 및 실행, 중지, 이익청산, 손실청산 등 감시 상태와 처리 상태 등을 확인하고 관리할 수 있습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="tip-container warning mt-24">
+                            <h5>주의하세요!</h5>
+                            <ul>
+                                <li>
+                                    청산 조건은 예탁금 기준으로 계산되므로, 추가 주문을 위해 이체 등의 입출금 과정에서 자산 비율이 변동되어 청산 주문이 접수될 수 있습니다. 의도하지 않은 청산 주문을 방지하려면 입금 / 출금 / 대체입출금 진행 전에 반드시 조건 감시를 '중지' 상태로 전환해 주세요.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tip-container type-2 mt-24">
+                            <h5>참고해주세요!</h5>
+                            <ul>
+                                <li>아래 시간동안 해외선물옵션 Loss/Profit cut 주문의 주요 기능인 조건 등록, 감시 실행, 조회 기능 등을 이용할 수 있습니다.</li>
+                                <li class="no-dot mt-16"><b>1) 서머타임 : </b>06시 45분 ~ 익일 06시 30분</li>
+                                <li class="no-dot mb-16"><b>2) 비서머타임 : </b>07시 45분 ~ 익일 07시 30분</li>
+                                <li>주문대리인은 해외선물옵션 Loss/Profit cut 주문을 이용할 수 없습니다.</li>
+                                <li>
+                                    설정된 조건은 당사 서버에서 관리되므로, HTS를 종료하거나 PC를 종료한 상태에서도 서버에서 실시간으로 조건 감시가 유지되며 조건 충족 시 주문이 자동으로 접수됩니다.
+                                </li>
+                                <li>
+                                    감시 상태가 '실행'으로 설정된 조건은 사용자가 직접 감시를 중지할 때까지 유효기간동안 유지됩니다. <br />
+                                    감시를 종료하고자 하는 경우에는, 반드시 실행/모니터링 내역에서 감시 상태를 '중지'로 설정해 주시기 바랍니다.
+                                </li>
+                                <li>
+                                    시세 급변, 체결 지연, 네트워크 장애 등의 발생 시 감시 시스템과 원장 시스템의 체결 반영 시점이  다를 수 있으며 주문이 미실행되거나 거부될 수 있습니다.
+                                </li>
+                                <li>Loss cut 과 Profit cut을 동시에 설정한 상태에서 한쪽이 실행될 경우 다른 한쪽은 자동 취소됩니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">실행내역 확인</h4>
+                        <p class="mt-8">조건 감시가 실행되거나 중지된 내역을 확인할 수 있습니다. 한 번도 실행되지 않은 조건은 조회되지 않습니다.</p>
+                        <div class="img-wrap mt-16">
+                            <img src="img_5969_02.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">주문내역 확인</h4>
+                        <p class="mt-8">
+                            감시 조건이 충족되어 접수된 청산주문 내역과 처리 결과를 조회할 수 있습니다. <br />
+                            청산 주문을 포함한 전체 주문 내역은 <strong class="highlight">[6024] 해외선물옵션 주문체결상세</strong> 에서 확인할 수 있습니다.
+                        </p>
+                        <div class="img-wrap mt-16">
+                            <img src="img_5969_03.png" alt="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="content-part">
+                    <div class="img-wrap sub mb-32">
+                        <p>준비될 때 청산에 들어가기 위한,</p>
+                        <h3>
+                            <strong>02</strong>
+                            기타 기능
+                        </h3>
+                    </div>
+                    <div class="blog-text">
+                        <h4 class="blog-sec-tit">알리미서비스</h4>
+                        <p class="mt-8"><strong class="highlight">[7707] 똑똑알리미</strong> 에서해외선물옵션 Loss/Profit cut 주문이 체결되면 PUSH 알림이나 SMS(문자 메시지)가 발송되도록 설정할 수 있습니다.</p>
+                        <div class="img-wrap mt-16">
+                            <img src="img_5969_04.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="blog-text mt-32">
+                        <h4 class="blog-sec-tit">주문제한해지</h4>
+                        <p class="mt-8">
+                            ‘손실청산 후 신규주문 불가’ 선택으로 청산주문 후 신규 주문이 제한되는 경우, ‘주문제한해지’ 에서 인증서 비밀번호를 입력하여 주문 제한을 해지할 수 있습니다.
+                        </p>
+                        <div class="img-wrap mt-16">
+                            <img src="img_5969_05.png" alt="" />
+                        </div>
+                        <div class="tip-container warning mt-24">
+                            <h5>주의하세요!</h5>
+                            <div>
+                                <strong>1) 조건 감시 관련</strong>
+                                <ul>
+                                    <li>
+                                        설정된 조건은 당사 서버에서 실시간 감시되며, HTS 종료하거나 PC를 종료할 경우에도 감시가 실행됩니다.
+                                    </li>
+                                    <li>
+                                        조건의 유효기간은 사용자가 직접 '중지' 처리할 때까지 유지됩니다. 감시를 종료하고자 하는 경우에는 반드시 감시 '중지'를 실행하시기 바랍니다.
+                                    </li>
+                                    <li>
+                                        본 주문은 당사 서버에서 실시간 감시가 이뤄지며 사용자가 조건 저장하여 실행 시 당사 서버에서 감시 및 주문이 실행됩니다.
+                                    </li>
+                                    <li>시세 급변, 체결 지연, 네트워크 장애 등의 발생 시 감시시스템과 원장시스템의 체결 반영 시점이 다를 수 있으며 주문 미실행 또는 거부될 수 있습니다.</li>
+                                    <li>Loss cut 과 Profit cut을 동시에 설정한 상태에서 한쪽이 실행될 경우 다른 한쪽은 자동 취소됩니다.</li>
+                                    <li>일반 STOP주문과 Loss/Profit cut 주문은 동시 설정은 가능하나 포착 시점이 동일할 경우 원하지 않는 주문이 실행될 수 있습니다.</li>
+                                    <li>전산장애 등 부득이한 사유로 시세 지연이 발생한 경우 실제 시장과 다른 시세로 조건이 포착될 수 있으며 자동 주문이 처리될 수 있습니다.</li>
+                                    <li>
+                                        서비스 지속보다 중지가 필요하다고 판단하는 경우(시스템 전체 혹은 부분장애, 운영장비, 프로그램, 시세 등 특정부분의 오류, 시스템 전환 등), 일시적으로 감시 및 주문에 대하여 정지시킬 수 있습니다.
+                                    </li>
+                                    <li>
+                                        조건의 감시포착 시 해당 종목의 주문 가능한 시간에만 주문집행이 이루어지며 장운영 정보에 따라 조건이 충족되어도 주문이 미실행 될 수 있습니다. 거래 종목의 거래시간에 대해 유념하셔야 합니다.
+                                    </li>
+                                    <li>복수 거래소의 미결제 잔고를 보유한 경우 일부 거래소 거래불가 시간에 감시가 포착되면 모든 상품의 감시가 중단될 수 있습니다. (예 : 홍콩거래소 및 아시아 거래소 중간 휴장)</li>
+                                    <li>감시 실행 상태에서는 감시 조건의 변경이 불가능합니다.</li>
+                                </ul>
+                            </div>
+                            <div class="mt-16">
+                                <strong>2) 잔고/체결 관련</strong>
+                                <ul>
+                                    <li>정상적으로 발생된 주문의 경우라도 시장상황 등에 따라 체결이 되지 않을 수 있습니다.</li>
+                                    <li>
+                                        조건포착/일괄취소/일괄청산 주문이 처리되는 사이에 일반 주문을 낼 경우 원하지 않는 주문 실행 및 잔고가 남을 수 있습니다.
+                                    </li>
+                                    <li>
+                                        조건포착 후 주문을 단계적으로 처리하는 동안 주문 접수, 체결 등의 시차로 인하여 미결제 잔고가 남아 있을 수 있습니다.
+                                    </li>
+                                    <li>
+                                        해당 주문은 조건 만족 시 시장가로 집행되어 상대호가의 수량 및 가격조건에 따라 이익/손실금액이 예상치 대비 줄어들 수 있습니다. (단, 시장가 주문이 지원되지 않는 일부 거래소 상품은 지정가 주문으로 실행됨. 예 : 홍콩거래소 상대호가 +/- 20틱)
+                                    </li>
+                                    <li>감시 설정한 평가예탁금액은 실시간으로 평가되나 다음과 같은 사유로 평가시점이 지연되거나 오류가 있을 수 있습니다.</li>
+                                    <li>
+                                        시스템 전체 혹은 부분 장애, 특정부분의 오류(운영장비, 프로그램, 시세 등), 시스템 백업 전환 등으로 인하여, 서비스 지속보다 중지가 필요하다고 판단되는 경우, 전체 주문에 관하여 정지시킬 수 있습니다. <br />
+                                        * 당사 서버에 부하가 발생하는 경우 <br />
+                                        * 통신 회선 불량 <br />
+                                        * 거래소 시장의 과도한 호가 변동, 대량시세 발생 등으로 주문 접수 및 체결 지연
+                                    </li>
+                                    <li>
+                                        감시조건 포착 시 미체결 주문이 있을 경우, 미체결 주문의 취소와 청산주문이 연이어 집행됩니다. <br />
+                                        미체결 주문에 대한 취소가 거부되거나 응답을 받지 못하는 등 미체결 주문 취소가 정상처리 되지 않는 경우 청산주문 또한 거부될 수 있습니다.
+                                    </li>
+                                    <li>주문응답 지연, 체결수신 누락 · 지연으로 인하여 주문이 미처리 되거나 주문체결의 처리결과가 상이하게 조회될 수 있습니다.</li>
+                                    <li>감시 중 입출금, 만기결제 등으로 인해 예탁평가금 변경 시 청산주문이 처리될 수 있습니다.</li>
+                                </ul>
+                            </div>
+                            <div class="mt-16">
+                                <strong>3) 손해 배상 제외 범위</strong>
+                                <p>
+                                    다음의 내용 중 어느 하나에 해당하는 사유로 인하여 고객에게 발생되는 손해에 대하여 책임을 지지 않습니다.
+                                </p>
+                                <ul class="mt-8">
+                                    <li>고객의 고의, 과실, 전산기기 조작 오류로 인하여 발생한 손해</li>
+                                    <li>회사는 공지의 의무를 다하였으나 고객이 본 서비스 이용에 대한 이해 부족으로 발생하는 손해</li>
+                                    <li>회사가 신의 성실의 주의 의무를 다하였음에도 부득이하게 발생하는 정산처리 지연 등 전산 지연 정보로 인한 손해</li>
+                                    <li>회사에 책임이 없는 컴퓨터 범죄로 인하여 발생한 손해</li>
+                                    <li>고객의 비밀번호 관리 소홀로 발생한 주문으로 인한 손해</li>
+                                    <li>전시, 사변, 천재지변, 기타 불가항력 등으로 인한 전산 및 회선 장애로 발생한 손해</li>
+                                    <li>당사와 무관하게 거래소 시장 등의 대외기관 문제로 주문/체결/시세지연/시세오류 등으로 발생한 주문 오류에 대한 손해</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="mt-60">
+                            <strong class="highlight">[5972] 해외선물옵션 서버일반주문</strong> 화면은 서버가 조건을 감시하고 주문을 접수하는 동안 투자자는 전략에 집중할 수 있습니다. <br />
+                            전략에 맞춰 설정한 조건 위에서다음 기회를 차분히 준비할 수 있기를 바랍니다. <br />
+                            감사합니다!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="img-wrap">
+                <img src="footer_slogan.png" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
